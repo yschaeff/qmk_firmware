@@ -7,37 +7,23 @@ An ergonomic 30% keyboard
 Faux fox keyboard (ffkb)
 
 Make example for this keyboard (after setting up your build environment):
+```
+    make fingerpunch/ffkb_byomcu:default RGBLIGHT_ENABLE=yes FP_EC11_UNDER_PALMS=yes CIRQUE_ENABLE=yes OLED_ENABLE=yes
+```
 
-    make fingerpunch/ffkb_byomcu/ec11:default
-    make fingerpunch/ffkb_byomcu/ec11_evq:default
-    make fingerpunch/ffkb_byomcu/evq:default
-    make fingerpunch/ffkb_byomcu/no_features:default
-    make fingerpunch/ffkb_byomcu/oled:default
-    make fingerpunch/ffkb_byomcu/oled_ec11:default
-    make fingerpunch/ffkb_byomcu/oled_evq:default
-    make fingerpunch/ffkb_byomcu/pimoroni:default
-    make fingerpunch/ffkb_byomcu/pimoroni_ec11:default
-    make fingerpunch/ffkb_byomcu/pimoroni_evq:default
-    make fingerpunch/ffkb_byomcu/rgblight:default
-    make fingerpunch/ffkb_byomcu/rgblight_ec11:default
-    make fingerpunch/ffkb_byomcu/rgblight_ec11_evq:default
-    make fingerpunch/ffkb_byomcu/rgblight_evq:default
-    make fingerpunch/ffkb_byomcu/rgblight_oled:default
-    make fingerpunch/ffkb_byomcu/rgblight_oled_ec11:default
-    make fingerpunch/ffkb_byomcu/rgblight_oled_evq:default
-    make fingerpunch/ffkb_byomcu/rgblight_pimoroni:default
-    make fingerpunch/ffkb_byomcu/rgblight_pimoroni_ec11:default
-    make fingerpunch/ffkb_byomcu/rgblight_pimoroni_evq:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_ec11:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_ec11_evq:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_evq:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_oled:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_oled_ec11:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_oled_evq:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_pimoroni:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_pimoroni_ec11:default
-    make fingerpunch/ffkb_byomcu/rgbmatrix_pimoroni_evq:default
+Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
+
+Options are:
+```
+    CIRQUE_ENABLE=yes
+    RGBLIGHT_ENABLE=yes
+    RGB_MATRIX_ENABLE=yes
+    OLED_ENABLE=yes
+    FP_EC11_CENTER=yes
+    FP_EC11_UNDER_PALMS=yes
+    FP_EVQ_UNDER_PALMS=yes
+    PIMORONI_TRACKBALL_ENABLE=yes
+```
 
 Example of flashing this keyboard:
 
