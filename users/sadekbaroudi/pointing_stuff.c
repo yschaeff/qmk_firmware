@@ -46,4 +46,4 @@ void pointing_device_set_cpi_combined_defaults(void) {
     pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
     pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
 }
-#endif 
+#endif
