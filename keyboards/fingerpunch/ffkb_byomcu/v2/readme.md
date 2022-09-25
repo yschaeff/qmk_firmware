@@ -25,8 +25,4 @@ Options are:
     PIMORONI_TRACKBALL_ENABLE=yes
 ```
 
-Example of flashing this keyboard:
-
-    make fingerpunch/ffkb_byomcu/rgblight_oled_ec11:default:flash
-
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
