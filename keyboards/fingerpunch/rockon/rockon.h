@@ -22,3 +22,5 @@
 #elif defined(KEYBOARD_fingerpunch_rockon_v2)
 #    include "v2.h"
 #endif
+
+#include "keyboards/fingerpunch/fp.h"

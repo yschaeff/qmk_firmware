@@ -28,11 +28,9 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
-ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
+ifeq ($(strip $(USERSPACE_RGBLIGHT_ENABLE)), yes)
     SRC += rgb_stuff.c
-    ifeq ($(strip $(RGBLIGHT_NOEEPROM)), yes)
-        OPT_DEFS += -DRGBLIGHT_NOEEPROM
-    endif
+    OPT_DEFS += -DUSERSPACE_RGBLIGHT_ENABLE
 endif
 
 # RGB_MATRIX_ENABLE ?= no
