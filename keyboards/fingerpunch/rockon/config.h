@@ -26,17 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    sadekbaroudi
 #define PRODUCT         sadekbaroudi rockon
 
-/* key matrix size */
-/* Rows are doubled up */
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 9
-
-// wiring
-#define MATRIX_ROW_PINS \
-    { B6, F4, B5, B4, B2, B3, B7, D5 }
-#define MATRIX_COL_PINS \
-    { D2, D4, C6, D7, E6, F5, F6, F7, B1 }
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -49,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
-  #define RGBLIGHT_LIMIT_VAL 60 /* The maximum brightness level for RGBLIGHT_ENABLE */
+  #define RGBLIGHT_LIMIT_VAL 120 /* The maximum brightness level for RGBLIGHT_ENABLE */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
   #define RGBLIGHT_EFFECT_ALTERNATING
   #define RGBLIGHT_EFFECT_BREATHING
@@ -110,9 +99,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-//#define DYNAMIC_KEYMAP_LAYER_COUNT 5
-
-#ifdef OLED_ENABLE
-#define OLED_DISPLAY_128X64
-#endif

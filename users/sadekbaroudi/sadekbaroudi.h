@@ -41,8 +41,8 @@ enum userspace_layers {
     _FUNCTION,
     _MEDIA,
     _MOUSE,
-    _KICAD,
-    _GAME
+    _GAME,
+    _KICAD
 };
 
 void          press_super_alt_tab(bool shift);
