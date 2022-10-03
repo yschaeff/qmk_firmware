@@ -98,6 +98,12 @@ ifeq ($(strip $(PMW3360_ENABLE)), yes)
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
 
+SRC +=  keyboards/fingerpunch/fp.c \
+		keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_keyhandler.c \
+        keyboards/fingerpunch/fp_pointing.c \
+        keyboards/fingerpunch/fp_rgblight.c \
+        keyboards/fingerpunch/fp_rgb_matrix.c
 
 SRC += matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c

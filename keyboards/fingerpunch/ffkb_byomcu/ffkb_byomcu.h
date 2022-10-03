@@ -24,3 +24,5 @@
 #elif defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3)
 #    include "v3.h"
 #endif
+
+#include "keyboards/fingerpunch/fp.h"
