@@ -115,6 +115,10 @@ void pointing_device_init_user(void) {
 
 ## RGB Lighting
 
+Note that unless otherwise specified, features for rgb are supported on both rgblight ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md ) and rgb matrix ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md ).
+
+Some config parameters will depend on which you're using, like `FP_LAYER_LIGHTING_MODE`.
+
 ### Layer lighting
 
 If using this feature (`FP_LAYER_LIGHTING_ENABLE`), please note that the `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE` will be automatically disabled. Given that this feature will handle the auto mouse layer as well, you don't need to activate the layer lighting twice. Just set the mouse layer lighting to the color you prefer using the `FP_LAYER_LIGHTING_HUE_X` below.
@@ -122,7 +126,7 @@ If using this feature (`FP_LAYER_LIGHTING_ENABLE`), please note that the `FP_LAY
 | Setting                                 | Description                                                                     | Default                                                                             |
 | --------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `FP_LAYER_LIGHTING_ENABLE`              | (Optional) Define this to enable layer lighting                                 | `undefined`                                                                         |
-| `FP_LAYER_LIGHTING_MODE`                | (Required) Set the layer lighting default mode                                  | `RGBLIGHT_MODE_STATIC_LIGHT`                                                        |
+| `FP_LAYER_LIGHTING_MODE`                | (Required) Set the layer lighting default mode                                  | `RGBLIGHT_MODE_STATIC_LIGHT` or `RGB_MATRIX_SOLID_COLOR`                            |
 | `FP_LAYER_LIGHTING_HUE_0`               | (Required) Set the layer lighting hue for layer 0                               | `HSV_BLUE`                                                                          |
 | `FP_LAYER_LIGHTING_HUE_1`               | (Required) Set the layer lighting hue for layer 1                               | `HSV_WHITE`                                                                         |
 | `FP_LAYER_LIGHTING_HUE_2`               | (Required) Set the layer lighting hue for layer 2                               | `HSV_GREEN`                                                                         |

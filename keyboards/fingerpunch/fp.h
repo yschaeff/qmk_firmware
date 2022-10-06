@@ -28,6 +28,9 @@ void press_super_tab(bool shift);
 // #include "keyboards/fingerpunch/fp.h"
 
 #include "keyboards/fingerpunch/fp_keyhandler.h"
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#    include "keyboards/fingerpunch/fp_rgb_common.h"
+#endif
 #ifdef RGBLIGHT_ENABLE
 #    include "keyboards/fingerpunch/fp_rgblight.h"
 #endif

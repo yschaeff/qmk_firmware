@@ -1,4 +1,4 @@
-/* Copyright 2021 Sadek Baroudi <sadekbaroudi@gmail.com>
+/* Copyright 2022 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,5 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "rockon.h"
 
+#pragma once
+#include QMK_KEYBOARD_H
+#include "keyboards/fingerpunch/fp.h"
+
+layer_state_t fp_layer_state_set_rgb(layer_state_t state);
+void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode);

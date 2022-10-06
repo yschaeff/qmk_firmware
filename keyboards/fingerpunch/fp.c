@@ -100,6 +100,9 @@ void keyboard_post_init_kb(void) {
 }
 
 layer_state_t layer_state_set_kb(layer_state_t state) {
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+    state = fp_layer_state_set_rgb(state);
+#endif
 #ifdef RGBLIGHT_ENABLE
     state = fp_layer_state_set_rgblight(state);
 #endif  // RGBLIGHT_ENABLE
