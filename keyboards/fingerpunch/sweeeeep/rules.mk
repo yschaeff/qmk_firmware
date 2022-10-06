@@ -29,6 +29,7 @@ MOUSEKEY_ENABLE = no
 
 SPLIT_KEYBOARD = yes        # Use shared split_common code
 
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \

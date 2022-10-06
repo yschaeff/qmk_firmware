@@ -48,6 +48,7 @@ ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
     OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
 endif
 
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \

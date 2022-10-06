@@ -63,6 +63,7 @@ ifeq ($(strip $(FP_EVQ_UNDER_PALMS)), yes)
    OPT_DEFS += -DFP_EVQ_UNDER_PALMS
 endif
 
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \

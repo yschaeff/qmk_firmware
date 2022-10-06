@@ -23,6 +23,10 @@ void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode
     rgb_matrix_mode_noeeprom(mode);
 }
 
+void fp_post_init_rgb_matrix(void) {
+
+}
+
 layer_state_t fp_layer_state_set_rgb_matrix(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case 0:

@@ -16,6 +16,12 @@
 
 #include "keyboards/fingerpunch/fp.h"
 
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#include "keyboards/fingerpunch/fp_rgb_common.h"
+#endif
+
+fp_config_t fp_config;
+
 #ifndef FP_SUPER_TAB_TIMEOUT
 #   define FP_SUPER_TAB_TIMEOUT 500
 #endif
@@ -87,6 +93,11 @@ void matrix_scan_kb(void) {
     matrix_scan_user();
 }
 
+void keyboard_pre_init_kb(void) {
+    fp_config.raw = eeconfig_read_user();
+    keyboard_pre_init_user();
+}
+
 void keyboard_post_init_kb(void) {
     #if defined(PIMORONI_TRACKBALL_ENABLE) && !defined(RGBLIGHT_ENABLE)
     pimoroni_trackball_set_rgbw(RGB_BLUE, 0x00);
@@ -94,6 +105,18 @@ void keyboard_post_init_kb(void) {
 
     #if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_COMBINED)
     fp_pointing_device_set_cpi_combined_defaults();
+    #endif
+
+    #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+    fp_post_init_rgb_common();
+    #endif
+
+    #if defined(RGBLIGHT_ENABLE)
+    fp_post_init_rgblight();
+    #endif
+
+    #if defined(RGB_MATRIX_ENABLE)
+    fp_post_init_rgb_matrix();
     #endif
 
     keyboard_post_init_user();
@@ -117,4 +140,17 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 #endif  // POINTING_DEVICE_ENABLE
 
     return layer_state_set_user(state);
+}
+
+void eeconfig_init_kb(void) {
+    fp_config.raw              = 0;
+    #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+    fp_config.rgb_mode         = FP_LAYER_LIGHTING_MODE_0;
+    fp_config.rgb_hue          = fp_rgb_get_element_from_hsv(FP_LAYER_LIGHTING_HUE_0, 0);
+    #endif
+    fp_config.rgb_sat          = 255;
+    fp_config.rgb_val          = 255;
+    fp_config.rgb_speed        = 1;
+    eeconfig_update_kb(fp_config.raw);
+    eeconfig_init_user();
 }

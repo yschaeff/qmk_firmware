@@ -15,6 +15,7 @@ That said, if you are looking to leverage the features, you may be able to follo
 Note that below is an example. You should check for the latest version of this code block as found in `keyboards/fingerpunch/ffkb_byomcu/rules.mk`
 
 ```make
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
         keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \

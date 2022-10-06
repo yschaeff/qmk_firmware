@@ -26,3 +26,4 @@
 
 layer_state_t fp_layer_state_set_rgblight(layer_state_t state);
 bool fp_process_record_rgblight(uint16_t keycode, keyrecord_t *record);
+void fp_post_init_rgblight(void);

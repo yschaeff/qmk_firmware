@@ -15,6 +15,7 @@
  */
 
 #pragma once
+
 #include QMK_KEYBOARD_H
 
 #include "eeprom.h"
@@ -48,7 +49,11 @@ void press_super_tab(bool shift);
 typedef union {
     uint32_t raw;
     struct {
-        bool    rgb_layer_change     :1;
+        uint8_t rgb_mode;
+        uint8_t rgb_hue;
+        uint8_t rgb_sat;
+        uint8_t rgb_val;
+        uint8_t rgb_speed;
     };
 } fp_config_t;
 // clang-format on

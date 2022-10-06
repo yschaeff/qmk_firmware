@@ -20,8 +20,13 @@
 #ifdef RGBLIGHT_ENABLE
 
 void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode) {
+    xprintf("fp_rgb_set_hsv_and_mode: hue: %d, sat: %d, val: %d, mode: %d\n", hue, sat, val, mode);
     rgblight_sethsv_noeeprom(hue, sat, val);
     rgblight_mode_noeeprom(mode);
+}
+
+void fp_post_init_rgblight(void) {
+
 }
 
 layer_state_t fp_layer_state_set_rgblight(layer_state_t state) {

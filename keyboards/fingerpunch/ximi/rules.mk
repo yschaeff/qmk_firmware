@@ -98,6 +98,7 @@ ifeq ($(strip $(PMW3360_ENABLE)), yes)
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
 
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \
