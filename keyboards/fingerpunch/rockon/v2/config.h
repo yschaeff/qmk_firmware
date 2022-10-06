@@ -19,6 +19,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DEVICE_VER      0x0002
 
+/* key matrix size */
+/* Rows are doubled up */
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 9
+
+// wiring
+#define MATRIX_ROW_PINS \
+    { B6, F4, B5, B4, B2, B3, B7, D5 }
+#define MATRIX_COL_PINS \
+    { D2, D4, C6, D7, E6, F5, F6, F7, B1 }
+
+
 /* encoder config */
 #define ENCODERS_PAD_A {F0, C7}
 #define ENCODERS_PAD_B {F1, F1}
@@ -45,3 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define I2C1_CLOCK_SPEED  400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+
+#ifdef OLED_ENABLE
+#define OLED_DISPLAY_128X64
+#endif
