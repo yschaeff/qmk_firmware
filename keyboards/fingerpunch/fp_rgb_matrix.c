@@ -17,9 +17,32 @@
 #include "keyboards/fingerpunch/fp_rgb_matrix.h"
 
 #ifdef RGB_MATRIX_ENABLE
+
+void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode) {
+    rgb_matrix_sethsv_noeeprom(hue, sat, val);
+    rgb_matrix_mode_noeeprom(mode);
+}
+
 layer_state_t fp_layer_state_set_rgb_matrix(layer_state_t state) {
     switch (get_highest_layer(state)) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
         default:
+            // default to layer 0 behavior
             break;
     }
     return state;

@@ -18,5 +18,11 @@
 #include QMK_KEYBOARD_H
 #include "keyboards/fingerpunch/fp.h"
 
+#ifdef RGB_MATRIX_ENABLE
+#    ifndef FP_LAYER_LIGHTING_MODE
+#        define FP_LAYER_LIGHTING_MODE RGB_MATRIX_SOLID_COLOR
+#    endif
+#endif
+
 layer_state_t fp_layer_state_set_rgb_matrix(layer_state_t state);
 bool fp_process_record_rgb_matrix(uint16_t keycode, keyrecord_t *record);
