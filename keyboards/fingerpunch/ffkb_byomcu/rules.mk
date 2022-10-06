@@ -1,3 +1,4 @@
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \

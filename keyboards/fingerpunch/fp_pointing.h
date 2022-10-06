@@ -29,3 +29,37 @@ void fp_snipe_set(bool snipe_value);
 bool fp_snipe_get(void);
 void fp_snipe_toggle(void);
 void fp_snipe_apply_dpi(void);
+
+#ifdef POINTING_DEVICE_ENABLE
+#    ifndef FP_POINTING_DEFAULT_DPI
+#        define FP_POINTING_DEFAULT_DPI 1000
+#    endif
+
+#    ifndef FP_POINTING_SNIPING_DPI
+#        define FP_POINTING_SNIPING_DPI 50
+#    endif
+
+#    ifndef FP_POINTING_SNIPING_LAYER
+#        define FP_POINTING_SNIPING_LAYER 2
+#    endif
+
+#    ifndef FP_POINTING_SCROLLING_DPI
+#        define FP_POINTING_SCROLLING_DPI 50
+#    endif
+
+#    ifndef FP_POINTING_SCROLLING_LAYER
+#        define FP_POINTING_SCROLLING_LAYER 3
+#    endif
+
+#    ifndef FP_POINTING_COMBINED_SCROLLING_LEFT
+#        define FP_POINTING_COMBINED_SCROLLING_LEFT true
+#    endif
+
+#    ifndef FP_POINTING_COMBINED_SCROLLING_RIGHT
+#        define FP_POINTING_COMBINED_SCROLLING_RIGHT false
+#    endif
+
+#    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
+#        define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3
+#    endif
+#endif

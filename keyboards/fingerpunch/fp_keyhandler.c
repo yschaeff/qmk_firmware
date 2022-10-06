@@ -23,11 +23,14 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 #endif // KEYLOGGER_ENABLE
 
     if (!(process_record_user(keycode, record)
-#ifdef RGB_MATRIX_ENABLE
-          && fp_process_record_rgb_matrix(keycode, record)
+#if    defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+          && fp_process_record_rgb_common(keycode, record)
 #endif
 #ifdef RGBLIGHT_ENABLE
           && fp_process_record_rgblight(keycode, record)
+#endif
+#ifdef RGB_MATRIX_ENABLE
+          && fp_process_record_rgb_matrix(keycode, record)
 #endif
 #ifdef FP_UNICODE_ENABLE
           && fp_process_record_unicode(keycode, record)

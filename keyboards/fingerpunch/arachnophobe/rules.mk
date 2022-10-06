@@ -30,6 +30,7 @@ OLED_ENABLE = no            # this can be yes or no depending on if you have an 
 EXTRAFLAGS     += -flto     # macros enable or disable
 MOUSEKEY_ENABLE = yes
 
+DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
 		keyboards/fingerpunch/fp_haptic.c \
         keyboards/fingerpunch/fp_keyhandler.c \
