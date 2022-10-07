@@ -47,7 +47,7 @@ uint8_t fp_rgb_get_element_from_hsv(uint8_t hue, uint8_t sat, uint8_t val, uint8
 #    endif // FP_LAYER_LIGHTING_HUE_4
 
 #    ifndef FP_LAYER_LIGHTING_HUE_5
-#        define FP_LAYER_LIGHTING_HUE_5 HSV_MAGENTA
+#        define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
 #    endif // FP_LAYER_LIGHTING_HUE_5
 
 #    ifndef FP_LAYER_LIGHTING_HUE_6

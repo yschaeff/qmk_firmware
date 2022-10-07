@@ -25,10 +25,9 @@ void fp_caps_lock_toggle(void);
 void handle_caps_lock_change(void);
 void press_super_tab(bool shift);
 
-// IMPORTANT NOTE: Don't forget to add the following line to every fingerpunch keyboard's .h file (e.g. ffkb_byomcu.h)
-// #include "keyboards/fingerpunch/fp.h"
-
+#include "keyboards/fingerpunch/fp_color.h"
 #include "keyboards/fingerpunch/fp_keyhandler.h"
+
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
 #    include "keyboards/fingerpunch/fp_rgb_common.h"
 #endif

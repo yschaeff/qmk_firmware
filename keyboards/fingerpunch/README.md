@@ -136,7 +136,7 @@ If using this feature (`FP_LAYER_LIGHTING_ENABLE`), please note that the `FP_LAY
 | `FP_LAYER_LIGHTING_HUE_2`               | (Required) Set the layer lighting hue for layer 2                                 | `HSV_GREEN`                                                                         |
 | `FP_LAYER_LIGHTING_HUE_3`               | (Required) Set the layer lighting hue for layer 3                                 | `HSV_PURPLE`                                                                        |
 | `FP_LAYER_LIGHTING_HUE_4`               | (Required) Set the layer lighting hue for layer 4                                 | `HSV_YELLOW`                                                                        |
-| `FP_LAYER_LIGHTING_HUE_5`               | (Required) Set the layer lighting hue for layer 5                                 | `HSV_MAGENTA`                                                                       |
+| `FP_LAYER_LIGHTING_HUE_5`               | (Required) Set the layer lighting hue for layer 5                                 | `FP_HSV_MELON`                                                                      |
 | `FP_LAYER_LIGHTING_HUE_6`               | (Required) Set the layer lighting hue for layer 6                                 | `HSV_CYAN`                                                                          |
 | `FP_LAYER_LIGHTING_HUE_7`               | (Required) Set the layer lighting hue for layer 7                                 | `HSV_SPRINGGREEN`                                                                   |
 | `FP_LAYER_LIGHTING_MODE_0`              | (Required) Set the layer lighting mode for layer 0                                | `FP_LAYER_LIGHTING_MODE`                                                            |
@@ -152,6 +152,17 @@ If using this feature (`FP_LAYER_LIGHTING_ENABLE`), please note that the `FP_LAY
 | `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE`   | (Optional) If using RGB, set the layer lighting when auto mouse is triggered      | `undefined`                                                                         |
 | `FP_LAYER_LIGHTING_AUTO_MOUSE_HUE`      | (Required) This is the hue that is used for the auto mouse layer lighting         | `HSV_ORANGE`                                                                        |
 | `FP_LAYER_LIGHTING_AUTO_MOUSE_MODE`     | (Required) This is the mode that is used for the auto mouse layer lighting        | `FP_LAYER_LIGHTING_MODE`                                                            |
+
+### Additional colors
+
+| Define                | HSV               | Reference                                             |
+| --------------------- | ----------------- | ----------------------------------------------------- |
+| `FP_HSV_LAVENDER`     | `184, 200, 255`   | https://encycolorpedia.com/ccb3ff                     |
+| `FP_HSV_LEMON`        |  `43, 200, 255`   | https://encycolorpedia.com/ffff9f                     |
+| `FP_HSV_LIME`         |  `63, 225, 255`   | https://encycolorpedia.com/9efd38                     |
+| `FP_HSV_MELON`        |   `0, 180, 255`   | https://encycolorpedia.com/febaad                     |
+| `FP_HSV_MINT`         |  `84, 185, 255`   | https://encycolorpedia.com/98ff98                     |
+
 
 ## Haptic Feedback
 
