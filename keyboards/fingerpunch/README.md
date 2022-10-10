@@ -182,6 +182,14 @@ Note that the ctrl-X haptic feedback responses will use control as the modifier,
 If you are looking to use process_record_kb() or process_record
 
 
+## Debugging
+
+| Setting                                 | Description                                                                                        | Default                                                                             |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `FP_SR595_MATRIX_DEBUG`                 | (Optional) Enable debugging the 74hc595 shift register code                                        | `undefined`                                                                         |
+| `FP_SR595_MATRIX_DEBUG_RATIO`           | (Optional) Frequency for outputting matrix scan information for the shift register (1 in X scans)  | `10000`                                                                             |
+
+
 ## Appreciation
 
 Thank you:

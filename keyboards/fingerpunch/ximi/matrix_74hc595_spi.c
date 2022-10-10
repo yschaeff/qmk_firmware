@@ -9,7 +9,7 @@
 #ifdef FP_SR595_MATRIX_DEBUG
 #include <time.h>
 #include <stdlib.h>
-#define SR_DEBUG_RATIO 10000
+#define FP_SR595_MATRIX_DEBUG_RATIO 10000
 #endif
 
 #if (!defined(SHIFTREG_MATRIX_COL_CS))
@@ -110,7 +110,7 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     memset(current_matrix, 0, matrixArraySize);
 
 #ifdef FP_SR595_MATRIX_DEBUG
-    bool debug_output = ((rand() % SR_DEBUG_RATIO) == 1);
+    bool debug_output = ((rand() % FP_SR595_MATRIX_DEBUG_RATIO) == 1);
 #else
     bool debug_output = false;
 #endif
