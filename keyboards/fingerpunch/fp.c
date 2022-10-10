@@ -41,7 +41,7 @@ void fp_caps_lock_toggle(void) {
 
 void handle_caps_lock_change(void) {
 #if defined(RGBLIGHT_ENABLE) // We only do this because we want the layer color to change
-    fp_layer_state_set_rgblight(layer_state);
+    fp_layer_state_set_rgb(layer_state);
 #endif  // RGBLIGHT_ENABLE
 }
 
@@ -84,8 +84,7 @@ void matrix_scan_kb(void) {
     // need to make sure this keyboard is aware
     led_t led_state = host_keyboard_led_state();
     if (led_state.caps_lock != is_caps_lock_on) {
-        is_caps_lock_on = led_state.caps_lock;
-        handle_caps_lock_change();
+        fp_caps_lock_toggle();
     }
 
     unregister_super_tab();
