@@ -132,9 +132,9 @@ void keyboard_post_init_user(void) {
 // #if defined(RGB_MATRIX_ENABLE)
 //     keyboard_post_init_rgb_matrix();
 // #endif
-#if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_COMBINED)
-    pointing_device_set_cpi_combined_defaults();
-#endif
+// #if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_COMBINED)
+//     pointing_device_set_cpi_combined_defaults();
+// #endif
     keyboard_post_init_keymap();
 }
 
