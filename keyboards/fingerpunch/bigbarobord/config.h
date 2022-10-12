@@ -128,4 +128,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // If using encoder type 2, uncomment this
 // #define ENCODERS_B_REVERSE
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
