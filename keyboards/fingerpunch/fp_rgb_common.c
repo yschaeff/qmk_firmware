@@ -69,71 +69,71 @@ void fp_post_init_rgb_common(void) {
 
 layer_state_t fp_layer_state_set_rgb(layer_state_t state) {
     switch (get_highest_layer(state)) {
-#       if defined(FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE) && defined(AUTO_MOUSE_DEFAULT_LAYER) && !defined(FP_LAYER_LIGHTING_ENABLE)
+#       if defined(FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE) && defined(AUTO_MOUSE_DEFAULT_LAYER) && defined(FP_LAYER_LIGHTING_DISABLE)
         case AUTO_MOUSE_DEFAULT_LAYER:
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_AUTO_MOUSE_HUE, FP_LAYER_LIGHTING_AUTO_MOUSE_MODE);
             break;
 #       endif
         case 0:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             if (fp_caps_lock_get()) {
                 fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_CAPS_LOCK_HUE, FP_LAYER_LIGHTING_CAPS_LOCK_MODE);
                 xprintf("caps lock /n");
             } else {
-#           ifdef FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER
-                fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
-#           else
+#           ifdef FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER_DISABLE
                 fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_0, FP_LAYER_LIGHTING_MODE_0);
+#           else
+                fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
 #           endif
                 xprintf("base layer /n");
             }
 #           endif
             break;
         case 1:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_1, FP_LAYER_LIGHTING_MODE_1);
 #           endif
             xprintf("layer 1: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_1, FP_LAYER_LIGHTING_MODE_1);
             break;
         case 2:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_2, FP_LAYER_LIGHTING_MODE_2);
 #           endif
             xprintf("layer 2: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_2, FP_LAYER_LIGHTING_MODE_2);
             break;
         case 3:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_3, FP_LAYER_LIGHTING_MODE_3);
 #           endif
             xprintf("layer 3: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_3, FP_LAYER_LIGHTING_MODE_3);
             break;
         case 4:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_4, FP_LAYER_LIGHTING_MODE_4);
 #           endif
             xprintf("layer 4: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_4, FP_LAYER_LIGHTING_MODE_4);
             break;
         case 5:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_5, FP_LAYER_LIGHTING_MODE_5);
 #           endif
             xprintf("layer 5: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_5, FP_LAYER_LIGHTING_MODE_5);
             break;
         case 6:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_6, FP_LAYER_LIGHTING_MODE_6);
 #           endif
             xprintf("layer 6: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_6, FP_LAYER_LIGHTING_MODE_6);
             break;
         case 7:
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_7, FP_LAYER_LIGHTING_MODE_7);
 #           endif
             xprintf("layer 7: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_7, FP_LAYER_LIGHTING_MODE_7);
             break;
         default:
             // default to layer 0 behavior
-#           ifdef FP_LAYER_LIGHTING_ENABLE
+#           ifndef FP_LAYER_LIGHTING_DISABLE
             fp_rgb_set_hsv_and_mode(FP_LAYER_LIGHTING_HUE_0, FP_LAYER_LIGHTING_MODE_0);
 #           endif
             xprintf("layer default: hue: {%d, %d, %d}, mode: %d\n", FP_LAYER_LIGHTING_HUE_0, FP_LAYER_LIGHTING_MODE_0);

@@ -116,42 +116,42 @@ void pointing_device_init_user(void) {
 ## RGB Lighting
 
 Notes:
-* unless otherwise specified, features for rgb are supported on both rgblight ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md ) and rgb matrix ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md ).
-* the base layer is still configurable using the QMK rgb keycodes ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md#keycodes ), but you will need to enable the `FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER`
+* Unless otherwise specified, features for rgb are supported on both rgblight ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md ) and rgb matrix ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md ).
+* The base layer is still configurable using the QMK rgb keycodes ( https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md#keycodes ). If you want the base layer to be static, you will need to define the `FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER_DISABLE` config.
 
 Some config parameters will depend on which you're using, like `FP_LAYER_LIGHTING_MODE`.
 
 ### Layer lighting
 
-If using this feature (`FP_LAYER_LIGHTING_ENABLE`), please note that the `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE` will be automatically disabled. Given that this feature will handle the auto mouse layer as well, you don't need to activate the layer lighting twice. Just set the mouse layer lighting to the color you prefer using the `FP_LAYER_LIGHTING_HUE_X` below.
+Please note that the `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE` will be automatically disabled unless you define `FP_LAYER_LIGHTING_DISABLE`. Given that this fingerpunch layer lighting will handle the auto mouse layer as well, you don't need to activate the layer lighting twice. Just set the mouse layer lighting to the color you prefer using the `FP_LAYER_LIGHTING_HUE_X` below.
 
-| Setting                                 | Description                                                                       | Default                                                                             |
-| --------------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `FP_STARTUP_ANIMATION_DISABLE`          | (Optional) Define this to disable startup animation                               | `undefined`                                                                         |
-| `FP_LAYER_LIGHTING_ENABLE`              | (Optional) Define this to enable layer lighting                                   | `undefined`                                                                         |
-| `FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER`  | (Optional) While using layer lighting, enable dynamically changing the base layer | `undefined`                                                                         |
-| `FP_LAYER_LIGHTING_MODE`                | (Required) Set the layer lighting default mode                                    | `RGBLIGHT_MODE_STATIC_LIGHT` or `RGB_MATRIX_SOLID_COLOR`                            |
-| `FP_LAYER_LIGHTING_HUE_0`               | (Required) Set the layer lighting hue for layer 0                                 | `HSV_BLUE`                                                                          |
-| `FP_LAYER_LIGHTING_HUE_1`               | (Required) Set the layer lighting hue for layer 1                                 | `HSV_WHITE`                                                                         |
-| `FP_LAYER_LIGHTING_HUE_2`               | (Required) Set the layer lighting hue for layer 2                                 | `HSV_GREEN`                                                                         |
-| `FP_LAYER_LIGHTING_HUE_3`               | (Required) Set the layer lighting hue for layer 3                                 | `HSV_PURPLE`                                                                        |
-| `FP_LAYER_LIGHTING_HUE_4`               | (Required) Set the layer lighting hue for layer 4                                 | `HSV_YELLOW`                                                                        |
-| `FP_LAYER_LIGHTING_HUE_5`               | (Required) Set the layer lighting hue for layer 5                                 | `FP_HSV_MELON`                                                                      |
-| `FP_LAYER_LIGHTING_HUE_6`               | (Required) Set the layer lighting hue for layer 6                                 | `HSV_CYAN`                                                                          |
-| `FP_LAYER_LIGHTING_HUE_7`               | (Required) Set the layer lighting hue for layer 7                                 | `HSV_SPRINGGREEN`                                                                   |
-| `FP_LAYER_LIGHTING_MODE_0`              | (Required) Set the layer lighting mode for layer 0                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_1`              | (Required) Set the layer lighting mode for layer 1                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_2`              | (Required) Set the layer lighting mode for layer 2                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_3`              | (Required) Set the layer lighting mode for layer 3                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_4`              | (Required) Set the layer lighting mode for layer 4                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_5`              | (Required) Set the layer lighting mode for layer 5                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_6`              | (Required) Set the layer lighting mode for layer 6                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_MODE_7`              | (Required) Set the layer lighting mode for layer 7                                | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_CAPS_LOCK_HUE`       | (Required) Set the layer lighting hue when caps lock is enabled                   | `HSV_RED`                                                                           |
-| `FP_LAYER_LIGHTING_CAPS_LOCK_MODE`      | (Required) Set the layer lighting mode when caps lock is enabled                  | `FP_LAYER_LIGHTING_MODE`                                                            |
-| `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE`   | (Optional) If using RGB, set the layer lighting when auto mouse is triggered      | `undefined`                                                                         |
-| `FP_LAYER_LIGHTING_AUTO_MOUSE_HUE`      | (Required) This is the hue that is used for the auto mouse layer lighting         | `HSV_ORANGE`                                                                        |
-| `FP_LAYER_LIGHTING_AUTO_MOUSE_MODE`     | (Required) This is the mode that is used for the auto mouse layer lighting        | `FP_LAYER_LIGHTING_MODE`                                                            |
+| Setting                                         | Description                                                                        | Default                                                      |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `FP_STARTUP_ANIMATION_DISABLE`                  | (Optional) Define this to disable startup animation                                |                                                              |
+| `FP_LAYER_LIGHTING_DISABLE`                     | (Optional) Define this to disable layer lighting                                   | `undefined`                                                  |
+| `FP_LAYER_LIGHTING_DYNAMIC_BASE_LAYER_DISABLE`  | (Optional) While using layer lighting, disable dynamically changing the base layer | `undefined`                                                  |
+| `FP_LAYER_LIGHTING_MODE`                        | (Required) Set the layer lighting default mode                                     | `RGBLIGHT_MODE_STATIC_LIGHT` or `RGB_MATRIX_SOLID_COLOR`     |
+| `FP_LAYER_LIGHTING_HUE_0`                       | (Required) Set the layer lighting hue for layer 0                                  | `HSV_BLUE`                                                   |
+| `FP_LAYER_LIGHTING_HUE_1`                       | (Required) Set the layer lighting hue for layer 1                                  | `HSV_WHITE`                                                  |
+| `FP_LAYER_LIGHTING_HUE_2`                       | (Required) Set the layer lighting hue for layer 2                                  | `HSV_GREEN`                                                  |
+| `FP_LAYER_LIGHTING_HUE_3`                       | (Required) Set the layer lighting hue for layer 3                                  | `HSV_PURPLE`                                                 |
+| `FP_LAYER_LIGHTING_HUE_4`                       | (Required) Set the layer lighting hue for layer 4                                  | `HSV_YELLOW`                                                 |
+| `FP_LAYER_LIGHTING_HUE_5`                       | (Required) Set the layer lighting hue for layer 5                                  | `FP_HSV_MELON`                                               |
+| `FP_LAYER_LIGHTING_HUE_6`                       | (Required) Set the layer lighting hue for layer 6                                  | `HSV_CYAN`                                                   |
+| `FP_LAYER_LIGHTING_HUE_7`                       | (Required) Set the layer lighting hue for layer 7                                  | `HSV_SPRINGGREEN`                                            |
+| `FP_LAYER_LIGHTING_MODE_0`                      | (Required) Set the layer lighting mode for layer 0                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_1`                      | (Required) Set the layer lighting mode for layer 1                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_2`                      | (Required) Set the layer lighting mode for layer 2                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_3`                      | (Required) Set the layer lighting mode for layer 3                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_4`                      | (Required) Set the layer lighting mode for layer 4                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_5`                      | (Required) Set the layer lighting mode for layer 5                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_6`                      | (Required) Set the layer lighting mode for layer 6                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_MODE_7`                      | (Required) Set the layer lighting mode for layer 7                                 | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_CAPS_LOCK_HUE`               | (Required) Set the layer lighting hue when caps lock is enabled                    | `HSV_RED`                                                    |
+| `FP_LAYER_LIGHTING_CAPS_LOCK_MODE`              | (Required) Set the layer lighting mode when caps lock is enabled                   | `FP_LAYER_LIGHTING_MODE`                                     |
+| `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE`           | (Optional) If using RGB, set the layer lighting when auto mouse is triggered       | `undefined`                                                  |
+| `FP_LAYER_LIGHTING_AUTO_MOUSE_HUE`              | (Required) This is the hue that is used for the auto mouse layer lighting          | `HSV_ORANGE`                                                 |
+| `FP_LAYER_LIGHTING_AUTO_MOUSE_MODE`             | (Required) This is the mode that is used for the auto mouse layer lighting         | `FP_LAYER_LIGHTING_MODE`                                     |
 
 ### Additional colors
 
