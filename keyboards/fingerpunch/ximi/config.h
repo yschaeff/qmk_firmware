@@ -194,7 +194,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define PMW33XX_CS_PIN GP26
     #define PMW33XX_CPI 800
     #define PMW33XX_CS_DIVISOR 8 // needs to be the same as the SHIFTREG_DIVISOR above
-    #define POINTING_DEVICE_INVERT_X // move to trackball specific config
 
     /* SPI config for pmw3360 sensor. */
     #define SPI_DRIVER SPID0
@@ -204,6 +203,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
 #ifdef FP_TRACKBALL_BOTH
     #define POINTING_DEVICE_COMBINED
+    #define POINTING_DEVICE_INVERT_Y // This inverts the Y on the left side only
+    #define POINTING_DEVICE_INVERT_X_RIGHT
 #endif
 #ifdef FP_TRACKBALL_LEFT
     #define POINTING_DEVICE_LEFT
