@@ -19,7 +19,8 @@
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
-    || defined(KEYBOARD_fingerpunch_ximi)
+    || defined(KEYBOARD_fingerpunch_ximi) \
+    || defined(KEYBOARD_fingerpunch_personal_badwings)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #elif defined(KEYMAP_SAFE_RANGE)
 #    define PLACEHOLDER_SAFE_RANGE KEYMAP_SAFE_RANGE
