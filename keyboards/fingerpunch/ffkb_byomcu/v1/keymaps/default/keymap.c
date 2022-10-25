@@ -1,10 +1,5 @@
 #include QMK_KEYBOARD_H
 
-#ifdef ENCODER_ENABLE
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-#endif
-
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
@@ -161,21 +156,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef ENCODER_ENABLE
 
-void press_super_alt_tab(bool shift) {
-    if (shift) {
-        register_code(KC_LSHIFT);
-    }
-    if (!is_alt_tab_active) {
-        is_alt_tab_active = true;
-        register_code(KC_LALT);
-    }
-    alt_tab_timer = timer_read();
-    tap_code(KC_TAB);
-    if (shift) {
-        unregister_code(KC_LSHIFT);
-    }
-}
-
 bool encoder_update_user(uint8_t index, bool clockwise) {
     // default behavior if undefined
     if (index == 0) {
@@ -211,9 +191,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       #else
       if (clockwise) {
       #endif
-        press_super_alt_tab(true);
+        press_super_tab(true);
       } else {
-        press_super_alt_tab(false);
+        press_super_tab(false);
       }
     }
 
