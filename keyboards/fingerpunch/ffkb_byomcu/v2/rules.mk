@@ -40,6 +40,8 @@ EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features req
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
 MOUSEKEY_ENABLE = no
 
+CONVERT_TO = stemcell
+
 CIRQUE_ENABLE = no
 
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)

@@ -39,6 +39,8 @@ ENCODER_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = no
 
+CONVERT_TO = stemcell
+
 SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
