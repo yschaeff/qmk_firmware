@@ -151,13 +151,13 @@ make_build_string_recursive() {
 
     # if it's a "one-of"... in other words, pick an option from a list
     if [[ "${param_type}" == "one-of" ]]; then
-		param_names=$(cat "${build_json}" | jq -r ".[${param_number}].names | @sh" | tr -d \')
+		local param_names=$(cat "${build_json}" | jq -r ".[${param_number}].names | @sh" | tr -d \')
 		for param_name in $param_names; do
 			make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} ${param_name}=yes"
 		done
     # if it's a single value choice for a parmeter, or "yes or no" question
     elif [[ "${param_type}" == "single" ]]; then
-		param_name=$(cat "${build_json}" | jq -r ".[${param_number}].name")
+		local param_name=$(cat "${build_json}" | jq -r ".[${param_number}].name")
 		make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} ${param_name}=yes"
 		make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} ${param_name}=no"
     else
