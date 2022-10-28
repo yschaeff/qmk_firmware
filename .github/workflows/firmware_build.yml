@@ -47,10 +47,14 @@ jobs:
           keyboards=$(bash bin/fp_build.sh -l| sed s~keyboards/fingerpunch/~~)
 
           echo "${keyboards}" | while IFS= read -r line ; do
-            echo "Building for ${line}"
-            make_command="bin/fp_build.sh -k ${line} -r"
-            echo "${make_command}"
-            $make_command
+            case "$line" in
+              *${{ matrix.keyboard }}*)
+                echo "Building for ${line}"
+                make_command="bin/fp_build.sh -k ${line} -r"
+                echo "${make_command}"
+                $make_command
+              ;;
+            esac
           done
 
       - name: Archive firmware
