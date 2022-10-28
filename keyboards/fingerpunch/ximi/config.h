@@ -178,15 +178,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define POINTING_DEVICE_ROTATION_90_RIGHT
     #define I2C1_CLOCK_SPEED  400000
     #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
-#ifdef FP_CIRQUE_BOTH
-    #define POINTING_DEVICE_COMBINED
-#endif
-#ifdef FP_CIRQUE_LEFT
-    #define POINTING_DEVICE_LEFT
-#endif
-#ifdef FP_CIRQUE_RIGHT
-    #define POINTING_DEVICE_RIGHT
-#endif
 #endif
 
 #ifdef FP_TRACKBALL_ENABLE
@@ -201,15 +192,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
     #define SPI_MISO_PIN GP4
     // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
-#ifdef FP_TRACKBALL_BOTH
-    #define POINTING_DEVICE_COMBINED
-    #define POINTING_DEVICE_INVERT_Y // This inverts the Y on the left side only
-    #define POINTING_DEVICE_INVERT_X_RIGHT
 #endif
-#ifdef FP_TRACKBALL_LEFT
-    #define POINTING_DEVICE_LEFT
+
+// If both sides have a pointing device
+#if defined(FP_TRACKBALL_BOTH) || \
+    defined(FP_CIRQUE_BOTH) || \
+    defined(FP_TRACKBALL_LEFT_CIRQUE_RIGHT) || \
+    defined(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)
+        #define POINTING_DEVICE_COMBINED
 #endif
-#ifdef FP_TRACKBALL_RIGHT
-    #define POINTING_DEVICE_RIGHT
+
+// If the left side has a pointing device
+#if defined(FP_TRACKBALL_LEFT_ONLY) || \
+    defined(FP_CIRQUE_LEFT_ONLY)
+        #define POINTING_DEVICE_LEFT
 #endif
+
+// If the right side has a pointing device
+#if defined(FP_TRACKBALL_RIGHT_ONLY) || \
+    defined(FP_CIRQUE_RIGHT_ONLY)
+        #define POINTING_DEVICE_RIGHT
+#endif
+
+// If there is a trackball on the left side
+#if defined(FP_TRACKBALL_BOTH) || \
+    defined(FP_TRACKBALL_LEFT_CIRQUE_RIGHT) || \
+    defined(FP_TRACKBALL_LEFT_ONLY)
+        #define POINTING_DEVICE_INVERT_Y // This inverts the Y on the left side only
+#endif
+
+// If there is a trackball on the right side
+#if defined(FP_TRACKBALL_BOTH) || \
+    defined(FP_CIRQUE_LEFT_TRACKBALL_RIGHT) || \
+    defined(FP_TRACKBALL_RIGHT_ONLY)
+        #define POINTING_DEVICE_INVERT_X_RIGHT
 #endif

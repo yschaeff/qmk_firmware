@@ -42,50 +42,74 @@ HAPTIC_DRIVER = DRV2605L
 # Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706
 AUDIO_ENABLE ?= no
 
-FP_CIRQUE_BOTH ?= no         # Choose one of (BOTH, LEFT, RIGHT)
-FP_CIRQUE_LEFT ?= no         # Choose one of (BOTH, LEFT, RIGHT)
-FP_CIRQUE_RIGHT ?= no        # Choose one of (BOTH, LEFT, RIGHT)
 CIRQUE_ENABLE = no           # Don't set this one, gets set automatically by FP_CIRQUE_*
+PMW3360_ENABLE = no          # Don't set this one, gets set automatically by FP_TRACKBALL_*
 
-ifeq ($(strip $(FP_CIRQUE_BOTH)), yes)
-   CIRQUE_ENABLE := yes
-   OPT_DEFS += -DFP_CIRQUE_BOTH
-endif
-
-ifeq ($(strip $(FP_CIRQUE_LEFT)), yes)
-   CIRQUE_ENABLE := yes
-   OPT_DEFS += -DFP_CIRQUE_LEFT
-endif
-
-ifeq ($(strip $(FP_CIRQUE_RIGHT)), yes)
-   CIRQUE_ENABLE := yes
-   OPT_DEFS += -DFP_CIRQUE_RIGHT
-endif
-
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
-   OPT_DEFS += -DCIRQUE_ENABLE
-endif
-
-FP_TRACKBALL_BOTH ?= no         # Choose one of (BOTH, LEFT, RIGHT)
-FP_TRACKBALL_LEFT ?= no         # Choose one of (BOTH, LEFT, RIGHT)
-FP_TRACKBALL_RIGHT ?= no        # Choose one of (BOTH, LEFT, RIGHT)
-PMW3360_ENABLE = no             # Don't set this one, gets set automatically by FP_TRACKBALL_*
+# Choose only one (or none) of the 8 options below
+FP_TRACKBALL_BOTH ?= no
+FP_CIRQUE_BOTH ?= no
+FP_TRACKBALL_LEFT_ONLY ?= no
+FP_TRACKBALL_RIGHT_ONLY ?= no
+FP_CIRQUE_LEFT_ONLY ?= no
+FP_CIRQUE_RIGHT_ONLY ?= no
+FP_TRACKBALL_LEFT_CIRQUE_RIGHT ?= no
+FP_CIRQUE_LEFT_TRACKBALL_RIGHT ?= no
 
 ifeq ($(strip $(FP_TRACKBALL_BOTH)), yes)
    PMW3360_ENABLE := yes
    OPT_DEFS += -DFP_TRACKBALL_BOTH
 endif
 
-ifeq ($(strip $(FP_TRACKBALL_LEFT)), yes)
+ifeq ($(strip $(FP_TRACKBALL_LEFT_ONLY)), yes)
    PMW3360_ENABLE := yes
-   OPT_DEFS += -DFP_TRACKBALL_LEFT
+   OPT_DEFS += -DFP_TRACKBALL_LEFT_ONLY
 endif
 
-ifeq ($(strip $(FP_TRACKBALL_RIGHT)), yes)
+ifeq ($(strip $(FP_TRACKBALL_RIGHT_ONLY)), yes)
    PMW3360_ENABLE := yes
-   OPT_DEFS += -DFP_TRACKBALL_RIGHT
+   OPT_DEFS += -DFP_TRACKBALL_RIGHT_ONLY
+endif
+
+ifeq ($(strip $(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)), yes)
+   PMW3360_ENABLE := yes
+   OPT_DEFS += -DFP_TRACKBALL_LEFT_CIRQUE_RIGHT
+endif
+
+ifeq ($(strip $(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)), yes)
+   PMW3360_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_LEFT_TRACKBALL_RIGHT
+endif
+
+ifeq ($(strip $(FP_CIRQUE_BOTH)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_BOTH
+endif
+
+ifeq ($(strip $(FP_CIRQUE_LEFT_ONLY)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_LEFT_ONLY
+endif
+
+ifeq ($(strip $(FP_CIRQUE_RIGHT_ONLY)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_RIGHT_ONLY
+endif
+
+ifeq ($(strip $(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_TRACKBALL_LEFT_CIRQUE_RIGHT
+endif
+
+ifeq ($(strip $(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_LEFT_TRACKBALL_RIGHT
+endif
+
+
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   POINTING_DEVICE_ENABLE := yes
+   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
+   OPT_DEFS += -DCIRQUE_ENABLE
 endif
 
 ifeq ($(strip $(PMW3360_ENABLE)), yes)
