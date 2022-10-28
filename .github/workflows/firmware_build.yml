@@ -46,17 +46,16 @@ jobs:
 
           #keyboards="$(qmk list-keyboards| grep fingerpunch)"
           keyboards=$(bash bin/fp_build.sh -l| sed s~keyboards/~~)
-          all_make_commands_raw=$(bash bin/fp_build.sh)
-          
+          all_make_commands_raw=$(bash bin/fp_build.sh -c stemcell)
+
           readarray -t all_make_commands <<<"$all_make_commands_raw"
 
           echo "${keyboards}" | while IFS= read -r line ; do
-            board_map="default"
             case "$line" in
               *${{ matrix.keyboard }}*)
                 for per_board_make in "${all_make_commands[@]}"
                   do
-                    :             
+                    :
                     per_board_make_specifc=$(echo "$per_board_make"|awk -F ' ' '{print $2}'|cut -d ":" -f 1| sed s~fingerpunch/~~)
                     if [[ "$per_board_make_specifc" == "${{ matrix.keyboard }}" ]]; then
                       echo "$per_board_make"
