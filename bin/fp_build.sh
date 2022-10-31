@@ -160,6 +160,9 @@ make_build_string_recursive() {
 		local param_name=$(cat "${build_json}" | jq -r ".[${param_number}].name")
 		make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} ${param_name}=yes"
 		make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} ${param_name}=no"
+    elif [[ "${param_type}" == "convert-to" ]]; then
+		local param_name=$(cat "${build_json}" | jq -r ".[${param_number}].name")
+        make_build_string_recursive "${build_json}" "${run_build}" $next_param_number "${build_string_base} CONVERT_TO=${param_name}"
     else
         echo "invalid type in json file: ${param_type}"
         exit

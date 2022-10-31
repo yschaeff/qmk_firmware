@@ -1,5 +1,9 @@
 [
     {
+        "type" : "convert-to",
+        "name" : "stemcell"
+    },
+    {
         "type" : "single",
         "name" : "CIRQUE_ENABLE",
         "user_input": "Do you have a cirque?"
