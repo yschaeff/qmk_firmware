@@ -238,7 +238,12 @@ process_build_string() {
 	if [[ "${run_build}" == "yes" ]]; then
 		echo "fp_build.sh: Running QMK Build...."
 		echo ""
-		eval "${build_string}"
+		build_run_output=$(eval "${build_string}" | tee /dev/stderr)
+        build_run_status=$?
+        if [[ $build_run_status -ne 0 ]]; then
+            echo "${0} build run failed with status ${build_run_status}"
+            exit $build_run_status
+        fi
 
         rename_file_from_build_string "${build_string}"
 	fi
