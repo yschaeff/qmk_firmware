@@ -169,8 +169,14 @@ make_build_string_recursive() {
     fi
 }
 
+# rename_file_from_build_string $build_string $target_filename_suffix
 rename_file_from_build_string() {
     tokens=( $1 )
+
+	target_filename_suffix=""
+	if [[ ! -z "${2}" ]]; then
+		target_filename_suffix="_${2}"
+	fi
 
     # Calculate the qmk build filename prefix to move it
     token_file_prefix="${tokens[1]//\//_}"
@@ -210,8 +216,8 @@ rename_file_from_build_string() {
 
     hex_source_file="${token_file_prefix}.hex"
     uf2_source_file="${token_file_prefix}.uf2"
-    hex_target_file="${target_filename}.hex"
-    uf2_target_file="${target_filename}.uf2"
+    hex_target_file="${target_filename}${target_filename_suffix}.hex"
+    uf2_target_file="${target_filename}${target_filename_suffix}.uf2"
 
     if test -f "${hex_source_file}"; then
         echo "${0}: Renaming file '${hex_source_file}' to '${hex_target_file}'"
@@ -232,6 +238,7 @@ rename_file_from_build_string() {
 process_build_string() {
 	build_string="$1"
 	run_build="$2"
+	append_to_filename=""
 
 	echo "${build_string}"
 
@@ -242,12 +249,17 @@ process_build_string() {
         build_run_status=$?
 		echo "output: ${build_run_output}"
 		echo "exit status: ${build_run_status}"
-        if [[ $build_run_status -ne 0 && "${build_run_output}" != *"The firmware is too large"* ]]; then
-            echo "${0} build run failed with status ${build_run_status}"
-            exit $build_run_status
+        if [[ $build_run_status -ne 0 ]]; then
+			# if the firmware is too large, we proceed, but append to filename, otherwise we error out
+			if [[ "${build_run_output}" == *"The firmware is too large"* ]]; then
+				append_to_filename="FIRMWARE_SIZE_CHECK_FAILED"
+			else
+				echo "${0} build run failed with status ${build_run_status}"
+				exit $build_run_status
+			fi
         fi
 
-        rename_file_from_build_string "${build_string}"
+        rename_file_from_build_string "${build_string}" "${append_to_filename}"
 	fi
 }
 
