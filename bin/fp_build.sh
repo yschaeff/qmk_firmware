@@ -238,9 +238,11 @@ process_build_string() {
 	if [[ "${run_build}" == "yes" ]]; then
 		echo "fp_build.sh: Running QMK Build...."
 		echo ""
-		eval "${build_string}"
+		build_run_output=`${build_string}`
         build_run_status=$?
-        if [[ $build_run_status -ne 0 ]]; then
+		echo "output: ${build_run_output}"
+		echo "exit status: ${build_run_status}"
+        if [[ $build_run_status -ne 0 && "${build_run_output}" != *"The firmware is too large"* ]]; then
             echo "${0} build run failed with status ${build_run_status}"
             exit $build_run_status
         fi
