@@ -190,8 +190,13 @@ rename_file_from_build_string() {
                 token_file_prefix+="_${config_value}"
                 target_filename+="_${config_value}"
             else
-                # ,, converts to lowercase
-                target_filename+="_${config_param,,}"
+                # Make sure that the value is yes (it's enabled), otherwise we shouldn't include in the filename
+                if [[ "${config_value}" == "yes" ]]; then
+                    # ,, converts to lowercase
+                    target_filename+="_${config_param,,}"
+                    # remove _enable suffix as it's implied
+                    target_filename=${target_filename%"_enable"}
+                fi
             fi
         fi
         token_i+=1
@@ -200,10 +205,10 @@ rename_file_from_build_string() {
     echo "${0}: filename token is ${token_file_prefix}"
     echo "${0}: target filename is ${target_filename}"
 
-    hex_source_file=".build/${token_file_prefix}.hex"
-    uf2_source_file=".build/${token_file_prefix}.uf2"
-    hex_target_file=".build/${target_filename}.hex"
-    uf2_target_file=".build/${target_filename}.uf2"
+    hex_source_file="${token_file_prefix}.hex"
+    uf2_source_file="${token_file_prefix}.uf2"
+    hex_target_file="${target_filename}.hex"
+    uf2_target_file="${target_filename}.uf2"
 
     if test -f "${hex_source_file}"; then
         echo "${0}: Renaming file '${hex_source_file}' to '${hex_target_file}'"
