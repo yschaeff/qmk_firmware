@@ -104,6 +104,9 @@ build_keyboard_user_input() {
 
 			param_name=$(cat "${build_json}" | jq -r ".[${param_iter}].name")
 			build_string+=" ${param_name}=${user_choice}"
+        elif [[ "${param_type}" == "convert-to" ]]; then
+            # Do nothing, we can skip this for interactive mode
+			param_name=$(cat "${build_json}" | jq -r ".[${param_iter}].name")
 		else
 			echo "invalid type in json file: ${param_type}"
 			exit
