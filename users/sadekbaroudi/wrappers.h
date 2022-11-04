@@ -126,6 +126,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_badwings
 #endif
 
+// Since badwings uses the name LAYOUT_badwings instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_fflx))
+#    define LAYOUT LAYOUT_fflx
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)

@@ -12,6 +12,7 @@
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
+    || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
     || defined(KEYBOARD_fingerpunch_pinkiesout) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \

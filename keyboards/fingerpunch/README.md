@@ -41,6 +41,7 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
+    || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
     || defined(KEYBOARD_fingerpunch_pinkiesout) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \
@@ -48,7 +49,7 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
-    || defined(KEYBOARD_fingerpunch_ximi)
+    || defined(KEYBOARD_fingerpunch_ximi) \
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
