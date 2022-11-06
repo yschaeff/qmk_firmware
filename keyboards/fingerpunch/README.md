@@ -190,6 +190,19 @@ If you are looking to use process_record_kb() or process_record
 | `FP_SR595_MATRIX_DEBUG`                 | (Optional) Enable debugging the 74hc595 shift register code                                        | `undefined`                                                                         |
 | `FP_SR595_MATRIX_DEBUG_RATIO`           | (Optional) Frequency for outputting matrix scan information for the shift register (1 in X scans)  | `10000`                                                                             |
 
+## STeMCell v1.0.0
+
+There aren't many of these out there, but if you are running one, you'll need to make the following changes before building:
+```
+// In platforms/chibios/converters/promicro_to_stemcell/_pin_defs.h
+// Add this to the bottom of the file
+
+// SADEK: For STeMCell v1.0.0, need to swap B1 and B2, since the hardware has it swapped
+#undef B1
+#define B1 PAL_LINE(GPIOA, 7)
+#undef B2
+#define B2 PAL_LINE(GPIOA, 5)
+```
 
 ## Appreciation
 
