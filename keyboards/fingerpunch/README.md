@@ -170,6 +170,25 @@ Please note that the `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE` will be automatically
 | `FP_HSV_MELON`        |   `0, 180, 255`   | https://encycolorpedia.com/febaad                     |
 | `FP_HSV_MINT`         |  `84, 185, 255`   | https://encycolorpedia.com/98ff98                     |
 
+### Vial only
+
+If you are using vial on an `RGB_MATRIX_ENABLE` build, you may want to add support to control RGB settings within vial. You can do so by adding the following line to `{keyboard}/keymaps/vial/vial.json`  
+
+```
+{
+  "name": "ffkb",
+  "vendorId": "0xFEFE",
+  "productId": "0xFFBB",
+  "matrix": {"rows": 6, "cols": 8},
+  "lighting": "vialrgb",  // <--- add this line here
+  "layouts": {
+    "labels": [
+      ["Layout"]
+    ],
+    "keymap": [
+      [
+```
+
 
 ## Haptic Feedback
 
