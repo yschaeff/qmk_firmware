@@ -1,4 +1,10 @@
 # fingerpunch keyboards
+
+## Building
+
+For general firmware build walkthrough and instructions, please see:  
+[FIRMWARE.md](FIRMWARE.md)
+
 ## Operating system
 
 | Setting                                 | Description                                                                                                                  | Default                          |
