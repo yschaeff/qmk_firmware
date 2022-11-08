@@ -106,8 +106,6 @@ Starting with no repository, here's an example of building stock ffkb firmware w
 git clone git@github.com:sadekbaroudi/qmk_firmware.git
 cd qmk_firmware
 git submodule update --init --recursive
-# Checking out the stemcell repo
-git submodule update
 # Running the firmware build
 make fingerpunch/ffkb_byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=yes FP_EC11=yes CONVERT_TO=stemcell
 
@@ -141,7 +139,7 @@ git commit -a -m "Your commit message"
 # push the branch to your repo
 git push origin ffkb
 
-# If you ever want to update from the latest fingerpunch stemcell branch in the future
+# If you ever want to update from the latest fingerpunch master branch in the future
 git fetch fingerpunch
 git merge fingerpunch/master
 git push origin ffkb
