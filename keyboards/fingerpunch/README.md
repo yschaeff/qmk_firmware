@@ -30,6 +30,9 @@ For general firmware build walkthrough and instructions, please see:
 | `FP_SNIPE_TOG`                 | Pointing Device: Toggle sniping mode                                                                                                                                                          |
 | `FP_SNIPE_ON`                  | Pointing Device: Turn on sniping mode                                                                                                                                                         |
 | `FP_SNIPE_OFF`                 | Pointing Device: Turn off sniping mode                                                                                                                                                        |
+| `FP_ZOOM_TOG`                  | Pointing Device: Toggle zooming mode                                                                                                                                                          |
+| `FP_ZOOM_ON`                   | Pointing Device: Turn on zooming mode                                                                                                                                                         |
+| `FP_ZOOM_OFF`                  | Pointing Device: Turn off zooming mode                                                                                                                                                        |
 | `FP_SUPER_TAB`                 | Super alt tab, tap to alt tab instead of holding alt, supports holding shift to alt tab backwards (to use on Mac, see `FP_MAC_PREFERRED` and see `FP_SUPER_TAB_TIMEOUT` to change timeout)    |
 
 Note: if you are using a userspace, and you have custom keycodes, you will need to add some logic in your userspace keycodes .h file that will handle the `SAFE_RANGE` appropriately.
@@ -77,10 +80,12 @@ enum userspace_custom_keycodes {
 | `FP_POINTING_DEFAULT_DPI`               | (Required) Sets the default DPI for your pointing device                                  | `1000`                           |
 | `FP_POINTING_SCROLLING_DPI`             | (Required) Sets the default DPI for scrolling                                             | `50`                             |
 | `FP_POINTING_SCROLLING_LAYER_ENABLE`    | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`             | `undefined`                      |
-| `FP_POINTING_SCROLLING_LAYER`           | (Required) Defines the layer used to enable scrolling                                     | `3` (`_RAISE` on default keymap) |
+| `FP_POINTING_SCROLLING_LAYER`           | (Required) Defines the layer used to enable scrolling                                     | `3`                              |
 | `FP_POINTING_SNIPING_DPI`               | (Required) Sets the default DPI for scrolling                                             | `50`                             |
 | `FP_POINTING_SNIPING_LAYER_ENABLE`      | (Required) Enables scrolling mode for the layer `FP_POINTING_SNIPING_LAYER`               | `undefined`                      |
-| `FP_POINTING_SNIPING_LAYER`             | (Required) Defines the layer used to enable sniping                                       | `2` (`_LOWER` on default keymap) |
+| `FP_POINTING_SNIPING_LAYER`             | (Required) Defines the layer used to enable sniping                                       | `2`                              |
+| `FP_POINTING_ZOOMING_LAYER_ENABLE`      | (Required) Enables zooming mode for the layer `FP_POINTING_ZOOMING_LAYER`                 | `undefined`                      |
+| `FP_POINTING_ZOOMING_LAYER`             | (Required) Defines the layer used to enable zooming                                       | `1`                              |
 
 
 

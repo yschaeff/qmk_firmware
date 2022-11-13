@@ -29,6 +29,7 @@ SRC +=  keyboards/fingerpunch/fp.c \
 * Add the following to my keymap
     * `FP_SCROLL_TOG` (pointing)
     * `FP_SNIPE_TOG` (pointing)
+    * `FP_ZOOM_TOG` (pointing)
     * `FP_SUPER_TAB` (replace `S_ALT_TAB` if it exists)
 * Change keymap mouse layer for pointing keyboards with pointing devices
     * `__________________MOUSE_1__________________` to `_______________AUTO_MOUSE_1________________`

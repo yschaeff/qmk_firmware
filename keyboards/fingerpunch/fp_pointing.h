@@ -29,6 +29,11 @@ void fp_snipe_set(bool snipe_value);
 bool fp_snipe_get(void);
 void fp_snipe_toggle(void);
 void fp_snipe_apply_dpi(void);
+void fp_zoom_layer_set(bool zoom_value);
+void fp_zoom_keycode_set(bool zoom_value);
+void fp_zoom_keycode_toggle(void);
+bool fp_zoom_get(void);
+uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 
 #ifdef POINTING_DEVICE_ENABLE
 #    ifndef FP_POINTING_DEFAULT_DPI
@@ -62,4 +67,9 @@ void fp_snipe_apply_dpi(void);
 #    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
 #        define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3
 #    endif
+
+#    ifndef FP_POINTING_ZOOMING_LAYER
+#        define FP_POINTING_ZOOMING_LAYER 1
+#    endif
+
 #endif

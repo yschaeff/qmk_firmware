@@ -18,43 +18,14 @@
 #include "math.h"
 
 #ifdef POINTING_DEVICE_ENABLE
-#    ifndef FP_POINTING_DEFAULT_DPI
-#        define FP_POINTING_DEFAULT_DPI 1000
-#    endif
-
-#    ifndef FP_POINTING_SNIPING_DPI
-#        define FP_POINTING_SNIPING_DPI 50
-#    endif
-
-#    ifndef FP_POINTING_SNIPING_LAYER
-#        define FP_POINTING_SNIPING_LAYER 2
-#    endif
-
-#    ifndef FP_POINTING_SCROLLING_DPI
-#        define FP_POINTING_SCROLLING_DPI 50
-#    endif
-
-#    ifndef FP_POINTING_SCROLLING_LAYER
-#        define FP_POINTING_SCROLLING_LAYER 3
-#    endif
-
-#    ifndef FP_POINTING_COMBINED_SCROLLING_LEFT
-#        define FP_POINTING_COMBINED_SCROLLING_LEFT true
-#    endif
-
-#    ifndef FP_POINTING_COMBINED_SCROLLING_RIGHT
-#        define FP_POINTING_COMBINED_SCROLLING_RIGHT false
-#    endif
-
-#    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
-#        define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3
-#    endif
-
 
 static bool scrolling_enabled = false;
 static bool scrolling_layer_enabled = false;
 static bool sniping_enabled = false;
 static bool sniping_layer_enabled = false;
+static bool zooming_enabled = false;
+static bool zooming_layer_enabled = false;
+static bool zooming_hold = false;
 
 void fp_scroll_layer_set(bool scroll_value) {
     scrolling_layer_enabled = scroll_value;
@@ -117,12 +88,66 @@ void fp_snipe_apply_dpi(void) {
     }
 }
 
+void fp_zoom_layer_set(bool zoom_value) {
+    zooming_layer_enabled = zoom_value;
+}
+
+void fp_zoom_keycode_set(bool zoom_value) {
+    zooming_enabled = zoom_value;
+}
+
+void fp_zoom_keycode_toggle(void) {
+    zooming_enabled = !zooming_enabled;
+}
+
+bool fp_zoom_get(void) {
+    return (zooming_enabled || zooming_layer_enabled);
+}
+
+uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
+    zooming_hold = false;
+    return 0;
+}
+
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     if (fp_scroll_get()) {
         mouse_report.h = mouse_report.x;
         mouse_report.v = -mouse_report.y;
         mouse_report.x = 0;
         mouse_report.y = 0;
+    } else if (fp_zoom_get()) {
+        bool zoom_in = false;
+        mouse_xy_report_t zoom_value = mouse_report.y;
+        if (zoom_value < 0) {
+            zoom_in = true;
+            zoom_value = -zoom_value;
+        }
+
+#ifdef FP_MAC_PREFERRED
+        register_code(KC_LGUI);
+#else
+        register_code(KC_LCTL);
+#endif
+        // Set timer to prevent mass zoom and set threshold for zoom value, otherwise too sensitive
+        if (!zooming_hold && zoom_value > 1) {
+            zooming_hold = true;
+            defer_exec(50, fp_zoom_unset_hold, NULL);
+            if (zoom_in) {
+                tap_code(KC_MS_WH_UP);
+            } else {
+                tap_code(KC_MS_WH_DOWN);
+            }
+        }
+#ifdef FP_MAC_PREFERRED
+        unregister_code(KC_LGUI);
+#else
+        unregister_code(KC_LCTL);
+#endif
+        mouse_report.h = 0;
+        mouse_report.v = 0;
+        mouse_report.x = 0;
+        mouse_report.y = 0;
+
     }
 
     mouse_report = pointing_device_task_user(mouse_report);
@@ -139,6 +164,11 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
         case FP_POINTING_SNIPING_LAYER:
 #ifdef FP_POINTING_SNIPING_LAYER_ENABLE
             fp_snipe_layer_set(true);
+#endif
+            break;
+        case FP_POINTING_ZOOMING_LAYER:
+#ifdef FP_POINTING_ZOOMING_LAYER_ENABLE
+            fp_zoom_layer_set(true);
 #endif
             break;
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
@@ -158,6 +188,11 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
             if (sniping_layer_enabled) {
 #ifdef FP_POINTING_SNIPING_LAYER_ENABLE
                 fp_snipe_layer_set(false);
+#endif
+            }
+            if (zooming_layer_enabled) {
+#ifdef FP_POINTING_ZOOMING_LAYER_ENABLE
+                fp_zoom_layer_set(false);
 #endif
             }
             break;
@@ -245,6 +280,21 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record) {
         case FP_SNIPE_OFF:
             if (record->event.pressed) {
                 fp_snipe_keycode_set(true);
+            }
+            break;
+        case FP_ZOOM_TOG:
+            if (record->event.pressed) {
+                fp_zoom_keycode_toggle();
+            }
+            break;
+        case FP_ZOOM_ON:
+            if (record->event.pressed) {
+                fp_zoom_keycode_set(true);
+            }
+            break;
+        case FP_ZOOM_OFF:
+            if (record->event.pressed) {
+                fp_zoom_keycode_set(true);
             }
             break;
         default:

@@ -31,6 +31,9 @@ enum fp_keycodes {
     FP_SNIPE_TOG,
     FP_SNIPE_ON,
     FP_SNIPE_OFF,
+    FP_ZOOM_TOG,
+    FP_ZOOM_ON,
+    FP_ZOOM_OFF,
     FP_SUPER_TAB,
     FP_SAFE_RANGE
 };
