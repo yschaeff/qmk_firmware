@@ -174,15 +174,16 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
             fp_zoom_layer_set(true);
 #endif
             break;
-#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
-        case AUTO_MOUSE_DEFAULT_LAYER:
-            // Do nothing, but this needs to exist so we don't go into the "default" below and automatically
-            // disable the scroll/snipe adjustments because we used the pointing device
-            // Problem happens when POINTING_DEVICE_AUTO_MOUSE_ENABLE and FP_POINTING_SCROLLING_LAYER_ENABLE or
-            // FP_POINTING_SNIPING_LAYER_ENABLE are enabled at the samet time
-            break;
-#endif
         default:
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+            // If we hit one of the FP_POINTING_X_LAYERS, and then trigger auto mouse layer, we don't want to
+            // disable the scroll/snipe adjustments because we used the pointing device
+            // Problem happens when POINTING_DEVICE_AUTO_MOUSE_ENABLE and FP_POINTING_X_LAYER_ENABLE 
+            // are enabled at the samet time
+            if (get_highest_layer(state) == AUTO_MOUSE_DEFAULT_LAYER) {
+                break;
+            }
+#endif
             if (scrolling_layer_enabled) {
 #ifdef FP_POINTING_SCROLLING_LAYER_ENABLE
                 fp_scroll_layer_set(false);
