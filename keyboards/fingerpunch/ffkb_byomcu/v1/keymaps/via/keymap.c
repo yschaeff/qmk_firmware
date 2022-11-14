@@ -195,7 +195,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       #else
       if (clockwise) {
       #endif
-            register_code(KC_LSHIFT);
+            register_code(KC_LSFT);
       }
 
       if (!is_alt_tab_active) {
@@ -210,7 +210,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       #else
       if (clockwise) {
       #endif
-            unregister_code(KC_LSHIFT);
+            unregister_code(KC_LSFT);
       }
     }
 
