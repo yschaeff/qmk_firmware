@@ -153,7 +153,7 @@ If you'd like to contribute, you can do the following:
 ```bash
 # ...in your qmk cloned repository
 # If you haven't already, create a remote of the fingerpunch repo
-git add remote fingerpunch git@github.com:sadekbaroudi/qmk_firmware.git
+git remote add fingerpunch git@github.com:sadekbaroudi/qmk_firmware.git
 git fetch fingerpunch
 
 # Checkout a feature branch based on develop_fingerpunch
