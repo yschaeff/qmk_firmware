@@ -28,12 +28,15 @@ enum fp_keycodes {
 #   endif // VIA_ENABLE
     FP_SCROLL_ON,
     FP_SCROLL_OFF,
+    FP_SCROLL_MOMENT,
     FP_SNIPE_TOG,
     FP_SNIPE_ON,
     FP_SNIPE_OFF,
+    FP_SNIPE_MOMENT,
     FP_ZOOM_TOG,
     FP_ZOOM_ON,
     FP_ZOOM_OFF,
+    FP_ZOOM_MOMENT,
     FP_SUPER_TAB,
     FP_SAFE_RANGE
 };
