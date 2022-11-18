@@ -26,6 +26,7 @@ enum fp_keycodes {
 #   else
     FP_SCROLL_TOG = SAFE_RANGE,
 #   endif // VIA_ENABLE
+    FP_ACCEL_TOG,
     FP_SCROLL_ON,
     FP_SCROLL_OFF,
     FP_SCROLL_MOMENT,

@@ -38,6 +38,11 @@ bool fp_zoom_get(void);
 uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 
 #ifdef POINTING_DEVICE_ENABLE
+// Add MOUSE_EXTENDED_REPORT by default
+#    ifndef FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE
+#        define MOUSE_EXTENDED_REPORT
+#    endif
+
 #    ifndef FP_POINTING_DEFAULT_DPI
 #        define FP_POINTING_DEFAULT_DPI 1000
 #    endif

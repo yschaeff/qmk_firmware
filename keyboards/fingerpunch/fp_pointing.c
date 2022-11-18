@@ -19,6 +19,9 @@
 
 #ifdef POINTING_DEVICE_ENABLE
 
+#ifdef FP_POINTING_ACCELERATION_ENABLE
+static bool acceleration_enabled = true;
+#endif
 static bool scrolling_enabled = false;
 static bool scrolling_layer_enabled = false;
 static bool sniping_enabled = false;
@@ -152,7 +155,20 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
         mouse_report.y = 0;
 
     }
+#ifdef FP_POINTING_ACCELERATION_ENABLE
+    // Don't run acceleration unless you're in regular mousing mode, and acceleration is explicitly enabled
+    if (!fp_scroll_get() && !fp_snipe_get() && !fp_zoom_get() && acceleration_enabled) {
+        mouse_xy_report_t x = mouse_report.x, y = mouse_report.y;
+        mouse_report.x = 0;
+        mouse_report.y = 0;
 
+        x = (mouse_xy_report_t)(x > 0 ? x * x / 16 + x : -x * x / 16 + x);
+        y = (mouse_xy_report_t)(y > 0 ? y * y / 16 + y : -y * y / 16 + y);
+
+        mouse_report.x = x;
+        mouse_report.y = y;
+    }
+#endif
     mouse_report = pointing_device_task_user(mouse_report);
     return mouse_report;
 }
@@ -256,6 +272,11 @@ bool auto_mouse_activation(report_mouse_t mouse_report) {
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record) {
 #   ifndef FP_DISABLE_CUSTOM_KEYCODES
     switch (keycode) {
+        case FP_ACCEL_TOG:
+#       ifdef FP_POINTING_ACCELERATION_ENABLE
+            acceleration_enabled = !acceleration_enabled;
+#       endif
+            break;
         case FP_SCROLL_MOMENT:
             if (record->event.pressed) {
                 fp_scroll_keycode_set(true);

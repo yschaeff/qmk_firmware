@@ -24,6 +24,7 @@ For general firmware build walkthrough and instructions, please see:
 
 | Key                            | Description                                                                                                                                                                                   |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FP_ACCEL_TOG`                 | Pointing Device: Toggle pointing device acceleration (default is enabled on keyboard startup)                                                                                                 |
 | `FP_SCROLL_TOG`                | Pointing Device: Toggle scrolling mode                                                                                                                                                        |
 | `FP_SCROLL_ON`                 | Pointing Device: Turn on scrolling mode                                                                                                                                                       |
 | `FP_SCROLL_OFF`                | Pointing Device: Turn off scrolling mode                                                                                                                                                      |
@@ -78,18 +79,20 @@ enum userspace_custom_keycodes {
 
 ### General Settings
 
-| Setting                                 | Description                                                                               | Default                          |
-| --------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------- |
-| `FP_POINTING_DEFAULT_DPI`               | (Required) Sets the default DPI for your pointing device                                  | `1000`                           |
-| `FP_POINTING_SCROLLING_DPI`             | (Required) Sets the default DPI for scrolling                                             | `50`                             |
-| `FP_POINTING_SCROLLING_LAYER_ENABLE`    | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`             | `undefined`                      |
-| `FP_POINTING_SCROLLING_LAYER`           | (Required) Defines the layer used to enable scrolling                                     | `3`                              |
-| `FP_POINTING_SNIPING_DPI`               | (Required) Sets the default DPI for scrolling                                             | `50`                             |
-| `FP_POINTING_SNIPING_LAYER_ENABLE`      | (Required) Enables scrolling mode for the layer `FP_POINTING_SNIPING_LAYER`               | `undefined`                      |
-| `FP_POINTING_SNIPING_LAYER`             | (Required) Defines the layer used to enable sniping                                       | `2`                              |
-| `FP_POINTING_ZOOMING_LAYER_ENABLE`      | (Required) Enables zooming mode for the layer `FP_POINTING_ZOOMING_LAYER`                 | `undefined`                      |
-| `FP_POINTING_ZOOMING_LAYER`             | (Required) Defines the layer used to enable zooming                                       | `1`                              |
-
+| Setting                                      | Description                                                                                                                 | Default                          |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE`  | (Optional) Disable extended mouse report, enabled by default when pointing devices is enabled, saves a tiny bit of memory   | `undefined`                      |
+| `FP_POINTING_DEFAULT_DPI`                    | (Required) Sets the default DPI for your pointing device                                                                    | `1000`                           |
+| `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `50`                             |
+| `FP_POINTING_SCROLLING_LAYER_ENABLE`         | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`                                               | `undefined`                      |
+| `FP_POINTING_SCROLLING_LAYER`                | (Required) Defines the layer used to enable scrolling                                                                       | `3`                              |
+| `FP_POINTING_SNIPING_DPI`                    | (Required) Sets the default DPI for scrolling                                                                               | `50`                             |
+| `FP_POINTING_SNIPING_LAYER_ENABLE`           | (Required) Enables scrolling mode for the layer `FP_POINTING_SNIPING_LAYER`                                                 | `undefined`                      |
+| `FP_POINTING_SNIPING_LAYER`                  | (Required) Defines the layer used to enable sniping                                                                         | `2`                              |
+| `FP_POINTING_ZOOMING_LAYER_ENABLE`           | (Required) Enables zooming mode for the layer `FP_POINTING_ZOOMING_LAYER`                                                   | `undefined`                      |
+| `FP_POINTING_ZOOMING_LAYER`                  | (Required) Defines the layer used to enable zooming                                                                         | `1`                              |
+| `FP_POINTING_ACCELERATION_ENABLE`            | (Optional) (EXPERIMENTAL) Enable pointing device acceleration                                                               | `undefined`                      |
+     
 
 
 ### Combined Pointing Devices
