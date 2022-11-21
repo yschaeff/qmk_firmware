@@ -213,6 +213,18 @@ Note that the ctrl-X haptic feedback responses will use control as the modifier,
 | `FP_HAPTIC_CUT_COPY_PASTE`              | (Optional) Enable haptic feedback response for ctrl-x, ctrl-c, ctrl-v           | `undefined`                     |
 | `FP_HAPTIC_SAVE`                        | (Optional) Enable haptic feedback response for ctrl-s                           | `undefined`                     |
 
+## Audio
+
+Enable special audio features. Please see https://github.com/qmk/qmk_firmware/blob/master/docs/feature_audio.md for general audio features that you can enable and use.
+
+Note that the ctrl-X audio responses will use control as the modifier, so it won't work on a Mac by default. However, if are primarily using a Mac, enable the `FP_MAC_PREFERRED` in your config.h
+
+| Setting                                 | Description                                                                     | Default                         |
+| --------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------- |
+| `FP_AUDIO_MOUSE_BUTTONS`               | (Optional) Enable audio response for Mouse 1, 2, and 3                           | `undefined`                     |
+| `FP_AUDIO_CUT_COPY_PASTE`              | (Optional) Enable audio response for ctrl-x, ctrl-c, ctrl-v                      | `undefined`                     |
+| `FP_AUDIO_SAVE`                        | (Optional) Enable audio response for ctrl-s                                      | `undefined`                     |
+
 
 ## Keymap
 

@@ -14,13 +14,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_haptic.h"
+#include "keyboards/fingerpunch/fp_audio.h"
 
-#ifdef HAPTIC_ENABLE
+#ifdef AUDIO_ENABLE
 
-#include "drivers/haptic/DRV2605L.h"
+#include "song_list.h"
+#include "musical_notes.h"
 
-layer_state_t fp_layer_state_set_haptic(layer_state_t state) {
+
+#define FP_MOUSE_SOUND_1 EIGHTH_NOTE(_B2),
+#define FP_MOUSE_SOUND_2 EIGHTH_NOTE(_B3),
+#define FP_MOUSE_SOUND_3 EIGHTH_NOTE(_B2), EIGHTH_NOTE(_B2),
+
+#define FP_CUT_SOUND EIGHTH_NOTE(_B4), EIGHTH_NOTE(_B3), EIGHTH_NOTE(_B4),
+#define FP_COPY_SOUND EIGHTH_NOTE(_B3), EIGHTH_NOTE(_B4),
+#define FP_PASTE_SOUND EIGHTH_NOTE(_B4), EIGHTH_NOTE(_B3),
+
+#define FP_SAVE_SOUND EIGHTH_NOTE(_F2), EIGHTH_NOTE(_F2),
+
+float fp_mouse_sound_1[][2] = SONG(FP_MOUSE_SOUND_1);
+float fp_mouse_sound_2[][2] = SONG(FP_MOUSE_SOUND_2);
+float fp_mouse_sound_3[][2] = SONG(FP_MOUSE_SOUND_3);
+
+float fp_cut_sound[][2] = SONG(FP_CUT_SOUND);
+float fp_copy_sound[][2] = SONG(FP_COPY_SOUND);
+float fp_paste_sound[][2] = SONG(FP_PASTE_SOUND);
+
+float fp_save_sound[][2] = SONG(FP_SAVE_SOUND);
+
+layer_state_t fp_layer_state_set_audio(layer_state_t state) {
     switch (get_highest_layer(state)) {
         default:
             break;
@@ -28,30 +50,30 @@ layer_state_t fp_layer_state_set_haptic(layer_state_t state) {
     return state;
 }
 
-bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
+bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 #       ifndef FP_DISABLE_CUSTOM_KEYCODES
         // NOTE TO SELF: IF I EVER ADD KEYCODES HERE, DETERMINE WHETHER THEY ARE CONSIDERED CUSTOM KEYCODES OR NOT
         // In the case of the mouse buttons and ctrl-x,c,v,s features below, they are treated independently, so they aren't effected by FP_DISABLE_CUSTOM_KEYCODES
 #       endif // FP_DISABLE_CUSTOM_KEYCODES
-#       ifdef FP_HAPTIC_MOUSE_BUTTONS
+#       ifdef FP_AUDIO_MOUSE_BUTTONS
         case KC_BTN1:
             if (record->event.pressed) {
-                DRV_pulse(medium_click1);
+                PLAY_SONG(fp_mouse_sound_1);
             }
             break;
         case KC_BTN2:
             if (record->event.pressed) {
-                DRV_pulse(sh_dblclick_str);
+                PLAY_SONG(fp_mouse_sound_2);
             }
             break;
         case KC_BTN3:
             if (record->event.pressed) {
-                DRV_pulse(medium_click1);
+                PLAY_SONG(fp_mouse_sound_3);
             }
             break;
 #       endif
-#       ifdef FP_HAPTIC_CUT_COPY_PASTE
+#       ifdef FP_AUDIO_CUT_COPY_PASTE
         case KC_C: // copy
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
@@ -59,7 +81,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if (get_mods() & MOD_MASK_CTRL) {
 #               endif
-                    DRV_pulse(lg_dblclick_str);
+                    PLAY_SONG(fp_copy_sound);
                 }
             }
             break;
@@ -70,7 +92,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if (get_mods() & MOD_MASK_CTRL) {
 #               endif
-                    DRV_pulse(lg_dblclick_str);
+                    PLAY_SONG(fp_cut_sound);
                 }
             }
             break;
@@ -81,12 +103,12 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if (get_mods() & MOD_MASK_CTRL) {
 #               endif
-                    DRV_pulse(soft_bump);
+                    PLAY_SONG(fp_paste_sound);
                 }
             }
             break;
 #       endif
-#       ifdef FP_HAPTIC_SAVE
+#       ifdef FP_AUDIO_SAVE
         case KC_S: // save
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
@@ -94,7 +116,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if (get_mods() & MOD_MASK_CTRL) {
 #               endif
-                    DRV_pulse(pulsing_strong);
+                    PLAY_SONG(fp_save_sound);
                 }
             }
             break;

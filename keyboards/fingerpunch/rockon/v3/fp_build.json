@@ -22,5 +22,15 @@
         "type" : "single",
         "name" : "ENCODER_ENABLE",
         "user_input": "Do you have one or more rotary encoders?"
+    },
+    {
+        "type" : "single",
+        "name" : "AUDIO_ENABLE",
+        "user_input": "Do you have an audio buzzer?"
+    },
+    {
+        "type" : "single",
+        "name" : "HAPTIC_ENABLE",
+        "user_input": "Do you have haptic feedback?"
     }
 ]
