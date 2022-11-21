@@ -88,13 +88,14 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #       endif
 #       ifdef FP_HAPTIC_SAVE
         case KC_S: // save
+        case LALT_T(KC_S): // for my keymap, since I use homerow mods
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
                 if (get_mods() & MOD_MASK_GUI) {
 #               else
                 if (get_mods() & MOD_MASK_CTRL) {
 #               endif
-                    DRV_pulse(pulsing_strong);
+                    DRV_pulse(soft_bump);
                 }
             }
             break;

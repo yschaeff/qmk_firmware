@@ -30,7 +30,7 @@
 #define FP_COPY_SOUND EIGHTH_NOTE(_B3), EIGHTH_NOTE(_B4),
 #define FP_PASTE_SOUND EIGHTH_NOTE(_B4), EIGHTH_NOTE(_B3),
 
-#define FP_SAVE_SOUND EIGHTH_NOTE(_F2), EIGHTH_NOTE(_F2),
+#define FP_SAVE_SOUND EIGHTH_NOTE(_F4), EIGHTH_NOTE(_F5),
 
 float fp_mouse_sound_1[][2] = SONG(FP_MOUSE_SOUND_1);
 float fp_mouse_sound_2[][2] = SONG(FP_MOUSE_SOUND_2);
@@ -110,6 +110,7 @@ bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
 #       endif
 #       ifdef FP_AUDIO_SAVE
         case KC_S: // save
+        case LALT_T(KC_S): // for my keymap, since I use homerow mods
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
                 if (get_mods() & MOD_MASK_GUI) {
