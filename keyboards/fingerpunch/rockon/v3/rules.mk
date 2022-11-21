@@ -43,6 +43,12 @@ SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
+AUDIO_ENABLE ?= no
+AUDIO_DRIVER = pwm_software
+
+HAPTIC_ENABLE ?= no
+HAPTIC_DRIVER = DRV2605L
+
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
    POINTING_DEVICE_ENABLE := yes

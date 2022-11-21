@@ -18,6 +18,8 @@ Options are:
     RGBLIGHT_ENABLE=yes
     RGB_MATRIX_ENABLE=yes
     ENCODER_ENABLE=yes
+    AUDIO_ENABLE=yes
+    HAPTIC_ENABLE=yes
 ```
 
 Example of flashing this keyboard:
