@@ -38,6 +38,9 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 #ifdef HAPTIC_ENABLE
           && fp_process_record_haptic(keycode, record)
 #endif
+#ifdef AUDIO_ENABLE
+          && fp_process_record_audio(keycode, record)
+#endif
 #if defined(POINTING_DEVICE_ENABLE)
           && fp_process_record_pointing(keycode, record)
 #endif

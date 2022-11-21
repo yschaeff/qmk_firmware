@@ -75,10 +75,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define AUDIO_PWM_DRIVER PWMD2
     #define AUDIO_PWM_CHANNEL 1
     #define AUDIO_STATE_TIMER GPTD4
+    #define AUDIO_VOICES
     // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
     // #define NO_MUSIC_MODE
     #define AUDIO_ENABLE_TONE_MULTIPLEXING
     #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
+    #define FP_AUDIO_MOUSE_BUTTONS
+    #define FP_AUDIO_CUT_COPY_PASTE
+    #define FP_AUDIO_SAVE
     #define STARTUP_SONG SONG(STARTUP_SOUND)
     #define DEFAULT_LAYER_SONGS \
         { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }

@@ -40,6 +40,9 @@ void press_super_tab(bool shift);
 #ifdef HAPTIC_ENABLE
 #    include "keyboards/fingerpunch/fp_haptic.h"
 #endif
+#ifdef AUDIO_ENABLE
+#    include "keyboards/fingerpunch/fp_audio.h"
+#endif
 #ifdef POINTING_DEVICE_ENABLE
 #    include "keyboards/fingerpunch/fp_pointing.h"
 #endif
