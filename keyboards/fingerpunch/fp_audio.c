@@ -77,9 +77,9 @@ bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
         case KC_C: // copy
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
-                if (get_mods() & MOD_MASK_GUI) {
+                if ((get_mods() & MOD_MASK_GUI) || (get_oneshot_mods() & MOD_MASK_GUI)) {
 #               else
-                if (get_mods() & MOD_MASK_CTRL) {
+                if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
                     PLAY_SONG(fp_copy_sound);
                 }
@@ -88,9 +88,9 @@ bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
         case KC_X: // cut
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
-                if (get_mods() & MOD_MASK_GUI) {
+                if ((get_mods() & MOD_MASK_GUI) || (get_oneshot_mods() & MOD_MASK_GUI)) {
 #               else
-                if (get_mods() & MOD_MASK_CTRL) {
+                if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
                     PLAY_SONG(fp_cut_sound);
                 }
@@ -99,9 +99,9 @@ bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
         case KC_V: // paste
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
-                if (get_mods() & MOD_MASK_GUI) {
+                if ((get_mods() & MOD_MASK_GUI) || (get_oneshot_mods() & MOD_MASK_GUI)) {
 #               else
-                if (get_mods() & MOD_MASK_CTRL) {
+                if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
                     PLAY_SONG(fp_paste_sound);
                 }
@@ -113,9 +113,9 @@ bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record) {
         case LALT_T(KC_S): // for my keymap, since I use homerow mods
             if (record->event.pressed) {
 #               ifdef FP_MAC_PREFERRED
-                if (get_mods() & MOD_MASK_GUI) {
+                if ((get_mods() & MOD_MASK_GUI) || (get_oneshot_mods() & MOD_MASK_GUI)) {
 #               else
-                if (get_mods() & MOD_MASK_CTRL) {
+                if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
                     PLAY_SONG(fp_save_sound);
                 }
