@@ -15,6 +15,7 @@
  */
 
 #include "keyboards/fingerpunch/fp_pointing.h"
+#include "keyboards/fingerpunch/fp_keyhandler.h"
 #include "math.h"
 
 #ifdef POINTING_DEVICE_ENABLE

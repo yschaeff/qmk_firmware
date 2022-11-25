@@ -56,7 +56,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_DPI
-#        define FP_POINTING_SCROLLING_DPI 50
+#        define FP_POINTING_SCROLLING_DPI 10
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_LAYER

@@ -17,7 +17,6 @@
 #pragma once
 #include "quantum.h"
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/fp.h"
 
 #ifndef FP_DISABLE_CUSTOM_KEYCODES
 enum fp_keycodes {
