@@ -148,12 +148,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define V_RMS 2.0
     #define F_LRA 150 // resonance freq
     #define DRV_GREETING  alert_750ms
-    #define NO_HAPTIC_ALPHA
-    #define NO_HAPTIC_LOCKKEYS
-    #define NO_HAPTIC_PUNCTUATION
-    #define NO_HAPTIC_NAV
-    #define NO_HAPTIC_NUMERIC
-    #define NO_HAPTIC_MOD
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */

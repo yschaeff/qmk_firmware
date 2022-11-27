@@ -106,4 +106,21 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 
     return true;
 }
+
+__attribute__((weak)) bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record) { return false; }
+
+// manually handle haptic, see https://github.com/sadekbaroudi/qmk_firmware/blob/master/keyboards/fingerpunch/README.md#get-haptic-enabled-key-override
+bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
+    bool returnValue = false;
+
+    // Note to self: Be careful when setting anything to true in this switch statement, as it cannot be overridden in the
+    // get_haptic_enabled_key_user call, since it's an ||
+    switch (keycode) {
+        default:
+            returnValue = false;
+            break;
+    }
+
+    return (returnValue || get_haptic_enabled_key_user(keycode, record));
+}
 #endif

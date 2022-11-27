@@ -213,6 +213,36 @@ Note that the ctrl-X haptic feedback responses will use control as the modifier,
 | `FP_HAPTIC_CUT_COPY_PASTE`              | (Optional) Enable haptic feedback response for ctrl-x, ctrl-c, ctrl-v           | `undefined`                     |
 | `FP_HAPTIC_SAVE`                        | (Optional) Enable haptic feedback response for ctrl-s                           | `undefined`                     |
 
+### get_haptic_enabled_key override
+
+When using a fingerpunch board, the get_haptic_enabled_key is completely overridden such that all haptic is disabled for all keys. This is because the default implementation allows you to disable certain keys, but leaves you with a majority of keypresses generating haptic feedback. This means that you cannot use the QMK config options:
+* NO_HAPTIC_MOD
+* NO_HAPTIC_ALPHA
+* NO_HAPTIC_PUNCTUATION
+* etc...
+
+See https://github.com/qmk/qmk_firmware/blob/master/docs/feature_haptic_feedback.md#haptic-key-exclusion for details
+
+If you'd like to override this, you'll need to create a function as follows:
+`__attribute__((weak)) bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record)`
+
+In this function, define the key combinations you want to enable, similar to the following example:
+```c
+__attribute__((weak)) bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_ENTER:
+            return true;
+            break;
+        case KC_ESCAPE:
+            return true;
+            break;
+        default:
+            break;
+    }
+    return false;
+}
+```
+
 ## Audio
 
 Enable special audio features. Please see https://github.com/qmk/qmk_firmware/blob/master/docs/feature_audio.md for general audio features that you can enable and use.

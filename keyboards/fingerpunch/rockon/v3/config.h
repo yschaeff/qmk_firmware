@@ -97,12 +97,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define V_RMS 2.0
     #define F_LRA 150 // resonance freq
     #define DRV_GREETING  alert_750ms
-    #define NO_HAPTIC_ALPHA
-    #define NO_HAPTIC_LOCKKEYS
-    #define NO_HAPTIC_PUNCTUATION
-    #define NO_HAPTIC_NAV
-    #define NO_HAPTIC_NUMERIC
-    #define NO_HAPTIC_MOD
     #define FP_HAPTIC_MOUSE_BUTTONS
     #define FP_HAPTIC_CUT_COPY_PASTE
     #define FP_HAPTIC_SAVE

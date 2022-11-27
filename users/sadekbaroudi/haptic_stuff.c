@@ -41,12 +41,3 @@ layer_state_t layer_state_set_haptic(layer_state_t state) {
 
     return state;
 }
-
-// manually handle haptic
-bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        default:
-            return false;
-            break;
-    }
-}
