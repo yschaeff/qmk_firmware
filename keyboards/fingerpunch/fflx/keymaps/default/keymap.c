@@ -16,6 +16,9 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+// NOTE: the corner keys below (SFT keys) correspond to the corner keys on the fflx
+//       the keys next to the thumb clusters (MUTE and DELW) correspond to the encoder presses
+
 /* Qwerty
  *
  * ,-----------------------------------------.             ,-----------------------------------------.
