@@ -17,6 +17,7 @@ Help()
 	echo "  -c add CONVERT_TO parameter for a controller (eg -c stemcell)"
     echo "  -i (interactive mode, take feature selection user input to generate build command)"
 	echo "  -r (run the build command(s), defaults to outputting the build string)"
+	echo "  -e (add environment variables, only used in interactive mode, e.g. RGB_MATRIX_REACTIVE_LAYERS=yes)"
 	echo "  -h (show this dialog)"
 	echo ""
 	echo "Examples: "
@@ -115,6 +116,10 @@ build_keyboard_user_input() {
 
 	if [[ -n "${5}" && "${5}" != "no" ]]; then
 		build_string+=" CONVERT_TO=${5}"
+	fi
+
+	if [[ -n "${6}" && "${6}" != "no" ]]; then
+		build_string+=" ${6}"
 	fi
 
 	process_build_string "${build_string}" "${run_build}"
@@ -272,14 +277,16 @@ RunBuild="no"
 ConvertTo="no"
 Interactive="no"
 ListKeyboards="no"
-while getopts "k:m:c:rhil" option; do
+EnvVariables="no"
+while getopts "k:m:c:e:rhil" option; do
     case $option in
         l) ListKeyboards="yes";;
         k) Keyboard=${OPTARG};;
         m) Keymap=${OPTARG};;
-		c) ConvertTo=${OPTARG};;
-		i) Interactive="yes";;
-		r) RunBuild="yes";;
+        c) ConvertTo=${OPTARG};;
+        i) Interactive="yes";;
+        r) RunBuild="yes";;
+        e) EnvVariables="${OPTARG}";;
         h) Help
            exit;;
     esac
@@ -307,7 +314,7 @@ else
     for filename in $FP_KB; do
         if [[ "${Interactive}" == "yes" ]]; then
             echo "Running for ${filename}"
-            build_keyboard_user_input "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}"
+            build_keyboard_user_input "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" "${EnvVariables}"
         else
             build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" ""
         fi
