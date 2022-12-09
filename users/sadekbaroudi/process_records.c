@@ -30,7 +30,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif  // KEYLOGGER_ENABLE
 
     if (!(process_record_keymap(keycode, record) && process_record_secrets(keycode, record)
-// #ifdef RGB_MATRIX_ENABLE
+// #ifdef USERSPACE_RGB_MATRIX_ENABLE
 //         && process_record_user_rgb_matrix(keycode, record)
 // #endif
 #ifdef USERSPACE_RGBLIGHT_ENABLE
@@ -80,18 +80,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
         case KC_RGB_T:  // This allows me to use underglow as layer indication, or as normal
-#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(USERSPACE_RGB_MATRIX_ENABLE)
             if (record->event.pressed) {
                 userspace_config.rgb_layer_change ^= 1;
                 xprintf("rgblight layer change [EEPROM]: %u\n", userspace_config.rgb_layer_change);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_layer_change) {
-// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(USERSPACE_RGB_MATRIX_ENABLE)
 //                     USERSPACE_RGBLIGHT_ENABLE_noeeprom();
 // #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
                 } else {
-// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(USERSPACE_RGB_MATRIX_ENABLE)
 //                     rgblight_disable_noeeprom();
 // #    endif
 #    if defined(USERSPACE_RGBLIGHT_ENABLE)
@@ -103,17 +103,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif  // USERSPACE_RGBLIGHT_ENABLE
             break;
         case KC_RGB_BLT:  // This enables the base layer as a static color, or allows you to override using RGB
-#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(USERSPACE_RGB_MATRIX_ENABLE)
             if (record->event.pressed) {
                 userspace_config.rgb_base_layer_override ^= 1;
                 xprintf("rgblight base layer override change [EEPROM]: %u\n", userspace_config.rgb_base_layer_override);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_base_layer_override) {
-// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(USERSPACE_RGB_MATRIX_ENABLE)
 //                     USERSPACE_RGBLIGHT_ENABLE_noeeprom();
 // #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
-// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(USERSPACE_RGB_MATRIX_ENABLE)
 //                 } else {
 //                     rgblight_disable_noeeprom();
 // #    endif
@@ -122,7 +122,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif  // USERSPACE_RGBLIGHT_ENABLE
             break;
 
-#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(USERSPACE_RGB_MATRIX_ENABLE)
         case RGB_TOG:
             // Split keyboards need to trigger on key-up for edge-case issue
 #    ifndef SPLIT_KEYBOARD
@@ -133,7 +133,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    if defined(USERSPACE_RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgblight_toggle();
 #    endif
-// #    if defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES)
+// #    if defined(USERSPACE_RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES)
 //                 rgb_matrix_toggle();
 // #    endif
             }
@@ -151,7 +151,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    endif
                 }
 
-// #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+// #    if defined(USERSPACE_RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
 //                 if (userspace_config.rgb_matrix_idle_anim) {
 //                     userspace_config.rgb_matrix_idle_anim = false;
 //                     xprintf("RGB Matrix Idle Animation [EEPROM]: %u\n", userspace_config.rgb_matrix_idle_anim);

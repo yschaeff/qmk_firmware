@@ -70,7 +70,7 @@ bool process_record_user_rgb_matrix(uint16_t keycode, keyrecord_t *record) {
 #endif
     switch (keycode) {
         case RGB_IDL:  // This allows me to use underglow as layer indication, or as normal
-#if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+#if defined(USERSPACE_RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
             if (record->event.pressed) {
                 userspace_config.rgb_matrix_idle_anim ^= 1;
                 dprintf("RGB Matrix Idle Animation [EEPROM]: %u\n", userspace_config.rgb_matrix_idle_anim);
