@@ -62,8 +62,18 @@
 #define FP_LAYER_LIGHTING_MODE_5 RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #endif
 
+// To enable this, just pass RGBLIGHT_SNAKE_LAYERS=yes at the command line when building
+// Also, you must make sure that RGBLIGHT_MODE_SNAKE is enabled
+#if defined(RGBLIGHT_ENABLE) && defined(RGBLIGHT_SNAKE_LAYERS)
+#define FP_LAYER_LIGHTING_MODE_2 RGBLIGHT_MODE_SNAKE+1
+#define FP_LAYER_LIGHTING_MODE_3 RGBLIGHT_MODE_SNAKE+1
+#define FP_LAYER_LIGHTING_MODE_4 RGBLIGHT_MODE_SNAKE+1
+#define FP_LAYER_LIGHTING_MODE_5 RGBLIGHT_MODE_SNAKE+1
+#endif
+
 // To enable this, just pass RGB_LED_RING=yes at the command line when building
 #if defined(RGBLIGHT_ENABLE) && defined(RGB_LED_RING)
 #undef RGBLED_NUM
 #define RGBLED_NUM 12
 #endif
+

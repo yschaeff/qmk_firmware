@@ -17,7 +17,7 @@ Help()
 	echo "  -c add CONVERT_TO parameter for a controller (eg -c stemcell)"
     echo "  -i (interactive mode, take feature selection user input to generate build command)"
 	echo "  -r (run the build command(s), defaults to outputting the build string)"
-	echo "  -e (add environment variables, only used in interactive mode, e.g. RGB_MATRIX_REACTIVE_LAYERS=yes)"
+	echo "  -e (add environment variables, only used in interactive mode, e.g. RGB_MATRIX_REACTIVE_LAYERS=yes or -e \"RGB_LED_RING=yes RGBLIGHT_SNAKE_LAYERS=yes\")"
 	echo "  -h (show this dialog)"
 	echo ""
 	echo "Examples: "
