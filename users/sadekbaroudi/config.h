@@ -61,3 +61,9 @@
 #define FP_LAYER_LIGHTING_MODE_4 RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #define FP_LAYER_LIGHTING_MODE_5 RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #endif
+
+// To enable this, just pass RGB_LED_RING=yes at the command line when building
+#if defined(RGBLIGHT_ENABLE) && defined(RGB_LED_RING)
+#undef RGBLED_NUM
+#define RGBLED_NUM 12
+#endif

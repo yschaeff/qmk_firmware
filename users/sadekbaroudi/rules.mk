@@ -24,6 +24,11 @@ ifeq ($(strip $(RGB_MATRIX_REACTIVE_LAYERS)), yes)
     OPT_DEFS += -DRGB_MATRIX_REACTIVE_LAYERS
 endif
 
+RGB_LED_RING := no
+ifeq ($(strip $(RGB_LED_RING)), yes)
+    OPT_DEFS += -DRGB_LED_RING
+endif
+
 ifneq ($(strip $(NO_SECRETS)), yes)
     ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
         SRC += secrets.c
