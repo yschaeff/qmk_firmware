@@ -4,7 +4,7 @@ QMK repo: https://github.com/qmk/qmk_firmware
 fingerpunch repo: https://github.com/sadekbaroudi/qmk_firmware
 
 Branches
-* master - stable, synced with qmk master, but adds the fingerpunch keyboards ( keyboards/fingerpunch/ directory )
+* master (or vial in the vial repo) - stable, synced with qmk master (or vial), but adds the fingerpunch keyboards ( keyboards/fingerpunch/ directory )
 * develop_fingerpunch - relatively stable, synced with qmk master, but contains new fingerpunch specific changes only, no changes to qmk itself...
 * develop_qmk - synced with qmk develop, contains all the latest qmk changes only, along with the fingerpunch folder ( keyboards/fingerpunch/ directory )
 
@@ -78,7 +78,7 @@ fp_build.sh: Running QMK Build....
 
 In the same way that you build any other keyboard, you can do the same for fingerpunch boards. The thing to consider is that there are options for each keyboard that you should be aware of.
 
-For your keyboard, review the fp_build.jason to see the possible options. For example:  
+For your keyboard, review the fp_build.json to see the possible options. For example:  
  [/keyboards/fingerpunch/ffkb_byomcu/v3](/keyboards/fingerpunch/ffkb_byomcu/v3)
 
 Example command:  
@@ -100,6 +100,10 @@ Also note that stemcell uses tinyuf2, so you'll want to use the .uf2 file instea
 
 ### One time build
 
+**If using the Vial repository, in the code snippet below...**
+* Replace `qmk_firmware.git` with `vial-qmk.git`
+* Replace `master` with `vial`
+
 Starting with no repository, here's an example of building stock ffkb firmware with rgbmatrix and ec11 encoders:
 ```bash
 # Cloning the repo
@@ -115,6 +119,10 @@ make fingerpunch/ffkb_byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes
 ```
 
 ### Managing fingerpunch code in your repository
+
+**If using the Vial repository, in the code snippet below...**
+* Replace `qmk_firmware.git` with `vial-qmk.git`
+* Replace `master` with `vial`
 
 Now, you may ask yourself the question: "But how do I organize and manage my code in there?"
 
@@ -147,6 +155,11 @@ git push origin ffkb
 
 ## Contributing
 
+**By contributing to the fingerpunch repository, all changes will sync to Vial**
+**If you want to contribute to Vial specific code, please do the following in the code snippets below**
+* Replace `qmk_firmware.git` with `vial-qmk.git`
+* Replace `develop_fingerpunch` with `vial`
+
 Note that I will only accept fingerpunch changes (in the keyboards/fingerpunch/ directory), which go into the develop_fingerpunch branch. If there are changes outside of that, they should be pull requests into qmk directly.
 
 If you'd like to contribute, you can do the following:
@@ -173,6 +186,10 @@ git push origin features/fingerpunch/YOUR_FEATURE_BRANCH_NAME
 Once you have your branch in your fork, you can go to the pull requests page for my repo:
 
 https://github.com/sadekbaroudi/qmk_firmware/compare/sadekbaroudi:develop_fingerpunch...Keychron:qmk_firmware:audio_out
+
+Or for Vial
+
+https://github.com/sadekbaroudi/vial-qmk/compare/sadekbaroudi:vial
 
 You'll need to change the head repository and branch to yours (circled in green below)
 
