@@ -155,7 +155,7 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_CAPSLOCK:
+        case KC_CAPS_LOCK:
             if (record->event.pressed) {
                 if (is_caps_lock_on) {
                     is_caps_lock_on = false;

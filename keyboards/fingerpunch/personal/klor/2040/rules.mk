@@ -21,5 +21,5 @@ CONVERT_TO = promicro_rp2040
 #CONVERT_TO = elite_pi
 
 # AUDIO 
-AUDIO_ENABLE = no
+AUDIO_ENABLE = yes
 AUDIO_DRIVER = pwm_hardware
