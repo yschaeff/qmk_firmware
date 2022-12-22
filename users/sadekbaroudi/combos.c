@@ -130,12 +130,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SEMICOLON:
       if (pressed) {
-        tap_code16(KC_SCOLON);
+        tap_code16(KC_COLON);
       }
       break;
     case LBRACKET:
       if (pressed) {
-        tap_code16(KC_LBRACKET);
+        tap_code16(LBRACKET);
       }
       break;
     case LCURLY:
@@ -170,7 +170,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case RBRACKET:
       if (pressed) {
-        tap_code16(KC_RBRACKET);
+        tap_code16(RBRACKET);
       }
       break;
   }

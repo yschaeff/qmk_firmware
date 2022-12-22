@@ -104,3 +104,5 @@
 
 
 #define LAYOUT LAYOUT_polydactyl
+
+#include "keyboards/fingerpunch/fp.h"

@@ -131,6 +131,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_fflx
 #endif
 
+// Since KLOR uses the name LAYOUT_polydactyl instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_polydactyl))
+#    define LAYOUT LAYOUT_polydactyl
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
@@ -348,7 +353,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __SHIFTNAV_1_K2__ LSFT(KC_PGUP)
 #define __SHIFTNAV_1_K3__ LSFT(KC_UP)
 #define __SHIFTNAV_1_K4__ LSFT(KC_PGDN)
-#define __SHIFTNAV_1_K5__ EEP_RST
+#define __SHIFTNAV_1_K5__ EE_CLR
 
 #define __SHIFTNAV_2_K1__ LSFT(KC_HOME)
 #define __SHIFTNAV_2_K2__ LSFT(KC_LEFT)
@@ -476,7 +481,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __AMOUSE_2_K4_ KC_BTN1
 #define __AMOUSE_2_K5_ KC_MS_WH_RIGHT
 
-#define __AMOUSE_3_K1_ EEP_RST
+#define __AMOUSE_3_K1_ EE_CLR
 #define __AMOUSE_3_K2_ KC_MS_WH_UP
 #define __AMOUSE_3_K3_ KC_MS_WH_DOWN
 #define __AMOUSE_3_K4_ KC_MS_ACCEL1
