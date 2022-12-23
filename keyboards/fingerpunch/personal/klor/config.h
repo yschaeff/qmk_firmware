@@ -41,6 +41,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define SPLIT_LAYER_STATE_ENABLE
 //#define SPLIT_USB_DETECT
 
+// Sadek added:
+#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_LAYER_STATE_ENABLE
+
 
 // ┌─────────────────────────────────────────────────┐
 // │ e n c o d e r s                                 │
