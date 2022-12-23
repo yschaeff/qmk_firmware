@@ -20,12 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 /* USB Device descriptor parameter */
-#define DEVICE_VER      0x0002
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0x5B58
-//#define DEVICE_VER      0x0001 // Now defined in the revX/config.h
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         euclid36
+// #define DEVICE_VER      0x0002
+// #define VENDOR_ID       0xFEFE
+// #define PRODUCT_ID      0x5B58
+// #define MANUFACTURER    sadekbaroudi
+// #define PRODUCT         euclid36
 
 /* key matrix size */
 /* Rows are doubled up */
@@ -37,7 +36,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     { B2, B1, B0, D4, D6, D7, C7 }
 #define MATRIX_COL_PINS \
     { D5, F6, F5, F4, F1, B7 }
-#define UNUSED_PINS
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
@@ -53,18 +51,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_VAL_STEP 16
   #define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
-// /*== all animations enable ==*/
-  #define RGBLIGHT_ANIMATIONS
-// /*== or choose animations ==*/
-//   #define RGBLIGHT_EFFECT_BREATHING
-//   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-//   #define RGBLIGHT_EFFECT_SNAKE
-//   #define RGBLIGHT_EFFECT_KNIGHT
-//   #define RGBLIGHT_EFFECT_CHRISTMAS
-//   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-//   #define RGBLIGHT_EFFECT_RGB_TEST
-//   #define RGBLIGHT_EFFECT_ALTERNATING
+  #define RGBLIGHT_EFFECT_BREATHING
+  #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+  #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+  #define RGBLIGHT_EFFECT_SNAKE
+  #define RGBLIGHT_EFFECT_KNIGHT
+  #define RGBLIGHT_EFFECT_CHRISTMAS
+  #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+  #define RGBLIGHT_EFFECT_RGB_TEST
+  #define RGBLIGHT_EFFECT_ALTERNATING
 // /*== customize breathing effect ==*/
 //   /*==== (DEFAULT) use fixed table instead of exp() and sin() ====*/
 //   #define RGBLIGHT_BREATHE_TABLE_SIZE 256      // 256(default) or 128 or 64

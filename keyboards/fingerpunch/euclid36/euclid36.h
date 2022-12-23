@@ -40,3 +40,5 @@
     { K50,   K51, K52, K53, K54, KC_NO }, \
     { K60,   K61, K62, K64, K65, K63 } \
 }
+
+#include "keyboards/fingerpunch/fp.h"
