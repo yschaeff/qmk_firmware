@@ -18,14 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "config_common.h"
 
-
-/* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0xA17A
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         sadekbaroudi arachnophobe
-
 /* key matrix size */
 /* Rows are doubled up */
 #define MATRIX_ROWS 5
@@ -36,7 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     { GP26, GP27, GP28, GP29, GP3 }
 #define MATRIX_COL_PINS \
     { GP6, GP7, GP0, GP4, GP2, GP1 }
-#define UNUSED_PINS
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5

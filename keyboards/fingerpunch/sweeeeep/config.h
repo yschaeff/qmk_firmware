@@ -18,13 +18,6 @@
 
 #include "config_common.h"
 
-/* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0x5111
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         sadekbaroudi sweeeeep
-
 /*
  * Keyboard Matrix Assignments
  *

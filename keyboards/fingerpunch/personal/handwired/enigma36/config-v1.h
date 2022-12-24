@@ -18,15 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "config_common.h"
 
-
-/* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0x5BCB
-//#define DEVICE_VER      0x0001 // Now defined in the revX/config.h
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         enigma36
-
 /* key matrix size */
 /* Rows are doubled up */
 #define MATRIX_ROWS 4

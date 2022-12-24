@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  \---------------^---------------^---------------/         \---------------/     \---------------^---------------^---------------/
    */
   [_FUNCTION] = LAYOUT_wrapper( \
-    RESET,   TG(_KICAD), TG(_FUSION),      TG(_ALPHA),        KC_4,     KC_5,       KC_LBRC, \
+    QK_BOOT,   TG(_KICAD), TG(_FUSION),      TG(_ALPHA),        KC_4,     KC_5,       KC_LBRC, \
     KC_TAB,  RGB_TOG,    RGB_MODE_REVERSE, RGB_MODE_FORWARD,  _______,  RGB_SPI,    BL_ON, \
     KC_CAPS, KC_RGB_BLT, RGB_HUI,          RGB_SAI,           RGB_VAI,  RGB_SPI,    BL_OFF, \
     KC_LSFT, KC_RGB_T,   RGB_HUD,          RGB_SAD,           RGB_VAD,  RGB_SPD,    \
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  |---------------+---------------+---------------+---------v-----^---------v-----+---------------+---------------+---------------\
    *  |    Measure    |   3D Viewer   |  TG(_KICAD)   |         | Select Track  |     |    Delete     |     Enter     | Delete Track  |
    *  \---------------^---------------^---------------/         \---------------/     \---------------^---------------^---------------/
-   * 
+   *
    *                                                   // Note that Delete Track only deletes the current copper line up to pads or vias
    */
   [_KICAD] = LAYOUT_wrapper( \

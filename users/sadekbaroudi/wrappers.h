@@ -51,6 +51,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_barobord
 #endif
 
+// Since barobord_byomcu uses the name LAYOUT_barobord_byomcu instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_barobord_byomcu))
+#    define LAYOUT LAYOUT_barobord_byomcu
+#endif
+
 // Since barobord uses the name LAYOUT_barobord instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_ortho_4x12))
 #    define LAYOUT LAYOUT_ortho_4x12

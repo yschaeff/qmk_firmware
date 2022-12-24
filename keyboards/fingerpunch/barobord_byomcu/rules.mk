@@ -40,13 +40,6 @@ OLED_ENABLE = no            # this can be yes or no depending on if you have an 
 # EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
 
-
-CASEMODES_ENABLE = yes
-
-ifeq ($(strip $(CASEMODES_ENABLE)), yes)
-    SRC += users/sadekbaroudi/casemodes.c
-endif
-
 PIMORONI_TRACKBALL_ENABLE = no
 
 ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
@@ -57,10 +50,10 @@ endif
 
 DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/fp.c \
-		keyboards/fingerpunch/fp_haptic.c \
-		keyboards/fingerpunch/fp_audio.c \
+        keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_audio.c \
         keyboards/fingerpunch/fp_keyhandler.c \
         keyboards/fingerpunch/fp_pointing.c \
-		keyboards/fingerpunch/fp_rgb_common.c \
+        keyboards/fingerpunch/fp_rgb_common.c \
         keyboards/fingerpunch/fp_rgblight.c \
         keyboards/fingerpunch/fp_rgb_matrix.c

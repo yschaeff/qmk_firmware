@@ -18,15 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "config_common.h"
 
-
-/* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0x5517
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         sadekbaroudi stemcell_jumper_tester
-#define DESCRIPTION     sadekbaroudi stemcell_jumper_tester
-
 /* key matrix size */
 /* Rows are doubled up */
 #define MATRIX_ROWS 2

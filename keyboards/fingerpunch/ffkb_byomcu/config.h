@@ -18,14 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "config_common.h"
 
-
-/* USB Device descriptor parameter */
-// #define DEVICE_VER      0x0001  // now defined in vx/config.h
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0xFFBB
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         sadekbaroudi ffkb_byomcu
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -54,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-  #define DRIVER_LED_TOTAL 42
+  #define RGB_MATRIX_LED_COUNT 42
   #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set

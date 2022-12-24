@@ -19,13 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
-/* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
-#define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0xB171
-#define MANUFACTURER    sadekbaroudi
-#define PRODUCT         sadekbaroudi ximi
-
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 6
@@ -78,7 +71,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGB_MATRIX_ENABLE
     #define SPLIT_TRANSPORT_MIRROR
-    #define DRIVER_LED_TOTAL 42 // Number of LEDs
+    #define RGB_MATRIX_LED_COUNT 42 // Number of LEDs
     #define RGB_MATRIX_SPLIT { 21, 21 }
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
     #define RGB_MATRIX_STARTUP_HUE 35

@@ -1,7 +1,12 @@
 {
-  "keyboard_name": "ffkbhw",
-  "url": "",
+  "keyboard_name": "FFKB Handwired",
+  "url": "https://fingerpunch.xyz/product/faux-fox-keyboard/",
   "maintainer": "sadekbaroudi",
+  "usb": {
+    "vid": "0xFEFE",
+    "pid": "0xFF7B",
+    "device_version": "1.0.0"
+  },
   "layouts": {
     "LAYOUT_split_3x5_4": {
       "layout": [
