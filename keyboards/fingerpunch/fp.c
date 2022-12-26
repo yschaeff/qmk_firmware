@@ -40,7 +40,7 @@ void fp_caps_lock_toggle(void) {
 }
 
 void handle_caps_lock_change(void) {
-#if defined(RGBLIGHT_ENABLE) // We only do this because we want the layer color to change
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE) // We only do this because we want the layer color to change
     fp_layer_state_set_rgb(layer_state);
 #endif  // RGBLIGHT_ENABLE
 }
