@@ -263,25 +263,25 @@ int layerstate = 0;
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
       switch (get_highest_layer(layer_state | default_layer_state)) {
-            case 0:
-                strcpy ( layer_state_str, "ALPHA ALT");
-                break;
-            case 1:
+            case _ALPHA:
                 strcpy ( layer_state_str, "COLEMAK");
                 break;
-            case 2:
+            case _ALPHA_ALT:
+                strcpy ( layer_state_str, "ALPHA ALT");
+                break;
+            case _NAVIGATION:
                 strcpy ( layer_state_str, "NAVIGATION");
                 break;
-            case 3:
+            case _SYMBOLS:
                 strcpy ( layer_state_str, "SYMBOLS");
                 break;
-            case 4:
+            case _FUNCTION:
                 strcpy ( layer_state_str, "FUNCTION");
                 break;
-            case 5:
+            case _MEDIA:
                 strcpy ( layer_state_str, "MEDIA");
                 break;
-            case 6:
+            case _MOUSE:
                 strcpy ( layer_state_str, "MOUSE");
                 break;
             default:
