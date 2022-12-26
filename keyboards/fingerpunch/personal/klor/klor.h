@@ -103,6 +103,6 @@
     }
 
 
-#define LAYOUT LAYOUT_polydactyl
+#define LAYOUT LAYOUT_saegewerk
 
 #include "keyboards/fingerpunch/fp.h"

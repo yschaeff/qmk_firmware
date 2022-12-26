@@ -15,8 +15,21 @@ for more options.
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
+#ifdef RGBLED_SPLIT
+#    undef RGBLED_SPLIT
+#endif
+#    define RGBLED_SPLIT { 18, 18 }
+#ifdef RGB_MATRIX_SPLIT
+#    undef RGB_MATRIX_SPLIT
+#endif
+#    define RGB_MATRIX_SPLIT { 18, 18 }
+
 // RGB matrix support
 #ifdef RGB_MATRIX_ENABLE
+#ifdef RGB_MATRIX_LED_COUNT
+#    undef RGB_MATRIX_LED_COUNT
+#endif
+#    define RGB_MATRIX_LED_COUNT 36 // Number of LEDs
 #    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:

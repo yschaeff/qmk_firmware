@@ -137,8 +137,8 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #endif
 
 // Since KLOR uses the name LAYOUT_polydactyl instead of LAYOUT
-#if (!defined(LAYOUT) && defined(LAYOUT_polydactyl))
-#    define LAYOUT LAYOUT_polydactyl
+#if (!defined(LAYOUT) && defined(LAYOUT_saegewerk))
+#    define LAYOUT LAYOUT_saegewerk
 #endif
 
 
