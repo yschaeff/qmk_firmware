@@ -25,10 +25,15 @@ fp_config_t fp_config;
 #ifndef FP_SUPER_TAB_TIMEOUT
 #   define FP_SUPER_TAB_TIMEOUT 500
 #endif
+#ifndef FP_SUPER_CTRL_TAB_TIMEOUT
+#   define FP_SUPER_CTRL_TAB_TIMEOUT 750
+#endif
 
 bool is_caps_lock_on = false;
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
+bool is_super_tab_active = false;
+bool is_super_ctrl_tab_active = false;
+// Note that super tab and super control tab share the same timer! Shouldn't matter, but in case there are issues, note this.
+uint16_t super_tab_timer = 0;
 
 bool fp_caps_lock_get(void) {
     return is_caps_lock_on;
@@ -48,9 +53,11 @@ void handle_caps_lock_change(void) {
 void press_super_tab(bool shift) {
     if (shift) {
         register_code(KC_LSFT);
+    } else {
+        unregister_code(KC_LSFT);
     }
-    if (!is_alt_tab_active) {
-        is_alt_tab_active = true;
+    if (!is_super_tab_active) {
+        is_super_tab_active = true;
 #ifdef FP_MAC_PREFERRED
         register_code(KC_LGUI);
 #else
@@ -58,19 +65,47 @@ void press_super_tab(bool shift) {
 #endif
     }
 
-    alt_tab_timer = timer_read();
+    super_tab_timer = timer_read();
     tap_code(KC_TAB);
 }
 
 void unregister_super_tab(void) {
-    if (is_alt_tab_active) {
-        if (timer_elapsed(alt_tab_timer) > FP_SUPER_TAB_TIMEOUT) {
+    if (is_super_tab_active) {
+        if (timer_elapsed(super_tab_timer) > FP_SUPER_TAB_TIMEOUT) {
 #ifdef FP_MAC_PREFERRED
             unregister_code(KC_LGUI);
 #else
             unregister_code(KC_LALT);
 #endif
-            is_alt_tab_active = false;
+            is_super_tab_active = false;
+
+            if (get_mods() & MOD_MASK_SHIFT) {
+                unregister_code(KC_LSFT);
+            }
+        }
+    }
+}
+
+void press_super_ctrl_tab(bool shift) {
+    if (shift) {
+        register_code(KC_LSFT);
+    } else {
+        unregister_code(KC_LSFT);
+    }
+    if (!is_super_ctrl_tab_active) {
+        is_super_ctrl_tab_active = true;
+        register_code(KC_LCTL);
+    }
+
+    super_tab_timer = timer_read();
+    tap_code(KC_TAB);
+}
+
+void unregister_super_ctrl_tab(void) {
+    if (is_super_ctrl_tab_active) {
+        if (timer_elapsed(super_tab_timer) > FP_SUPER_CTRL_TAB_TIMEOUT) {
+            unregister_code(KC_LCTL);
+            is_super_ctrl_tab_active = false;
 
             if (get_mods() & MOD_MASK_SHIFT) {
                 unregister_code(KC_LSFT);
@@ -88,6 +123,7 @@ void matrix_scan_kb(void) {
     }
 
     unregister_super_tab();
+    unregister_super_ctrl_tab();
 
     matrix_scan_user();
 }

@@ -63,6 +63,15 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+        case FP_SUPER_CTRL_TAB:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    press_super_ctrl_tab(true);
+                } else {
+                    press_super_ctrl_tab(false);
+                }
+            }
+            break;
 #endif
         default:
             break;

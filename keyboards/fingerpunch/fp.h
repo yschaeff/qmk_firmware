@@ -24,6 +24,7 @@ bool fp_caps_lock_get(void);
 void fp_caps_lock_toggle(void);
 void handle_caps_lock_change(void);
 void press_super_tab(bool shift);
+void press_super_ctrl_tab(bool shift);
 
 #include "keyboards/fingerpunch/fp_color.h"
 #include "keyboards/fingerpunch/fp_keyhandler.h"

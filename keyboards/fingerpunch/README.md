@@ -15,10 +15,11 @@ For general firmware build walkthrough and instructions, please see:
 
 ### Settings
 
-| Setting                                 | Description                                                                                                 | Default                          |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `FP_DISABLE_CUSTOM_KEYCODES`            | (Optional) Disables all the custom keycodes defined in the Keycodes section on this page                    | `undefined`                      |
-| `FP_SUPER_TAB_TIMEOUT`                  | (Required) Sets the timeout (in milliseconds) for the alt tab (using keycode `FP_SUPER_TAB`) to go away     | `500`                            |
+| Setting                                 | Description                                                                                                   | Default                          |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `FP_DISABLE_CUSTOM_KEYCODES`            | (Optional) Disables all the custom keycodes defined in the Keycodes section on this page                      | `undefined`                      |
+| `FP_SUPER_TAB_TIMEOUT`                  | (Required) Sets the timeout (in milliseconds) for the alt tab (using keycode `FP_SUPER_TAB`) to go away       | `500`                            |
+| `FP_SUPER_CTRL_TAB_TIMEOUT`             | (Required) Sets the timeout (in milliseconds) for the ctrl tab (using keycode `FP_SUPER_CTRL_TAB`) to go away | `750`                            |
 
 ### Keycodes
 
@@ -38,6 +39,7 @@ For general firmware build walkthrough and instructions, please see:
 | `FP_ZOOM_OFF`                  | Pointing Device: Turn off zooming mode                                                                                                                                                        |
 | `FP_ZOOM_MOMENT`               | Pointing Device: Activate zooming mode while holding this key                                                                                                                                 |
 | `FP_SUPER_TAB`                 | Super alt tab, tap to alt tab instead of holding alt, supports holding shift to alt tab backwards (to use on Mac, see `FP_MAC_PREFERRED` and see `FP_SUPER_TAB_TIMEOUT` to change timeout)    |
+| `FP_SUPER_CTRL_TAB`            | Super ctrl tab, tap to ctrl tab instead of holding ctrl, supports holding shift to ctrl tab backwards (see `FP_SUPER_TAB_TIMEOUT` to change timeout)                                          |
 
 Note: if you are using a userspace, and you have custom keycodes, you will need to add some logic in your userspace keycodes .h file that will handle the `SAFE_RANGE` appropriately.
 

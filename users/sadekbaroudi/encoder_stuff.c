@@ -94,18 +94,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             default:
-                // cursor move one word at a time, left and right
+                // super ctrl tab
+                // switch between browser windows, or files in vscode
                 if (clockwise) {
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(KC_LEFT));
+                    press_super_ctrl_tab(true);
                     #else
-                    tap_code16(C(KC_RIGHT));
+                    press_super_ctrl_tab(false);
                     #endif
                 } else {
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(KC_RIGHT));
+                    press_super_ctrl_tab(false);
                     #else
-                    tap_code16(C(KC_LEFT));
+                    press_super_ctrl_tab(true);
                     #endif
                 }
                 break;

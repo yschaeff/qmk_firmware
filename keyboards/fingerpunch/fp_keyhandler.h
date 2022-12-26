@@ -38,6 +38,7 @@ enum fp_keycodes {
     FP_ZOOM_OFF,
     FP_ZOOM_MOMENT,
     FP_SUPER_TAB,
+    FP_SUPER_CTRL_TAB,
     FP_SAFE_RANGE
 };
 #endif // FP_DISABLE_CUSTOM_KEYCODES
