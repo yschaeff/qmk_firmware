@@ -199,6 +199,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             #endif
             break;
         // COMMENT TO DISABLE MACROS
+        case M_KI_R_ANGLE:
+            if (record->event.pressed) {
+                register_code(KC_LSFT);
+                register_code(KC_LCTL);
+                SEND_STRING(SS_TAP(X_COMM) SS_DELAY(300));
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LCTL);
+                SEND_STRING(SS_TAP(X_UP) SS_TAP(X_ENTER));
+            }
+            break;
+        case M_KI_R_FREE:
+            if (record->event.pressed) {
+                register_code(KC_LSFT);
+                register_code(KC_LCTL);
+                SEND_STRING(SS_TAP(X_COMM) SS_DELAY(300));
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LCTL);
+                SEND_STRING(SS_TAP(X_DOWN) SS_TAP(X_ENTER));
+            }
+            break;
         case L_GREP:
             if (record->event.pressed) {
                 SEND_STRING("grep -rn \"");
