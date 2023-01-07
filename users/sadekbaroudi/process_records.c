@@ -7,6 +7,9 @@
 #include "drivers/haptic/DRV2605L.h"
 #endif
 
+ // for alternating between 45 degree angle routing and free angle routing with one key
+bool kicad_free_angle_routing = false;
+
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
 __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) { return true; }
@@ -199,6 +202,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             #endif
             break;
         // COMMENT TO DISABLE MACROS
+        case M_KI_R_SWAP:
+            if (record->event.pressed) {
+                register_code(KC_LSFT);
+                register_code(KC_LCTL);
+                SEND_STRING(SS_TAP(X_COMM) SS_DELAY(300));
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LCTL);
+                // If we're in free angle routing, we tap down to go back to 45 degree angle routing
+                if (kicad_free_angle_routing) {
+                    SEND_STRING(SS_TAP(X_DOWN) SS_TAP(X_ENTER));
+                } else {
+                    SEND_STRING(SS_TAP(X_UP) SS_TAP(X_ENTER));
+                }
+                kicad_free_angle_routing = !kicad_free_angle_routing;
+            }
+            break;
         case M_KI_R_ANGLE:
             if (record->event.pressed) {
                 register_code(KC_LSFT);

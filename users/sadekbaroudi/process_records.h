@@ -37,6 +37,7 @@ enum userspace_custom_keycodes {
     KC_RGB_BLT,                     // Toggles RGB Base Layer Override mode
     RGB_IDL,                        // RGB Idling animations
     KC_MAKE,                        // Run keyboard's customized make command
+    M_KI_R_SWAP,
     M_KI_R_ANGLE,
     M_KI_R_FREE,
     L_GREP,
