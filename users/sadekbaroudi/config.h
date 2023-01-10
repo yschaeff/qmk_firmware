@@ -42,6 +42,13 @@
 #define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
 #define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
 
+// These are the colors I used on my ffkb low pro ks-27 with the xvx horizon purple and green keycaps
+// #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN
+// #define FP_LAYER_LIGHTING_HUE_3 HSV_ORANGE
+// #define FP_LAYER_LIGHTING_HUE_4 HSV_YELLOW
+// #define FP_LAYER_LIGHTING_HUE_5 HSV_CYAN
+// #define FP_LAYER_LIGHTING_HUE_6 HSV_WHITE
+
 #ifdef FP_POINTING_SCROLLING_LAYER
     #undef FP_POINTING_SCROLLING_LAYER
 #endif

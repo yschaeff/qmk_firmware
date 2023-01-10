@@ -182,7 +182,7 @@ Please note that the `FP_LAYER_LIGHTING_AUTO_MOUSE_ENABLE` will be automatically
 | `FP_HSV_LIME`         |  `63, 225, 255`   | https://encycolorpedia.com/9efd38                     |
 | `FP_HSV_MELON`        |   `0, 180, 255`   | https://encycolorpedia.com/febaad                     |
 | `FP_HSV_MINT`         |  `84, 185, 255`   | https://encycolorpedia.com/98ff98                     |
-| `FP_HSV_PEACH_ORANGE` |  `21, 220, 255`   | https://encycolorpedia.com/ffcc99                     |
+| `FP_HSV_PEACH_ORANGE` |  `21, 205, 255`   | https://encycolorpedia.com/ffcc99                     |
 
 ### Vial only
 
