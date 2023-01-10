@@ -29,6 +29,11 @@ ifeq ($(strip $(RGBLIGHT_SNAKE_LAYERS)), yes)
     OPT_DEFS += -DRGBLIGHT_SNAKE_LAYERS
 endif
 
+RGBLIGHT_TWINKLE_LAYERS := no
+ifeq ($(strip $(RGBLIGHT_TWINKLE_LAYERS)), yes)
+    OPT_DEFS += -DRGBLIGHT_TWINKLE_LAYERS
+endif
+
 RGB_LED_RING := no
 ifeq ($(strip $(RGB_LED_RING)), yes)
     OPT_DEFS += -DRGB_LED_RING

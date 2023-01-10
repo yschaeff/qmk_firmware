@@ -19,3 +19,4 @@
 #define FP_HSV_LIME               63, 225, 255
 #define FP_HSV_MELON               0, 180, 255
 #define FP_HSV_MINT               84, 185, 255
+#define FP_HSV_PEACH_ORANGE       21, 220, 255
