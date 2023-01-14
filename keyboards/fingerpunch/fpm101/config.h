@@ -120,10 +120,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef AUDIO_ENABLE
     #define ENCODERS_PAD_A {F1, B7}
     #define ENCODERS_PAD_B {F0, D5}
+    #define ENCODER_RESOLUTIONS { 2, 1 }
 #else
     #define ENCODERS_PAD_A {C7, F1, B7}
     #define ENCODERS_PAD_B {D2, F0, D5}
+    #define ENCODER_RESOLUTIONS { 2, 2, 1 }
 #endif
+
+// #define MOUSEKEY_WHEEL_DELAY 0
+// #define MOUSEKEY_WHEEL_INTERVAL 10
+// #define MK_W_OFFSET_UNMOD 4
+// #define MK_W_INTERVAL_UNMOD 10
+// #define MOUSEKEY_WHEEL_INITIAL_MOVEMENTS 32
+
 
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES

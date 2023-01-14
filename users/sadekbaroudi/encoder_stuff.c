@@ -115,18 +115,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     else if (index == 2) {
         switch(biton32(layer_state)){
             default:
-                // scroll browser tab left and right
+                // scroll wheel
                 if (clockwise){
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(S(KC_TAB)));
+                    tap_code16(KC_MS_WH_UP);
                     #else
-                    tap_code16(C(KC_TAB));
+                    tap_code16(KC_MS_WH_DOWN);
                     #endif
                 } else{
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(KC_TAB));
+                    tap_code16(KC_MS_WH_DOWN);
                     #else
-                    tap_code16(C(S(KC_TAB)));
+                    tap_code16(KC_MS_WH_UP);
                     #endif
                 }
                 break;
