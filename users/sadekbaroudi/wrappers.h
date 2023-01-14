@@ -131,16 +131,20 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_badwings
 #endif
 
-// Since badwings uses the name LAYOUT_badwings instead of LAYOUT
+// Since fflx uses the name LAYOUT_fflx instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_fflx))
 #    define LAYOUT LAYOUT_fflx
 #endif
 
-// Since KLOR uses the name LAYOUT_polydactyl instead of LAYOUT
+// Since KLOR uses the name LAYOUT_saegewerk instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_saegewerk))
 #    define LAYOUT LAYOUT_saegewerk
 #endif
 
+// Since fpm101 uses the name LAYOUT_fpm101 instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_fpm101))
+#    define LAYOUT LAYOUT_fpm101
+#endif
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
