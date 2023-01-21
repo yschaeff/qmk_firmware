@@ -48,6 +48,11 @@ AUDIO_DRIVER = pwm_software
 HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = DRV2605L
 
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
+   RGB_MATRIX_CUSTOM_KB = yes
+   OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB
+endif
+
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
    POINTING_DEVICE_ENABLE := yes
