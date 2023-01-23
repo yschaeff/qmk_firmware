@@ -98,8 +98,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-#define ENCODERS_PAD_A {B4 , D6}
-#define ENCODERS_PAD_B {D7 , D4}
+#define ENCODERS_PAD_A {D5 , B3}
+#define ENCODERS_PAD_B {B7 , C7}
 
 #define ENCODER_RESOLUTION 2
 
