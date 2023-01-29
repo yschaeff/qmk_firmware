@@ -24,9 +24,9 @@
 #endif
 #define AUTO_MOUSE_DEFAULT_LAYER 6
 
-#ifdef CIRQUE_ENABLE
-    #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#endif
+// #ifdef CIRQUE_ENABLE
+//     #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// #endif
 
 // Define only one of the two below, but not both.
 // Read here for details: https://github.com/sadekbaroudi/qmk_firmware/tree/master/keyboards/fingerpunch#layer-lighting
