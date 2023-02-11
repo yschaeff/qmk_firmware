@@ -8,10 +8,11 @@
     || defined(KEYBOARD_fingerpunch_bigbarobord) \
     || defined(KEYBOARD_fingerpunch_euclid36) \
     || defined(KEYBOARD_fingerpunch_euclid36_proto) \
-    || defined(KEYBOARD_fingerpunch_ffkb) \
+    || defined(KEYBOARD_fingerpunch_ffkb_atmega_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp2040_v3) \
     || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_fpm101) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
