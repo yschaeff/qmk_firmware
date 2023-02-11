@@ -40,18 +40,18 @@
     )
 
 /* Re-pass though to allow templates to be used */
-#define LAYOUT_ffkb_byomcu_base_wrapper(...)       LAYOUT_ffkb_base(__VA_ARGS__)
+#define LAYOUT_ffkb_base_wrapper(...)       LAYOUT_ffkb_base(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_ALPHA_ALT] = LAYOUT_ffkb_byomcu_base_wrapper(
+    [_ALPHA_ALT] = LAYOUT_ffkb_base_wrapper(
         _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
         _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
         _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________,
                                              __ALPHA_ALT_THUMBS_6__
     ),
 
-    [_ALPHA] = LAYOUT_ffkb_byomcu_base_wrapper(
+    [_ALPHA] = LAYOUT_ffkb_base_wrapper(
         __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
         __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
         __________________ALPHA_L3____________________, __________________ALPHA_R3____________________,

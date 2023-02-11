@@ -1,9 +1,5 @@
 [
     {
-        "type" : "convert-to",
-        "name" : "stemcell"
-    },
-    {
         "type" : "single",
         "name" : "CIRQUE_ENABLE",
         "user_input": "Do you have a cirque?"
@@ -19,8 +15,28 @@
         "user_input": "No RGB, RGB light, RGB matrix?"
     },
     {
+        "type" : "single",
+        "name" : "FP_PER_KEY_RGB",
+        "user_input": "Do you have per key RGB LEDs?"
+    },
+    {
+        "type" : "single",
+        "name" : "FP_INDICATOR_LEDS",
+        "user_input": "Do you have the indicator LEDs?"
+    },
+    {
         "type" : "one-of",
         "names" : [ "FP_EC11", "FP_EVQ" ],
         "user_input": "No rotary encoders, EC11, or EVQ?"
+    },
+    {
+        "type" : "single",
+        "name" : "AUDIO_ENABLE",
+        "user_input": "Do you have an audio buzzer?"
+    },
+    {
+        "type" : "single",
+        "name" : "HAPTIC_ENABLE",
+        "user_input": "Do you have haptic feedback?"
     }
 ]

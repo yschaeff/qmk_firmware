@@ -58,13 +58,13 @@ get_valid_keyboards() {
 			fi
 
 			# now check for rp2040 version
-			if [[ -e "${line}/rp2040" ]]; then
-				echo $(get_valid_keyboards "${line}/rp2040" "false")
+			if [[ -e "${line}/rp" ]]; then
+				echo $(get_valid_keyboards "${line}/rp" "false")
 			fi
 
-			# now check for stm32 version
-			if [[ -e "${line}/stm32" ]]; then
-				echo $(get_valid_keyboards "${line}/stm32" "false")
+			# now check for stm version
+			if [[ -e "${line}/stm" ]]; then
+				echo $(get_valid_keyboards "${line}/stm" "false")
 			fi
 		fi
 	done

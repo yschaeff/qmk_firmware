@@ -1,15 +1,11 @@
 # MCU name
-MCU = atmega32u4
+MCU = RP2040
 
 # Bootloader selection
-#   Teensy       halfkay
-#   Pro Micro    caterina
-#   Atmel DFU    atmel-dfu
-#   LUFA DFU     lufa-dfu
-#   QMK DFU      qmk-dfu
-#   ATmega32A    bootloadHID
-#   ATmega328P   USBasp
-BOOTLOADER = atmel-dfu
+BOOTLOADER = rp2040
+
+# LTO must be disabled for RP2040 builds
+LTO_ENABLE = no
 
 # Build Options
 #   change yes to no to disable
@@ -43,27 +39,16 @@ SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
-   OPT_DEFS += -DCIRQUE_ENABLE
-endif
+# PIO serial/WS2812 drivers must be used on RP2040
+SERIAL_DRIVER = vendor
+WS2812_DRIVER = vendor
 
-ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
-   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := pmw3360
-   QUANTUM_LIB_SRC += spi_master.c
-   OPT_DEFS += -DFP_TRACKBALL_ENABLE
-endif
-
-ifeq ($(strip $(FP_EC11)), yes)
-   ENCODER_ENABLE := yes
-   OPT_DEFS += -DFP_EC11_UNDER_PALMS
-endif
-
-ifeq ($(strip $(FP_EVQ)), yes)
-   ENCODER_ENABLE := yes
-   OPT_DEFS += -DFP_EVQ_UNDER_PALMS
-endif
+DEFERRED_EXEC_ENABLE = yes
+SRC +=  keyboards/fingerpunch/fp.c \
+        keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_audio.c \
+        keyboards/fingerpunch/fp_keyhandler.c \
+        keyboards/fingerpunch/fp_pointing.c \
+        keyboards/fingerpunch/fp_rgb_common.c \
+        keyboards/fingerpunch/fp_rgblight.c \
+        keyboards/fingerpunch/fp_rgb_matrix.c
