@@ -24,13 +24,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     // If console is enabled, it will print the matrix position and status of each key pressed
     #endif
-#ifdef KEYLOGGER_ENABLE
-#    if defined(KEYBOARD_ergodox_ez) || defined(KEYBOARD_keebio_iris_rev2)
-    xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.row, record->event.key.col, record->event.pressed);
-#    else
-    xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-#    endif
-#endif  // KEYLOGGER_ENABLE
 
     if (!(process_record_keymap(keycode, record) && process_record_secrets(keycode, record)
 // #ifdef USERSPACE_RGB_MATRIX_ENABLE
@@ -44,44 +37,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
-        // COMMENT TO DISABLE MACROS
-        case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
-            if (!record->event.pressed) {
-#ifndef MAKE_BOOTLOADER
-                uint8_t temp_mod = mod_config(get_mods());
-                uint8_t temp_osm = mod_config(get_oneshot_mods());
-                clear_mods();
-                clear_oneshot_mods();
-#endif
-                send_string_with_delay_P(PSTR("qmk"), TAP_CODE_DELAY);
-#ifndef MAKE_BOOTLOADER
-                if ((temp_mod | temp_osm) & MOD_MASK_SHIFT)
-#endif
-                {
-                    send_string_with_delay_P(PSTR(" flash "), TAP_CODE_DELAY);
-#ifndef MAKE_BOOTLOADER
-                } else {
-                    send_string_with_delay_P(PSTR(" compile "), TAP_CODE_DELAY);
-#endif
-                }
-                send_string_with_delay_P(PSTR("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP), TAP_CODE_DELAY);
-#ifdef RGB_MATRIX_SPLIT_RIGHT
-                send_string_with_delay_P(PSTR(" RGB_MATRIX_SPLIT_RIGHT=yes"), TAP_CODE_DELAY);
-#    ifndef OLED_DRIVER_ENABLE
-                send_string_with_delay_P(PSTR(" OLED_DRIVER_ENABLE=no"), TAP_CODE_DELAY);
-#    endif
-#endif
-                send_string_with_delay_P(PSTR(SS_TAP(X_ENTER)), TAP_CODE_DELAY);
-            }
-
-            break;
-        // COMMENT TO DISABLE MACROS
-        case VRSN:  // Prints firmware version
-            if (record->event.pressed) {
-                send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), TAP_CODE_DELAY);
-            }
-            break;
-
         case KC_RGB_T:  // This allows me to use underglow as layer indication, or as normal
 #if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(USERSPACE_RGB_MATRIX_ENABLE)
             if (record->event.pressed) {

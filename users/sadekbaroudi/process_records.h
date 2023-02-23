@@ -8,10 +8,11 @@
     || defined(KEYBOARD_fingerpunch_bigbarobord) \
     || defined(KEYBOARD_fingerpunch_euclid36) \
     || defined(KEYBOARD_fingerpunch_euclid36_proto) \
-    || defined(KEYBOARD_fingerpunch_ffkb) \
+    || defined(KEYBOARD_fingerpunch_ffkb_atmega_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp2040_v3) \
     || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_fpm101) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
@@ -34,11 +35,9 @@
 #endif
 
 enum userspace_custom_keycodes {
-    VRSN = PLACEHOLDER_SAFE_RANGE,  // Prints QMK Firmware and board info
-    KC_RGB_T,                       // Toggles RGB Layer Indication mode
-    KC_RGB_BLT,                     // Toggles RGB Base Layer Override mode
-    RGB_IDL,                        // RGB Idling animations
-    KC_MAKE,                        // Run keyboard's customized make command
+    KC_RGB_T = PLACEHOLDER_SAFE_RANGE, // Toggles RGB Layer Indication mode
+    KC_RGB_BLT,                        // Toggles RGB Base Layer Override mode
+    RGB_IDL,                           // RGB Idling animations
     M_KI_R_SWAP,
     M_KI_R_ANGLE,
     M_KI_R_FREE,
@@ -68,9 +67,6 @@ enum userspace_custom_keycodes {
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
-#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
-report_mouse_t pointing_device_task_user(report_mouse_t mouse_report);
-#endif
 
 #define KC_SEC1 KC_SECRET_1
 #define KC_SEC2 KC_SECRET_2
