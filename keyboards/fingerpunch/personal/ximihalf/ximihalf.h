@@ -16,4 +16,4 @@ void pointing_device_set_default_cpi(void);
     { K20, K21, K22, K23, K24, K25, K26, K27 } \
   }
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

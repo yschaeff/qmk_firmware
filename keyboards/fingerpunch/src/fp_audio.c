@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_audio.h"
+#include "keyboards/fingerpunch/src/fp_audio.h"
 
 #ifdef AUDIO_ENABLE
 

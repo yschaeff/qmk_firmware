@@ -23,4 +23,4 @@
 #    include "v4.h"
 #endif
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

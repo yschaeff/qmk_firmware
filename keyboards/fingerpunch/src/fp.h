@@ -26,26 +26,26 @@ void handle_caps_lock_change(void);
 void press_super_tab(bool shift);
 void press_super_ctrl_tab(bool shift);
 
-#include "keyboards/fingerpunch/fp_color.h"
-#include "keyboards/fingerpunch/fp_keyhandler.h"
+#include "keyboards/fingerpunch/src/fp_color.h"
+#include "keyboards/fingerpunch/src/fp_keyhandler.h"
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
-#    include "keyboards/fingerpunch/fp_rgb_common.h"
+#    include "keyboards/fingerpunch/src/fp_rgb_common.h"
 #endif
 #ifdef RGBLIGHT_ENABLE
-#    include "keyboards/fingerpunch/fp_rgblight.h"
+#    include "keyboards/fingerpunch/src/fp_rgblight.h"
 #endif
 #ifdef RGB_MATRIX_ENABLE
-#    include "keyboards/fingerpunch/fp_rgb_matrix.h"
+#    include "keyboards/fingerpunch/src/fp_rgb_matrix.h"
 #endif
 #ifdef HAPTIC_ENABLE
-#    include "keyboards/fingerpunch/fp_haptic.h"
+#    include "keyboards/fingerpunch/src/fp_haptic.h"
 #endif
 #ifdef AUDIO_ENABLE
-#    include "keyboards/fingerpunch/fp_audio.h"
+#    include "keyboards/fingerpunch/src/fp_audio.h"
 #endif
 #ifdef POINTING_DEVICE_ENABLE
-#    include "keyboards/fingerpunch/fp_pointing.h"
+#    include "keyboards/fingerpunch/src/fp_pointing.h"
 #endif
 
 // clang-format off

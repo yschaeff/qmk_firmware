@@ -14,15 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_rgb_common.h"
+#include "keyboards/fingerpunch/src/fp_rgb_common.h"
 
 // We must make sure that fp_rgb_matrix.h or fp_rgblight.h are included before this, since it depends on FP_LAYER_LIGHTING_MODE
 #ifdef RGBLIGHT_ENABLE
-#include "keyboards/fingerpunch/fp_rgblight.h"
+#include "keyboards/fingerpunch/src/fp_rgblight.h"
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-#include "keyboards/fingerpunch/fp_rgb_matrix.h"
+#include "keyboards/fingerpunch/src/fp_rgb_matrix.h"
 #endif
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)

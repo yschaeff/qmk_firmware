@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_keyhandler.h"
+#include "keyboards/fingerpunch/src/fp_keyhandler.h"
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     // If console is enabled, it will print the matrix position and status of each key pressed

@@ -15,7 +15,7 @@
  */
 
 
-#include "keyboards/fingerpunch/fp_rgblight.h"
+#include "keyboards/fingerpunch/src/fp_rgblight.h"
 
 #ifdef RGBLIGHT_ENABLE
 

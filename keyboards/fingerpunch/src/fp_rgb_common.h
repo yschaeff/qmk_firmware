@@ -16,7 +16,7 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
 layer_state_t fp_layer_state_set_rgb(layer_state_t state);
 void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode);

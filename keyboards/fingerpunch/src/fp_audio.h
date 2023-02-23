@@ -16,14 +16,7 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
-#ifdef RGBLIGHT_ENABLE
-#    ifndef FP_LAYER_LIGHTING_MODE
-#        define FP_LAYER_LIGHTING_MODE RGBLIGHT_MODE_STATIC_LIGHT
-#    endif
-#endif
-
-layer_state_t fp_layer_state_set_rgblight(layer_state_t state);
-bool fp_process_record_rgblight(uint16_t keycode, keyrecord_t *record);
-void fp_post_init_rgblight(void);
+layer_state_t fp_layer_state_set_audio(layer_state_t state);
+bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record);

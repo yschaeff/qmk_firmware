@@ -16,7 +16,7 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
 #ifdef RGB_MATRIX_ENABLE
 #    ifndef FP_LAYER_LIGHTING_MODE

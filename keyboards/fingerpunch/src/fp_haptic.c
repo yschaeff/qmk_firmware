@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_haptic.h"
+#include "keyboards/fingerpunch/src/fp_haptic.h"
 
 #ifdef HAPTIC_ENABLE
 

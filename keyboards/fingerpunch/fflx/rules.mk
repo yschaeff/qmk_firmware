@@ -62,11 +62,11 @@ ifeq ($(strip $(FP_EVQ_UNDER_PALMS)), yes)
 endif
 
 DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+SRC +=  keyboards/fingerpunch/src/fp.c \
+        keyboards/fingerpunch/src/fp_haptic.c \
+        keyboards/fingerpunch/src/fp_audio.c \
+        keyboards/fingerpunch/src/fp_keyhandler.c \
+        keyboards/fingerpunch/src/fp_pointing.c \
+        keyboards/fingerpunch/src/fp_rgb_common.c \
+        keyboards/fingerpunch/src/fp_rgblight.c \
+        keyboards/fingerpunch/src/fp_rgb_matrix.c

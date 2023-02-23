@@ -35,7 +35,7 @@ OLED_ENABLE = no            # this can be yes or no depending on if you have an 
 EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
@@ -43,12 +43,17 @@ CUSTOM_MATRIX = lite
 SERIAL_DRIVER = vendor
 WS2812_DRIVER = vendor
 
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
+   RGB_MATRIX_CUSTOM_KB = yes
+   OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB
+endif
+
 DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+SRC +=  keyboards/fingerpunch/src/fp.c \
+        keyboards/fingerpunch/src/fp_haptic.c \
+        keyboards/fingerpunch/src/fp_audio.c \
+        keyboards/fingerpunch/src/fp_keyhandler.c \
+        keyboards/fingerpunch/src/fp_pointing.c \
+        keyboards/fingerpunch/src/fp_rgb_common.c \
+        keyboards/fingerpunch/src/fp_rgblight.c \
+        keyboards/fingerpunch/src/fp_rgb_matrix.c

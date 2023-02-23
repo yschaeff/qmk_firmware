@@ -39,7 +39,7 @@ OLED_ENABLE = no            # this can be yes or no depending on if you have an 
 EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 

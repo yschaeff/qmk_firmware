@@ -16,7 +16,7 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
 layer_state_t fp_layer_state_set_pointing(layer_state_t state);
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);

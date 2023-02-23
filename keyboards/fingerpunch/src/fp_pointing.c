@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_pointing.h"
-#include "keyboards/fingerpunch/fp_keyhandler.h"
+#include "keyboards/fingerpunch/src/fp_pointing.h"
+#include "keyboards/fingerpunch/src/fp_keyhandler.h"
 #include "math.h"
 
 #ifdef POINTING_DEVICE_ENABLE

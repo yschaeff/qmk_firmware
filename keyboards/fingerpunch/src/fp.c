@@ -14,10 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
-#include "keyboards/fingerpunch/fp_rgb_common.h"
+#include "keyboards/fingerpunch/src/fp_rgb_common.h"
 #endif
 
 fp_config_t fp_config;

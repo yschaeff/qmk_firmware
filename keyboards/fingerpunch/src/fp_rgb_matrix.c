@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/fp_rgb_matrix.h"
+#include "keyboards/fingerpunch/src/fp_rgb_matrix.h"
 
 #ifdef RGB_MATRIX_ENABLE
 
