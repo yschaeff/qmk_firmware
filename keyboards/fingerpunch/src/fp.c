@@ -19,6 +19,9 @@
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
 #include "keyboards/fingerpunch/src/fp_rgb_common.h"
 #endif
+#if defined(PIMORONI_TRACKBALL_ENABLE)
+#include "color.h"
+#endif
 
 fp_config_t fp_config;
 
