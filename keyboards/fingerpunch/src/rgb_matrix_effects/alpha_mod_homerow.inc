@@ -31,7 +31,8 @@ static bool alpha_mod_homerow_runner(effect_params_t* params, bool shift) {
 
     for (uint8_t i = led_min; i < led_max; i++) {
         RGB_MATRIX_TEST_LED_FLAGS();
-        if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT) && HAS_FLAGS(g_led_config.flags[i], LED_FLAG_INDICATOR)) {
+        if ((HAS_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT) && HAS_FLAGS(g_led_config.flags[i], LED_FLAG_INDICATOR)) ||
+            (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER) && HAS_FLAGS(g_led_config.flags[i], LED_FLAG_INDICATOR)) ) {
             rgb_matrix_set_color(i, rgb3.r, rgb3.g, rgb3.b);
         } else if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) {
             rgb_matrix_set_color(i, rgb2.r, rgb2.g, rgb2.b);
