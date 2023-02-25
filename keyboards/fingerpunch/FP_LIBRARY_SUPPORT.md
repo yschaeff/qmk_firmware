@@ -37,6 +37,7 @@ Add the general effect inclusion file
 // For RGB_MATRIX enabled boards, Create the file rgb_matrix_kb.inc in your keyboard directory, and put this code in the file
 
 #include "keyboards/fingerpunch/src/rgb_matrix_effects/alpha_mod_homerow.inc"
+#include "keyboards/fingerpunch/src/rgb_matrix_effects/alpha_mod_homerow_cycle.inc"
 // There are more effects, add as many as you like
 ```
 
