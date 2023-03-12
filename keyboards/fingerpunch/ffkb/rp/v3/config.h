@@ -50,6 +50,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_C_REVERSE
 #endif
 
+/** add this back into fp_build.json and configure the stuff below
+    {
+        "type" : "single",
+        "name" : "FP_PER_KEY_RGB",
+        "user_input": "Do you have per key RGB LEDs?"
+    },
+    {
+        "type" : "single",
+        "name" : "FP_INDICATOR_LEDS",
+        "user_input": "Do you have the indicator LEDs?"
+    },
+ */
 #ifdef FP_INDICATOR_LEDS
     // TODO: figure out the firmware logic for the indicator leds
     #ifdef FP_PER_KEY_RGB

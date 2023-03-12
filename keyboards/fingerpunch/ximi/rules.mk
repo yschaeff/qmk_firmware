@@ -19,7 +19,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE ?= no
 RGB_MATRIX_ENABLE ?= no      # not supported yet, but will add
 RGB_MATRIX_DRIVER = WS2812
-WS2812_DRIVER = vendor
+# WS2812_DRIVER = vendor     # add support for this later, see: https://github.com/qmk/qmk_firmware/blob/master/docs/ws2812_driver.md#pio
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
