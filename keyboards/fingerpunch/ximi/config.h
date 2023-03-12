@@ -122,13 +122,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
-/* audio support */
-// Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
     #define AUDIO_PIN GP18
     #define AUDIO_PWM_DRIVER PWMD1
-    // #define AUDIO_PWM_CHANNEL 1
     #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
     #define AUDIO_ENABLE_TONE_MULTIPLEXING
     #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10

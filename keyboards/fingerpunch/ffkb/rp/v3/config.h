@@ -85,7 +85,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define AUDIO_PIN GP18
     #define AUDIO_PWM_DRIVER PWMD1
     #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
-    #define AUDIO_VOICES
     // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
     // #define NO_MUSIC_MODE
     #define AUDIO_ENABLE_TONE_MULTIPLEXING
