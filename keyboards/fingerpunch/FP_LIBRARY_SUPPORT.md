@@ -29,6 +29,17 @@ SRC +=  keyboards/fingerpunch/src/fp.c \
 
 ```
 
+### Audio startup sound
+
+Take a look at `keyboards/fingerpunch/src/fp_audio.c`, and you'll note some startup sounds. Copy those into the `#ifdef AUDIO_ENABLE` section of your config.h and add them in.
+For an example, see `keyboards/fingerpunch/ximi/config.h`, which uses the `FP_STARTUP_LIGHT` song
+
+```c
+#define FP_STARTUP_LIGHT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5),
+#define FP_STARTUP_LIGHT_EXT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5), WHOLE_DOT_NOTE(_D5), WHOLE_DOT_NOTE(_G5), WHOLE_DOT_NOTE(_C5),
+#define FP_STARTUP_DARK  HALF_DOT_NOTE(_B5), QUARTER_NOTE(_B5), HALF_NOTE(_E6), HALF_NOTE(_REST), QUARTER_NOTE(_C6), QUARTER_NOTE(_REST), QUARTER_NOTE(_G5), QUARTER_NOTE(_E5), QUARTER_NOTE(_F5), QUARTER_NOTE(_GS5), QUARTER_NOTE(_G5), QUARTER_NOTE(_F5), WHOLE_NOTE(_G5),
+```
+
 ### Shared RGB effects
 
 Add the general effect inclusion file
