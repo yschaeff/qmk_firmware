@@ -21,10 +21,10 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
-RGBLIGHT_ENABLE = no
-RGB_MATRIX_ENABLE = no
+RGBLIGHT_ENABLE ?= no
+RGB_MATRIX_ENABLE ?= no      # not supported yet, but will add
 RGB_MATRIX_DRIVER = WS2812
-# WS2812_DRIVER = vendor    # add support for this later, see: https://github.com/qmk/qmk_firmware/blob/master/docs/ws2812_driver.md#pio
+WS2812_DRIVER = vendor
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
