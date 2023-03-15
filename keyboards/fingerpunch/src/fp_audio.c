@@ -52,6 +52,7 @@
 #define FP_STARTUP_LIGHT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5),
 #define FP_STARTUP_LIGHT_EXT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5), WHOLE_DOT_NOTE(_D5), WHOLE_DOT_NOTE(_G5), WHOLE_DOT_NOTE(_C5),
 #define FP_STARTUP_DARK  HALF_DOT_NOTE(_B5), QUARTER_NOTE(_B5), HALF_NOTE(_E6), HALF_NOTE(_REST), QUARTER_NOTE(_C6), QUARTER_NOTE(_REST), QUARTER_NOTE(_G5), QUARTER_NOTE(_E5), QUARTER_NOTE(_F5), QUARTER_NOTE(_GS5), QUARTER_NOTE(_G5), QUARTER_NOTE(_F5), WHOLE_NOTE(_G5),
+#define FP_STARTUP_FLOW_DOWN WHOLE_NOTE(_E6), HALF_NOTE(_REST), HALF_NOTE(_C6), WHOLE_NOTE(_G5), HALF_NOTE(_A5), WHOLE_NOTE(_D5), WHOLE_NOTE(_E5), WHOLE_NOTE(_C5),
 
 float fp_mouse_sound_1[][2] = SONG(FP_MOUSE_SOUND_1);
 float fp_mouse_sound_2[][2] = SONG(FP_MOUSE_SOUND_2);
@@ -66,6 +67,7 @@ float fp_save_sound[][2] = SONG(FP_SAVE_SOUND);
 float fp_startup_light[][2] = SONG(FP_STARTUP_LIGHT);
 float fp_startup_light_ext[][2] = SONG(FP_STARTUP_LIGHT_EXT);
 float fp_startup_dark[][2] = SONG(FP_STARTUP_DARK);
+float fp_startup_flow_down[][2] = SONG(FP_STARTUP_FLOW_DOWN);
 
 layer_state_t fp_layer_state_set_audio(layer_state_t state) {
     switch (get_highest_layer(state)) {
