@@ -39,6 +39,11 @@ HAPTIC_DRIVER = DRV2605L
 AUDIO_ENABLE ?= no
 AUDIO_DRIVER = pwm_hardware
 
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
+   RGB_MATRIX_CUSTOM_KB = yes
+   OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB
+endif
+
 # Choose only one (or none) of the 8 options below
 FP_TRACKBALL_BOTH ?= no
 FP_CIRQUE_BOTH ?= no

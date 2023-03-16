@@ -45,7 +45,7 @@ led_config_t g_led_config = { {
     { 193,  33 }, { 206,  42 }, { 209,  30 }, { 211,  17 }, {   221,  12 }, { 221,  28 }, { 221,  41 }
 }, {       
     //LEFT               
-    1, 9,  1,
+    1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
     4, 12, 4,
@@ -53,7 +53,7 @@ led_config_t g_led_config = { {
     4, 12, 4,
     1, 1,  1,
     //RIGHT
-    1, 9,  1,
+    1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
     4, 12, 4,
