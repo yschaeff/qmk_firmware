@@ -1,3 +1,6 @@
+// check to see if we are using the stenographobe, and skip if so... it has its own whole combo scheme
+// see keyboards/fingerpunch/stenographobe/keymaps/*/keymap.c
+#ifndef KEYBOARD_fingerpunch_stenographobe
 #include "combos.h"
 #include "sadekbaroudi.h"
 
@@ -176,3 +179,4 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
   }
 }
 // END COMBOS
+#endif

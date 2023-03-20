@@ -1,6 +1,11 @@
 #pragma once
 
+// check to see if we are using the stenographobe, and skip if so... it has its own whole combo scheme
+// see keyboards/fingerpunch/stenographobe/keymaps/*/config.h
+#ifndef KEYBOARD_fingerpunch_stenographobe
 #define COMBO_COUNT 15
+#endif
+
 #define COMBO_TERM 75
 
 #ifdef MOUSEKEY_ENABLE
