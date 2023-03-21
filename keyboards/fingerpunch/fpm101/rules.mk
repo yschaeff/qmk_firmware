@@ -1,6 +1,8 @@
 # MCU name
 MCU = atmega32u4
 
+PIN_COMPATIBLE=elite_c
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
