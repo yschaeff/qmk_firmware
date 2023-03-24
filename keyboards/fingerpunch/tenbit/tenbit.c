@@ -16,6 +16,7 @@
 
 #include "tenbit.h"
 
+#ifdef RGB_MATRIX_ENABLE
 // 6 column config
 led_config_t g_led_config = { {
     {0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11},
@@ -36,3 +37,4 @@ led_config_t g_led_config = { {
     1,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  1, // row 3 (backwards)
     1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1  // row 4
 } };
+#endif
