@@ -256,14 +256,22 @@ rename_file_from_build_string() {
 
     if test -f "${hex_source_file}"; then
         echo "${0}: Renaming file '${hex_source_file}' to '${hex_target_file}'"
-        mv "${hex_source_file}" "${hex_target_file}"
+		if [ "${hex_source_file}" = "${hex_target_file}" ]; then
+			echo "${0}: Skipping rename, since the file is already named appropriately"
+		else
+        	mv "${hex_source_file}" "${hex_target_file}"
+		fi
     else
         echo "${0}: Could not find hex source file ${hex_source_file} to rename."
     fi
 
     if test -f "${uf2_source_file}"; then
         echo "${0}: Renaming file '${uf2_source_file}' to '${uf2_target_file}'"
-        mv "${uf2_source_file}" "${uf2_target_file}"
+		if [ "${uf2_source_file}" = "${uf2_target_file}" ]; then
+			echo "${0}: Skipping rename, since the file is already named appropriately"
+		else
+        	mv "${uf2_source_file}" "${uf2_target_file}"
+		fi
     else
         echo "${0}: Could not find uf2 source file ${uf2_source_file} to rename."
     fi

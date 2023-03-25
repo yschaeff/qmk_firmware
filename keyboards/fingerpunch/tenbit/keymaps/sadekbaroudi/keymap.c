@@ -16,7 +16,6 @@
 
 #include "sadekbaroudi.h"
 #include QMK_KEYBOARD_H
-#include "muse.h"
 
 // clang-format off
 #define LAYOUT_ortho_5x12_base( \
