@@ -134,6 +134,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #ifdef AUDIO_ENABLE
+    // reduce the rgb brightness to avoid overloading
+    #ifdef RGBLIGHT_LIMIT_VAL
+      #undef RGBLIGHT_LIMIT_VAL
+      #define RGBLIGHT_LIMIT_VAL 100
+    #endif
+    #ifdef RGB_MATRIX_STARTUP_VAL
+      #undef RGB_MATRIX_STARTUP_VAL
+      #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+      #define RGB_MATRIX_STARTUP_VAL 100
+      #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100
+    #endif
     #define AUDIO_VOICES
     #define AUDIO_PIN F1
     #define AUDIO_PWM_DRIVER PWMD2
