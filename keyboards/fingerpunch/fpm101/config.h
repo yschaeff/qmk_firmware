@@ -17,9 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-#pragma once
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -106,13 +103,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_RESYNC_ENABLE
 
 // SPI config for shift register (and trackball if enabled)
-#define SPI_DRIVER SPID1
 #define SPI_SCK_PIN B1
-#define SPI_SCK_PAL_MODE 5
 #define SPI_MOSI_PIN B2
-#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PIN B3
+
+#if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS)
+#define SPI_DRIVER SPID0
+#endif // CONVERT_TO_(any_rp2040)
+
+#ifdef CONVERT_TO_STEMCELL
+#define SPI_DRIVER SPID1
+#define SPI_SCK_PAL_MODE 5
+#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PAL_MODE 5
+#endif // CONVERT_TO_STEMCELL
 
 // If we have audio enabled, that means we're not using the left encoder, as they share a pin on the controller
 // Note that you need to solder the jumper on the pcb to use the audio buzzer on the pcb if you are not using the left encoder
@@ -125,13 +129,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define ENCODERS_PAD_B {D2, F0, D5}
     #define ENCODER_RESOLUTIONS { 2, 2, 1 }
 #endif
-
-// #define MOUSEKEY_WHEEL_DELAY 0
-// #define MOUSEKEY_WHEEL_INTERVAL 10
-// #define MK_W_OFFSET_UNMOD 4
-// #define MK_W_INTERVAL_UNMOD 10
-// #define MOUSEKEY_WHEEL_INITIAL_MOVEMENTS 32
-
 
 #ifdef AUDIO_ENABLE
     // reduce the rgb brightness to avoid overloading
@@ -147,9 +144,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #endif
     #define AUDIO_VOICES
     #define AUDIO_PIN F1
+    #ifdef CONVERT_TO_STEMCELL
     #define AUDIO_PWM_DRIVER PWMD2
     #define AUDIO_PWM_CHANNEL 1
     #define AUDIO_STATE_TIMER GPTD4
+    #endif // CONVERT_TO_STEMCELL
+    #if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS)
+    #define AUDIO_PWM_DRIVER PWMD7
+    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+    #define AUDIO_STATE_TIMER GPTD1
+    #endif // CONVERT_TO_(any_rp2040)
     #define AUDIO_VOICES
     // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
     // #define NO_MUSIC_MODE
