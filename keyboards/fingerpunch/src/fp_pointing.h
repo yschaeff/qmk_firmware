@@ -21,21 +21,29 @@
 layer_state_t fp_layer_state_set_pointing(layer_state_t state);
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 void fp_pointing_device_set_cpi_combined_defaults(void);
+void fp_point_dpi_update(uint8_t action);
 void fp_scroll_layer_set(bool scroll_value);
 void fp_scroll_keycode_set(bool scroll_value);
 bool fp_scroll_get(void);
 void fp_scroll_keycode_toggle(void);
 void fp_scroll_apply_dpi(void);
+void fp_scroll_dpi_update(uint8_t action);
 void fp_snipe_layer_set(bool snipe_value);
 void fp_snipe_keycode_set(bool snipe_value);
 bool fp_snipe_get(void);
 void fp_snipe_keycode_toggle(void);
 void fp_snipe_apply_dpi(void);
+void fp_snipe_dpi_update(uint8_t action);
 void fp_zoom_layer_set(bool zoom_value);
 void fp_zoom_keycode_set(bool zoom_value);
 void fp_zoom_keycode_toggle(void);
 bool fp_zoom_get(void);
 uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
+
+// indexes for DPI adjustments, used by dpi update functions
+#define FP_DPI_UP 1
+#define FP_DPI_DOWN 2
+#define FP_DPI_RESET 3
 
 #ifdef POINTING_DEVICE_ENABLE
 // Add MOUSE_EXTENDED_REPORT by default
@@ -47,28 +55,32 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #        define FP_POINTING_DEFAULT_DPI 1000
 #    endif
 
+#    ifndef FP_POINTING_MAX_DPI
+#        define FP_POINTING_MAX_DPI 3000
+#    endif
+
 #    ifndef FP_POINTING_SNIPING_DPI
-#        define FP_POINTING_SNIPING_DPI 50
+#        define FP_POINTING_SNIPING_DPI 100
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_LAYER
 #        define FP_POINTING_SNIPING_LAYER 2
 #    endif
 
+#    ifndef FP_POINTING_SNIPING_MAX_DPI
+#        define FP_POINTING_SNIPING_MAX_DPI 3000
+#    endif
+
 #    ifndef FP_POINTING_SCROLLING_DPI
-#        define FP_POINTING_SCROLLING_DPI 10
+#        define FP_POINTING_SCROLLING_DPI 100
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_LAYER
 #        define FP_POINTING_SCROLLING_LAYER 3
 #    endif
 
-#    ifndef FP_POINTING_COMBINED_SCROLLING_LEFT
-#        define FP_POINTING_COMBINED_SCROLLING_LEFT true
-#    endif
-
-#    ifndef FP_POINTING_COMBINED_SCROLLING_RIGHT
-#        define FP_POINTING_COMBINED_SCROLLING_RIGHT false
+#    ifndef FP_POINTING_SCROLLING_MAX_DPI
+#        define FP_POINTING_SCROLLING_MAX_DPI 3000
 #    endif
 
 #    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
@@ -77,6 +89,30 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 
 #    ifndef FP_POINTING_ZOOMING_LAYER
 #        define FP_POINTING_ZOOMING_LAYER 1
+#    endif
+
+#endif
+
+#ifdef POINTING_DEVICE_COMBINED
+// In the future, if I want to support separate slave side dpi values
+// #    ifndef FP_POINTING_DEFAULT_SLAVE_DPI
+// #        define FP_POINTING_DEFAULT_SLAVE_DPI 1000
+// #    endif
+
+// #    ifndef FP_POINTING_SNIPING_SLAVE_DPI
+// #        define FP_POINTING_SNIPING_SLAVE_DPI 100
+// #    endif
+
+// #    ifndef FP_POINTING_SCROLLING_SLAVE_DPI
+// #        define FP_POINTING_SCROLLING_SLAVE_DPI 10
+// #    endif
+
+#    ifndef FP_POINTING_COMBINED_SCROLLING_LEFT
+#        define FP_POINTING_COMBINED_SCROLLING_LEFT true
+#    endif
+
+#    ifndef FP_POINTING_COMBINED_SCROLLING_RIGHT
+#        define FP_POINTING_COMBINED_SCROLLING_RIGHT false
 #    endif
 
 #endif

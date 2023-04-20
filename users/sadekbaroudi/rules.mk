@@ -2,7 +2,7 @@ SRC += sadekbaroudi.c \
        process_records.c
 
 COMMAND_ENABLE   = no  # Commands for debug and configuration
-CONSOLE_ENABLE   = no  # Console for debug
+CONSOLE_ENABLE   = yes  # Console for debug
 UNICODE_ENABLE   = no  # Unicode
 SWAP_HANDS_ENABLE= no  # Allow swapping hands of keyboard
 BACKLIGHT_ENABLE = no

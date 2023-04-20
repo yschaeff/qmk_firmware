@@ -26,14 +26,23 @@ For general firmware build walkthrough and instructions, please see:
 | Key                            | Description                                                                                                                                                                                   |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `FP_ACCEL_TOG`                 | Pointing Device: Toggle pointing device acceleration (default is enabled on keyboard startup)                                                                                                 |
+| `FP_POINT_DPI_UP`              | Pointing Device: Increase the pointing DPI (increments of 100, maximum 3000)                                                                                                                  |
+| `FP_POINT_DPI_DN`              | Pointing Device: Decrease the pointing DPI (increments of 100, maximum 3000)                                                                                                                  |
+| `FP_POINT_DPI_RESET`           | Pointing Device: Reset the pointing DPI back to the default (defined as value of `FP_POINTING_DEFAULT_DPI`)                                                                                   |
 | `FP_SCROLL_TOG`                | Pointing Device: Toggle scrolling mode                                                                                                                                                        |
 | `FP_SCROLL_ON`                 | Pointing Device: Turn on scrolling mode                                                                                                                                                       |
 | `FP_SCROLL_OFF`                | Pointing Device: Turn off scrolling mode                                                                                                                                                      |
 | `FP_SCROLL_MOMENT`             | Pointing Device: Activate scrolling mode while holding this key                                                                                                                               |
+| `FP_SCROLL_DPI_UP`             | Pointing Device: Increase the scrolling DPI (increments of 100, maximum 3000)                                                                                                                 |
+| `FP_SCROLL_DPI_DN`             | Pointing Device: Decrease the scrolling DPI (increments of 100, maximum 3000)                                                                                                                 |
+| `FP_SCROLL_DPI_RESET`          | Pointing Device: Reset the scrolling DPI back to the default (defined as value of `FP_POINTING_SCROLLING_DPI`)                                                                                |
 | `FP_SNIPE_TOG`                 | Pointing Device: Toggle sniping mode                                                                                                                                                          |
 | `FP_SNIPE_ON`                  | Pointing Device: Turn on sniping mode                                                                                                                                                         |
 | `FP_SNIPE_OFF`                 | Pointing Device: Turn off sniping mode                                                                                                                                                        |
 | `FP_SNIPE_MOMENT`              | Pointing Device: Activate sniping mode while holding this key                                                                                                                                 |
+| `FP_SNIPE_DPI_UP`              | Pointing Device: Increase the sniping DPI (increments of 100, maximum 3000)                                                                                                                   |
+| `FP_SNIPE_DPI_DN`              | Pointing Device: Decrease the sniping DPI (increments of 100, maximum 3000)                                                                                                                   |
+| `FP_SNIPE_DPI_RESET`           | Pointing Device: Reset the sniping DPI back to the default (defined as value of `FP_POINTING_SNIPING_DPI`)                                                                                    |
 | `FP_ZOOM_TOG`                  | Pointing Device: Toggle zooming mode                                                                                                                                                          |
 | `FP_ZOOM_ON`                   | Pointing Device: Turn on zooming mode                                                                                                                                                         |
 | `FP_ZOOM_OFF`                  | Pointing Device: Turn off zooming mode                                                                                                                                                        |
@@ -85,10 +94,10 @@ enum userspace_custom_keycodes {
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE`  | (Optional) Disable extended mouse report, enabled by default when pointing devices is enabled, saves a tiny bit of memory   | `undefined`                      |
 | `FP_POINTING_DEFAULT_DPI`                    | (Required) Sets the default DPI for your pointing device                                                                    | `1000`                           |
-| `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `50`                             |
+| `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `100`                            |
 | `FP_POINTING_SCROLLING_LAYER_ENABLE`         | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`                                               | `undefined`                      |
 | `FP_POINTING_SCROLLING_LAYER`                | (Required) Defines the layer used to enable scrolling                                                                       | `3`                              |
-| `FP_POINTING_SNIPING_DPI`                    | (Required) Sets the default DPI for scrolling                                                                               | `50`                             |
+| `FP_POINTING_SNIPING_DPI`                    | (Required) Sets the default DPI for scrolling                                                                               | `100`                            |
 | `FP_POINTING_SNIPING_LAYER_ENABLE`           | (Required) Enables scrolling mode for the layer `FP_POINTING_SNIPING_LAYER`                                                 | `undefined`                      |
 | `FP_POINTING_SNIPING_LAYER`                  | (Required) Defines the layer used to enable sniping                                                                         | `2`                              |
 | `FP_POINTING_ZOOMING_LAYER_ENABLE`           | (Required) Enables zooming mode for the layer `FP_POINTING_ZOOMING_LAYER`                                                   | `undefined`                      |
@@ -100,6 +109,8 @@ enum userspace_custom_keycodes {
 ### Combined Pointing Devices
 
 This only applies if you are using a split fingerpunch keyboard with two pointing devices. The default is for the left one to be scrolling, and the right one to act as the mouse, but this is configurable via `FP_POINTING_COMBINED_SCROLLING_LEFT` and `FP_POINTING_COMBINED_SCROLLING_RIGHT`
+
+Also note that all layer and keycode toggles for combined pointing devices only applies to the primary side (the side that's plugged into the computer). For instance, if you have `FP_POINTING_SCROLLING_LAYER` set to layer 1, activating that layer will only affect the pointing device on the primary side of the keyboard.
 
 | Setting                                 | Description                                                         | Default                    |
 | --------------------------------------- | ------------------------------------------------------------------- | -------------------------- |

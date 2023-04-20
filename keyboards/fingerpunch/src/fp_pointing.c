@@ -17,6 +17,7 @@
 #include "keyboards/fingerpunch/src/fp_pointing.h"
 #include "keyboards/fingerpunch/src/fp_keyhandler.h"
 #include "math.h"
+// is_keyboard_master()
 
 #ifdef POINTING_DEVICE_ENABLE
 
@@ -30,6 +31,36 @@ static bool sniping_layer_enabled = false;
 static bool zooming_enabled = false;
 static bool zooming_layer_enabled = false;
 static bool zooming_hold = false;
+
+void fp_point_dpi_update(uint8_t action) {
+    xprintf("Pointing DPI update, action %u, before value: %u\n", action, fp_config.pointing_dpi);
+    switch (action) {
+        case FP_DPI_UP:
+            if (fp_config.pointing_dpi >= FP_POINTING_MAX_DPI) {
+                fp_config.pointing_dpi = FP_POINTING_MAX_DPI;
+            } else {
+                fp_config.pointing_dpi += 100;
+            }
+            break;
+        case FP_DPI_DOWN:
+            if (fp_config.pointing_dpi <= 100) {
+                fp_config.pointing_dpi = 100;
+            } else {
+                fp_config.pointing_dpi -= 100;
+            }
+            break;
+        case FP_DPI_RESET:
+            fp_config.pointing_dpi = FP_POINTING_DEFAULT_DPI;
+            break;
+        default:
+            break;
+    }
+
+    eeconfig_update_kb(fp_config.raw);
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
+    xprintf("Pointing DPI update, action %u, after value: %u\n", action, fp_config.pointing_dpi);
+}
 
 void fp_scroll_layer_set(bool scroll_value) {
     scrolling_layer_enabled = scroll_value;
@@ -54,15 +85,45 @@ void fp_scroll_apply_dpi(void) {
     // We don't want to apply the dpi change if sniping mode is enabled, since that will win!
     if(!fp_snipe_get()) {
         if(fp_scroll_get()) {
-            pointing_device_set_cpi(FP_POINTING_SCROLLING_DPI);
+            pointing_device_set_cpi(fp_config.scrolling_dpi);
         } else {
 #ifdef POINTING_DEVICE_COMBINED
             fp_pointing_device_set_cpi_combined_defaults();
 #else
-            pointing_device_set_cpi(FP_POINTING_DEFAULT_DPI);
+            pointing_device_set_cpi(fp_config.pointing_dpi);
 #endif
         }
     }
+}
+
+void fp_scroll_dpi_update(uint8_t action) {
+    xprintf("Scrolling DPI update, action %u, before value: %u\n", action, fp_config.scrolling_dpi);
+    switch (action) {
+        case FP_DPI_UP:
+            if (fp_config.scrolling_dpi >= FP_POINTING_SCROLLING_MAX_DPI) {
+                fp_config.scrolling_dpi = FP_POINTING_SCROLLING_MAX_DPI;
+            } else {
+                fp_config.scrolling_dpi += 100;
+            }
+            break;
+        case FP_DPI_DOWN:
+            if (fp_config.scrolling_dpi <= 100) {
+                fp_config.scrolling_dpi = 100;
+            } else {
+                fp_config.scrolling_dpi -= 100;
+            }
+            break;
+        case FP_DPI_RESET:
+            fp_config.scrolling_dpi = FP_POINTING_SCROLLING_DPI;
+            break;
+        default:
+            break;
+    }
+
+    eeconfig_update_kb(fp_config.raw);
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
+    xprintf("Scrolling DPI update, action %u, after value: %u\n", action, fp_config.scrolling_dpi);
 }
 
 void fp_snipe_layer_set(bool snipe_value) {
@@ -86,10 +147,40 @@ bool fp_snipe_get(void) {
 
 void fp_snipe_apply_dpi(void) {
     if(fp_snipe_get()) {
-        pointing_device_set_cpi(FP_POINTING_SNIPING_DPI);
+        pointing_device_set_cpi(fp_config.sniping_dpi);
     } else {
-        pointing_device_set_cpi(FP_POINTING_DEFAULT_DPI);
+        pointing_device_set_cpi(fp_config.pointing_dpi);
     }
+}
+
+void fp_snipe_dpi_update(uint8_t action) {
+    xprintf("Sniping DPI update, action %u, before value: %u\n", action, fp_config.sniping_dpi);
+    switch (action) {
+        case FP_DPI_UP:
+            if (fp_config.sniping_dpi >= FP_POINTING_SNIPING_MAX_DPI) {
+                fp_config.sniping_dpi = FP_POINTING_SNIPING_MAX_DPI;
+            } else {
+                fp_config.sniping_dpi += 100;
+            }
+            break;
+        case FP_DPI_DOWN:
+            if (fp_config.sniping_dpi <= 100) {
+                fp_config.sniping_dpi = 100;
+            } else {
+                fp_config.sniping_dpi -= 100;
+            }
+            break;
+        case FP_DPI_RESET:
+            fp_config.sniping_dpi = FP_POINTING_SNIPING_DPI;
+            break;
+        default:
+            break;
+    }
+
+    eeconfig_update_kb(fp_config.raw);
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
+    xprintf("Sniping DPI update, action %u, after value: %u\n", action, fp_config.sniping_dpi);
 }
 
 void fp_zoom_layer_set(bool zoom_value) {
@@ -241,8 +332,17 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
 }
 
 void fp_pointing_device_set_cpi_combined_defaults(void) {
-    pointing_device_set_cpi_on_side(true, FP_POINTING_SCROLLING_DPI); //Set cpi on left side to a low value for slower scrolling.
-    pointing_device_set_cpi_on_side(false, FP_POINTING_DEFAULT_DPI); //Set cpi on right side to a reasonable value for mousing.
+    if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
+        pointing_device_set_cpi_on_side(true, fp_config.scrolling_dpi); //Set cpi on left side to a low value for slower scrolling.
+    } else {
+        pointing_device_set_cpi_on_side(true, fp_config.pointing_dpi); //Set cpi on left side to a reasonable value for mousing.
+    }
+
+    if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
+        pointing_device_set_cpi_on_side(false, fp_config.scrolling_dpi); //Set cpi on right side to a low value for slower scrolling.
+    } else {
+        pointing_device_set_cpi_on_side(false, fp_config.pointing_dpi); //Set cpi on right side to a reasonable value for mousing.
+    }
 }
 #endif
 
@@ -342,6 +442,51 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record) {
         case FP_ZOOM_OFF:
             if (record->event.pressed) {
                 fp_zoom_keycode_set(false);
+            }
+            break;
+        case FP_POINT_DPI_UP:
+            if (record->event.pressed) {
+                fp_point_dpi_update(FP_DPI_UP);
+            }
+            break;
+        case FP_POINT_DPI_DN:
+            if (record->event.pressed) {
+                fp_point_dpi_update(FP_DPI_DOWN);
+            }
+            break;
+        case FP_POINT_DPI_RESET:
+            if (record->event.pressed) {
+                fp_point_dpi_update(FP_DPI_RESET);
+            }
+            break;
+        case FP_SCROLL_DPI_UP:
+            if (record->event.pressed) {
+                fp_scroll_dpi_update(FP_DPI_UP);
+            }
+            break;
+        case FP_SCROLL_DPI_DN:
+            if (record->event.pressed) {
+                fp_scroll_dpi_update(FP_DPI_DOWN);
+            }
+            break;
+        case FP_SCROLL_DPI_RESET:
+            if (record->event.pressed) {
+                fp_scroll_dpi_update(FP_DPI_RESET);
+            }
+            break;
+        case FP_SNIPE_DPI_UP:
+            if (record->event.pressed) {
+                fp_snipe_dpi_update(FP_DPI_UP);
+            }
+            break;
+        case FP_SNIPE_DPI_DN:
+            if (record->event.pressed) {
+                fp_snipe_dpi_update(FP_DPI_DOWN);
+            }
+            break;
+        case FP_SNIPE_DPI_RESET:
+            if (record->event.pressed) {
+                fp_snipe_dpi_update(FP_DPI_RESET);
             }
             break;
         default:

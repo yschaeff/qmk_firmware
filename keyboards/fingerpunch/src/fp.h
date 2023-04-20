@@ -57,6 +57,17 @@ typedef union {
         uint8_t rgb_sat;
         uint8_t rgb_val;
         uint8_t rgb_speed;
+        #ifdef POINTING_DEVICE_ENABLE
+        uint16_t pointing_dpi;
+        uint16_t sniping_dpi;
+        uint16_t scrolling_dpi;
+        #endif
+        // In the future, if I want to support separate slave side dpi values
+        // #ifdef POINTING_DEVICE_COMBINED
+        // uint8_t pointing_slave_dpi;
+        // uint8_t sniping_slave_dpi;
+        // uint8_t scrolling_slave_dpi;
+        // #endif
     };
 } fp_config_t;
 // clang-format on

@@ -19,6 +19,9 @@
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
 #include "keyboards/fingerpunch/src/fp_rgb_common.h"
 #endif
+#if defined(POINTING_DEVICE_ENABLE)
+#include "keyboards/fingerpunch/src/fp_pointing.h"
+#endif
 #if defined(PIMORONI_TRACKBALL_ENABLE)
 #include "color.h"
 #endif
@@ -141,8 +144,16 @@ void keyboard_post_init_kb(void) {
     pimoroni_trackball_set_rgbw(RGB_BLUE, 0x00);
     #endif
 
-    #if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_COMBINED)
+    #if defined(POINTING_DEVICE_ENABLE)
+    #if defined(POINTING_DEVICE_COMBINED)
+    // In theory, this should update the pointing dpi based on eeprom, but it doesn't seem to be working.
+    // It may be because of the fact that there are two eeproms on split keyboards, and the values are being stored independently on
+    // each half, but I'm not sure.
     fp_pointing_device_set_cpi_combined_defaults();
+    #else
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
+    #endif
     #endif
 
     #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
@@ -192,6 +203,17 @@ void eeconfig_init_kb(void) {
     fp_config.rgb_sat          = 255;
     fp_config.rgb_val          = 255;
     fp_config.rgb_speed        = 1;
+    #ifdef POINTING_DEVICE_ENABLE
+    fp_config.pointing_dpi = FP_POINTING_DEFAULT_DPI;
+    fp_config.sniping_dpi = FP_POINTING_SNIPING_DPI;
+    fp_config.scrolling_dpi = FP_POINTING_SCROLLING_DPI;
+    #endif
+    // In the future, if I want to support separate slave side dpi values
+    // #ifdef POINTING_DEVICE_COMBINED
+    // fp_config.pointing_slave_dpi = FP_POINTING_DEFAULT_SLAVE_DPI;
+    // fp_config.sniping_slave_dpi = FP_POINTING_SNIPING_SLAVE_DPI;
+    // fp_config.scrolling_slave_dpi = FP_POINTING_SCROLLING_SLAVE_DPI;
+    // #endif
     eeconfig_update_kb(fp_config.raw);
     eeconfig_init_user();
 }
