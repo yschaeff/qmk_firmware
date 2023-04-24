@@ -20,7 +20,8 @@
 
 layer_state_t fp_layer_state_set_pointing(layer_state_t state);
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
-void fp_pointing_device_set_cpi_combined_defaults(void);
+void fp_set_cpi(uint8_t);
+void fp_set_cpi_combined_defaults(void);
 void fp_point_dpi_update(uint8_t action);
 void fp_scroll_layer_set(bool scroll_value);
 void fp_scroll_keycode_set(bool scroll_value);
@@ -44,6 +45,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #define FP_DPI_UP 1
 #define FP_DPI_DOWN 2
 #define FP_DPI_RESET 3
+#define FP_POINTING_DPI_MULTIPLIER 100
 
 #ifdef POINTING_DEVICE_ENABLE
 // Add MOUSE_EXTENDED_REPORT by default
@@ -52,15 +54,15 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_DEFAULT_DPI
-#        define FP_POINTING_DEFAULT_DPI 1000
+#        define FP_POINTING_DEFAULT_DPI 10
 #    endif
 
 #    ifndef FP_POINTING_MAX_DPI
-#        define FP_POINTING_MAX_DPI 3000
+#        define FP_POINTING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_DPI
-#        define FP_POINTING_SNIPING_DPI 100
+#        define FP_POINTING_SNIPING_DPI 1
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_LAYER
@@ -68,11 +70,11 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_MAX_DPI
-#        define FP_POINTING_SNIPING_MAX_DPI 3000
+#        define FP_POINTING_SNIPING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_DPI
-#        define FP_POINTING_SCROLLING_DPI 100
+#        define FP_POINTING_SCROLLING_DPI 1
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_LAYER
@@ -80,7 +82,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_MAX_DPI
-#        define FP_POINTING_SCROLLING_MAX_DPI 3000
+#        define FP_POINTING_SCROLLING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
@@ -94,19 +96,6 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #endif
 
 #ifdef POINTING_DEVICE_COMBINED
-// In the future, if I want to support separate slave side dpi values
-// #    ifndef FP_POINTING_DEFAULT_SLAVE_DPI
-// #        define FP_POINTING_DEFAULT_SLAVE_DPI 1000
-// #    endif
-
-// #    ifndef FP_POINTING_SNIPING_SLAVE_DPI
-// #        define FP_POINTING_SNIPING_SLAVE_DPI 100
-// #    endif
-
-// #    ifndef FP_POINTING_SCROLLING_SLAVE_DPI
-// #        define FP_POINTING_SCROLLING_SLAVE_DPI 10
-// #    endif
-
 #    ifndef FP_POINTING_COMBINED_SCROLLING_LEFT
 #        define FP_POINTING_COMBINED_SCROLLING_LEFT true
 #    endif

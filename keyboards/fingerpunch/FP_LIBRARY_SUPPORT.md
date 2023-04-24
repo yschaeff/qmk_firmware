@@ -29,6 +29,11 @@ SRC +=  keyboards/fingerpunch/src/fp.c \
 
 ```
 
+### Custom config.h
+
+Add this to the keyboard's config.h to allow for custom fingerpunch config.h inclusions
+`#include "keyboards/fingerpunch/src/config.h"`
+
 ### Audio startup sound
 
 Take a look at `keyboards/fingerpunch/src/fp_audio.c`, and you'll note some startup sounds. Copy those into the `#ifdef AUDIO_ENABLE` section of your config.h and add them in.

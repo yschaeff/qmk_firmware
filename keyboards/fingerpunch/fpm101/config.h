@@ -17,6 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "keyboards/fingerpunch/src/config.h"
+
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -193,9 +195,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef FP_TRACKBALL_ENABLE
   // Trackball config
-  #define FP_POINTING_DEFAULT_DPI 800
   #define PMW33XX_CS_PIN B5
-  #define PMW33XX_CPI FP_POINTING_DEFAULT_DPI
   #define PMW33XX_CS_DIVISOR 8 // needs to be the same as the SHIFTREG_DIVISOR above
   #define POINTING_DEVICE_INVERT_Y
 #endif

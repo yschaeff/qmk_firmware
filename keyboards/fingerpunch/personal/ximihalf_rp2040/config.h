@@ -17,6 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "keyboards/fingerpunch/src/config.h"
+
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 
 /* key matrix size */
@@ -156,7 +158,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef FP_TRACKBALL_ENABLE
     // Trackball config
     #define PMW33XX_CS_PIN GP9
-    #define PMW33XX_CPI 800
     #define PMW33XX_CS_DIVISOR 8
 
     /* SPI config for pmw3360 sensor. */

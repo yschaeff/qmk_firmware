@@ -25,6 +25,9 @@ void fp_caps_lock_toggle(void);
 void handle_caps_lock_change(void);
 void press_super_tab(bool shift);
 void press_super_ctrl_tab(bool shift);
+#ifdef CONSOLE_ENABLE
+void fp_log_eeprom(void);
+#endif
 
 #include "keyboards/fingerpunch/src/fp_color.h"
 #include "keyboards/fingerpunch/src/fp_keyhandler.h"
@@ -50,24 +53,16 @@ void press_super_ctrl_tab(bool shift);
 
 // clang-format off
 typedef union {
-    uint32_t raw;
+    uint64_t raw;
     struct {
-        uint8_t rgb_mode;
-        uint8_t rgb_hue;
-        uint8_t rgb_sat;
-        uint8_t rgb_val;
-        uint8_t rgb_speed;
-        #ifdef POINTING_DEVICE_ENABLE
-        uint16_t pointing_dpi;
-        uint16_t sniping_dpi;
-        uint16_t scrolling_dpi;
-        #endif
-        // In the future, if I want to support separate slave side dpi values
-        // #ifdef POINTING_DEVICE_COMBINED
-        // uint8_t pointing_slave_dpi;
-        // uint8_t sniping_slave_dpi;
-        // uint8_t scrolling_slave_dpi;
-        // #endif
+        uint8_t rgb_mode :8;
+        uint8_t rgb_hue :8;
+        uint8_t rgb_sat :8;
+        uint8_t rgb_val :8;
+        uint8_t rgb_speed :8;
+        uint8_t pointing_dpi :8;
+        uint8_t sniping_dpi :8;
+        uint8_t scrolling_dpi :8;
     };
 } fp_config_t;
 // clang-format on

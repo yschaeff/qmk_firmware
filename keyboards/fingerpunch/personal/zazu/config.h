@@ -1,5 +1,7 @@
 #pragma once
 
+#include "keyboards/fingerpunch/src/config.h"
+
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
 

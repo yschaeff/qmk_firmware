@@ -130,11 +130,11 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     matrix_has_changed = memcmp(current_matrix, oldMatrix, matrixArraySize) != 0;
     memcpy(oldMatrix, current_matrix, matrixArraySize);
 
+#ifdef FP_SR595_MATRIX_DEBUG
     if (matrix_has_changed) {
         matrix_print();
     }
-    // matrix_print();
-    // xprintf("matrix_has_changed: %d\n", matrix_has_changed);
+#endif
 
     // Deactivate all the columns for the next run.
     clearColumns();

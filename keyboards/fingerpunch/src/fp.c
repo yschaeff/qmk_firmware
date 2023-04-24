@@ -15,6 +15,9 @@
  */
 
 #include "keyboards/fingerpunch/src/fp.h"
+#include "eeconfig.h"
+
+fp_config_t fp_config;
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
 #include "keyboards/fingerpunch/src/fp_rgb_common.h"
@@ -25,8 +28,6 @@
 #if defined(PIMORONI_TRACKBALL_ENABLE)
 #include "color.h"
 #endif
-
-fp_config_t fp_config;
 
 #ifndef FP_SUPER_TAB_TIMEOUT
 #   define FP_SUPER_TAB_TIMEOUT 500
@@ -135,11 +136,15 @@ void matrix_scan_kb(void) {
 }
 
 void keyboard_pre_init_kb(void) {
-    fp_config.raw = eeconfig_read_user();
+    eeconfig_read_kb_datablock(&fp_config.raw);
     keyboard_pre_init_user();
 }
 
 void keyboard_post_init_kb(void) {
+    #ifdef CONSOLE_ENABLE
+    fp_log_eeprom();
+    #endif
+
     #if defined(PIMORONI_TRACKBALL_ENABLE) && !defined(RGBLIGHT_ENABLE)
     pimoroni_trackball_set_rgbw(RGB_BLUE, 0x00);
     #endif
@@ -149,7 +154,7 @@ void keyboard_post_init_kb(void) {
     // In theory, this should update the pointing dpi based on eeprom, but it doesn't seem to be working.
     // It may be because of the fact that there are two eeproms on split keyboards, and the values are being stored independently on
     // each half, but I'm not sure.
-    fp_pointing_device_set_cpi_combined_defaults();
+    fp_set_cpi_combined_defaults();
     #else
     // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
     fp_scroll_apply_dpi();
@@ -208,12 +213,25 @@ void eeconfig_init_kb(void) {
     fp_config.sniping_dpi = FP_POINTING_SNIPING_DPI;
     fp_config.scrolling_dpi = FP_POINTING_SCROLLING_DPI;
     #endif
-    // In the future, if I want to support separate slave side dpi values
-    // #ifdef POINTING_DEVICE_COMBINED
-    // fp_config.pointing_slave_dpi = FP_POINTING_DEFAULT_SLAVE_DPI;
-    // fp_config.sniping_slave_dpi = FP_POINTING_SNIPING_SLAVE_DPI;
-    // fp_config.scrolling_slave_dpi = FP_POINTING_SCROLLING_SLAVE_DPI;
-    // #endif
-    eeconfig_update_kb(fp_config.raw);
+    eeconfig_update_kb_datablock(&fp_config.raw);
     eeconfig_init_user();
 }
+
+#ifdef CONSOLE_ENABLE
+void fp_log_eeprom() {
+    xprintf("fp_log_eeprom\n");
+    xprintf("fp_config.raw = '%llu'\n", fp_config.raw);
+    #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+    xprintf("fp_config.rgb_mode = '%u'\n", fp_config.rgb_mode);
+    xprintf("fp_config.rgb_hue = '%u'\n", fp_config.rgb_hue);
+    xprintf("fp_config.rgb_sat = '%u'\n", fp_config.rgb_sat);
+    xprintf("fp_config.rgb_val = '%u'\n", fp_config.rgb_val);
+    xprintf("fp_config.rgb_speed = '%u'\n", fp_config.rgb_speed);
+    #endif
+    #ifdef POINTING_DEVICE_ENABLE
+    xprintf("fp_config.pointing_dpi = '%u'\n", fp_config.pointing_dpi);
+    xprintf("fp_config.sniping_dpi = '%u'\n", fp_config.sniping_dpi);
+    xprintf("fp_config.scrolling_dpi = '%u'\n", fp_config.scrolling_dpi);
+    #endif
+}
+#endif

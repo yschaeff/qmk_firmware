@@ -23,32 +23,34 @@ For general firmware build walkthrough and instructions, please see:
 
 ### Keycodes
 
-| Key                            | Description                                                                                                                                                                                   |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FP_ACCEL_TOG`                 | Pointing Device: Toggle pointing device acceleration (default is enabled on keyboard startup)                                                                                                 |
-| `FP_POINT_DPI_UP`              | Pointing Device: Increase the pointing DPI (increments of 100, maximum 3000)                                                                                                                  |
-| `FP_POINT_DPI_DN`              | Pointing Device: Decrease the pointing DPI (increments of 100, maximum 3000)                                                                                                                  |
-| `FP_POINT_DPI_RESET`           | Pointing Device: Reset the pointing DPI back to the default (defined as value of `FP_POINTING_DEFAULT_DPI`)                                                                                   |
-| `FP_SCROLL_TOG`                | Pointing Device: Toggle scrolling mode                                                                                                                                                        |
-| `FP_SCROLL_ON`                 | Pointing Device: Turn on scrolling mode                                                                                                                                                       |
-| `FP_SCROLL_OFF`                | Pointing Device: Turn off scrolling mode                                                                                                                                                      |
-| `FP_SCROLL_MOMENT`             | Pointing Device: Activate scrolling mode while holding this key                                                                                                                               |
-| `FP_SCROLL_DPI_UP`             | Pointing Device: Increase the scrolling DPI (increments of 100, maximum 3000)                                                                                                                 |
-| `FP_SCROLL_DPI_DN`             | Pointing Device: Decrease the scrolling DPI (increments of 100, maximum 3000)                                                                                                                 |
-| `FP_SCROLL_DPI_RESET`          | Pointing Device: Reset the scrolling DPI back to the default (defined as value of `FP_POINTING_SCROLLING_DPI`)                                                                                |
-| `FP_SNIPE_TOG`                 | Pointing Device: Toggle sniping mode                                                                                                                                                          |
-| `FP_SNIPE_ON`                  | Pointing Device: Turn on sniping mode                                                                                                                                                         |
-| `FP_SNIPE_OFF`                 | Pointing Device: Turn off sniping mode                                                                                                                                                        |
-| `FP_SNIPE_MOMENT`              | Pointing Device: Activate sniping mode while holding this key                                                                                                                                 |
-| `FP_SNIPE_DPI_UP`              | Pointing Device: Increase the sniping DPI (increments of 100, maximum 3000)                                                                                                                   |
-| `FP_SNIPE_DPI_DN`              | Pointing Device: Decrease the sniping DPI (increments of 100, maximum 3000)                                                                                                                   |
-| `FP_SNIPE_DPI_RESET`           | Pointing Device: Reset the sniping DPI back to the default (defined as value of `FP_POINTING_SNIPING_DPI`)                                                                                    |
-| `FP_ZOOM_TOG`                  | Pointing Device: Toggle zooming mode                                                                                                                                                          |
-| `FP_ZOOM_ON`                   | Pointing Device: Turn on zooming mode                                                                                                                                                         |
-| `FP_ZOOM_OFF`                  | Pointing Device: Turn off zooming mode                                                                                                                                                        |
-| `FP_ZOOM_MOMENT`               | Pointing Device: Activate zooming mode while holding this key                                                                                                                                 |
-| `FP_SUPER_TAB`                 | Super alt tab, tap to alt tab instead of holding alt, supports holding shift to alt tab backwards (to use on Mac, see `FP_MAC_PREFERRED` and see `FP_SUPER_TAB_TIMEOUT` to change timeout)    |
-| `FP_SUPER_CTRL_TAB`            | Super ctrl tab, tap to ctrl tab instead of holding ctrl, supports holding shift to ctrl tab backwards (see `FP_SUPER_TAB_TIMEOUT` to change timeout)                                          |
+**Note: Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300**
+
+| Key                            | Category           | Description                                                                                                                                                                                   |
+| ------------------------------ | -------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FP_ACCEL_TOG`                 | Pointing Device    | Toggle pointing device acceleration (default is enabled on keyboard startup)                                                                                                                  |
+| `FP_POINT_DPI_UP`              | Pointing Device    | Increase the pointing DPI (increments of 1, maximum 30)                                                                                                                                       |
+| `FP_POINT_DPI_DN`              | Pointing Device    | Decrease the pointing DPI (increments of 1, maximum 30)                                                                                                                                       |
+| `FP_POINT_DPI_RESET`           | Pointing Device    | Reset the pointing DPI back to the default (defined as value of `FP_POINTING_DEFAULT_DPI`)                                                                                                    |
+| `FP_SCROLL_TOG`                | Pointing Device    | Toggle scrolling mode                                                                                                                                                                         |
+| `FP_SCROLL_ON`                 | Pointing Device    | Turn on scrolling mode                                                                                                                                                                        |
+| `FP_SCROLL_OFF`                | Pointing Device    | Turn off scrolling mode                                                                                                                                                                       |
+| `FP_SCROLL_MOMENT`             | Pointing Device    | Activate scrolling mode while holding this key                                                                                                                                                |
+| `FP_SCROLL_DPI_UP`             | Pointing Device    | Increase the scrolling DPI (increments of 1, maximum 30)                                                                                                                                      |
+| `FP_SCROLL_DPI_DN`             | Pointing Device    | Decrease the scrolling DPI (increments of 1, maximum 30)                                                                                                                                      |
+| `FP_SCROLL_DPI_RESET`          | Pointing Device    | Reset the scrolling DPI back to the default (defined as value of `FP_POINTING_SCROLLING_DPI`)                                                                                                 |
+| `FP_SNIPE_TOG`                 | Pointing Device    | Toggle sniping mode                                                                                                                                                                           |
+| `FP_SNIPE_ON`                  | Pointing Device    | Turn on sniping mode                                                                                                                                                                          |
+| `FP_SNIPE_OFF`                 | Pointing Device    | Turn off sniping mode                                                                                                                                                                         |
+| `FP_SNIPE_MOMENT`              | Pointing Device    | Activate sniping mode while holding this key                                                                                                                                                  |
+| `FP_SNIPE_DPI_UP`              | Pointing Device    | Increase the sniping DPI (increments of 1, maximum 30)                                                                                                                                        |
+| `FP_SNIPE_DPI_DN`              | Pointing Device    | Decrease the sniping DPI (increments of 1, maximum 30)                                                                                                                                        |
+| `FP_SNIPE_DPI_RESET`           | Pointing Device    | Reset the sniping DPI back to the default (defined as value of `FP_POINTING_SNIPING_DPI`)                                                                                                     |
+| `FP_ZOOM_TOG`                  | Pointing Device    | Toggle zooming mode                                                                                                                                                                           |
+| `FP_ZOOM_ON`                   | Pointing Device    | Turn on zooming mode                                                                                                                                                                          |
+| `FP_ZOOM_OFF`                  | Pointing Device    | Turn off zooming mode                                                                                                                                                                         |
+| `FP_ZOOM_MOMENT`               | Pointing Device    | Activate zooming mode while holding this key                                                                                                                                                  |
+| `FP_SUPER_TAB`                 | Other              | Super alt tab, tap to alt tab instead of holding alt, supports holding shift to alt tab backwards (to use on Mac, see `FP_MAC_PREFERRED` and see `FP_SUPER_TAB_TIMEOUT` to change timeout)    |
+| `FP_SUPER_CTRL_TAB`            | Other              | Super ctrl tab, tap to ctrl tab instead of holding ctrl, supports holding shift to ctrl tab backwards (see `FP_SUPER_TAB_TIMEOUT` to change timeout)                                          |
 
 Note: if you are using a userspace, and you have custom keycodes, you will need to add some logic in your userspace keycodes .h file that will handle the `SAFE_RANGE` appropriately.
 
@@ -61,13 +63,16 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_bigbarobord) \
     || defined(KEYBOARD_fingerpunch_euclid36) \
     || defined(KEYBOARD_fingerpunch_euclid36_proto) \
-    || defined(KEYBOARD_fingerpunch_ffkb) \
+    || defined(KEYBOARD_fingerpunch_ffkb_atmega_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp_v3) \
     || defined(KEYBOARD_fingerpunch_fflx) \
+    || defined(KEYBOARD_fingerpunch_fpm101) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
-    || defined(KEYBOARD_fingerpunch_pinkiesout) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v1) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v2) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \
     || defined(KEYBOARD_fingerpunch_rockon_v2) \
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
@@ -90,14 +95,16 @@ enum userspace_custom_keycodes {
 
 ### General Settings
 
+**Note: Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300**
+
 | Setting                                      | Description                                                                                                                 | Default                          |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE`  | (Optional) Disable extended mouse report, enabled by default when pointing devices is enabled, saves a tiny bit of memory   | `undefined`                      |
-| `FP_POINTING_DEFAULT_DPI`                    | (Required) Sets the default DPI for your pointing device                                                                    | `1000`                           |
-| `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `100`                            |
+| `FP_POINTING_DEFAULT_DPI`                    | (Required) Sets the default DPI for your pointing device                                                                    | `10`                             |
+| `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `1`                              |
 | `FP_POINTING_SCROLLING_LAYER_ENABLE`         | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`                                               | `undefined`                      |
 | `FP_POINTING_SCROLLING_LAYER`                | (Required) Defines the layer used to enable scrolling                                                                       | `3`                              |
-| `FP_POINTING_SNIPING_DPI`                    | (Required) Sets the default DPI for scrolling                                                                               | `100`                            |
+| `FP_POINTING_SNIPING_DPI`                    | (Required) Sets the default DPI for scrolling                                                                               | `1`                              |
 | `FP_POINTING_SNIPING_LAYER_ENABLE`           | (Required) Enables scrolling mode for the layer `FP_POINTING_SNIPING_LAYER`                                                 | `undefined`                      |
 | `FP_POINTING_SNIPING_LAYER`                  | (Required) Defines the layer used to enable sniping                                                                         | `2`                              |
 | `FP_POINTING_ZOOMING_LAYER_ENABLE`           | (Required) Enables zooming mode for the layer `FP_POINTING_ZOOMING_LAYER`                                                   | `undefined`                      |

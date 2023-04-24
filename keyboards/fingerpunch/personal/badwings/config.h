@@ -1,5 +1,7 @@
 #pragma once
 
+#include "keyboards/fingerpunch/src/config.h"
+
 #define MATRIX_COLS 8
 #define MATRIX_ROWS  5
 

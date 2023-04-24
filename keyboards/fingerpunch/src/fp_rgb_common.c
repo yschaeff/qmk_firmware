@@ -149,7 +149,7 @@ uint32_t fp_rgb_set_config_from_current_values(uint32_t triger_time, void *cb_ar
     fp_config.rgb_sat = rgblight_get_sat();
     fp_config.rgb_val = rgblight_get_val();
     fp_config.rgb_speed = rgblight_get_speed();
-    eeconfig_update_user(fp_config.raw);
+    eeconfig_update_kb_datablock(&fp_config.raw);
     xprintf("RGB: mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", fp_config.rgb_mode, fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_speed);
 
     return 0;
