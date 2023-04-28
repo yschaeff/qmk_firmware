@@ -53,6 +53,10 @@ FP_CIRQUE_LEFT_ONLY ?= no
 FP_CIRQUE_RIGHT_ONLY ?= no
 FP_TRACKBALL_LEFT_CIRQUE_RIGHT ?= no
 FP_CIRQUE_LEFT_TRACKBALL_RIGHT ?= no
+# When qmk supports multiple types of pointing devices, can remove this line below
+# Also, can remove the question from fp_build.json
+FP_SPLIT_LEFT ?= no
+FP_SPLIT_RIGHT ?= no
 
 ifeq ($(strip $(FP_TRACKBALL_BOTH)), yes)
    PMW3360_ENABLE = yes
@@ -70,12 +74,28 @@ ifeq ($(strip $(FP_TRACKBALL_RIGHT_ONLY)), yes)
 endif
 
 ifeq ($(strip $(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)), yes)
-   PMW3360_ENABLE = yes
+   # When qmk supports multiple types of pointing devices, change to something like the commented code below
+   # PMW3360_ENABLE = yes
+   # CIRQUE_ENABLE = yes
+   ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
+      PMW3360_ENABLE = yes
+   endif
+   ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
+      CIRQUE_ENABLE = yes
+   endif
    OPT_DEFS += -DFP_TRACKBALL_LEFT_CIRQUE_RIGHT
 endif
 
 ifeq ($(strip $(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)), yes)
-   PMW3360_ENABLE = yes
+   # When qmk supports multiple types of pointing devices, change to something like the commented code below
+   # PMW3360_ENABLE = yes
+   # CIRQUE_ENABLE = yes
+   ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
+      CIRQUE_ENABLE = yes
+   endif
+   ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
+      PMW3360_ENABLE = yes
+   endif
    OPT_DEFS += -DFP_CIRQUE_LEFT_TRACKBALL_RIGHT
 endif
 
@@ -94,16 +114,14 @@ ifeq ($(strip $(FP_CIRQUE_RIGHT_ONLY)), yes)
    OPT_DEFS += -DFP_CIRQUE_RIGHT_ONLY
 endif
 
-ifeq ($(strip $(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)), yes)
-   CIRQUE_ENABLE = yes
-   OPT_DEFS += -DFP_TRACKBALL_LEFT_CIRQUE_RIGHT
+# When qmk supports multiple types of pointing devices, can remove the FP_SPLIT_* blocks below
+ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
+   OPT_DEFS += -DFP_SPLIT_LEFT
 endif
 
-ifeq ($(strip $(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)), yes)
-   CIRQUE_ENABLE = yes
-   OPT_DEFS += -DFP_CIRQUE_LEFT_TRACKBALL_RIGHT
+ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
+   OPT_DEFS += -DFP_SPLIT_RIGHT
 endif
-
 
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    POINTING_DEVICE_ENABLE := yes
