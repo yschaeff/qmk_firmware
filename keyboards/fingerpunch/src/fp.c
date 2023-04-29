@@ -186,6 +186,9 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 #ifdef RGB_MATRIX_ENABLE
     state = fp_layer_state_set_rgb_matrix(state);
 #endif  // RGB_MATRIX_ENABLE
+#ifdef ENCODER_ENABLE
+    state = fp_layer_state_set_encoder(state);
+#endif  // ENCODER_ENABLE
 #ifdef HAPTIC_ENABLE
     state = fp_layer_state_set_haptic(state);
 #endif  // HAPTIC_ENABLE

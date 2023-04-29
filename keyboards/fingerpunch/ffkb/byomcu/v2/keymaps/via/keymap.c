@@ -1,10 +1,5 @@
 #include QMK_KEYBOARD_H
 
-#ifdef ENCODER_ENABLE
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-#endif
-
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
@@ -158,65 +153,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
-#ifdef ENCODER_ENABLE
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    // default behavior if undefined
-    if (index == 0) {
-        // Conditional to reverse the direction of encoder number 1
-        // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
-        #ifdef ENCODERS_A_REVERSE
-        if (!clockwise) {
-        #else
-        if (clockwise) {
-        #endif
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
-        }
-    }
-    else if (index == 1) {
-      // Conditional to reverse the direction of encoder number 1
-      // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
-      #ifdef ENCODERS_B_REVERSE
-      if (!clockwise) {
-      #else
-      if (clockwise) {
-      #endif
-        tap_code16(C(KC_RGHT));
-      }
-      else{
-        tap_code16(C(KC_LEFT));
-      }
-    }
-    else if (index == 2) {
-      #ifdef ENCODERS_C_REVERSE
-      if (!clockwise) {
-      #else
-      if (clockwise) {
-      #endif
-            register_code(KC_LSFT);
-      }
-
-      if (!is_alt_tab_active) {
-        is_alt_tab_active = true;
-        register_code(KC_LALT);
-      }
-      alt_tab_timer = timer_read();
-      tap_code(KC_TAB);
-
-      #ifdef ENCODERS_C_REVERSE
-      if (!clockwise) {
-      #else
-      if (clockwise) {
-      #endif
-            unregister_code(KC_LSFT);
-      }
-    }
-
-    return true;
-}
-#endif
 
 #ifdef OLED_ENABLE
 

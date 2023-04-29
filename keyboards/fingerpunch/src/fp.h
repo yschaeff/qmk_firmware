@@ -41,6 +41,9 @@ void fp_log_eeprom(void);
 #ifdef RGB_MATRIX_ENABLE
 #    include "keyboards/fingerpunch/src/fp_rgb_matrix.h"
 #endif
+#ifdef ENCODER_ENABLE
+#    include "keyboards/fingerpunch/src/fp_encoder.h"
+#endif
 #ifdef HAPTIC_ENABLE
 #    include "keyboards/fingerpunch/src/fp_haptic.h"
 #endif

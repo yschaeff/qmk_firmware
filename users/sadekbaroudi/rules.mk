@@ -43,10 +43,6 @@ ifeq ($(strip $(RGB_MATRIX_BAND_VAL_LAYERS)), yes)
     OPT_DEFS += -DRGB_MATRIX_BAND_VAL_LAYERS
 endif
 
-ifeq ($(strip $(ENCODER_ENABLE)), yes)
-    SRC += encoder_stuff.c
-endif
-
 ifeq ($(strip $(CASEMODES_ENABLE)), yes)
     SRC += casemodes.c
 endif

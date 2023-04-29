@@ -32,6 +32,9 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGB_MATRIX_ENABLE
           && fp_process_record_rgb_matrix(keycode, record)
 #endif
+#ifdef ENCODER_ENABLE
+          && fp_process_record_encoder(keycode, record)
+#endif
 #ifdef FP_UNICODE_ENABLE
           && fp_process_record_unicode(keycode, record)
 #endif

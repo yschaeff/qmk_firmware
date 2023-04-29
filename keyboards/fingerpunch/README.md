@@ -91,6 +91,48 @@ enum userspace_custom_keycodes {
     NEW_SAFE_RANGE,
 }
 ```
+
+## Encoders
+
+The fingerpunch firmware has some pre-defined encoder behaviors, which you can specify on a per encoder and per layer basis. See the table below. If you wanted the first encoder (encoder 0) to behave as DPI pointing on layer 2, you'd set `#define FP_ENC_0_LAYER_DPI_POINTING 2` in your config.h
+
+**Please note that there cannot be duplicate values per encoder config.** Below is an example of a configuration that will work. Note that you aren't limited to 0-6. If you have 8 or 9 layers, you can specify any layer, as long as none have the same layer value.
+
+```c
+#define FP_ENC_0_LAYER_VOLUME         6
+#define FP_ENC_0_LAYER_PGUP_PGDN      4
+#define FP_ENC_0_LAYER_ZOOM           3
+#define FP_ENC_0_LAYER_DPI_POINTING   0
+#define FP_ENC_0_LAYER_SUPER_TAB      1
+#define FP_ENC_0_LAYER_SUPER_CTRL_TAB 2
+#define FP_ENC_0_LAYER_SCROLL_WHEEL   5
+
+#define FP_ENC_1_LAYER_SUPER_TAB      4
+#define FP_ENC_1_LAYER_PGUP_PGDN      6
+#define FP_ENC_1_LAYER_ZOOM           3
+#define FP_ENC_1_LAYER_DPI_POINTING   1
+#define FP_ENC_1_LAYER_SUPER_CTRL_TAB 5
+#define FP_ENC_1_LAYER_SCROLL_WHEEL   2
+#define FP_ENC_1_LAYER_VOLUME         0
+```
+
+| Setting                                      | Description                                                                                                                 | Default               |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `FP_ENC_0_LAYER_VOLUME`                      | Clockwise volume up, counter clockwise volume down                                                                          | `0`                   |
+| `FP_ENC_0_LAYER_PGUP_PGDN`                   | Clockwise page up, counter clockwise page down                                                                              | `1`                   |
+| `FP_ENC_0_LAYER_ZOOM`                        | Clockwise zoom in, counter clockwise zoom out                                                                               | `2`                   |
+| `FP_ENC_0_LAYER_DPI_POINTING`                | Clockwise DPI pointing value up, counter clockwise DPI pointing value down                                                  | `3`                   |
+| `FP_ENC_0_LAYER_SUPER_TAB`                   | Clockwise cmd/alt tab, counter clockwise shift cmd/alt tab (see `FP_MAC_PREFERRED` to determine if it uses cmd or alt)      | `4`                   |
+| `FP_ENC_0_LAYER_SUPER_CTRL_TAB`              | Clockwise ctrl tab, counter clockwise volume down                                                                           | `5`                   |
+| `FP_ENC_0_LAYER_SCROLL_WHEEL`                | Clockwise scroll wheel down, counter clockwise scroll wheel down                                                            | `6`                   |
+| `FP_ENC_1_LAYER_SUPER_TAB`                   | Same as `FP_ENC_0_LAYER_SUPER_TAB`, but for encoder 1                                                                       | `0`                   |
+| `FP_ENC_1_LAYER_PGUP_PGDN`                   | Same as `FP_ENC_0_LAYER_PGUP_PGDN`, but for encoder 1                                                                       | `1`                   |
+| `FP_ENC_1_LAYER_ZOOM`                        | Same as `FP_ENC_0_LAYER_ZOOM`, but for encoder 1                                                                            | `2`                   |
+| `FP_ENC_1_LAYER_DPI_POINTING`                | Same as `FP_ENC_0_LAYER_DPI_POINTING`, but for encoder 1                                                                    | `3`                   |
+| `FP_ENC_1_LAYER_SUPER_CTRL_TAB`              | Same as `FP_ENC_0_LAYER_SUPER_CTRL_TAB`, but for encoder 1                                                                  | `4`                   |
+| `FP_ENC_1_LAYER_SCROLL_WHEEL`                | Same as `FP_ENC_0_LAYER_SCROLL_WHEEL`, but for encoder 1                                                                    | `5`                   |
+| `FP_ENC_1_LAYER_VOLUME`                      | Same as `FP_ENC_0_LAYER_VOLUME`, but for encoder 1                                                                          | `6`                   |
+
 ## Pointing Device
 
 ### General Settings
