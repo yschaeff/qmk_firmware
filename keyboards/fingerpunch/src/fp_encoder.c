@@ -111,6 +111,72 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
                     #endif
                 }
                 break;
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+            case FP_ENC_0_LAYER_RGB_MODE:
+                // rgb mode step
+                if (clockwise){
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_step_reverse();
+                    #else
+                    fp_rgblight_step();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_step();
+                    #else
+                    fp_rgblight_step_reverse();
+                    #endif
+                }
+                break;
+            case FP_ENC_0_LAYER_RGB_HUE:
+                // rgb hue change
+                if (clockwise){
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_decrease_hue();
+                    #else
+                    fp_rgblight_increase_hue();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_increase_hue();
+                    #else
+                    fp_rgblight_decrease_hue();
+                    #endif
+                }
+                break;
+            case FP_ENC_0_LAYER_RGB_SAT:
+                // rgb saturation change
+                if (clockwise){
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_decrease_sat();
+                    #else
+                    fp_rgblight_increase_sat();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_increase_sat();
+                    #else
+                    fp_rgblight_decrease_sat();
+                    #endif
+                }
+                break;
+            case FP_ENC_0_LAYER_RGB_VAL:
+                // rgb value (brightness) change
+                if (clockwise){
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_decrease_val();
+                    #else
+                    fp_rgblight_increase_val();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_A_REVERSE
+                    fp_rgblight_increase_val();
+                    #else
+                    fp_rgblight_decrease_val();
+                    #endif
+                }
+                break;
+#endif // RGBLIGHT_ENABLE || RGB_MATRIX_ENABLE
             case FP_ENC_0_LAYER_VOLUME:
             default:
                 // volume up and down
@@ -229,6 +295,72 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
                     #endif
                 }
                 break;
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+            case FP_ENC_1_LAYER_RGB_MODE:
+                // rgb mode step
+                if (clockwise){
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_step_reverse();
+                    #else
+                    fp_rgblight_step();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_step();
+                    #else
+                    fp_rgblight_step_reverse();
+                    #endif
+                }
+                break;
+            case FP_ENC_1_LAYER_RGB_HUE:
+                // rgb hue change
+                if (clockwise){
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_decrease_hue();
+                    #else
+                    fp_rgblight_increase_hue();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_increase_hue();
+                    #else
+                    fp_rgblight_decrease_hue();
+                    #endif
+                }
+                break;
+            case FP_ENC_1_LAYER_RGB_SAT:
+                // rgb saturation change
+                if (clockwise){
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_decrease_sat();
+                    #else
+                    fp_rgblight_increase_sat();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_increase_sat();
+                    #else
+                    fp_rgblight_decrease_sat();
+                    #endif
+                }
+                break;
+            case FP_ENC_1_LAYER_RGB_VAL:
+                // rgb value (brightness) change
+                if (clockwise){
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_decrease_val();
+                    #else
+                    fp_rgblight_increase_val();
+                    #endif
+                } else{
+                    #ifdef ENCODERS_B_REVERSE
+                    fp_rgblight_increase_val();
+                    #else
+                    fp_rgblight_decrease_val();
+                    #endif
+                }
+                break;
+#endif // RGBLIGHT_ENABLE || RGB_MATRIX_ENABLE
             case FP_ENC_1_LAYER_SUPER_CTRL_TAB:
             default:
                 // super ctrl tab

@@ -96,6 +96,18 @@ enum userspace_custom_keycodes {
 
 The fingerpunch firmware has some pre-defined encoder behaviors, which you can specify on a per encoder and per layer basis. See the table below. If you wanted the first encoder (encoder 0) to behave as DPI pointing on layer 2, you'd set `#define FP_ENC_0_LAYER_DPI_POINTING 2` in your config.h
 
+If you don't want to use this functionality, you can override it by creating your own `encoder_update_user()` function and return false at the end. This will bypass the fingerpunch encoder logic.
+
+For example:
+```c
+bool encoder_update_kb(uint8_t index, bool clockwise) {
+    // Your encoder logic goes here
+    
+    // return false to avoid processing the encoder_update_kb() function that fingerpunch uses
+    return false;
+}
+```
+
 **Please note that there cannot be duplicate values per encoder config.** Below is an example of a configuration that will work. Note that you aren't limited to 0-6. If you have 8 or 9 layers, you can specify any layer, as long as none have the same layer value.
 
 ```c
@@ -106,6 +118,10 @@ The fingerpunch firmware has some pre-defined encoder behaviors, which you can s
 #define FP_ENC_0_LAYER_SUPER_TAB      1
 #define FP_ENC_0_LAYER_SUPER_CTRL_TAB 2
 #define FP_ENC_0_LAYER_SCROLL_WHEEL   5
+#define FP_ENC_0_LAYER_RGB_MODE       7
+#define FP_ENC_0_LAYER_RGB_HUE        8
+#define FP_ENC_0_LAYER_RGB_SAT        9
+#define FP_ENC_0_LAYER_RGB_VAL        10
 
 #define FP_ENC_1_LAYER_SUPER_TAB      4
 #define FP_ENC_1_LAYER_PGUP_PGDN      6
@@ -114,6 +130,10 @@ The fingerpunch firmware has some pre-defined encoder behaviors, which you can s
 #define FP_ENC_1_LAYER_SUPER_CTRL_TAB 5
 #define FP_ENC_1_LAYER_SCROLL_WHEEL   2
 #define FP_ENC_1_LAYER_VOLUME         0
+#define FP_ENC_1_LAYER_RGB_MODE       7
+#define FP_ENC_1_LAYER_RGB_HUE        8
+#define FP_ENC_1_LAYER_RGB_SAT        9
+#define FP_ENC_1_LAYER_RGB_VAL        10
 ```
 
 | Setting                                      | Description                                                                                                                 | Default               |
@@ -125,6 +145,10 @@ The fingerpunch firmware has some pre-defined encoder behaviors, which you can s
 | `FP_ENC_0_LAYER_SUPER_TAB`                   | Clockwise cmd/alt tab, counter clockwise shift cmd/alt tab (see `FP_MAC_PREFERRED` to determine if it uses cmd or alt)      | `4`                   |
 | `FP_ENC_0_LAYER_SUPER_CTRL_TAB`              | Clockwise ctrl tab, counter clockwise volume down                                                                           | `5`                   |
 | `FP_ENC_0_LAYER_SCROLL_WHEEL`                | Clockwise scroll wheel down, counter clockwise scroll wheel down                                                            | `6`                   |
+| `FP_ENC_0_LAYER_RGB_MODE`                    | Clockwise to step forward in RGB mode, counter clockwise to step backwards in RGB mode                                      | `7`                   |
+| `FP_ENC_0_LAYER_RGB_HUE`                     | Clockwise to increase RGB hue, counter clockwise to decrease RGB hue                                                        | `8`                   |
+| `FP_ENC_0_LAYER_RGB_SAT`                     | Clockwise to increase RGB saturation, counter clockwise to decrease RGB saturation                                          | `9`                   |
+| `FP_ENC_0_LAYER_RGB_VAL`                     | Clockwise to increase RGB value (typically brightness), counter clockwise to decrease RGB value                             | `10`                  |
 | `FP_ENC_1_LAYER_SUPER_TAB`                   | Same as `FP_ENC_0_LAYER_SUPER_TAB`, but for encoder 1                                                                       | `0`                   |
 | `FP_ENC_1_LAYER_PGUP_PGDN`                   | Same as `FP_ENC_0_LAYER_PGUP_PGDN`, but for encoder 1                                                                       | `1`                   |
 | `FP_ENC_1_LAYER_ZOOM`                        | Same as `FP_ENC_0_LAYER_ZOOM`, but for encoder 1                                                                            | `2`                   |
@@ -132,6 +156,10 @@ The fingerpunch firmware has some pre-defined encoder behaviors, which you can s
 | `FP_ENC_1_LAYER_SUPER_CTRL_TAB`              | Same as `FP_ENC_0_LAYER_SUPER_CTRL_TAB`, but for encoder 1                                                                  | `4`                   |
 | `FP_ENC_1_LAYER_SCROLL_WHEEL`                | Same as `FP_ENC_0_LAYER_SCROLL_WHEEL`, but for encoder 1                                                                    | `5`                   |
 | `FP_ENC_1_LAYER_VOLUME`                      | Same as `FP_ENC_0_LAYER_VOLUME`, but for encoder 1                                                                          | `6`                   |
+| `FP_ENC_1_LAYER_RGB_MODE`                    | Same as `FP_ENC_0_LAYER_RGB_MODE`, but for encoder 1                                                                        | `7`                   |
+| `FP_ENC_1_LAYER_RGB_HUE`                     | Same as `FP_ENC_0_LAYER_RGB_HUE`, but for encoder 1                                                                         | `8`                   |
+| `FP_ENC_1_LAYER_RGB_SAT`                     | Same as `FP_ENC_0_LAYER_RGB_SAT`, but for encoder 1                                                                         | `9`                   |
+| `FP_ENC_1_LAYER_RGB_VAL`                     | Same as `FP_ENC_0_LAYER_RGB_VAL`, but for encoder 1                                                                         | `10`                  |
 
 ## Pointing Device
 

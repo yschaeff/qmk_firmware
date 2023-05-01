@@ -44,6 +44,18 @@ bool fp_process_record_encoder(uint16_t keycode, keyrecord_t *record);
 #   ifndef FP_ENC_0_LAYER_SCROLL_WHEEL
 #       define FP_ENC_0_LAYER_SCROLL_WHEEL 6
 #   endif
+#   ifndef FP_ENC_0_LAYER_RGB_MODE
+#       define FP_ENC_0_LAYER_RGB_MODE 7
+#   endif
+#   ifndef FP_ENC_0_LAYER_RGB_HUE
+#       define FP_ENC_0_LAYER_RGB_HUE 8
+#   endif
+#   ifndef FP_ENC_0_LAYER_RGB_SAT
+#       define FP_ENC_0_LAYER_RGB_SAT 9
+#   endif
+#   ifndef FP_ENC_0_LAYER_RGB_VAL
+#       define FP_ENC_0_LAYER_RGB_VAL 10
+#   endif
 
 #   ifndef FP_ENC_1_LAYER_SUPER_TAB
 #       define FP_ENC_1_LAYER_SUPER_TAB 0
@@ -65,6 +77,18 @@ bool fp_process_record_encoder(uint16_t keycode, keyrecord_t *record);
 #   endif
 #   ifndef FP_ENC_1_LAYER_VOLUME
 #       define FP_ENC_1_LAYER_VOLUME 6
+#   endif
+#   ifndef FP_ENC_1_LAYER_RGB_MODE
+#       define FP_ENC_1_LAYER_RGB_MODE 7
+#   endif
+#   ifndef FP_ENC_1_LAYER_RGB_HUE
+#       define FP_ENC_1_LAYER_RGB_HUE 8
+#   endif
+#   ifndef FP_ENC_1_LAYER_RGB_SAT
+#       define FP_ENC_1_LAYER_RGB_SAT 9
+#   endif
+#   ifndef FP_ENC_1_LAYER_RGB_VAL
+#       define FP_ENC_1_LAYER_RGB_VAL 10
 #   endif
 
 #endif

@@ -6,7 +6,11 @@
 #define COMBO_COUNT 15
 #endif
 
+// -------------------- Combo config ------------------------
+
 #define COMBO_TERM 75
+
+// -------------------- Mouse keys config ------------------------
 
 #ifdef MOUSEKEY_ENABLE
 #  define MOUSEKEY_INTERVAL 16
@@ -16,13 +20,47 @@
 #  define MOUSEKEY_WHEEL_DELAY 0
 #endif
 
+// -------------------- Tap hold stuff config ------------------------
+
 #define TAP_CODE_DELAY 25
+
+#define QUICK_TAP_TERM 0
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// -------------------- Leader key config ------------------------
 
 #define LEADER_TIMEOUT 300
 #define LEADER_PER_KEY_TIMING
 
-#define QUICK_TAP_TERM 0
-#define IGNORE_MOD_TAP_INTERRUPT
+// -------------------- Encoder config ------------------------
+
+// For reference, layer numbers are defined in sadekbaroudi.h
+
+#define FP_ENC_0_LAYER_VOLUME         0 // default - base layer
+#define FP_ENC_0_LAYER_PGUP_PGDN      1
+#define FP_ENC_0_LAYER_ZOOM           2
+#define FP_ENC_0_LAYER_DPI_POINTING   3
+#define FP_ENC_0_LAYER_SUPER_TAB      4 // right - homing thumb layer
+#define FP_ENC_0_LAYER_SUPER_CTRL_TAB 6
+#define FP_ENC_0_LAYER_SCROLL_WHEEL   7
+#define FP_ENC_0_LAYER_RGB_MODE       5 // right - reachy thumb layer
+#define FP_ENC_0_LAYER_RGB_HUE        8
+#define FP_ENC_0_LAYER_RGB_SAT        9
+#define FP_ENC_0_LAYER_RGB_VAL        10
+
+#define FP_ENC_1_LAYER_SUPER_TAB      3 // left - homing thumb layer
+#define FP_ENC_1_LAYER_PGUP_PGDN      1
+#define FP_ENC_1_LAYER_ZOOM           2
+#define FP_ENC_1_LAYER_DPI_POINTING   5
+#define FP_ENC_1_LAYER_SUPER_CTRL_TAB 0 // default - base layer
+#define FP_ENC_1_LAYER_SCROLL_WHEEL   6
+#define FP_ENC_1_LAYER_VOLUME         7
+#define FP_ENC_1_LAYER_RGB_MODE       8
+#define FP_ENC_1_LAYER_RGB_HUE        4 // left - reachy thumb layer
+#define FP_ENC_1_LAYER_RGB_SAT        9
+#define FP_ENC_1_LAYER_RGB_VAL        10
+
+// -------------------- Pointing config ------------------------
 
 #ifdef AUTO_MOUSE_DEFAULT_LAYER
     #undef AUTO_MOUSE_DEFAULT_LAYER
@@ -42,6 +80,17 @@
 #define FP_POINTING_SCROLLING_LAYER_ENABLE
 #define FP_POINTING_ZOOMING_LAYER_ENABLE
 
+#ifdef FP_POINTING_SCROLLING_LAYER
+    #undef FP_POINTING_SCROLLING_LAYER
+#endif
+#define FP_POINTING_SCROLLING_LAYER 4
+#ifdef FP_POINTING_SCROLLING_LAYER
+    #undef FP_POINTING_ZOOMING_LAYER
+#endif
+#define FP_POINTING_ZOOMING_LAYER 3
+
+// -------------------- Lighting config ------------------------
+
 #define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
 #define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER
 #define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
@@ -53,15 +102,6 @@
 // #define FP_LAYER_LIGHTING_HUE_4 HSV_YELLOW
 // #define FP_LAYER_LIGHTING_HUE_5 HSV_CYAN
 // #define FP_LAYER_LIGHTING_HUE_6 HSV_WHITE
-
-#ifdef FP_POINTING_SCROLLING_LAYER
-    #undef FP_POINTING_SCROLLING_LAYER
-#endif
-#define FP_POINTING_SCROLLING_LAYER 4
-#ifdef FP_POINTING_SCROLLING_LAYER
-    #undef FP_POINTING_ZOOMING_LAYER
-#endif
-#define FP_POINTING_ZOOMING_LAYER 3
 
 #define RGBLIGHT_LAYERS_RETAIN_VAL
 

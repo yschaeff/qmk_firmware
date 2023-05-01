@@ -142,8 +142,7 @@ layer_state_t fp_layer_state_set_rgb(layer_state_t state) {
     return state;
 }
 
-// Deferred exec function
-uint32_t fp_rgb_set_config_from_current_values(uint32_t triger_time, void *cb_arg) {
+void fp_rgb_set_config_from_current_values(void) {
     fp_config.rgb_mode = rgblight_get_mode();
     fp_config.rgb_hue = rgblight_get_hue();
     fp_config.rgb_sat = rgblight_get_sat();
@@ -151,7 +150,11 @@ uint32_t fp_rgb_set_config_from_current_values(uint32_t triger_time, void *cb_ar
     fp_config.rgb_speed = rgblight_get_speed();
     eeconfig_update_kb_datablock(&fp_config.raw);
     xprintf("RGB: mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", fp_config.rgb_mode, fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_speed);
+}
 
+// Deferred exec function
+uint32_t fp_rgb_set_config_from_current_values_deferred(uint32_t triger_time, void *cb_arg) {
+    fp_rgb_set_config_from_current_values();
     return 0;
 }
 
@@ -166,7 +169,7 @@ bool fp_process_record_rgb_common(uint16_t keycode, keyrecord_t *record) {
                 //     the rgb light change happens on the key release (!record->event.pressed), that means that this code gets called
                 //     before the process_record key release
                 // Sooooo, need a defered exec event to handle this
-                defer_exec(20, fp_rgb_set_config_from_current_values, NULL);
+                defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
             }
             break;
 #   ifndef FP_DISABLE_CUSTOM_KEYCODES
@@ -197,4 +200,53 @@ uint8_t fp_rgb_get_element_from_hsv(uint8_t hue, uint8_t sat, uint8_t val, uint8
 
     return 0;
 }
+
+void fp_rgblight_step(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_step();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_step_reverse(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_step_reverse();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_increase_hue(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_increase_hue();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_decrease_hue(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_decrease_hue();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_increase_sat(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_increase_sat();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_decrease_sat(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_decrease_sat();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_increase_val(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_increase_val();
+    fp_rgb_set_config_from_current_values();
+}
+
+void fp_rgblight_decrease_val(void) {
+    fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
+    rgblight_decrease_val();
+    fp_rgb_set_config_from_current_values();
+}
+
 #endif

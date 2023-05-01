@@ -20,9 +20,18 @@
 
 layer_state_t fp_layer_state_set_rgb(layer_state_t state);
 void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode);
+void fp_rgblight_step(void);
+void fp_rgblight_step_reverse(void);
+void fp_rgblight_increase_hue(void);
+void fp_rgblight_decrease_hue(void);
+void fp_rgblight_increase_sat(void);
+void fp_rgblight_decrease_sat(void);
+void fp_rgblight_increase_val(void);
+void fp_rgblight_decrease_val(void);
 void fp_post_init_rgb_common(void);
 bool fp_process_record_rgb_common(uint16_t keycode, keyrecord_t *record);
-uint32_t fp_rgb_set_config_from_current_values(uint32_t triger_time, void *cb_arg);
+void fp_rgb_set_config_from_current_values(void);
+uint32_t fp_rgb_set_config_from_current_values_deferred(uint32_t triger_time, void *cb_arg);
 uint8_t fp_rgb_get_element_from_hsv(uint8_t hue, uint8_t sat, uint8_t val, uint8_t whichOne);
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)

@@ -19,6 +19,7 @@
 #ifdef RGB_MATRIX_ENABLE
 
 void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode) {
+    xprintf("fp_rgb_set_hsv_and_mode fp_rgb_matrix.c: hue: %d, sat: %d, val: %d, mode: %d\n", hue, sat, val, mode);
     rgb_matrix_sethsv_noeeprom(hue, sat, val);
     rgb_matrix_mode_noeeprom(mode);
 }
