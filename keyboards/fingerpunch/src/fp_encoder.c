@@ -1,6 +1,8 @@
 
 #ifdef ENCODER_ENABLE
 
+#include "keyboards/fingerpunch/src/fp_encoder.h"
+
 #ifdef POINTING_DEVICE_ENABLE
 #include "keyboards/fingerpunch/src/fp_pointing.h"
 #endif
