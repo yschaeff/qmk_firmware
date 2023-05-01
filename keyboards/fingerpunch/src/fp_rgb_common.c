@@ -204,49 +204,49 @@ uint8_t fp_rgb_get_element_from_hsv(uint8_t hue, uint8_t sat, uint8_t val, uint8
 void fp_rgblight_step(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_step();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_step_reverse(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_step_reverse();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_increase_hue(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_increase_hue();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_decrease_hue(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_decrease_hue();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_increase_sat(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_increase_sat();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_decrease_sat(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_decrease_sat();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_increase_val(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_increase_val();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 void fp_rgblight_decrease_val(void) {
     fp_rgb_set_hsv_and_mode(fp_config.rgb_hue, fp_config.rgb_sat, fp_config.rgb_val, fp_config.rgb_mode);
     rgblight_decrease_val();
-    fp_rgb_set_config_from_current_values();
+    defer_exec(20, fp_rgb_set_config_from_current_values_deferred, NULL);
 }
 
 #endif
