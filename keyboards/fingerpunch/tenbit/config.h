@@ -19,17 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "keyboards/fingerpunch/src/config.h"
 
-/* key matrix size */
-/* Rows are doubled up */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 12
-
-// wiring
-#define MATRIX_ROW_PINS \
-    { B1, B0, A7, A6, A5 }
-#define MATRIX_COL_PINS \
-    { B10, B2, A15, B3, B4, B5, B8, B9, C13, C14, A4, A3 }
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -39,8 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN A2 // 41
 
 #ifdef RGB_MATRIX_ENABLE
-  #define RGB_MATRIX_LED_COUNT 60
-  #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 130  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES

@@ -45,6 +45,14 @@ get_valid_keyboards() {
 			fi
 		done
 
+		# special case for tenbit
+		for i in {4..5}
+		do
+			if [[ -e "${line}/${i}x12/fp_build.json" ]]; then
+			    echo -n "${line}/${i}x12 "
+			fi
+		done
+
 		# if we have a second parameter, then we don't want to recurse again
 		if [ "$#" -lt 2 ]; then
 			# now check for byomcu version, repeating the logic above
