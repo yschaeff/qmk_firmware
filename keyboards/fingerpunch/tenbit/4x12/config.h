@@ -19,12 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key matrix size */
 /* Rows are doubled up */
-#define MATRIX_ROWS 5
+#define MATRIX_ROWS 4
 #define MATRIX_COLS 12
 
 // wiring
 #define MATRIX_ROW_PINS \
-    { B1, B0, A7, A6, A5 }
+    { B1, B0, A7, A6 }
 #define MATRIX_COL_PINS \
     { B10, B2, A15, B3, B4, B5, B8, B9, C13, C14, A4, A3 }
 
