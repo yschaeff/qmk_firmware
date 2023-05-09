@@ -78,7 +78,7 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
-    || defined(KEYBOARD_fingerpunch_ximi) \
+    || defined(KEYBOARD_fingerpunch_ximi)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
