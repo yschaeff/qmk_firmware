@@ -315,11 +315,11 @@ When using a fingerpunch board, the get_haptic_enabled_key is completely overrid
 See https://github.com/qmk/qmk_firmware/blob/master/docs/feature_haptic_feedback.md#haptic-key-exclusion for details
 
 If you'd like to override this, you'll need to create a function as follows:
-`__attribute__((weak)) bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record)`
+`bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record)`
 
 In this function, define the key combinations you want to enable, similar to the following example:
 ```c
-__attribute__((weak)) bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
+bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_ENTER:
             return true;
