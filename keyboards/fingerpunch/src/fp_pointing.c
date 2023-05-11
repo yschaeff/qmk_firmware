@@ -34,6 +34,7 @@ static bool zooming_hold = false;
 
 void fp_set_cpi(uint8_t value) {
     pointing_device_set_cpi((uint16_t)value * FP_POINTING_DPI_MULTIPLIER);
+    xprintf("fp_set_cpi: setting value to: %d\n", ((uint16_t)value * FP_POINTING_DPI_MULTIPLIER));
 }
 
 void fp_point_dpi_update(uint8_t action) {
@@ -95,8 +96,10 @@ void fp_scroll_apply_dpi(void) {
 #ifdef POINTING_DEVICE_COMBINED
             if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
                 pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a low value for slower scrolling.
+                xprintf("fp_scroll_apply_dpi: left scrolling: setting value to: %d\n", ((uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER));
             } else {
                 pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a low value for slower scrolling.
+                xprintf("fp_scroll_apply_dpi: right scrolling: setting value to: %d\n", ((uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER));
             }
 #else
             fp_set_cpi(fp_config.scrolling_dpi);
@@ -164,7 +167,11 @@ void fp_snipe_apply_dpi(void) {
     if(fp_snipe_get()) {
         fp_set_cpi(fp_config.sniping_dpi);
     } else {
+#ifdef POINTING_DEVICE_COMBINED
+        fp_set_cpi_combined_defaults();
+#else
         fp_set_cpi(fp_config.pointing_dpi);
+#endif
     }
 }
 
@@ -349,14 +356,18 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
 void fp_set_cpi_combined_defaults(void) {
     if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
         pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a low value for slower scrolling.
+        xprintf("fp_set_cpi_combined_defaults: left scrolling: setting value to: %d\n", ((uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER));
     } else {
         pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a reasonable value for mousing.
+        xprintf("fp_set_cpi_combined_defaults: left pointing: setting value to: %d\n", ((uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER));
     }
 
     if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
         pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a low value for slower scrolling.
+        xprintf("fp_set_cpi_combined_defaults: right scrolling: setting value to: %d\n", ((uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER));
     } else {
         pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a reasonable value for mousing.
+        xprintf("fp_set_cpi_combined_defaults: right pointing: setting value to: %d\n", ((uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER));
     }
 }
 #endif
