@@ -53,6 +53,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #        define MOUSE_EXTENDED_REPORT
 #    endif
 
+// Note to self: if you ever change this, change the corresponding value in fp.c in eeconfig_init_kb to set the default config value
 #    ifndef FP_POINTING_DEFAULT_DPI
 #        define FP_POINTING_DEFAULT_DPI 10
 #    endif
@@ -61,6 +62,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #        define FP_POINTING_MAX_DPI 60
 #    endif
 
+// Note to self: if you ever change this, change the corresponding value in fp.c in eeconfig_init_kb to set the default config value
 #    ifndef FP_POINTING_SNIPING_DPI
 #        define FP_POINTING_SNIPING_DPI 1
 #    endif
@@ -73,6 +75,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #        define FP_POINTING_SNIPING_MAX_DPI 10
 #    endif
 
+// Note to self: if you ever change this, change the corresponding value in fp.c in eeconfig_init_kb to set the default config value
 #    ifndef FP_POINTING_SCROLLING_DPI
 #        define FP_POINTING_SCROLLING_DPI 1
 #    endif

@@ -212,9 +212,9 @@ void eeconfig_init_kb(void) {
     fp_config.rgb_val          = 255;
     fp_config.rgb_speed        = 1;
     #ifdef POINTING_DEVICE_ENABLE
-    fp_config.pointing_dpi = FP_POINTING_DEFAULT_DPI;
-    fp_config.sniping_dpi = FP_POINTING_SNIPING_DPI;
-    fp_config.scrolling_dpi = FP_POINTING_SCROLLING_DPI;
+    fp_config.pointing_dpi = 10; // FP_POINTING_DEFAULT_DPI;
+    fp_config.sniping_dpi = 1; // FP_POINTING_SNIPING_DPI;
+    fp_config.scrolling_dpi = 1; // FP_POINTING_SCROLLING_DPI;
     #endif
     eeconfig_update_kb_datablock(&fp_config.raw);
     eeconfig_init_user();
