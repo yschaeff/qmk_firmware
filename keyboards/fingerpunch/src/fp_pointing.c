@@ -165,7 +165,12 @@ bool fp_snipe_get(void) {
 
 void fp_snipe_apply_dpi(void) {
     if(fp_snipe_get()) {
+#ifdef POINTING_DEVICE_COMBINED
+        pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.sniping_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a low value for sniping.
+        pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.sniping_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a low value for sniping.
+#else
         fp_set_cpi(fp_config.sniping_dpi);
+#endif
     } else {
 #ifdef POINTING_DEVICE_COMBINED
         fp_set_cpi_combined_defaults();
@@ -227,6 +232,14 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
 }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
+#ifdef CONSOLE_ENABLE
+    if (mouse_report.x != 0) {
+        xprintf("fingerpunch mouse report x: %d\n", mouse_report.x);
+    }
+    if (mouse_report.y != 0) {
+        xprintf("fingerpunch mouse report y: %d\n", mouse_report.y);
+    }
+#endif
     if (fp_scroll_get()) {
         mouse_report.h = mouse_report.x;
         mouse_report.v = -mouse_report.y;
@@ -336,18 +349,24 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
 
 #ifdef POINTING_DEVICE_COMBINED
 report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
-    if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-        left_report.h = left_report.x;
-        left_report.v = -left_report.y;
-        left_report.x = 0;
-        left_report.y = 0;
+    if (fp_scroll_get() || fp_snipe_get() || fp_zoom_get()) {
+        left_report = pointing_device_task_kb(left_report);
+        right_report = pointing_device_task_kb(right_report);
     }
+    else {
+        if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
+            left_report.h = left_report.x;
+            left_report.v = -left_report.y;
+            left_report.x = 0;
+            left_report.y = 0;
+        }
 
-    if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-        right_report.h = right_report.x;
-        right_report.v = -right_report.y;
-        right_report.x = 0;
-        right_report.y = 0;
+        if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
+            right_report.h = right_report.x;
+            right_report.v = -right_report.y;
+            right_report.x = 0;
+            right_report.y = 0;
+        }
     }
 
     return pointing_device_task_combined_user(left_report, right_report);
