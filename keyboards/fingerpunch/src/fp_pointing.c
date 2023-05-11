@@ -92,7 +92,15 @@ void fp_scroll_apply_dpi(void) {
     // We don't want to apply the dpi change if sniping mode is enabled, since that will win!
     if(!fp_snipe_get()) {
         if(fp_scroll_get()) {
+#ifdef POINTING_DEVICE_COMBINED
+            if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
+                pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a low value for slower scrolling.
+            } else {
+                pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a low value for slower scrolling.
+            }
+#else
             fp_set_cpi(fp_config.scrolling_dpi);
+#endif
         } else {
 #ifdef POINTING_DEVICE_COMBINED
             fp_set_cpi_combined_defaults();

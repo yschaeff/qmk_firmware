@@ -58,7 +58,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_MAX_DPI
-#        define FP_POINTING_MAX_DPI 30
+#        define FP_POINTING_MAX_DPI 60
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_DPI
@@ -70,7 +70,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_MAX_DPI
-#        define FP_POINTING_SNIPING_MAX_DPI 30
+#        define FP_POINTING_SNIPING_MAX_DPI 10
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_DPI
@@ -82,7 +82,7 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_MAX_DPI
-#        define FP_POINTING_SCROLLING_MAX_DPI 30
+#        define FP_POINTING_SCROLLING_MAX_DPI 10
 #    endif
 
 #    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
