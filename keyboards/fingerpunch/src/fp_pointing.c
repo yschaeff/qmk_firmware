@@ -185,7 +185,7 @@ void fp_apply_dpi(void) {
 #else
         fp_set_cpi_by_mode(FP_SNIPING_MODE);
 #endif
-    } else if (fp_scroll_layer_get() || fp_snipe_keycode_get()) {
+    } else if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
 #ifdef POINTING_DEVICE_COMBINED
         fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_SCROLLING_MODE);
 #else
