@@ -55,7 +55,7 @@ void fp_set_cpi(uint8_t value) {
 }
 
 void fp_set_cpi_by_mode(uint8_t mode_index) {
-    fp_set_cpi(fp_get_cpi_value_from_mode(mode_index) * FP_POINTING_DPI_MULTIPLIER);
+    fp_set_cpi(fp_get_cpi_value_from_mode(mode_index));
 }
 #endif
 
@@ -66,8 +66,8 @@ void fp_set_cpi_combined(uint8_t left_value, uint8_t right_value) {
 }
 
 void fp_set_cpi_combined_by_mode(uint8_t left_mode_index, uint8_t right_mode_index) {
-    pointing_device_set_cpi_on_side(true, (uint16_t)fp_get_cpi_value_from_mode(left_mode_index) * FP_POINTING_DPI_MULTIPLIER);
-    pointing_device_set_cpi_on_side(false, (uint16_t)fp_get_cpi_value_from_mode(right_mode_index) * FP_POINTING_DPI_MULTIPLIER);
+    pointing_device_set_cpi_on_side(true, (uint16_t)fp_get_cpi_value_from_mode(left_mode_index));
+    pointing_device_set_cpi_on_side(false, (uint16_t)fp_get_cpi_value_from_mode(right_mode_index));
 }
 #endif
 
