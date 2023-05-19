@@ -102,7 +102,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_AUDIO_MOUSE_BUTTONS
     #define FP_AUDIO_CUT_COPY_PASTE
     #define FP_AUDIO_SAVE
-    #define STARTUP_SONG SONG(STARTUP_SOUND)
+    #define FP_STARTUP_LIGHT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5),
+    #define STARTUP_SONG SONG(FP_STARTUP_LIGHT)
     #define DEFAULT_LAYER_SONGS \
         { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
 #endif
