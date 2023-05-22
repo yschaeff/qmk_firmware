@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | ____ | SPD_I| HUE_I| SAT_I| VAL_I|COLEMK|           |   F6 |  F7  |  F8  |  F9  |  F10 | ____ |
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
- * | ____ | SPD_D| HUE_D| SAT_D| VAL_D|      |           |  F11 |  F12 |      |      | Reset| ____ |
+ * | ____ | SPD_D| HUE_D| SAT_D| VAL_D|      |           |  F11 |  F12 |      | Reset| Btldr| ____ |
  * `-----------------------------------------'           `-----------------------------------------'
  *        ,------.         ,--------------------.    ,--------------------.          ,------.
  *        | MUTE |         | LOWER|      |      |    |      |      | RAISE|          | MUTE |
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] =  LAYOUT_ximi(
   _______,      RGB_TOG, RGB_RMOD, RGB_MOD, _______, TO(_QWERTY),       KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   _______,
   _______,      RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, TO(_COLEMAK),      KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
-  _______,      RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, _______,           KC_F11,  KC_F12,  _______, _______,  QK_RBT,  _______,
+  _______,      RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, _______,           KC_F11,  KC_F12,  _______, QK_RBT,   QK_BOOT, _______,
                 _______,           _______, _______, _______,           _______, _______, _______,          _______,
                                    _______, _______, _______,           _______, _______, _______
 )
