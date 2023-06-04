@@ -48,17 +48,36 @@
 #define FP_ENC_0_LAYER_RGB_SAT        9
 #define FP_ENC_0_LAYER_RGB_VAL        10
 
-#define FP_ENC_1_LAYER_SUPER_TAB      3 // left - homing thumb layer
-#define FP_ENC_1_LAYER_PGUP_PGDN      1
-#define FP_ENC_1_LAYER_ZOOM           2
-#define FP_ENC_1_LAYER_DPI_POINTING   5
-#define FP_ENC_1_LAYER_SUPER_CTRL_TAB 0 // default - base layer
-#define FP_ENC_1_LAYER_SCROLL_WHEEL   6
-#define FP_ENC_1_LAYER_VOLUME         7
-#define FP_ENC_1_LAYER_RGB_MODE       8
-#define FP_ENC_1_LAYER_RGB_HUE        4 // left - reachy thumb layer
-#define FP_ENC_1_LAYER_RGB_SAT        9
-#define FP_ENC_1_LAYER_RGB_VAL        10
+// override the default for the scroll wheel encoder on the vulpes minora
+#if defined(KEYBOARD_fingerpunch_vulpes_minora) && defined(FP_VIK_PERS60_MODULE)
+    // vulpes minora with scroll wheel
+    #undef FP_ENC_1_LAYER_SCROLL_WHEEL
+    #undef FP_ENC_1_LAYER_SUPER_TAB
+    #define FP_ENC_1_LAYER_RGB_MODE       3 // left - homing thumb layer
+    #define FP_ENC_1_LAYER_PGUP_PGDN      1
+    #define FP_ENC_1_LAYER_ZOOM           2
+    #define FP_ENC_1_LAYER_DPI_POINTING   5
+    #define FP_ENC_1_LAYER_SCROLL_WHEEL   0 // default - base layer
+    #define FP_ENC_1_LAYER_SUPER_CTRL_TAB 6
+    #define FP_ENC_1_LAYER_VOLUME         7
+    #define FP_ENC_1_LAYER_SUPER_TAB      8
+    #define FP_ENC_1_LAYER_RGB_HUE        4 // left - reachy thumb layer
+    #define FP_ENC_1_LAYER_RGB_SAT        9
+    #define FP_ENC_1_LAYER_RGB_VAL        10
+#else
+    // all other keyboards
+    #define FP_ENC_1_LAYER_SUPER_TAB      3 // left - homing thumb layer
+    #define FP_ENC_1_LAYER_PGUP_PGDN      1
+    #define FP_ENC_1_LAYER_ZOOM           2
+    #define FP_ENC_1_LAYER_DPI_POINTING   5
+    #define FP_ENC_1_LAYER_SUPER_CTRL_TAB 0 // default - base layer
+    #define FP_ENC_1_LAYER_SCROLL_WHEEL   6
+    #define FP_ENC_1_LAYER_VOLUME         7
+    #define FP_ENC_1_LAYER_RGB_MODE       8
+    #define FP_ENC_1_LAYER_RGB_HUE        4 // left - reachy thumb layer
+    #define FP_ENC_1_LAYER_RGB_SAT        9
+    #define FP_ENC_1_LAYER_RGB_VAL        10
+#endif
 
 // -------------------- Pointing config ------------------------
 

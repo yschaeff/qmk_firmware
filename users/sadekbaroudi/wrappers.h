@@ -161,6 +161,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_kong
 #endif
 
+// Since kong uses the name LAYOUT_kong instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_vulpes_minora))
+#    define LAYOUT LAYOUT_vulpes_minora
+#endif
+
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)
