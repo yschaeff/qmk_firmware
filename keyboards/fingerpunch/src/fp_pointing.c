@@ -364,21 +364,21 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
 
 layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
     switch (get_highest_layer(state)) {
-        case FP_POINTING_SCROLLING_LAYER:
 #ifdef FP_POINTING_SCROLLING_LAYER_ENABLE
+        case FP_POINTING_SCROLLING_LAYER:
             fp_scroll_layer_set(true);
-#endif
             break;
-        case FP_POINTING_SNIPING_LAYER:
+#endif
 #ifdef FP_POINTING_SNIPING_LAYER_ENABLE
+        case FP_POINTING_SNIPING_LAYER:
             fp_snipe_layer_set(true);
-#endif
             break;
-        case FP_POINTING_ZOOMING_LAYER:
+#endif
 #ifdef FP_POINTING_ZOOMING_LAYER_ENABLE
+        case FP_POINTING_ZOOMING_LAYER:
             fp_zoom_layer_set(true);
-#endif
             break;
+#endif
         default:
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
             // If we hit one of the FP_POINTING_X_LAYERS, and then trigger auto mouse layer, we don't want to
@@ -389,21 +389,21 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
                 break;
             }
 #endif
-            if (fp_scroll_layer_get()) {
 #ifdef FP_POINTING_SCROLLING_LAYER_ENABLE
+            if (fp_scroll_layer_get()) {
                 fp_scroll_layer_set(false);
-#endif
             }
-            if (fp_snipe_layer_get()) {
+#endif
 #ifdef FP_POINTING_SNIPING_LAYER_ENABLE
+            if (fp_snipe_layer_get()) {
                 fp_snipe_layer_set(false);
-#endif
             }
-            if (fp_zoom_layer_get()) {
+#endif
 #ifdef FP_POINTING_ZOOMING_LAYER_ENABLE
+            if (fp_zoom_layer_get()) {
                 fp_zoom_layer_set(false);
-#endif
             }
+#endif
             break;
     }
     return state;
