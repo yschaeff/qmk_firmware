@@ -27,14 +27,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SHIFTREG_DIVISOR 8
 #define MATRIX_ROW_PINS_SR { D4, C6, D7, E6, B4, F4, F5, F6, F7 }
 
-// SPI config for shift register (and trackball if enabled)
-#define SPI_DRIVER SPID1
+// SPI config for shift register
 #define SPI_SCK_PIN B1
-#define SPI_SCK_PAL_MODE 5
 #define SPI_MOSI_PIN B2
-#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PIN B3
+
+#if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS)
+#define SPI_DRIVER SPID0
+#endif // CONVERT_TO_(any_rp2040)
+
+#ifdef CONVERT_TO_STEMCELL
+#define SPI_DRIVER SPID1
+#define SPI_SCK_PAL_MODE 5
+#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PAL_MODE 5
+#endif // CONVERT_TO_STEMCELL
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
@@ -47,9 +54,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
     #define AUDIO_PIN B5
+    #ifdef CONVERT_TO_STEMCELL
     #define AUDIO_PWM_DRIVER PWMD2
     #define AUDIO_PWM_CHANNEL 1
     #define AUDIO_STATE_TIMER GPTD4
+    #endif // CONVERT_TO_STEMCELL
+    #if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS)
+    #define AUDIO_PWM_DRIVER PWMD4
+    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_B
+    #define AUDIO_STATE_TIMER GPTD1
+    #endif // CONVERT_TO_(any_rp2040)
     #define AUDIO_VOICES
     // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
     // #define NO_MUSIC_MODE
