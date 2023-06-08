@@ -43,6 +43,11 @@ get_valid_keyboards() {
 			if [[ -e "${line}/v${i}/fp_build.json" ]]; then
 			    echo -n "${line}/v${i} "
 			fi
+			
+			# special case for pinkies out v2 extended
+			if [[ -e "${line}/v${i}_ext/fp_build.json" ]]; then
+			    echo -n "${line}/v${i} "
+			fi
 		done
 
 		# special case for tenbit
