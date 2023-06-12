@@ -28,6 +28,7 @@
     || defined(KEYBOARD_fingerpunch_ximi) \
     || defined(KEYBOARD_fingerpunch_personal_badwings) \
     || defined(KEYBOARD_fingerpunch_personal_klor) \
+    || defined(KEYBOARD_fingerpunch_personal_barghoot) \
     || defined(KEYBOARD_fingerpunch_personal_zazu)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #elif defined(KEYMAP_SAFE_RANGE)

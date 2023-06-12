@@ -156,6 +156,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_zazu
 #endif
 
+// Since barghoot uses the name LAYOUT_barghoot instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_barghoot))
+#    define LAYOUT LAYOUT_barghoot
+#endif
+
 // Since kong uses the name LAYOUT_kong instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_kong))
 #    define LAYOUT LAYOUT_kong
