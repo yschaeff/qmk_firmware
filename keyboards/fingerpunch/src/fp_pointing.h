@@ -88,12 +88,12 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #        define FP_POINTING_SNIPING_LAYER 2
 #    endif
 
-#    ifndef FP_POINTING_SNIPING_MAX_DPI
-#        define FP_POINTING_SNIPING_MAX_DPI 2
+#    ifndef FP_POINTING_SNIPING_MIN_DPI
+#        define FP_POINTING_SNIPING_MIN_DPI 2
 #    endif
 
-#    ifndef FP_POINTING_SNIPING_MIN_DPI
-#        define FP_POINTING_SNIPING_MIN_DPI 10
+#    ifndef FP_POINTING_SNIPING_MAX_DPI
+#        define FP_POINTING_SNIPING_MAX_DPI 5
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_DPI
@@ -131,4 +131,11 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #        define FP_POINTING_COMBINED_SCROLLING_RIGHT false
 #    endif
 
+#    ifndef FP_POINTING_COMBINED_SNIPING_LEFT
+#        define FP_POINTING_COMBINED_SNIPING_LEFT false
+#    endif
+
+#    ifndef FP_POINTING_COMBINED_SNIPING_RIGHT
+#        define FP_POINTING_COMBINED_SNIPING_RIGHT false
+#    endif
 #endif

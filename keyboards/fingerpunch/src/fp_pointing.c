@@ -32,6 +32,15 @@ static bool zooming_keycode_enabled = false;
 static bool zooming_layer_enabled = false;
 static bool zooming_hold = false;
 
+#ifdef POINTING_DEVICE_COMBINED
+void fp_compile_check_combined_default_modes(void) {
+    // assert that either both LEFT values are false or only one of them is true
+    static_assert( ((FP_POINTING_COMBINED_SCROLLING_LEFT || FP_POINTING_COMBINED_SNIPING_LEFT) && (FP_POINTING_COMBINED_SCROLLING_LEFT != FP_POINTING_COMBINED_SNIPING_LEFT)) || (!FP_POINTING_COMBINED_SCROLLING_LEFT && !FP_POINTING_COMBINED_SNIPING_LEFT), "Cannot specify both FP_POINTING_COMBINED_SCROLLING_LEFT and FP_POINTING_COMBINED_SNIPING_LEFT");
+    // assert that either both RIGHT values are false or only one of them is true
+    static_assert( ((FP_POINTING_COMBINED_SCROLLING_RIGHT || FP_POINTING_COMBINED_SNIPING_RIGHT) && (FP_POINTING_COMBINED_SCROLLING_RIGHT != FP_POINTING_COMBINED_SNIPING_RIGHT)) || (!FP_POINTING_COMBINED_SCROLLING_RIGHT && !FP_POINTING_COMBINED_SNIPING_RIGHT), "Cannot specify both FP_POINTING_COMBINED_SCROLLING_RIGHT and FP_POINTING_COMBINED_SNIPING_RIGHT");
+}
+#endif
+
 uint8_t fp_get_cpi_value_from_mode(uint8_t mode_index) {
     switch (mode_index) {
         case FP_POINTING_MODE:
@@ -164,13 +173,24 @@ void fp_snipe_dpi_update(uint8_t action) {
 
 void fp_apply_dpi_defaults(void) {
 #ifdef POINTING_DEVICE_COMBINED
+    uint8_t left_mode = FP_POINTING_MODE;
+    uint8_t right_mode = FP_POINTING_MODE;
+
     if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-        fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_POINTING_MODE);
-    } else if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-        fp_set_cpi_combined_by_mode(FP_POINTING_MODE, FP_SCROLLING_MODE);
-    } else {
-        fp_set_cpi_combined_by_mode(FP_POINTING_MODE, FP_POINTING_MODE);
+        left_mode = FP_SCROLLING_MODE;
     }
+    if (FP_POINTING_COMBINED_SNIPING_LEFT) {
+        left_mode = FP_SNIPING_MODE;
+    }
+
+    if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
+        right_mode = FP_SCROLLING_MODE;
+    }
+    if (FP_POINTING_COMBINED_SNIPING_RIGHT) {
+        right_mode = FP_SNIPING_MODE;
+    }
+    
+    fp_set_cpi_combined_by_mode(left_mode, right_mode);
 #else
     fp_set_cpi_by_mode(FP_POINTING_MODE);
 #endif
