@@ -51,3 +51,7 @@ ifeq ($(strip $(COMBO_ENABLE)), yes)
     SRC += combos.c
 endif
 
+ifeq ($(strip $(AUDIO_ENABLE)), yes)
+    SRC += audio_userspace.c
+endif
+
