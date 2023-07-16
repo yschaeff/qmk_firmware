@@ -39,6 +39,15 @@ CUSTOM_MATRIX = lite
 SERIAL_DRIVER = vendor
 WS2812_DRIVER = vendor
 
+ifeq ($(strip $(FP_VM_RGB_VIK_ONLY)), yes)
+   OPT_DEFS += -DFP_VM_RGB_VIK_ONLY
+endif
+
+# default is 6 column, specify if building a 5 col
+ifeq ($(strip $(FP_VM_5COL)), yes)
+   OPT_DEFS += -DFP_VM_5COL
+endif
+
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
    RGB_MATRIX_CUSTOM_KB = yes
    OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB

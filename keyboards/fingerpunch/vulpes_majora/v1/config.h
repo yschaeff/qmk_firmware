@@ -17,6 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#define FP_SR595_MATRIX_DEBUG
+
 /* key matrix size */
 /* Rows are doubled up */
 #define MATRIX_ROWS 9

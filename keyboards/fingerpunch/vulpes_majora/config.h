@@ -31,12 +31,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
   // 6 column rgb config
   #define RGBLED_NUM 45
-  // 5 column rgb config
-  // #define RGBLED_NUM 39
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
   #define RGBLIGHT_LIMIT_VAL 150 /* The maximum brightness level for RGBLIGHT_ENABLE */
+
+  // 5 column rgb config
+  #ifdef FP_VM_5COL
+    #undef RGBLED_NUM
+    #define RGBLED_NUM 39
+  #endif
+  // VIK only rgb config
+  #ifdef FP_VM_RGB_VIK_ONLY
+    #undef RGBLED_NUM
+    #define RGBLED_NUM 4
+    #undef RGBLIGHT_LIMIT_VAL
+    #define RGBLIGHT_LIMIT_VAL 255
+  #endif
+
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
   #define RGBLIGHT_EFFECT_ALTERNATING
   #define RGBLIGHT_EFFECT_BREATHING
@@ -52,10 +64,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   // 6 column rgb config
   #define RGB_MATRIX_LED_COUNT 45
-  // 5 column rgb config
-  // #define RGB_MATRIX_LED_COUNT 39
   #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
+
+  // 5 column rgb config
+  #ifdef FP_VM_5COL
+    #undef RGB_MATRIX_LED_COUNT
+    #define RGB_MATRIX_LED_COUNT 39
+  #endif
+  // VIK only rgb config
+  #ifdef FP_VM_RGB_VIK_ONLY
+    #undef RGBLED_NUM
+    #define RGBLED_NUM 4
+    #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
+  #endif
+
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
