@@ -39,9 +39,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define ENCODERS_PAD_A {GP26}
-#define ENCODERS_PAD_B {GP27}
+#define ENCODERS_PAD_A {GP27}
+#define ENCODERS_PAD_B {GP26}
 #define ENCODER_RESOLUTION 1
+
+/* add this back in later
+// Override default fingerpunch encoder behavior
+#define FP_ENC_0_LAYER_VOLUME         6
+#define FP_ENC_0_LAYER_PGUP_PGDN      1
+#define FP_ENC_0_LAYER_ZOOM           2
+#define FP_ENC_0_LAYER_DPI_POINTING   3
+#define FP_ENC_0_LAYER_SUPER_TAB      4
+#define FP_ENC_0_LAYER_SUPER_CTRL_TAB 5
+#define FP_ENC_0_LAYER_SCROLL_WHEEL   0
+#define FP_ENC_0_LAYER_RGB_MODE       7
+#define FP_ENC_0_LAYER_RGB_HUE        8
+#define FP_ENC_0_LAYER_RGB_SAT        9
+#define FP_ENC_0_LAYER_RGB_VAL        10
+*/
 
 #ifdef CIRQUE_ENABLE
   // cirque trackpad config
