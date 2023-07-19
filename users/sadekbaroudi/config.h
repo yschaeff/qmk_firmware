@@ -111,10 +111,18 @@
 
 // -------------------- Lighting config ------------------------
 
-#define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
-#define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER
-#define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
-#define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
+// We override vulpes majora with the rgb lighting on the center trackball in the center, else config below for all other boards
+#if defined(KEYBOARD_fingerpunch_vulpes_majora_v1) && defined(FP_VM_RGB_VIK_ONLY)
+    #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN
+    #define FP_LAYER_LIGHTING_HUE_3 HSV_PURPLE
+    #define FP_LAYER_LIGHTING_HUE_4 HSV_YELLOW
+    #define FP_LAYER_LIGHTING_HUE_5 FP_HSV_PEACH_ORANGE
+#else
+    #define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
+    #define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER
+    #define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
+    #define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
+#endif
 
 // These are the colors I used on my ffkb low pro ks-27 with the xvx horizon purple and green keycaps
 // #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN
