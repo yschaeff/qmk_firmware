@@ -43,7 +43,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_B {GP26}
 #define ENCODER_RESOLUTION 1
 
-/* add this back in later
 // Override default fingerpunch encoder behavior
 #define FP_ENC_0_LAYER_VOLUME         6
 #define FP_ENC_0_LAYER_PGUP_PGDN      1
@@ -56,7 +55,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FP_ENC_0_LAYER_RGB_HUE        8
 #define FP_ENC_0_LAYER_RGB_SAT        9
 #define FP_ENC_0_LAYER_RGB_VAL        10
-*/
 
 #ifdef CIRQUE_ENABLE
   // cirque trackpad config
