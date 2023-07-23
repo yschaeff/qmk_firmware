@@ -64,7 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   // 6 column rgb config
   #define RGB_MATRIX_LED_COUNT 45
-  #define RGB_MATRIX_CENTER {100, 32}
+  #define RGB_MATRIX_CENTER {112, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
 
   // 5 column rgb config
