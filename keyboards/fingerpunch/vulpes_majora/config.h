@@ -74,8 +74,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #endif
   // VIK only rgb config
   #ifdef FP_VM_RGB_VIK_ONLY
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 4
+    #undef RGB_MATRIX_LED_COUNT
+    #define RGB_MATRIX_LED_COUNT 4
     #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
   #endif
