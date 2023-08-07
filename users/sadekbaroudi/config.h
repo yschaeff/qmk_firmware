@@ -32,6 +32,12 @@
 #define LEADER_TIMEOUT 300
 #define LEADER_PER_KEY_TIMING
 
+// ----------------- Cirque curved overlay override -----------------
+
+#ifdef CIRQUE_CURVED_OVERLAY_ENABLE
+    #define CIRQUE_PINNACLE_CURVED_OVERLAY
+#endif
+
 // -------------------- Encoder config ------------------------
 
 // Override encoder settings for all keyboards except vulpes majora

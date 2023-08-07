@@ -43,6 +43,11 @@ ifeq ($(strip $(RGB_MATRIX_BAND_VAL_LAYERS)), yes)
     OPT_DEFS += -DRGB_MATRIX_BAND_VAL_LAYERS
 endif
 
+CIRQUE_CURVED_OVERLAY_ENABLE := no
+ifeq ($(strip $(CIRQUE_CURVED_OVERLAY_ENABLE)), yes)
+    OPT_DEFS += -DCIRQUE_CURVED_OVERLAY_ENABLE
+endif
+
 ifeq ($(strip $(CASEMODES_ENABLE)), yes)
     SRC += casemodes.c
 endif
