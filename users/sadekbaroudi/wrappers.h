@@ -404,7 +404,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __SHIFTNAV_3_K2__ LSFT(KC_PGUP)
 #define __SHIFTNAV_3_K3__ LSFT(KC_PGDN)
 #define __SHIFTNAV_3_K4__ _______
-#define __SHIFTNAV_3_K5__ _______
+#define __SHIFTNAV_3_K5__ U_KVM_SWITCH
 
 #define ________________SHIFTNAV_1_________________			__SHIFTNAV_1_K1__, __SHIFTNAV_1_K2__, __SHIFTNAV_1_K3__, __SHIFTNAV_1_K4__, __SHIFTNAV_1_K5__
 #define ________________SHIFTNAV_2_________________			__SHIFTNAV_2_K1__, __SHIFTNAV_2_K2__, __SHIFTNAV_2_K3__, __SHIFTNAV_2_K4__, __SHIFTNAV_2_K5__

@@ -64,6 +64,7 @@ enum userspace_custom_keycodes {
     C_HYPHENCASE,
     C_UNDERSCORECASE,
     C_ANYCASE,
+    U_KVM_SWITCH,
     G_GOD_ON,
     G_GOD_OFF,
     G_PULLING,

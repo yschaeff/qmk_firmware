@@ -53,6 +53,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             #endif
             break;
+	case U_KVM_SWITCH:
+	    if (record->event.pressed) {
+                register_code(KC_TAB);
+		SEND_STRING(SS_DELAY(10) SS_TAP(X_RIGHT) SS_DELAY(10));
+		unregister_code(KC_TAB);
+	    }
+	    break;
         // COMMENT TO DISABLE MACROS
         case M_KI_R_SWAP:
             if (record->event.pressed) {
