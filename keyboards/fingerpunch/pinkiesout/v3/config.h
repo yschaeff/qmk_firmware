@@ -47,7 +47,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
-  #define RGBLIGHT_LIMIT_VAL 150 /* The maximum brightness level for RGBLIGHT_ENABLE */
+  #define RGBLIGHT_LIMIT_VAL 100 /* The maximum brightness level for RGBLIGHT_ENABLE */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
   #define RGBLIGHT_EFFECT_ALTERNATING
   #define RGBLIGHT_EFFECT_BREATHING
@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   #define RGB_MATRIX_LED_COUNT 66
   #define RGB_MATRIX_CENTER {100, 32}
-  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
