@@ -59,14 +59,26 @@ SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
-ifeq ($(strip $(FP_VM_RGB_VIK_ONLY)), yes)
-   OPT_DEFS += -DFP_VM_RGB_VIK_ONLY
+# default is 6 column, specify if building a 6 col with center rgb on vik
+ifeq ($(strip $(FP_VM_RGB_6COL_WITH_CENTER)), yes)
+   OPT_DEFS += -DFP_VM_RGB_6COL_WITH_CENTER
 endif
 
 # default is 6 column, specify if building a 5 col
-ifeq ($(strip $(FP_VM_5COL)), yes)
-   OPT_DEFS += -DFP_VM_5COL
+ifeq ($(strip $(FP_VM_RGB_5COL)), yes)
+   OPT_DEFS += -DFP_VM_RGB_5COL
 endif
+
+# default is 6 column, specify if building a 5 col with center rgb on vik
+ifeq ($(strip $(FP_VM_RGB_5COL_WITH_CENTER)), yes)
+   OPT_DEFS += -DFP_VM_RGB_5COL_WITH_CENTER
+endif
+
+# default is 6 column, specify if building with center vik leds only
+ifeq ($(strip $(FP_VM_RGB_CENTER_ONLY)), yes)
+   OPT_DEFS += -DFP_VM_RGB_CENTER_ONLY
+endif
+
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
    RGB_MATRIX_CUSTOM_KB = yes

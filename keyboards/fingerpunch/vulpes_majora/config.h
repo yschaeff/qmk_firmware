@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   // Use twinkle as the default rgb mode for the layers
   #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
+
   // 6 column rgb config
   #define RGBLED_NUM 45
   #define RGBLIGHT_HUE_STEP 4
@@ -36,13 +37,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_VAL_STEP 16
   #define RGBLIGHT_LIMIT_VAL 150 /* The maximum brightness level for RGBLIGHT_ENABLE */
 
+  // 6 column rgb config with center leds
+  #ifdef FP_VM_RGB_6COL_WITH_CENTER
+    #undef RGBLED_NUM
+    #define RGBLED_NUM 49
+  #endif
+
   // 5 column rgb config
-  #ifdef FP_VM_5COL
+  #ifdef FP_VM_RGB_5COL
     #undef RGBLED_NUM
     #define RGBLED_NUM 39
   #endif
+
+  // 5 column rgb config with center leds
+  #ifdef FP_VM_RGB_5COL_WITH_CENTER
+    #undef RGBLED_NUM
+    #define RGBLED_NUM 43
+  #endif
+
   // VIK only rgb config
-  #ifdef FP_VM_RGB_VIK_ONLY
+  #ifdef FP_VM_RGB_CENTER_ONLY
     #undef RGBLED_NUM
     #define RGBLED_NUM 4
     #undef RGBLIGHT_LIMIT_VAL
@@ -67,13 +81,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGB_MATRIX_CENTER {112, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
 
+  // 6 column rgb config with center leds
+  #ifdef FP_VM_RGB_6COL_WITH_CENTER
+    #undef RGB_MATRIX_LED_COUNT
+    #define RGB_MATRIX_LED_COUNT 49
+  #endif
+
   // 5 column rgb config
-  #ifdef FP_VM_5COL
+  #ifdef FP_VM_RGB_5COL
     #undef RGB_MATRIX_LED_COUNT
     #define RGB_MATRIX_LED_COUNT 39
   #endif
+
+  // 5 column rgb config with center leds
+  #ifdef FP_VM_RGB_5COL_WITH_CENTER
+    #undef RGB_MATRIX_LED_COUNT
+    #define RGB_MATRIX_LED_COUNT 43
+  #endif
+
   // VIK only rgb config
-  #ifdef FP_VM_RGB_VIK_ONLY
+  #ifdef FP_VM_RGB_CENTER_ONLY
     #undef RGB_MATRIX_LED_COUNT
     #define RGB_MATRIX_LED_COUNT 4
     #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
