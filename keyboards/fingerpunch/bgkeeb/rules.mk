@@ -20,14 +20,15 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = no
+POINTING_DEVICE_ENABLE = no
 
 SPLIT_KEYBOARD = yes
 
 LAYOUTS = split_3x5_3
 
 ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
-        POINTING_DEVICE_ENABLE = yes
-        POINTING_DEVICE_DRIVER = pimoroni_trackball
+        POINTING_DEVICE_ENABLE := yes
+        POINTING_DEVICE_DRIVER := pimoroni_trackball
         QUANTUM_LIB_SRC += i2c_master.c
         SRC += drivers/sensors/pimoroni_trackball.c
 endif
