@@ -1,17 +1,16 @@
 # vulpes minora
 
 * Keyboard Maintainer: sadekbaroudi
-* Hardware Supported: vulpes minora
+* Hardware Supported: vulpes minora (rp2040-zero)
 
 Make example for this keyboard (after setting up your build environment):
 ```
-    make fingerpunch/vulpes_minora:default RGBLIGHT_ENABLE=yes AUDIO_ENABLE=yes ENCODER_ENABLE=yes
+    make fingerpunch/vulpes_minora:default RGBLIGHT_ENABLE=yes ENCODER_ENABLE=yes
 ```
 
 Options are:
 ```
     RGBLIGHT_ENABLE=yes
-    AUDIO_ENABLE=yes
     HAPTIC_FEEDBACK=yes
     ENCODER_ENABLE=yes
     CIRQUE_ENABLE=yes
