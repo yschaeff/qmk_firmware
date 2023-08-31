@@ -176,6 +176,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_vulpes_majora
 #endif
 
+// Since LAYOUT_svlinky uses the name LAYOUT_svlinky instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_svlinky))
+#    define LAYOUT LAYOUT_svlinky
+#endif
+
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)
