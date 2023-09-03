@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPI_SCK_PIN GP14
 #define SPI_MOSI_PIN GP15
 #define SPI_MISO_PIN GP12
+#define SPI_DRIVER SPID1
 
 // wiring of each half
 #define MATRIX_ROW_PINS { GP29, GP28, GP27, GP26, GP22, GP20, GP23, GP21 }
@@ -100,12 +101,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define PMW33XX_CS_PIN GP13
     #define PMW33XX_CPI 1000
     #define PMW33XX_CS_DIVISOR 8
-
-    /* SPI config for pmw3360 sensor. */
-    #define SPI_DRIVER SPID0
-    // #define SPI_SCK_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
 #endif
 
 // All the possible VIK modules, defined in rules.mk
