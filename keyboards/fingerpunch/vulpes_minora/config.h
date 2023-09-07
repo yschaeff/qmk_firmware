@@ -39,9 +39,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #ifdef FP_VIK_PERS60_MODULE
     #define RGBLED_SPLIT { 10, 6 }
     #define RGBLED_NUM 16
+    #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
     #else
     #define RGBLED_SPLIT { 6, 6 }
     #define RGBLED_NUM 12
+    #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11 }
     #endif
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
