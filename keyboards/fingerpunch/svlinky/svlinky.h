@@ -22,4 +22,14 @@
     { K71, K72, K73, K74, K75, K76, K77, K78, K79, K80 } \
   }
 
+// for FP_WEACT_ST7735 only
+typedef struct kb_runtime_config {
+    unsigned          lcd_power : 1;
+} kb_runtime_config;
+
+extern kb_runtime_config kb_state;
+
+void housekeeping_task_sync(void);
+
+// General fingerpunch firmware include
 #include "keyboards/fingerpunch/src/fp.h"
