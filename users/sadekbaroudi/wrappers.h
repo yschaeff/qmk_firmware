@@ -181,6 +181,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_svlinky
 #endif
 
+// Since LAYOUT_baboon38 uses the name LAYOUT_baboon38 instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_baboon38))
+#    define LAYOUT LAYOUT_baboon38
+#endif
+
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)
