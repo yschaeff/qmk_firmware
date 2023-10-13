@@ -33,6 +33,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPI_MOSI_PIN GP23
 #define SPI_MISO_PIN GP20
 
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID0
+#define VIK_SPI_SCK_PIN   GP22
+#define VIK_SPI_MOSI_PIN  GP23
+#define VIK_SPI_MISO_PIN  GP20
+#define VIK_SPI_CS        GP9
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP2
+#define VIK_I2C_SCL_PIN   GP3
+#define VIK_GPIO_1        GP10
+#define VIK_GPIO_2        GP24
+#define VIK_WS2812_DI_PIN GP25
+
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
@@ -145,3 +158,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define I2C1_CLOCK_SPEED  400000
   #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 #endif
+
+#ifdef VIK_PMW3360
+  #define POINTING_DEVICE_INVERT_Y
+#endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

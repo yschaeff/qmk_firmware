@@ -2,16 +2,13 @@
     {
         "type" : "one-of",
         "names" : [
-            "FP_PER56_CIRQUE_LEDS",
-            "FP_PER56_PMW3360_LEDS",
-            "FP_PMW3360",
-            "FP_WEACT_ST7735"
+            "VIK_PER56_CIRQUE_LEDS",
+            "VIK_PER56_PMW3360_LEDS",
+            "VIK_PMW3360",
+            "VIK_WEACT_ST7735",
+            "VIK_GC9A01",
+            "VIK_HAPTIC"
         ],
-        "user_input": "Which VIK module are you testing? NONE, FP_PER56_CIRQUE_LEDS, FP_PER56_PMW3360_LEDS, FP_PMW3360, FP_WEACT_ST7735"
-    },
-    {
-        "type" : "single",
-        "name" : "HAPTIC_ENABLE",
-        "user_input": "Do you have haptic feedback?"
+        "user_input": "Which VIK module are you testing? NONE, VIK_PER56_CIRQUE_LEDS, VIK_PER56_PMW3360_LEDS, VIK_PMW3360, VIK_WEACT_ST7735, VIK_GC9A01, VIK_HAPTIC"
     }
 ]

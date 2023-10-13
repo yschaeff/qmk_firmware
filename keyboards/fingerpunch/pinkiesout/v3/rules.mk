@@ -49,9 +49,13 @@ HAPTIC_DRIVER = DRV2605L
 SERIAL_DRIVER = vendor
 WS2812_DRIVER = vendor
 
+VIK_ENABLE = yes
+
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
    POINTING_DEVICE_ENABLE := yes
    POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
    OPT_DEFS += -DCIRQUE_ENABLE
 endif
+
+include keyboards/fingerpunch/src/rules.mk

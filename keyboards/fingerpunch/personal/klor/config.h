@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "keyboards/fingerpunch/src/config.h"
+#include "keyboards/fingerpunch/src/config_pre.h"
 
 
 // ┌─────────────────────────────────────────────────┐

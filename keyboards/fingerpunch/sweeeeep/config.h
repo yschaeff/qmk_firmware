@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "keyboards/fingerpunch/src/config.h"
+#include "keyboards/fingerpunch/src/config_pre.h"
 
 /*
  * Keyboard Matrix Assignments

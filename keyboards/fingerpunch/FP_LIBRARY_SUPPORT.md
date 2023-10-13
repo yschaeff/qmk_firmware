@@ -12,7 +12,8 @@ That said, if you are looking to leverage the features, you may be able to follo
 
 2. Include the source files in your keyboard's `rules.mk` file
 
-Note that below is an example. You should check for the latest version of this code block as found in `keyboards/fingerpunch/ffkb_byomcu/rules.mk`
+Note that below is an example. You should check for the latest version of this code block as found in  
+`keyboards/fingerpunch/ffkb/byomcu/rules.mk`
 
 ### General file inclusion for feature support
 
@@ -33,7 +34,41 @@ SRC +=  keyboards/fingerpunch/src/fp.c \
 ### Custom config.h
 
 Add this to the keyboard's config.h to allow for custom fingerpunch config.h inclusions
-`#include "keyboards/fingerpunch/src/config.h"`
+
+The following should go at the beginning of the keyboard's config.h  
+`#include "keyboards/fingerpunch/src/config_pre.h"`
+
+The following should go at the end of the keyboard's config.h  
+`#include "keyboards/fingerpunch/src/config_post.h"`
+
+### Custom rules.mk
+
+Add this to the keyboard's rules.mk at the very bottom of the file:  
+`include keyboards/fingerpunch/src/rules.mk`
+
+### VIK support
+
+For boards with a VIK connector, be sure to add the following to the keyboard rules.mk  
+`VIK_ENABLE = yes`
+
+Also, define the VIK pin configuration in the keyboard's config.h, and remove the SPI and I2C from that config file, as it gets defined in `keyboards/fingerpunch/src/vik/config.h`
+
+Example from `keyboards/fingerpunch/svlinky/config.h`
+
+```c
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID1
+#define VIK_SPI_SCK_PIN   GP14
+#define VIK_SPI_MOSI_PIN  GP15
+#define VIK_SPI_MISO_PIN  GP12
+#define VIK_SPI_CS        GP13
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP10
+#define VIK_I2C_SCL_PIN   GP11
+#define VIK_GPIO_1        GP18
+#define VIK_GPIO_2        GP24
+#define VIK_WS2812_DI_PIN GP16
+```
 
 ### Audio startup sound
 

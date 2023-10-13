@@ -15,24 +15,43 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// NOTE: All logic for the modules can be found in:
+// keyboards/fingerpunch/src/vik/config.h
+// keyboards/fingerpunch/src/vik/rules.mk
+
 #pragma once
 
-#include "keyboards/fingerpunch/src/config.h"
+#include "keyboards/fingerpunch/src/config_pre.h"
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 5
+
+/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
+#define LOCKING_SUPPORT_ENABLE
+/* Locking resynchronize hack */
+#define LOCKING_RESYNC_ENABLE
 
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 10
 
-// For VIK SPI
-#define SPI_SCK_PIN GP14
-#define SPI_MOSI_PIN GP15
-#define SPI_MISO_PIN GP12
-#define SPI_DRIVER SPID1
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID1
+#define VIK_SPI_SCK_PIN   GP14
+#define VIK_SPI_MOSI_PIN  GP15
+#define VIK_SPI_MISO_PIN  GP12
+#define VIK_SPI_CS        GP13
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP10
+#define VIK_I2C_SCL_PIN   GP11
+#define VIK_GPIO_1        GP18
+#define VIK_GPIO_2        GP24
+#define VIK_WS2812_DI_PIN GP16
 
-// wiring of each half
+// All the through hole pins from the controller
 #define MATRIX_ROW_PINS { GP29, GP28, GP27, GP26, GP22, GP20, GP23, GP21 }
 #define MATRIX_COL_PINS { GP0, GP1, GP2, GP3, GP4, GP5, GP6, GP7, GP8, GP9 }
 
@@ -42,6 +61,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef ENCODER_ENABLE
 #define ENCODERS_PAD_A { GP18 }
 #define ENCODERS_PAD_B { GP24 }
+#endif
+
+#ifdef CIRQUE_ENABLE
+    // cirque trackpad config
+    #define CIRQUE_PINNACLE_SPI_CS_PIN VIK_SPI_CS
+    // Uncomment 2 lines below to switch to relative mode and enable right click
+    // Note that tap to click doesn't work on the slave side unless you enable relative mode
+    // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+    // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+    #define CIRQUE_PINNACLE_TAP_ENABLE
+    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 #endif
 
 #define RGB_DI_PIN GP16
@@ -63,64 +93,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_EFFECT_TWINKLE
 #endif
 
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
-
-#ifdef HAPTIC_ENABLE
-    #define FB_ERM_LRA 1
-    #define FB_BRAKEFACTOR 3 // For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7
-    #define FB_LOOPGAIN 1 // For  Low:0, Medium:1, High:2, Very High:3
-    #define RATED_VOLTAGE 2
-    #define V_PEAK 2.8
-    #define V_RMS 2.0
-    #define F_LRA 150 // resonance freq
-    #define DRV_GREETING  alert_750ms
-    #define FP_HAPTIC_MOUSE_BUTTONS
-    #define FP_HAPTIC_CUT_COPY_PASTE
-    #define FP_HAPTIC_SAVE
-#endif
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
-
-#ifdef CIRQUE_ENABLE
-    // cirque trackpad config
-    #define CIRQUE_PINNACLE_SPI_CS_PIN GP13
-    // Uncomment 2 lines below to switch to relative mode and enable right click
-    // Note that tap to click doesn't work on the slave side unless you enable relative mode
-    // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-    // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-    #define CIRQUE_PINNACLE_TAP_ENABLE
-    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
-#endif
-
-#ifdef FP_TRACKBALL_ENABLE
-    // Trackball config
-    #define PMW33XX_CS_PIN GP13
-    #define PMW33XX_CPI 1000
-    #define PMW33XX_CS_DIVISOR 8
-#endif
-
-// All the possible VIK modules, defined in rules.mk
-#if defined(FP_PER56_CIRQUE_LEDS)
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 4
-#endif
-#if defined(FP_PER56_PMW3360_LEDS)
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 4
-#endif
-#if defined(FP_PMW3360)
-    // do nothing
-#endif
-#if defined(FP_WEACT_ST7735)
-    // /* LCD config */
-    #define DISPLAY_CS_PIN GP13
-    #define DISPLAY_RST_PIN GP25 // unused pin, since it's handled with a circuit on the vik module
-    #define DISPLAY_DC_PIN GP18
-
-    // To dynamically control the backlight with BL_TOGG keycode
-    #define BACKLIGHT_PIN GP24
-#endif
+#include "keyboards/fingerpunch/src/config_post.h"

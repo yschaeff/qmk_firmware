@@ -4,4 +4,3 @@
 #ifdef POINTING_DEVICE_ENABLE
 #define PMW33XX_CPI 1000
 #endif
-
