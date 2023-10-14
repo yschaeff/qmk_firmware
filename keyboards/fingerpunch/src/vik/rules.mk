@@ -49,7 +49,7 @@ ifeq ($(strip $(VIK_WEACT_ST7735)), yes)
    OPT_DEFS += -DVIK_WEACT_ST7735
 endif
 
-ifeq ($(strip $(VIK_VIK_GC9A01)), yes)
+ifeq ($(strip $(VIK_GC9A01)), yes)
    QUANTUM_PAINTER_ENABLE = yes
    QUANTUM_PAINTER_DRIVERS += st7735_spi
    QUANTUM_PAINTER_LVGL_INTEGRATION = yes
@@ -57,7 +57,7 @@ ifeq ($(strip $(VIK_VIK_GC9A01)), yes)
 #    SRC += fonts/roboto12.qff.c fonts/roboto18.qff.c fonts/roboto14.qff.c
 #    SRC += display.c
 #    WPM_ENABLE 					= yes
-   OPT_DEFS += -DVIK_VIK_GC9A01
+   OPT_DEFS += -DVIK_GC9A01
 endif
 
 ifeq ($(strip $(PMW3360_ENABLE)), yes)
