@@ -51,7 +51,7 @@ endif
 
 ifeq ($(strip $(VIK_GC9A01)), yes)
    QUANTUM_PAINTER_ENABLE = yes
-   QUANTUM_PAINTER_DRIVERS += st7735_spi
+   QUANTUM_PAINTER_DRIVERS += gc9a01_spi
    QUANTUM_PAINTER_LVGL_INTEGRATION = yes
 #    SRC += fonts/urbanist24.qff.c fonts/urbanist36.qff.c 
 #    SRC += fonts/roboto12.qff.c fonts/roboto18.qff.c fonts/roboto14.qff.c
