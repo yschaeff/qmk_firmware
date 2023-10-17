@@ -13,6 +13,10 @@ Make example for this keyboard (after setting up your build environment):
 
 Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
 
+You can also use ```FP_CONVERT_TO=svlinky``` if you are using a svlinky. This is not part of the general QMK converters framework. I added the logic in the firmware for this pcb directly. You do need to make one change before compiling for svlinky, though (in addition to the FP_CONVERT_TO)
+
+In `keyboards/fingerpunch/ffkb/lite/rules.mk`, see the comment at the top of the file
+
 Options are:
 ```
     FP_INDICATOR_LED_ENABLE=yes

@@ -51,3 +51,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
+#ifdef FP_CONVERT_TO_SVLINKY
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID1
+#define VIK_SPI_SCK_PIN   GP14
+#define VIK_SPI_MOSI_PIN  GP15
+#define VIK_SPI_MISO_PIN  GP12
+#define VIK_SPI_CS        GP13
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP10
+#define VIK_I2C_SCL_PIN   GP11
+#define VIK_GPIO_1        GP18
+#define VIK_GPIO_2        GP24
+#define VIK_WS2812_DI_PIN GP16
+#endif
+
+#include "keyboards/fingerpunch/src/config_post.h"
