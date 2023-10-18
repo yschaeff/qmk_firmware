@@ -25,6 +25,9 @@ fp_config_t fp_config;
 #if defined(POINTING_DEVICE_ENABLE)
 #include "keyboards/fingerpunch/src/fp_pointing.h"
 #endif
+#if defined(QUANTUM_PAINTER_ENABLE)
+#include "keyboards/fingerpunch/src/display/fp_display.h"
+#endif
 #if defined(PIMORONI_TRACKBALL_ENABLE)
 #include "color.h"
 #endif
@@ -163,6 +166,10 @@ void keyboard_post_init_kb(void) {
 
     #if defined(RGB_MATRIX_ENABLE)
     fp_post_init_rgb_matrix();
+    #endif
+
+    #if defined(QUANTUM_PAINTER_ENABLE)
+    fp_post_init_qp();
     #endif
 
     keyboard_post_init_user();

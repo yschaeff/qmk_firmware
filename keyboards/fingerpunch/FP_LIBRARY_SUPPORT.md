@@ -15,22 +15,6 @@ That said, if you are looking to leverage the features, you may be able to follo
 Note that below is an example. You should check for the latest version of this code block as found in  
 `keyboards/fingerpunch/ffkb/byomcu/rules.mk`
 
-### General file inclusion for feature support
-
-```make
-DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/src/fp.c \
-        keyboards/fingerpunch/src/fp_haptic.c \
-        keyboards/fingerpunch/src/fp_audio.c \
-        keyboards/fingerpunch/src/fp_keyhandler.c \
-        keyboards/fingerpunch/src/fp_encoder.c \
-        keyboards/fingerpunch/src/fp_pointing.c \
-        keyboards/fingerpunch/src/fp_rgb_common.c \
-        keyboards/fingerpunch/src/fp_rgblight.c \
-        keyboards/fingerpunch/src/fp_rgb_matrix.c
-
-```
-
 ### Custom config.h
 
 Add this to the keyboard's config.h to allow for custom fingerpunch config.h inclusions

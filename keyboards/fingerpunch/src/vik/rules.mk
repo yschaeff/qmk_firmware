@@ -42,9 +42,7 @@ ifeq ($(strip $(VIK_WEACT_ST7735)), yes)
    QUANTUM_PAINTER_ENABLE = yes
    QUANTUM_PAINTER_DRIVERS += st7735_spi
    QUANTUM_PAINTER_LVGL_INTEGRATION = yes
-#    SRC += fonts/urbanist24.qff.c fonts/urbanist36.qff.c 
-#    SRC += fonts/roboto12.qff.c fonts/roboto18.qff.c fonts/roboto14.qff.c
-#    SRC += display.c
+   SRC += keyboards/fingerpunch/src/display/st7735.c
 #    WPM_ENABLE 					= yes
    OPT_DEFS += -DVIK_WEACT_ST7735
 endif
@@ -53,9 +51,7 @@ ifeq ($(strip $(VIK_GC9A01)), yes)
    QUANTUM_PAINTER_ENABLE = yes
    QUANTUM_PAINTER_DRIVERS += gc9a01_spi
    QUANTUM_PAINTER_LVGL_INTEGRATION = yes
-#    SRC += fonts/urbanist24.qff.c fonts/urbanist36.qff.c 
-#    SRC += fonts/roboto12.qff.c fonts/roboto18.qff.c fonts/roboto14.qff.c
-#    SRC += display.c
+   SRC += keyboards/fingerpunch/src/display/gc9a01.c
 #    WPM_ENABLE 					= yes
    OPT_DEFS += -DVIK_GC9A01
 endif
@@ -65,4 +61,8 @@ ifeq ($(strip $(PMW3360_ENABLE)), yes)
    POINTING_DEVICE_DRIVER := pmw3360
    QUANTUM_LIB_SRC += spi_master.c
    OPT_DEFS += -DVIK_TRACKBALL_ENABLE
+endif
+
+ifeq ($(strip $(QUANTUM_PAINTER_ENABLE)), yes)
+   SRC += keyboards/fingerpunch/src/display/fp_display.c
 endif
