@@ -23,10 +23,12 @@ Options are:
     RGBLIGHT_ENABLE=yes
     HAPTIC_FEEDBACK=yes
     // for the options below, select only one, or none, used for testing [VIK modules](https://github.com/sadekbaroudi/vik#known-list-of-vik-certifications)
-    FP_PER56_CIRQUE_LEDS=yes
-    FP_PER56_PMW3360_LEDS=yes
-    FP_PMW3360=yes
-    FP_WEACT_ST7735=yes
+    VIK_PER56_CIRQUE_LEDS=yes
+    VIK_PER56_PMW3360_LEDS=yes
+    VIK_PMW3360=yes
+    VIK_WEACT_ST7735=yes
+    VIK_GC9A01=yes
+    VIK_HAPTIC=yes
 ```
 
 See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) then the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information.

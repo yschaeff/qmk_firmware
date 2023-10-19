@@ -14,5 +14,5 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define FP_QP_DISPLAY_HEIGHT 128
-#define FP_QP_DISPLAY_WIDTH 160
+#define FP_QP_DISPLAY_WIDTH 128
+#define FP_QP_DISPLAY_HEIGHT 160
