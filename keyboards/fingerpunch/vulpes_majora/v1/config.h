@@ -39,12 +39,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_I2C_DRIVER    I2CD1
 #define VIK_I2C_SDA_PIN   GP2
 #define VIK_I2C_SCL_PIN   GP3
-#define VIK_GPIO_1        GP26
-#define VIK_GPIO_2        GP27
+#define VIK_GPIO_1        GP27
+#define VIK_GPIO_2        GP26
 #define VIK_WS2812_DI_PIN GP25
 
 // Used only if you have a weact st7735 display, set to unused pin
 #define DISPLAY_RST_PIN GP13
+#define FP_QP_ROTATION QP_ROTATION_270
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
