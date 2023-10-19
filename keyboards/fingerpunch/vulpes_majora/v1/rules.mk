@@ -18,3 +18,5 @@ ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
    QUANTUM_LIB_SRC += spi_master.c
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
+
+include keyboards/fingerpunch/src/rules.mk

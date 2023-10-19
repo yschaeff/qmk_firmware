@@ -39,6 +39,8 @@ OLED_ENABLE = no            # this can be yes or no depending on if you have an 
 # EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
 
+VIK_ENABLE = yes
+
 ##### Disabled EXTRAFLAGS line above, as it was causing the error below when compiling with rgb matrix enabled
 # Linking: .build/fingerpunch_vulpes_majora_v1_sadekbaroudi.elf                                       [ERRORS]
 #  |

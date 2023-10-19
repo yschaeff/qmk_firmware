@@ -20,5 +20,3 @@
 
 #define FP_QP_DISPLAY_HEIGHT 240
 #define FP_QP_DISPLAY_WIDTH 240
-
-void fp_qp_load_initial_screen(void);

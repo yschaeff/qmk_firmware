@@ -30,11 +30,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SHIFTREG_DIVISOR 8 // needs to be the same as the PMW33XX_CS_DIVISOR below
 #define MATRIX_ROW_PINS_SR { GP29, GP28, GP16, GP24, GP4, GP6, GP7, GP15, GP8 }
 
-// SPI config for shift register (and trackball if enabled)
-#define SPI_DRIVER SPID0
-#define SPI_SCK_PIN GP22
-#define SPI_MOSI_PIN GP23
-#define SPI_MISO_PIN GP20
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID0
+#define VIK_SPI_SCK_PIN   GP22
+#define VIK_SPI_MOSI_PIN  GP23
+#define VIK_SPI_MISO_PIN  GP20
+#define VIK_SPI_CS        GP21
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP2
+#define VIK_I2C_SCL_PIN   GP3
+#define VIK_GPIO_1        GP26
+#define VIK_GPIO_2        GP27
+#define VIK_WS2812_DI_PIN GP25
+
+// Used only if you have a weact st7735 display, set to unused pin
+#define DISPLAY_RST_PIN GP13
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
@@ -104,3 +114,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_HAPTIC_CUT_COPY_PASTE
     #define FP_HAPTIC_SAVE
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

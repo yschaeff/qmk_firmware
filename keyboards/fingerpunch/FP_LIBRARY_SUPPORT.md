@@ -6,14 +6,11 @@ That said, if you are looking to leverage the features, you may be able to follo
 
 ## Required additions to the keyboard codebase
 
-1. Add the following line to your keyboard {keyboard_name}.h file, e.g. ffkb_byomcu.h
+### Main fingerpunch src entry point
+
+Add the following line to your keyboard {keyboard_name}.h file, e.g. ffkb_byomcu.h
 
 `#include "keyboards/fingerpunch/src/fp.h"`
-
-2. Include the source files in your keyboard's `rules.mk` file
-
-Note that below is an example. You should check for the latest version of this code block as found in  
-`keyboards/fingerpunch/ffkb/byomcu/rules.mk`
 
 ### Custom config.h
 

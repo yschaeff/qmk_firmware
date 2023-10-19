@@ -19,4 +19,10 @@
 
 #ifdef QUANTUM_PAINTER_ENABLE
 #include "qp.h"
+
+painter_device_t fp_qp_disp_device;
+
+void fp_qp_init_display(void) {
+    fp_qp_disp_device = qp_st7735_make_spi_device(FP_QP_DISPLAY_WIDTH, FP_QP_DISPLAY_HEIGHT, DISPLAY_CS_PIN, DISPLAY_DC_PIN, DISPLAY_RST_PIN, 8, 0);
+}
 #endif

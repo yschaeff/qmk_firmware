@@ -54,13 +54,6 @@ ifeq ($(strip $(VIK_PER56_PMW3360_LEDS)), yes)
    RGBLIGHT_ENABLE = yes
 endif
 
-ifeq ($(strip $(VIK_WEACT_ST7735)), yes)
-   SRC += fonts/urbanist24.qff.c fonts/urbanist36.qff.c 
-   SRC += fonts/roboto12.qff.c fonts/roboto18.qff.c fonts/roboto14.qff.c
-   SRC += display.c
-   WPM_ENABLE 					= yes
-endif
-
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    POINTING_DEVICE_ENABLE := yes
    POINTING_DEVICE_DRIVER := cirque_pinnacle_spi

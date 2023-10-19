@@ -18,4 +18,11 @@
 #include QMK_KEYBOARD_H
 #include "keyboards/fingerpunch/src/fp.h"
 
+// Choose one of QP_ROTATION_0, QP_ROTATION_90, QP_ROTATION_180, QP_ROTATION_270
+#ifndef FP_QP_ROTATION
+    #define FP_QP_ROTATION QP_ROTATION_0
+#endif
+
 void fp_post_init_qp(void);
+void fp_qp_init_display(void);
+void fp_qp_load_initial_screen(void);
