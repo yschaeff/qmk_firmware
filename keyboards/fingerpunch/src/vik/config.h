@@ -116,6 +116,9 @@
 
     // To dynamically control the backlight with BL_TOGG keycode
     #define BACKLIGHT_PIN VIK_GPIO_2
+
+    // Must be defined by the keyboard itself, needs a free unused pin for reset
+    #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
 #endif
 
 #ifdef VIK_GC9A01

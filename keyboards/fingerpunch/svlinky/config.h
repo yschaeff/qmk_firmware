@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_WS2812_DI_PIN GP16
 
 // Used only if you have a weact st7735 display, set to unused pin
-#define DISPLAY_RST_PIN GP13
+#define VIK_ST7735_UNUSED_PIN GP13
 
 // All the through hole pins from the controller
 #define MATRIX_ROW_PINS { GP29, GP28, GP27, GP26, GP22, GP20, GP23, GP21 }

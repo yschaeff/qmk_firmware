@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_WS2812_DI_PIN GP25
 
 // Used only if you have a weact st7735 display, set to unused pin
-#define DISPLAY_RST_PIN GP13
+#define VIK_ST7735_UNUSED_PIN GP13
 #define FP_QP_ROTATION QP_ROTATION_270
 
 /* COL2ROW, ROW2COL*/
