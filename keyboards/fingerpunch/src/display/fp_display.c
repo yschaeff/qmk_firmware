@@ -45,31 +45,79 @@ void fp_post_init_qp(void) {
     }
 }
 
-static void fp_qp_set_arc_angle(void* obj, int32_t v) {
-    lv_arc_set_value(obj, v);
-}
-
 /**
+ * Display text on the screen in a specified location.
+ * 
+ * @param text The text to display
+ * @param location The location to display the text, must use one of the FP_QP_* constants
+ */
+void fp_qp_display_text(char* text, int location) {
+    // Create a label object
+    lv_obj_t* label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, text);
+
+    // Set the location of the label based on the location variable
+    switch (location) {
+        case FP_QP_TOP_LEFT:
+            lv_obj_align(label, LV_ALIGN_OUT_TOP_LEFT, 0, 0);
+            break;
+        case FP_QP_TOP_CENTER:
+            lv_obj_align(label, LV_ALIGN_OUT_TOP_MID, 0, 0);
+            break;
+        case FP_QP_TOP_RIGHT:
+            lv_obj_align(label, LV_ALIGN_OUT_TOP_RIGHT, 0, 0);
+            break;
+        case FP_QP_MIDDLE_LEFT:
+            lv_obj_align(label, LV_ALIGN_OUT_LEFT_MID, 0, 0);
+            break;
+        case FP_QP_CENTER:
+            lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+            break;
+        case FP_QP_MIDDLE_RIGHT:
+            lv_obj_align(label, LV_ALIGN_OUT_RIGHT_MID, 0, 0);
+            break;
+        case FP_QP_BOTTOM_LEFT:
+            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);
+            break;
+        case FP_QP_BOTTOM_CENTER:
+            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
+            break;
+        case FP_QP_BOTTOM_RIGHT:
+            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_RIGHT, 0, 0);
+            break;
+        default:
+            break;
+    }
+}
+// Used for test code, found in fp_qp_load_initial_screen
+// static void fp_qp_set_arc_angle(void* obj, int32_t v) {
+//     lv_arc_set_value(obj, v);
+// }
+
+/** 
  * Create an arc which acts as a loader.
  */
 void fp_qp_load_initial_screen(void) {
-    /*Create an Arc*/
-    lv_obj_t* arc = lv_arc_create(lv_scr_act());
-    lv_arc_set_rotation(arc, 270);
-    lv_arc_set_bg_angles(arc, 0, 360);
-    lv_obj_remove_style(arc, NULL, LV_PART_KNOB);  /*Be sure the knob is not displayed*/
-    lv_obj_clear_flag(arc, LV_OBJ_FLAG_CLICKABLE); /*To not allow adjusting by click*/
-    lv_obj_center(arc);
+    fp_qp_display_text("Testing", FP_QP_CENTER);
 
-    static lv_anim_t a;
-    lv_anim_init(&a);
-    lv_anim_set_var(&a, arc);
-    lv_anim_set_exec_cb(&a, fp_qp_set_arc_angle);
-    lv_anim_set_time(&a, 1000);
-    lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE); /*Just for the demo*/
-    lv_anim_set_repeat_delay(&a, 500);
-    lv_anim_set_values(&a, 0, 100);
-    lv_anim_start(&a);
+    // Original test code with an arc circling indefinitely
+    // /*Create an Arc*/
+    // lv_obj_t* arc = lv_arc_create(lv_scr_act());
+    // lv_arc_set_rotation(arc, 270);
+    // lv_arc_set_bg_angles(arc, 0, 360);
+    // lv_obj_remove_style(arc, NULL, LV_PART_KNOB);  /*Be sure the knob is not displayed*/
+    // lv_obj_clear_flag(arc, LV_OBJ_FLAG_CLICKABLE); /*To not allow adjusting by click*/
+    // lv_obj_center(arc);
+
+    // static lv_anim_t a;
+    // lv_anim_init(&a);
+    // lv_anim_set_var(&a, arc);
+    // lv_anim_set_exec_cb(&a, fp_qp_set_arc_angle);
+    // lv_anim_set_time(&a, 1000);
+    // lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE); /*Just for the demo*/
+    // lv_anim_set_repeat_delay(&a, 500);
+    // lv_anim_set_values(&a, 0, 100);
+    // lv_anim_start(&a);
 }
 
 #endif

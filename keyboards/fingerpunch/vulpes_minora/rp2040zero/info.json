@@ -1,6 +1,6 @@
 {
     "manufacturer": "sadekbaroudi",
-    "keyboard_name": "vulpes minora rp2040zero",
+    "keyboard_name": "vulpes minora",
     "url": "https://github.com/sadekbaroudi/vulpes-minora/",
     "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
     "usb": {
