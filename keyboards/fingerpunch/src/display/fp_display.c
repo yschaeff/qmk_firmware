@@ -98,7 +98,7 @@ void fp_qp_display_text(char* text, int location) {
  * Create an arc which acts as a loader.
  */
 void fp_qp_load_initial_screen(void) {
-    fp_qp_display_text("Testing", FP_QP_CENTER);
+    fp_qp_display_text(PRODUCT, FP_QP_CENTER);
 
     // Original test code with an arc circling indefinitely
     // /*Create an Arc*/
