@@ -53,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SERIAL_PIO_USE_PIO1
 #define SERIAL_USART_TX_PIN GP1     // USART TX pin
 
-#define RGB_DI_PIN GP0
+#define WS2812_DI_PIN GP0
 
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
