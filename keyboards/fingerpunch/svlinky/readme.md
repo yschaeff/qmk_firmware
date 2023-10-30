@@ -28,6 +28,7 @@ Options are:
     VIK_PMW3360=yes
     VIK_WEACT_ST7735=yes
     VIK_GC9A01=yes
+    VIK_WAVESHARE_22224=yes
     VIK_HAPTIC=yes
 ```
 

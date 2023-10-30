@@ -27,6 +27,10 @@
 #include "keyboards/fingerpunch/src/display/gc9a01.h"
 #endif
 
+#ifdef VIK_WAVESHARE_22224
+#include "keyboards/fingerpunch/src/display/waveshare_22224.h"
+#endif
+
 extern painter_device_t fp_qp_disp_device;
 
 void fp_post_init_qp(void) {

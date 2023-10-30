@@ -129,3 +129,15 @@
     // To dynamically control the backlight with BL_TOGG keycode
     #define DISPLAY_RST_PIN VIK_GPIO_2
 #endif
+
+#ifdef VIK_WAVESHARE_22224
+    // /* LCD config */
+    #define DISPLAY_CS_PIN VIK_SPI_CS
+    #define DISPLAY_DC_PIN VIK_GPIO_1
+
+    // To dynamically control the backlight with BL_TOGG keycode
+    #define BACKLIGHT_PIN VIK_GPIO_2
+
+    // Must be defined by the keyboard itself, needs a free unused pin for reset
+    #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
+#endif

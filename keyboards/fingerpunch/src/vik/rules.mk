@@ -9,6 +9,7 @@
 # VIK_PMW3360
 # VIK_WEACT_ST7735
 # VIK_VIK_GC9A01
+# VIK_WAVESHARE_22224
 
 ifeq ($(strip $(VIK_HAPTIC)), yes)
    HAPTIC_ENABLE = yes
@@ -54,6 +55,15 @@ ifeq ($(strip $(VIK_GC9A01)), yes)
    SRC += keyboards/fingerpunch/src/display/gc9a01.c
 #    WPM_ENABLE 					= yes
    OPT_DEFS += -DVIK_GC9A01
+endif
+
+ifeq ($(strip $(VIK_WAVESHARE_22224)), yes)
+   QUANTUM_PAINTER_ENABLE = yes
+   QUANTUM_PAINTER_DRIVERS += st7789_spi
+   QUANTUM_PAINTER_LVGL_INTEGRATION = yes
+   SRC += keyboards/fingerpunch/src/display/waveshare_22224.c
+#    WPM_ENABLE 					= yes
+   OPT_DEFS += -DVIK_WAVESHARE_22224
 endif
 
 ifeq ($(strip $(PMW3360_ENABLE)), yes)
