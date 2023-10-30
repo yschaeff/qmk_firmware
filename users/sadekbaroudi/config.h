@@ -25,7 +25,6 @@
 #define TAP_CODE_DELAY 25
 
 #define QUICK_TAP_TERM 0
-#define IGNORE_MOD_TAP_INTERRUPT
 
 // -------------------- Leader key config ------------------------
 
