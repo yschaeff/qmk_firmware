@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define RGB_DI_PIN B7
+#define WS2812_DI_PIN B7
 #ifdef RGBLIGHT_ENABLE
   // #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
   #define WS2812_BYTE_ORDER WS2812_BYTE_ORDER_RGB
