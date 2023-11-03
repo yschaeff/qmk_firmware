@@ -2,12 +2,15 @@
 
 /**
  * Modules:
+ * VIK_HAPTIC
+ * VIK_PER56_CIRQUE_LEDS
  * VIK_PER56_CIRQUE_LEDS
  * VIK_PER56_PMW3360_LEDS
  * VIK_PMW3360
  * VIK_WEACT_ST7735
- * VIK_GC9A01
- * VIK_HAPTIC
+ * VIK_VIK_GC9A01
+ * VIK_WAVESHARE_22224
+ * VIK_AZOTEQ
  * 
  * Pin config:
  * VIK_SPI_DRIVER
@@ -140,4 +143,16 @@
 
     // Must be defined by the keyboard itself, needs a free unused pin for reset
     #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
+#endif
+
+#ifdef VIK_AZOTEQ
+    // default to AZOTEQ_IQS5XX_TPS43... shouldn't really do this
+    #if !defined(AZOTEQ_IQS5XX_TPS43) && !defined(AZOTEQ_IQS5XX_TPS65)
+        // #warning "fingerpunch:vik:azoteq: no azoteq profile defined, defaulted to AZOTEQ_IQS5XX_TPS43"
+        #define AZOTEQ_IQS5XX_TPS43
+        #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+        #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
+        #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
+        #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
+    #endif
 #endif
