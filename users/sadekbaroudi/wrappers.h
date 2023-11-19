@@ -176,6 +176,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_vulpes_majora
 #endif
 
+// Since LAYOUT_testamatta uses the name LAYOUT_testamatta instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_testamatta))
+#    define LAYOUT LAYOUT_testamatta
+#endif
+
 // Since LAYOUT_svlinky uses the name LAYOUT_svlinky instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_svlinky))
 #    define LAYOUT LAYOUT_svlinky
