@@ -1,12 +1,16 @@
-ifeq ($(strip $(FP_CONVERT_TO)), "svlinky")
+# If using svlinky, uncomment the first two lines, comment the "Other" MCU and BOOTLOADER and use FP_CONVERT_TO=svlinky
+
+# svlinky
+# MCU = RP2040
+# BOOTLOADER = rp2040
+
+# Other
+MCU = atmega32u4
+BOOTLOADER = atmel-dfu
+
+ifeq ($(strip $(FP_CONVERT_TO)), svlinky)
    VIK_ENABLE = yes
    OPT_DEFS += -DFP_CONVERT_TO_SVLINKY
-   ## Uncomment these two lines for svlinky
-   MCU := RP2040
-   BOOTLOADER := rp2040
-else
-   MCU := atmega32u4
-   BOOTLOADER := atmel-dfu
 endif
 
 # $(info $(MCU))
