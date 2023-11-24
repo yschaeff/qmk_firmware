@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "v3.h"
+#include "v4.h"
 
 #ifdef RGB_MATRIX_ENABLE
 // 6 column rgb config
