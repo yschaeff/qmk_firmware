@@ -156,3 +156,7 @@
         #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
     #endif
 #endif
+
+#ifdef CIRQUE_ENABLE
+    #define CIRQUE_PINNACLE_SPI_CS_PIN VIK_SPI_CS
+#endif

@@ -1,4 +1,5 @@
-/* Copyright 2022 Sadek Baroudi <sadekbaroudi@gmail.com>
+/*
+ * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,16 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
-#include "quantum.h"
+#define HAL_USE_SPI TRUE
+#define HAL_USE_I2C TRUE
+#define HAL_USE_PWM TRUE
+#define HAL_USE_PAL TRUE
 
-#if defined(KEYBOARD_fingerpunch_vulpes_minora_byomcu)
-#    include "byomcu.h"
-#elif defined(KEYBOARD_fingerpunch_vulpes_minora_rp2040zero)
-#    include "rp2040zero.h"
-#elif defined(KEYBOARD_fingerpunch_vulpes_minora_xivik)
-#    include "xivik.h"
-#endif
-
-#include "keyboards/fingerpunch/src/fp.h"
+#include_next "halconf.h"

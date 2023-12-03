@@ -14,6 +14,7 @@
 
 ifeq ($(strip $(VIK_HAPTIC)), yes)
    HAPTIC_ENABLE = yes
+   HAPTIC_DRIVER = drv2605l
    OPT_DEFS += -DVIK_HAPTIC
 endif
 

@@ -32,5 +32,6 @@ MOUSEKEY_ENABLE = yes
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = vendor
 
-AUDIO_ENABLE ?= no
-AUDIO_DRIVER = pwm_hardware
+ifeq ($(strip $(FP_XIVIK_V01)), yes)
+   OPT_DEFS += -DFP_XIVIK_V01
+endif
