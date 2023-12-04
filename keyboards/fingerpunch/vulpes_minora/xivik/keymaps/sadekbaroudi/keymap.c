@@ -36,7 +36,7 @@
         K01,             K02,            K03,            LT(_FUNCTION, K04),  K05,               K06,                 LT(_FUNCTION, K07), K08,              K09,            K0A,         \
         LCTL_T(K11),     LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,               LT(_MOUSE, K16),     RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A), \
         K21,             K22,            K23,            K24,                 K25,               K26,                 K27,                K28,              K29,            K2A,         \
-                                        K33,            LT(_NAVIGATION,K34), LT(_FUNCTION,K35), LT(_MEDIA,K36),      LT(_SYMBOLS,K37),   K38,                                            \
+                                        K33,            LT(_NAVIGATION,K34), LT(_FUNCTION,K35), LT(_MEDIA,K36),      LT(_SYMBOLS,K37),   K38                                             \
     )
 
 /* Re-pass though to allow templates to be used */
