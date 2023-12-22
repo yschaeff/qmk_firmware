@@ -4,13 +4,13 @@
 # VIK_ENABLE
 # VIK_HAPTIC
 # VIK_PER56_CIRQUE_LEDS
-# VIK_PER56_CIRQUE_LEDS
 # VIK_PER56_PMW3360_LEDS
 # VIK_PMW3360
 # VIK_WEACT_ST7735
 # VIK_VIK_GC9A01
 # VIK_WAVESHARE_22224
 # VIK_AZOTEQ
+# VIK_EC11_EVQWGD001
 
 ifeq ($(strip $(VIK_HAPTIC)), yes)
    HAPTIC_ENABLE = yes
@@ -72,6 +72,15 @@ ifeq ($(strip $(VIK_AZOTEQ)), yes)
    POINTING_DEVICE_ENABLE := yes
    POINTING_DEVICE_DRIVER := azoteq_iqs5xx
    OPT_DEFS += -DVIK_AZOTEQ
+endif
+
+ifeq ($(strip $(VIK_EC11_EVQWGD001)), yes)
+   ENCODER_ENABLE := yes
+   OPT_DEFS += -DVIK_EC11_EVQWGD001
+endif
+
+ifeq ($(strip $(VIK_RGB_ONLY)), yes)
+   OPT_DEFS += -DVIK_RGB_ONLY
 endif
 
 ifeq ($(strip $(PMW3360_ENABLE)), yes)

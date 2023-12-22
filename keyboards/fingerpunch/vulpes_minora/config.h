@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
-    #ifdef FP_VIK_PERS60_MODULE
+    #if defined(VIK_PER56_CIRQUE_LEDS) || defined(VIK_PER56_PMW3360_LEDS) || defined(VIK_EC11_EVQWGD001)
     #define RGBLED_SPLIT { 10, 6 }
     #define RGBLED_NUM 16
     #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }

@@ -4,13 +4,13 @@
  * Modules:
  * VIK_HAPTIC
  * VIK_PER56_CIRQUE_LEDS
- * VIK_PER56_CIRQUE_LEDS
  * VIK_PER56_PMW3360_LEDS
  * VIK_PMW3360
  * VIK_WEACT_ST7735
  * VIK_VIK_GC9A01
  * VIK_WAVESHARE_22224
  * VIK_AZOTEQ
+ * VIK_EC11_EVQWGD001
  * 
  * Pin config:
  * VIK_SPI_DRIVER
@@ -154,6 +154,15 @@
         #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
         #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
         #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
+    #endif
+#endif
+
+#ifdef VIK_EC11_EVQWGD001
+    #ifdef VIK_RGB_ONLY
+        #ifdef RGBLED_NUM
+            #undef RGBLED_NUM
+        #endif
+        #define RGBLED_NUM 4
     #endif
 #endif
 
