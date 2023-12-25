@@ -64,6 +64,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_GPIO_1        GP18
 #define VIK_GPIO_2        GP24
 #define VIK_WS2812_DI_PIN GP16
+
+#ifdef VIK_EC11_EVQWGD001
+#define ENCODERS_PAD_A {GP18}
+#define ENCODERS_PAD_B {GP24}
+#endif
 #endif
 
 #include "keyboards/fingerpunch/src/config_post.h"

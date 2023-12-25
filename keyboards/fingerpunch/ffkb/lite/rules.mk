@@ -1,8 +1,9 @@
-# If using svlinky, uncomment the first two lines, comment the "Other" MCU and BOOTLOADER and use FP_CONVERT_TO=svlinky
+# If using svlinky, uncomment the first 2 lines, comment the "Other" MCU and BOOTLOADER and use FP_CONVERT_TO=svlinky
 
 # svlinky
 # MCU = RP2040
 # BOOTLOADER = rp2040
+# WS2812_DRIVER = vendor
 
 # Other
 MCU = atmega32u4

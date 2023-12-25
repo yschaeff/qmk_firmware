@@ -27,6 +27,7 @@
  * 
  * Options:
  * VIK_RGB_ONLY
+ * VIK_RETAIN_KB_WS2812_DI_PIN
  */
 
 // For VIK SPI
@@ -83,12 +84,16 @@
 #endif
 
 #ifdef VIK_PER56_CIRQUE_LEDS
-    #ifdef VIK_RGB_ONLY
-        #ifdef RGBLED_NUM
-            #undef RGBLED_NUM
+    #ifdef RGBLED_NUM
+        #undef RGBLED_NUM
+        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
+            #undef WS2812_DI_PIN
         #endif
-        #define RGBLED_NUM 4
     #endif
+    #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+    #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+    #endif
+    #define RGBLED_NUM 4
 #endif
 
 #ifdef VIK_PER56_PMW3360_LEDS
@@ -97,12 +102,16 @@
     #define PMW33XX_CPI 1000
     #define PMW33XX_CS_DIVISOR 8
 
-    #ifdef VIK_RGB_ONLY
-        #ifdef RGBLED_NUM
-            #undef RGBLED_NUM
+    #ifdef RGBLED_NUM
+        #undef RGBLED_NUM
+        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
+            #undef WS2812_DI_PIN
         #endif
-        #define RGBLED_NUM 4
     #endif
+    #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+    #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+    #endif
+    #define RGBLED_NUM 4
 #endif
 
 #ifdef VIK_PMW3360
@@ -161,6 +170,12 @@
     #ifdef VIK_RGB_ONLY
         #ifdef RGBLED_NUM
             #undef RGBLED_NUM
+            #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
+                #undef WS2812_DI_PIN
+            #endif
+        #endif
+        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
         #endif
         #define RGBLED_NUM 4
     #endif

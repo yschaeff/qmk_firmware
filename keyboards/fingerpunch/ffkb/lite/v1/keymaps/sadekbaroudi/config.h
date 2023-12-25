@@ -10,3 +10,5 @@
 #define CIRQUE_PINNACLE_TAP_ENABLE
 #define POINTING_DEVICE_ROTATION_90
 #endif
+
+// bin/fp_build.sh -k ffkb/lite/v1 -m sadekbaroudi -i -r -e "FP_CONVERT_TO=svlinky VIK_EC11_EVQWGD001=yes VIK_RGB_ONLY=yes RGBLIGHT_ENABLE=yes"
