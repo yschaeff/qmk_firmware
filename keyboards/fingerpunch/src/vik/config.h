@@ -11,6 +11,7 @@
  * VIK_WAVESHARE_22224
  * VIK_AZOTEQ
  * VIK_EC11_EVQWGD001
+ * VIK_TRACKPOINT
  * 
  * Pin config:
  * VIK_SPI_DRIVER
@@ -179,6 +180,11 @@
         #endif
         #define RGBLED_NUM 4
     #endif
+#endif
+
+#ifdef VIK_TRACKPOINT
+    #define PS2_CLOCK_PIN VIK_GPIO_2
+    #define PS2_DATA_PIN  VIK_GPIO_1
 #endif
 
 #ifdef CIRQUE_ENABLE
