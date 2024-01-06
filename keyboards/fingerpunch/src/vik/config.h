@@ -87,12 +87,12 @@
 #ifdef VIK_PER56_CIRQUE_LEDS
     #ifdef RGBLED_NUM
         #undef RGBLED_NUM
-        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
-            #undef WS2812_DI_PIN
-        #endif
     #endif
     #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
-    #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+        #ifdef WS2812_DI_PIN
+            #undef WS2812_DI_PIN
+        #endif
+        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
     #endif
     #define RGBLED_NUM 4
 #endif
@@ -105,12 +105,12 @@
 
     #ifdef RGBLED_NUM
         #undef RGBLED_NUM
-        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
-            #undef WS2812_DI_PIN
-        #endif
     #endif
     #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
-    #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+        #ifdef WS2812_DI_PIN
+            #undef WS2812_DI_PIN
+        #endif
+        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
     #endif
     #define RGBLED_NUM 4
 #endif
@@ -171,12 +171,12 @@
     #ifdef VIK_RGB_ONLY
         #ifdef RGBLED_NUM
             #undef RGBLED_NUM
-            #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN) && defined(WS2812_DI_PIN)
-                #undef WS2812_DI_PIN
-            #endif
         #endif
         #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
-        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+            #ifdef WS2812_DI_PIN
+                #undef WS2812_DI_PIN
+            #endif
+            #define WS2812_DI_PIN VIK_WS2812_DI_PIN
         #endif
         #define RGBLED_NUM 4
     #endif
