@@ -216,9 +216,13 @@ This is fully supported. Once I merge the next major release in Q4, I will remov
 
 In addition to the default configurations, there are additional features added to fingerpunch keyboards:
 
-| Setting                                          | Description                                                                     | Default                         |
-| ------------------------------------------------ | ------------------------------------------------------------------------------- | ------------------------------- |
-| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY`            | (Required) Trackball auto mouse sensitivity value                               | `3`                             |
+| Setting                                          | Description                                                                      | Default                               |
+| ------------------------------------------------ | -------------------------------------------------------------------------------- | ------------------------------------- |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY`            | (Required) Trackball auto mouse sensitivity value                                | `3`                                   |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_X`          | (Required) Trackball auto mouse sensitivity value in the X direction (pointing)  | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_Y`          | (Required) Trackball auto mouse sensitivity value in the Y direction (pointing)  | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_H`          | (Required) Trackball auto mouse sensitivity value in the H direction (scrolling) | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_V`          | (Required) Trackball auto mouse sensitivity value in the X direction (scrolling) | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
 
 (Additional auto mouse configuration in the layer lighting section)
 
