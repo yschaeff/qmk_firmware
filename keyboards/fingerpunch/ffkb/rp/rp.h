@@ -17,10 +17,10 @@
 
 #include "quantum.h"
 
-#if defined(KEYBOARD_fingerpunch_ffkb_rp_v4)
-#    include "v4.h"
-#elif defined(KEYBOARD_fingerpunch_ffkb_rp_v5)
-#    include "v5.h"
+#if defined(KEYBOARD_fingerpunch_ffkb_rp_v0)
+#    include "v0.h"
+#elif defined(KEYBOARD_fingerpunch_ffkb_rp_v1)
+#    include "v1.h"
 #endif
 
 #include "keyboards/fingerpunch/src/fp.h"

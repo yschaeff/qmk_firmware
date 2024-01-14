@@ -6,6 +6,6 @@
     "usb": {
         "vid": "0xFE2B",
         "pid": "0xFFBB",
-        "device_version": "4.0.0"
+        "device_version": "0.1.0"
     }
 }

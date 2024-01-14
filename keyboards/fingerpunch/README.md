@@ -67,17 +67,23 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
-    || defined(KEYBOARD_fingerpunch_ffkb_rp_v3) \
+    || defined(KEYBOARD_fingerpunch_ffkb_lite_v1) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp_v0) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp_v1) \
     || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_fpm101) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v1) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v2) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \
     || defined(KEYBOARD_fingerpunch_rockon_v2) \
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
+    || defined(KEYBOARD_fingerpunch_vulpes_minora) \
+    || defined(KEYBOARD_fingerpunch_vulpes_majora_v1) \
     || defined(KEYBOARD_fingerpunch_ximi)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else

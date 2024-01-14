@@ -8,7 +8,7 @@ Faux fox keyboard (ffkb)
 
 Make example for this keyboard (after setting up your build environment):
 ```
-    make fingerpunch/ffkb/rp/v4:default RGBLIGHT_ENABLE=yes FP_EC11=yes CIRQUE_ENABLE=yes
+    make fingerpunch/ffkb/rp/v1:default RGBLIGHT_ENABLE=yes FP_EC11=yes CIRQUE_ENABLE=yes
 ```
 
 Options are:
