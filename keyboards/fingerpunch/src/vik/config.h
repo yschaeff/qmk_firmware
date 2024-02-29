@@ -164,8 +164,9 @@
         #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
         #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
         #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
-        // Can only use motion pin on unibodies
-        #ifndef SPLIT_KEYBOARD
+        // Can only use motion pin on unibodies or splits that don't use split pointing
+        // This is currently a QMK constraint
+        #ifndef SPLIT_POINTING
             #define POINTING_DEVICE_MOTION_PIN VIK_GPIO_2
         #endif
     #endif
