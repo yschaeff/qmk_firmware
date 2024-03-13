@@ -31,6 +31,7 @@
     || defined(KEYBOARD_fingerpunch_vulpes_majora_v1) \
     || defined(KEYBOARD_fingerpunch_ximi) \
     || defined(KEYBOARD_fingerpunch_personal_badwings) \
+    || defined(KEYBOARD_fingerpunch_personal_badwings_v2) \
     || defined(KEYBOARD_fingerpunch_personal_klor) \
     || defined(KEYBOARD_fingerpunch_personal_barghoot) \
     || defined(KEYBOARD_fingerpunch_personal_baboon38) \
