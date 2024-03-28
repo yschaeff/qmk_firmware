@@ -7,7 +7,7 @@ An ergonomic 40% keyboard
 
 To build the firmware for this keyboard (after setting up your build environment):
 ```
-    make fingerpunch/personal/lechiffre_dek:default RGB_MATRIX_ENABLE=yes
+    make fingerpunch/personal/le_chiffre_democratique:default RGB_MATRIX_ENABLE=yes
 ```
 
 Options are:

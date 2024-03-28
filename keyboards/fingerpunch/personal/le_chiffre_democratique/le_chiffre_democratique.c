@@ -13,10 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "lechiffre_dek.h"
+#include "le_chiffre_democratique.h"
 
 /**
-#define LAYOUT_lechiffre_dek( \
+#define LAYOUT_le_chiffre_democratique( \
     K00, K01, K02, K03, K04,           K05, K06, K07, K32, K33, \
     K10, K11, K12, K13, K14,   K47,    K15, K16, K17, K34, K35, \
     K20, K21, K22, K23, K24,           K25, K26, K27, K36, K37, \
