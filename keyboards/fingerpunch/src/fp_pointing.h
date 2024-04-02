@@ -100,6 +100,10 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #        define FP_POINTING_SCROLLING_DPI 2
 #    endif
 
+#    ifndef FP_POINTING_SCROLLING_THRESHOLD
+#        define FP_POINTING_SCROLLING_THRESHOLD 6
+#    endif
+
 #    ifndef FP_POINTING_SCROLLING_LAYER
 #        define FP_POINTING_SCROLLING_LAYER 3
 #    endif

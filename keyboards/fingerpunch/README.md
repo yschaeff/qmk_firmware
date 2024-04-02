@@ -171,7 +171,9 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 
 ### General Settings
 
-**Note: Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300**
+**Notes:**  
+* Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300
+* `FP_POINTING_SCROLLING_THRESHOLD` is used to throttle the speed of scrolling. You can slow down the scroll by increasing this value. You can speed it up by decreasing this value.
 
 | Setting                                      | Description                                                                                                                 | Default                          |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
@@ -180,6 +182,9 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 | `FP_POINTING_MIN_DPI`                        | (Required) Sets the minimum DPI for your pointing device                                                                    | `2`                              |
 | `FP_POINTING_MAX_DPI`                        | (Required) Sets the maximum DPI for your pointing device                                                                    | `60`                             |
 | `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `2`                              |
+| `FP_POINTING_SCROLLING_THRESHOLD`            | (Required) Sets the number of 'ticks' to trigger a single scroll                                                            | `6`                              |
+| `FP_POINTING_SCROLLING_X_REVERSED`           | (Required) Reverses the direction of X scrolling                                                                            | `undefined`                      |
+| `FP_POINTING_SCROLLING_Y_REVERSED`           | (Required) Reverses the direction of Y scrolling                                                                            | `undefined`                      |
 | `FP_POINTING_SCROLLING_MIN_DPI`              | (Required) Sets the minimum DPI for scrolling                                                                               | `2`                              |
 | `FP_POINTING_SCROLLING_MAX_DPI`              | (Required) Sets the maximum DPI for scrolling                                                                               | `10`                             |
 | `FP_POINTING_SCROLLING_LAYER_ENABLE`         | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`                                               | `undefined`                      |
