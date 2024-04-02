@@ -174,6 +174,7 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 **Notes:**  
 * Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300
 * `FP_POINTING_SCROLLING_THRESHOLD` is used to throttle the speed of scrolling. You can slow down the scroll by increasing this value. You can speed it up by decreasing this value.
+* If the DPI for scrolling is set high enough, and you move the trackball fast enough, it may result in more movement than the threshold in one report event. This will cap the scrolling speed.
 
 | Setting                                      | Description                                                                                                                 | Default                          |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
