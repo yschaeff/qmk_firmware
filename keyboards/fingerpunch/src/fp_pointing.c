@@ -32,6 +32,33 @@ static bool zooming_keycode_enabled = false;
 static bool zooming_layer_enabled = false;
 static bool zooming_hold = false;
 
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// Define all the fingerpunch specific mouse keycodes
+bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
+    switch(keycode) {
+#ifndef FP_DISABLE_CUSTOM_KEYCODES
+        // See fp_keyhandler.h for full list
+        case FP_ACCEL_TOG:
+        case FP_SCROLL_ON:
+        case FP_SCROLL_OFF:
+        case FP_SCROLL_MOMENT:
+        case FP_SNIPE_TOG:
+        case FP_SNIPE_ON:
+        case FP_SNIPE_OFF:
+        case FP_SNIPE_MOMENT:
+        case FP_ZOOM_TOG:
+        case FP_ZOOM_ON:
+        case FP_ZOOM_OFF:
+        case FP_ZOOM_MOMENT:
+            return true;
+#endif
+        default:
+            return false;
+    }
+    return  is_mouse_record_user(keycode, record);
+}
+#endif
+
 #ifdef POINTING_DEVICE_COMBINED
 void fp_compile_check_combined_default_modes(void) {
     // assert that either both LEFT values are false or only one of them is true
