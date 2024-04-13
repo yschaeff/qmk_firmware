@@ -93,7 +93,8 @@ ifeq ($(strip $(VIK_TRACKPOINT)), yes)
    # The only thing that's left is busywait, which is not recommended by QMK, and also requires PAL_MODE_OUTPUT_OPENDRAIN
    # https://github.com/qmk/qmk_firmware/blob/master/docs/feature_ps2_mouse.md#busywait-version-idbusywait-version
 
-   # So, our only option is to use two consecutive pins, which means we can't even use the VIK connector...
+   # So, our only option is to use two consecutive pins, which means we can't even use the VIK connector unless GPIO AD1 and AD2
+   #   are consecutive, as defined by the RP2040 vendor driver, check QMK docs
 
    # Options are:
    # 1) hand wire from VIK module to a PCB with consecutive GPIO available (assuming RP2040), or hand wire to any two GPIO for non-RP2040 controllers. This also requires a bodge for 3.3v (untested) or a logic level conversion between 3.3v and 5v if using a 3.3v controller
