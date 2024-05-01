@@ -36,8 +36,10 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
-# EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
+EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = no
+
+LTO_ENABLE = no
 
 SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c

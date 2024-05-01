@@ -201,6 +201,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_kucheza
 #endif
 
+// Since LAYOUT_le_chiffre_democratique uses the name LAYOUT_le_chiffre_democratique instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_le_chiffre_democratique))
+#    define LAYOUT LAYOUT_le_chiffre_democratique
+#endif
+
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)
