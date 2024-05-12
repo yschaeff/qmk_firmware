@@ -58,6 +58,21 @@ get_valid_keyboards() {
 			fi
 		done
 
+		# special case for vulpes minora byomcu
+		if [[ -e "${line}/byomcu/fp_build.json" ]]; then
+			echo -n "${line}/byomcu "
+		fi
+
+		# special case for vulpes minora rp2040zero
+		if [[ -e "${line}/rp2040zero" ]]; then
+			echo -n "${line}/rp2040zero "
+		fi
+
+		# special case for vulpes minora xivik
+		if [[ -e "${line}/xivik" ]]; then
+			echo -n "${line}/xivik "
+		fi
+
 		# if we have a second parameter, then we don't want to recurse again
 		if [ "$#" -lt 2 ]; then
 			# now check for byomcu version, repeating the logic above
