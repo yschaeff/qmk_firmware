@@ -13,7 +13,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: ${{ github.repository}}
         ref: ${{ github.ref }}
@@ -21,7 +21,7 @@ jobs:
       run: |
           content=$(bash bin/fp_build.sh -l | sed s~keyboards/fingerpunch/~~|  jq -Rsc '. / "\n" - [""]')
           content="{\"keyboard\":$content}"
-          echo "::set-output name=matrix::$content"
+          echo "matrix=$content" >> $GITHUB_OUTPUT
 
   Build:
     needs: gather-keyboards
@@ -32,7 +32,7 @@ jobs:
       matrix: ${{fromJson(needs.gather-keyboards.outputs.matrix)}}
     steps:
       - name: Checkout QMK
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.repository}}
           ref: ${{ github.ref }}
