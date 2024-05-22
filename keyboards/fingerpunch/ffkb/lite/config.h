@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   // #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
   #define WS2812_BYTE_ORDER WS2812_BYTE_ORDER_RGB
-  #define RGBLED_NUM 2
+  #define RGBLIGHT_LED_COUNT 2
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16

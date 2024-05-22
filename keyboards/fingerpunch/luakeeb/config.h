@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_SPLIT
   #define RGBLED_SPLIT { 21, 21 }
-  #define RGBLED_NUM 42
+  #define RGBLIGHT_LED_COUNT 42
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16

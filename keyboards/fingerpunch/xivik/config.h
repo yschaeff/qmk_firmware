@@ -108,7 +108,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_DI_PIN GP16
 #ifdef RGBLIGHT_ENABLE
-    #define RGBLED_NUM 10 // Arbitrary number, gets overridden by the vik module stuff below
+    #define RGBLIGHT_LED_COUNT 10 // Arbitrary number, gets overridden by the vik module stuff below
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
