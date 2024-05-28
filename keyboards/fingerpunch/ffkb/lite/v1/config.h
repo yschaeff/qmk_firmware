@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS \
     { GP0, GP1, GP23, GP21 }
 #define MATRIX_COL_PINS \
-    { GP8, GP7, GP6, GP5, GP4, GP9, GP29, GP28, GP24, GP18, GP22, GP20 }
+    { GP8, GP7, GP6, GP5, GP4, GP9, GP29, GP28, GP18, GP24, GP22, GP20 }
 #else
 #define MATRIX_ROW_PINS \
     { D3, D2, B2, B6 }
