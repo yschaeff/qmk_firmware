@@ -183,7 +183,7 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 | `FP_POINTING_MIN_DPI`                        | (Required) Sets the minimum DPI for your pointing device                                                                    | `2`                              |
 | `FP_POINTING_MAX_DPI`                        | (Required) Sets the maximum DPI for your pointing device                                                                    | `60`                             |
 | `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `2`                              |
-| `FP_POINTING_SCROLLING_THRESHOLD`            | (Required) Sets the number of 'ticks' to trigger a single scroll                                                            | `6`                              |
+| `FP_POINTING_SCROLLING_THRESHOLD`            | (Required) Sets the number of 'ticks' to trigger a single scroll                                                            | `10`                             |
 | `FP_POINTING_SCROLLING_X_REVERSED`           | (Required) Reverses the direction of X scrolling                                                                            | `undefined`                      |
 | `FP_POINTING_SCROLLING_Y_REVERSED`           | (Required) Reverses the direction of Y scrolling                                                                            | `undefined`                      |
 | `FP_POINTING_SCROLLING_MIN_DPI`              | (Required) Sets the minimum DPI for scrolling                                                                               | `2`                              |
