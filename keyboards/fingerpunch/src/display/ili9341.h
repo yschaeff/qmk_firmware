@@ -15,8 +15,8 @@
  */
 
 #ifndef FP_QP_DISPLAY_WIDTH
-    #define FP_QP_DISPLAY_WIDTH 128
+    #define FP_QP_DISPLAY_WIDTH 320
 #endif
 #ifndef FP_QP_DISPLAY_HEIGHT
-    #define FP_QP_DISPLAY_HEIGHT 160
+    #define FP_QP_DISPLAY_HEIGHT 480
 #endif

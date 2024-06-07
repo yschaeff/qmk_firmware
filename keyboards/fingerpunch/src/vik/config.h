@@ -3,6 +3,7 @@
 /**
  * Modules:
  * VIK_HAPTIC
+ * VIK_ILI9341
  * VIK_PER56_CIRQUE_LEDS
  * VIK_PER56_PMW3360_LEDS
  * VIK_PMW3360
@@ -12,7 +13,7 @@
  * VIK_AZOTEQ
  * VIK_EC11_EVQWGD001
  * VIK_TRACKPOINT
- * 
+ *
  * Pin config:
  * VIK_SPI_DRIVER
  * VIK_SPI_SCK_PIN
@@ -25,7 +26,7 @@
  * VIK_GPIO_1
  * VIK_GPIO_2
  * VIK_WS2812_DI_PIN
- * 
+ *
  * Options:
  * VIK_RGB_ONLY
  * VIK_RETAIN_KB_WS2812_DI_PIN
@@ -84,6 +85,17 @@
     #define FP_HAPTIC_SAVE
 #endif
 
+#ifdef VIK_ILI9341
+    #define DISPLAY_CS_PIN VIK_SPI_CS
+    #define DISPLAY_DC_PIN VIK_GPIO_1
+
+    // To dynamically control the backlight with BL_TOGG keycode
+    #define BACKLIGHT_PIN VIK_GPIO_2
+
+    // Must be defined by the keyboard itself, needs a free unused pin for reset
+    #define DISPLAY_RST_PIN VIK_DISPLAY_RST_UNUSED_PIN
+#endif
+
 #ifdef VIK_PER56_CIRQUE_LEDS
     #ifdef RGBLIGHT_LED_COUNT
         #undef RGBLIGHT_LED_COUNT
@@ -131,7 +143,7 @@
     #define BACKLIGHT_PIN VIK_GPIO_2
 
     // Must be defined by the keyboard itself, needs a free unused pin for reset
-    #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
+    #define DISPLAY_RST_PIN VIK_DISPLAY_RST_UNUSED_PIN
 #endif
 
 #ifdef VIK_GC9A01
@@ -152,7 +164,7 @@
     #define BACKLIGHT_PIN VIK_GPIO_2
 
     // Must be defined by the keyboard itself, needs a free unused pin for reset
-    #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
+    #define DISPLAY_RST_PIN VIK_DISPLAY_RST_UNUSED_PIN
 #endif
 
 #ifdef VIK_AZOTEQ

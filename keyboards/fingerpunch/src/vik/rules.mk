@@ -3,6 +3,7 @@
 # rules.mk options
 # VIK_ENABLE
 # VIK_HAPTIC
+# VIK_ILI9341
 # VIK_PER56_CIRQUE_LEDS
 # VIK_PER56_PMW3360_LEDS
 # VIK_PMW3360
@@ -17,6 +18,18 @@ ifeq ($(strip $(VIK_HAPTIC)), yes)
    HAPTIC_ENABLE = yes
    HAPTIC_DRIVER = drv2605l
    OPT_DEFS += -DVIK_HAPTIC
+endif
+
+ifeq ($(strip $(VIK_ILI9341)), yes)
+   # For LCD backlight toggling
+   BACKLIGHT_ENABLE = yes
+   BACKLIGHT_DRIVER = software
+
+   QUANTUM_PAINTER_ENABLE = yes
+   QUANTUM_PAINTER_DRIVERS += ili9341_spi
+   QUANTUM_PAINTER_LVGL_INTEGRATION = yes
+   SRC += keyboards/fingerpunch/src/display/ili9341.c
+   OPT_DEFS += -DVIK_ILI9341
 endif
 
 ifeq ($(strip $(VIK_PER56_CIRQUE_LEDS)), yes)

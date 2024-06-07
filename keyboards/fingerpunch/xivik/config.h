@@ -61,8 +61,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 #define VIK_WS2812_DI_PIN GP16
 
-// Used only if you have a weact st7735 display, set to unused pin
-#define VIK_ST7735_UNUSED_PIN GP11
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN GP11
 
 // All the through hole pins from the controller
 #ifdef FP_XIVIK_V01

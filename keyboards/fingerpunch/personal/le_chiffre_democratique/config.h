@@ -74,8 +74,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_GPIO_2        F4
 #define VIK_WS2812_DI_PIN D4
 
-// Used only if you have a weact st7735 display, set to unused pin
-#define VIK_ST7735_UNUSED_PIN F6
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN F6
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
