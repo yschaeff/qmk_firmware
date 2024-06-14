@@ -32,6 +32,6 @@
     {
         "type" : "single",
         "name" : "FP_VIK2_RGB",
-        "user_input": "Do you want to use the RGB on VIK2? This disableds per key rgb and VIK1 RGB."
+        "user_input": "Do you want to use the RGB on VIK2? This disables per key rgb and VIK1 RGB."
     }
 ]

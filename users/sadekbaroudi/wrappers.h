@@ -131,6 +131,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ximi
 #endif
 
+// Since ximega uses the name LAYOUT_ximega instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_ximega))
+#    define LAYOUT LAYOUT_ximega
+#endif
+
 // Since badwings uses the name LAYOUT_badwings instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_badwings))
 #    define LAYOUT LAYOUT_badwings
