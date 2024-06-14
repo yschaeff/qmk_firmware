@@ -18,3 +18,10 @@
 #if defined(VIK_TRACKBALL_ENABLE) && defined(FP_CONVERT_TO_SVLINKY_V02)
 #define POINTING_DEVICE_INVERT_X
 #endif
+
+// ffkb lite solenoid edition
+// bin/fp_build.sh -k ffkb/lite/v1 -m sadekbaroudi -i -r -e "FFKB_LITE_SOLENOID=yes"
+#if defined(FFKB_LITE_SOLENOID)
+#define SOLENOID_PIN F0
+#define RP2040_FLASH_GENERIC_03H
+#endif
