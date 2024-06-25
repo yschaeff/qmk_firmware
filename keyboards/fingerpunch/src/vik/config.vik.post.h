@@ -12,6 +12,7 @@
  * VIK_WAVESHARE_22224
  * VIK_AZOTEQ
  * VIK_EC11_EVQWGD001
+ * VIK_CIRQUE (really just a raw cirque)
  * VIK_TRACKPOINT
  *
  * Pin config:
@@ -96,7 +97,7 @@
     #define DISPLAY_RST_PIN VIK_DISPLAY_RST_UNUSED_PIN
 #endif
 
-#ifdef VIK_PER56_CIRQUE_LEDS
+#if defined(VIK_PER56_CIRQUE_LEDS) || defined(VIK_PER56_CIRQUE_LEDS_RIGHT)
     #ifdef RGBLIGHT_LED_COUNT
         #undef RGBLIGHT_LED_COUNT
     #endif
@@ -109,7 +110,7 @@
     #define RGBLIGHT_LED_COUNT 4
 #endif
 
-#ifdef VIK_PER56_PMW3360_LEDS
+#if defined(VIK_PER56_PMW3360_LEDS) || defined(VIK_PER56_PMW3360_LEDS_RIGHT)
     // Trackball config
     #define PMW33XX_CS_PIN VIK_SPI_CS
     #define PMW33XX_CPI 1000
@@ -127,7 +128,7 @@
     #define RGBLIGHT_LED_COUNT 4
 #endif
 
-#ifdef VIK_PMW3360
+#if defined(VIK_PMW3360) || defined(VIK_PMW3360_RIGHT)
     // Trackball config
     #define PMW33XX_CS_PIN VIK_SPI_CS
     #define PMW33XX_CPI 1000
@@ -167,20 +168,20 @@
     #define DISPLAY_RST_PIN VIK_DISPLAY_RST_UNUSED_PIN
 #endif
 
-#ifdef VIK_AZOTEQ
+#if defined(VIK_AZOTEQ) || defined(VIK_AZOTEQ_RIGHT)
     // default to AZOTEQ_IQS5XX_TPS43... shouldn't really do this
     #if !defined(AZOTEQ_IQS5XX_TPS43) && !defined(AZOTEQ_IQS5XX_TPS65)
         // #warning "fingerpunch:vik:azoteq: no azoteq profile defined, defaulted to AZOTEQ_IQS5XX_TPS43"
         #define AZOTEQ_IQS5XX_TPS43
-        #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
-        #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
-        #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
-        #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
-        // Can only use motion pin on unibodies or splits that don't use split pointing
-        // This is currently a QMK constraint
-        #ifndef SPLIT_POINTING
-            #define POINTING_DEVICE_MOTION_PIN VIK_GPIO_2
-        #endif
+    #endif
+    // #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+    // #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
+    // #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
+    // #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
+    // Can only use motion pin on unibodies or splits that don't use split pointing
+    // This is currently a QMK constraint
+    #ifndef SPLIT_POINTING_ENABLE
+        #define POINTING_DEVICE_MOTION_PIN VIK_GPIO_2
     #endif
 #endif
 
@@ -206,4 +207,6 @@
 
 #ifdef CIRQUE_ENABLE
     #define CIRQUE_PINNACLE_SPI_CS_PIN VIK_SPI_CS
+    #define CIRQUE_PINNACLE_TAP_ENABLE
+    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 #endif

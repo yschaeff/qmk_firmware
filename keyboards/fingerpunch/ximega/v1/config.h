@@ -49,4 +49,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Used only if you have a display with RESET unconnected, set to unused pin
 #define VIK_DISPLAY_RST_UNUSED_PIN GP17
-#define FP_QP_ROTATION QP_ROTATION_270
+
+// Encoder configuration from VIK
+#ifdef VIK_EC11_EVQWGD001
+    #define ENCODERS_PAD_A { GP26 }
+    #define ENCODERS_PAD_B { GP27 }
+    #define ENCODER_RESOLUTIONS { 2 }
+#elif defined(VIK_PER56_CIRQUE_LEDS) || defined(VIK_PER56_PMW3360_LEDS)
+    #define ENCODERS_PAD_A { GP26 }
+    #define ENCODERS_PAD_B { GP27 }
+    #define ENCODER_RESOLUTIONS { 1 }
+#else
+    #define ENCODERS_PAD_A { }
+    #define ENCODERS_PAD_B { }
+    #define ENCODER_RESOLUTIONS { }
+#endif
+
+#ifdef VIK_EC11_EVQWGD001_RIGHT
+    #define ENCODERS_PAD_A_RIGHT { GP26 }
+    #define ENCODERS_PAD_B_RIGHT { GP27 }
+    #define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#elif defined(VIK_PER56_CIRQUE_LEDS_RIGHT) || defined(VIK_PER56_PMW3360_LEDS_RIGHT)
+    #define ENCODERS_PAD_A_RIGHT { GP26 }
+    #define ENCODERS_PAD_B_RIGHT { GP27 }
+    #define ENCODER_RESOLUTIONS_RIGHT { 1 }
+#else
+    #define ENCODERS_PAD_A_RIGHT { }
+    #define ENCODERS_PAD_B_RIGHT { }
+    #define ENCODER_RESOLUTIONS_RIGHT { }
+#endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

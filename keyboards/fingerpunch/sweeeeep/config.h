@@ -93,3 +93,5 @@
 
 /* Backwards compatibility with existing out-of-tree keymaps */
 #define LAYOUT_sweeeeep LAYOUT_split_3x5_3
+
+#include "keyboards/fingerpunch/src/config_post.h"

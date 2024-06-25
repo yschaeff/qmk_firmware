@@ -168,3 +168,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     #define POINTING_DEVICE_INVERT_Y // This inverts the Y on the left side only
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

@@ -166,3 +166,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
     // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"
