@@ -213,3 +213,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     defined(FP_TRACKBALL_RIGHT_ONLY)
         #define POINTING_DEVICE_INVERT_X_RIGHT
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

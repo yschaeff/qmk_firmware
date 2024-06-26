@@ -35,7 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPI_MOSI_PIN GP23
 #define SPI_MISO_PIN GP20
 
-// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
 #define MASTER_LEFT
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_POINTING_ENABLE
@@ -143,64 +142,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#ifdef CIRQUE_ENABLE
-    // cirque trackpad config
-    // This is for I2C only, which is not the default. Ximega doesn't have pull up resistors
-    // So you can't use it anyway
-    #define CIRQUE_PINNACLE_ADDR 0x2A
-    // This is for SPI only, which is the default
-    #define CIRQUE_PINNACLE_SPI_CS_PIN GP9
-
-    // Uncomment 2 lines below to switch to relative mode and enable right click
-    // Note that tap to click doesn't work on the slave side unless you enable relative mode
-    // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-    // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-    #define CIRQUE_PINNACLE_TAP_ENABLE
-    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
-#endif
-
-#ifdef FP_TRACKBALL_ENABLE
-    // Trackball config
-    #define PMW33XX_CS_PIN GP9
-    #define PMW33XX_CPI 1000
-    #define PMW33XX_CS_DIVISOR 8
-#endif
-
 // All the possible configurations of pointing devices
-#if defined(FP_TRACKBALL_BOTH)
-    #define POINTING_DEVICE_COMBINED            // two pointing devices
-    #define POINTING_DEVICE_INVERT_Y            // for trackball on the left
-    #define POINTING_DEVICE_INVERT_X_RIGHT      // for trackball on the right
+#if defined(VIK_CIRQUE) || defined(VIK_PER56_CIRQUE_LEDS)
+    #define POINTING_DEVICE_ROTATION_90
 #endif
-#if defined(FP_CIRQUE_BOTH)
-    #define POINTING_DEVICE_COMBINED            // two pointing devices
-    #define POINTING_DEVICE_ROTATION_90         // for cirque on the left
-    #define POINTING_DEVICE_ROTATION_90_RIGHT   // for cirque on the right
-#endif
-#if defined(FP_TRACKBALL_LEFT_ONLY)
-    #define POINTING_DEVICE_LEFT                // one pointing device, on the left
-    #define POINTING_DEVICE_INVERT_Y            // for trackball on the left
-#endif
-#if defined(FP_TRACKBALL_RIGHT_ONLY)
-    #define POINTING_DEVICE_RIGHT               // one pointing device, on the right
-    #define POINTING_DEVICE_INVERT_X_RIGHT      // for trackball on the right
-#endif
-#if defined(FP_CIRQUE_LEFT_ONLY)
-    #define POINTING_DEVICE_LEFT                // one pointing device, on the left
-    #define POINTING_DEVICE_ROTATION_90         // for cirque on the left
-#endif
-#if defined(FP_CIRQUE_RIGHT_ONLY)
-    #define POINTING_DEVICE_RIGHT               // one pointing device, on the right
-    #define POINTING_DEVICE_ROTATION_90_RIGHT   // for cirque on the right
-#endif
-#if defined(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)
-    #define POINTING_DEVICE_COMBINED            // two pointing devices
-    #define POINTING_DEVICE_INVERT_Y            // for trackball on the left
-    #define POINTING_DEVICE_ROTATION_90_RIGHT   // for cirque on the right
 
+#if defined(VIK_CIRQUE_RIGHT) || defined(VIK_PER56_CIRQUE_LEDS_RIGHT)
+    #ifdef POINTING_DEVICE_COMBINED
+        #define POINTING_DEVICE_ROTATION_90_RIGHT
+    #else
+        #define POINTING_DEVICE_ROTATION_90
+    #endif
 #endif
-#if defined(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)
-    #define POINTING_DEVICE_COMBINED            // two pointing devices
-    #define POINTING_DEVICE_ROTATION_90         // for cirque on the left
-    #define POINTING_DEVICE_INVERT_X_RIGHT      // for trackball on the right
+
+#if defined(VIK_PMW3360) || defined(VIK_PER56_PMW3360_LEDS)
+    #define POINTING_DEVICE_INVERT_X
 #endif
+
+#if defined(VIK_PMW3360_RIGHT) || defined(VIK_PER56_PMW3360_LEDS_RIGHT)
+    #ifdef POINTING_DEVICE_COMBINED
+        #define POINTING_DEVICE_INVERT_Y_RIGHT
+    #else
+        #define POINTING_DEVICE_INVERT_Y
+    #endif
+#endif
+
+#if defined(VIK_AZOTEQ)
+    #define AZOTEQ_IQS5XX_TPS65
+    #define POINTING_DEVICE_ROTATION_270
+#endif
+
+#if defined(VIK_AZOTEQ_RIGHT)
+    #define AZOTEQ_IQS5XX_TPS65
+    #ifdef POINTING_DEVICE_COMBINED
+        #define POINTING_DEVICE_ROTATION_270_RIGHT
+    #else
+        #define POINTING_DEVICE_ROTATION_270
+    #endif
+#endif
+
+// Display rotations
+#if defined(VIK_WEACT_ST7735)
+    #define FP_QP_ROTATION QP_ROTATION_180
+#endif
+
+// Encoder configuration from VIK is in version specific config, e.g. ximega/v1/config.h

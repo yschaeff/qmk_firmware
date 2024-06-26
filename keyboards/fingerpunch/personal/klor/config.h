@@ -133,3 +133,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define F_LRA 150 // resonance freq
 #    define DRV_GREETING       alert_750ms
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

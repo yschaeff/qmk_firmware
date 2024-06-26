@@ -16,7 +16,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // NOTE: All logic for the modules can be found in:
-// keyboards/fingerpunch/src/vik/config.h
+// keyboards/fingerpunch/src/vik/config.vik.pre.h
+// keyboards/fingerpunch/src/vik/config.vik.post.h
 // keyboards/fingerpunch/src/vik/rules.mk
 
 #pragma once

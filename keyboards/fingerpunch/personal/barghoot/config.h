@@ -91,3 +91,5 @@
 #define RGB_MATRIX_LED_COUNT 63
 
 #endif // defined(RGB_MATRIX_ENABLE)
+
+#include "keyboards/fingerpunch/src/config_post.h"

@@ -37,3 +37,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Used only if you have a display with RESET unconnected, set to unused pin
 #define VIK_DISPLAY_RST_UNUSED_PIN GP15
 #define FP_QP_ROTATION QP_ROTATION_270
+
+#include "keyboards/fingerpunch/src/config_post.h"

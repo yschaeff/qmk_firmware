@@ -39,3 +39,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS \
     { B4, E6, D7, C6, D4, B5, F4, F5, F6, F7, B1, B3 }
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

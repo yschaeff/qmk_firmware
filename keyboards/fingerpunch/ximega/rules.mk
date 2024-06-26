@@ -46,86 +46,8 @@ ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
    OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB
 endif
 
-# Choose only one (or none) of the 8 options below
-FP_TRACKBALL_BOTH ?= no
-FP_CIRQUE_BOTH ?= no
-FP_TRACKBALL_LEFT_ONLY ?= no
-FP_TRACKBALL_RIGHT_ONLY ?= no
-FP_CIRQUE_LEFT_ONLY ?= no
-FP_CIRQUE_RIGHT_ONLY ?= no
-FP_TRACKBALL_LEFT_CIRQUE_RIGHT ?= no
-FP_CIRQUE_LEFT_TRACKBALL_RIGHT ?= no
-# When qmk supports multiple types of pointing devices, can remove this line below
-# Also, can remove the question from fp_build.json
-FP_SPLIT_LEFT ?= no
-FP_SPLIT_RIGHT ?= no
 # If you want to use VIK2 port's RGB instead of per key rgb and VIK1, enable this
 FP_VIK2_RGB ?= no
-
-ifeq ($(strip $(FP_TRACKBALL_BOTH)), yes)
-   PMW3360_ENABLE = yes
-   OPT_DEFS += -DFP_TRACKBALL_BOTH
-endif
-
-ifeq ($(strip $(FP_TRACKBALL_LEFT_ONLY)), yes)
-   PMW3360_ENABLE = yes
-   OPT_DEFS += -DFP_TRACKBALL_LEFT_ONLY
-endif
-
-ifeq ($(strip $(FP_TRACKBALL_RIGHT_ONLY)), yes)
-   PMW3360_ENABLE = yes
-   OPT_DEFS += -DFP_TRACKBALL_RIGHT_ONLY
-endif
-
-ifeq ($(strip $(FP_TRACKBALL_LEFT_CIRQUE_RIGHT)), yes)
-   # When qmk supports multiple types of pointing devices, change to something like the commented code below
-   # PMW3360_ENABLE = yes
-   # CIRQUE_ENABLE = yes
-   ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
-      PMW3360_ENABLE = yes
-   endif
-   ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
-      CIRQUE_ENABLE = yes
-   endif
-   OPT_DEFS += -DFP_TRACKBALL_LEFT_CIRQUE_RIGHT
-endif
-
-ifeq ($(strip $(FP_CIRQUE_LEFT_TRACKBALL_RIGHT)), yes)
-   # When qmk supports multiple types of pointing devices, change to something like the commented code below
-   # PMW3360_ENABLE = yes
-   # CIRQUE_ENABLE = yes
-   ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
-      CIRQUE_ENABLE = yes
-   endif
-   ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
-      PMW3360_ENABLE = yes
-   endif
-   OPT_DEFS += -DFP_CIRQUE_LEFT_TRACKBALL_RIGHT
-endif
-
-ifeq ($(strip $(FP_CIRQUE_BOTH)), yes)
-   CIRQUE_ENABLE = yes
-   OPT_DEFS += -DFP_CIRQUE_BOTH
-endif
-
-ifeq ($(strip $(FP_CIRQUE_LEFT_ONLY)), yes)
-   CIRQUE_ENABLE = yes
-   OPT_DEFS += -DFP_CIRQUE_LEFT_ONLY
-endif
-
-ifeq ($(strip $(FP_CIRQUE_RIGHT_ONLY)), yes)
-   CIRQUE_ENABLE = yes
-   OPT_DEFS += -DFP_CIRQUE_RIGHT_ONLY
-endif
-
-# When qmk supports multiple types of pointing devices, can remove the FP_SPLIT_* blocks below
-ifeq ($(strip $(FP_SPLIT_LEFT)), yes)
-   OPT_DEFS += -DFP_SPLIT_LEFT
-endif
-
-ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
-   OPT_DEFS += -DFP_SPLIT_RIGHT
-endif
 
 ifeq ($(strip $(FP_VIK2_RGB)), yes)
    OPT_DEFS += -DFP_VIK2_RGB
@@ -133,16 +55,3 @@ endif
 
 # include here so that if VIK enables the PMW3360, the OPT_DEFS get set appropriately for ximega
 include keyboards/fingerpunch/src/rules.mk
-
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := cirque_pinnacle_spi
-   OPT_DEFS += -DCIRQUE_ENABLE
-endif
-
-ifeq ($(strip $(PMW3360_ENABLE)), yes)
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := pmw3360
-   QUANTUM_LIB_SRC += spi_master.c
-   OPT_DEFS += -DFP_TRACKBALL_ENABLE
-endif
