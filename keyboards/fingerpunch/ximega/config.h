@@ -161,9 +161,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #if defined(VIK_PMW3360_RIGHT) || defined(VIK_PER56_PMW3360_LEDS_RIGHT)
     #ifdef POINTING_DEVICE_COMBINED
-        #define POINTING_DEVICE_INVERT_Y_RIGHT
+        #define POINTING_DEVICE_INVERT_X_RIGHT
     #else
-        #define POINTING_DEVICE_INVERT_Y
+        #define POINTING_DEVICE_INVERT_X
     #endif
 #endif
 

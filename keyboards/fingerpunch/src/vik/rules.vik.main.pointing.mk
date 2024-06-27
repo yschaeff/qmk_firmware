@@ -1,27 +1,40 @@
-ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
-	ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
-	endif
-else
-endif
-
 # Point devices left
 ifeq ($(strip $(VIK_AZOTEQ)), yes)
-	POINTING_DEVICE_ENABLE := yes
-	POINTING_DEVICE_DRIVER := azoteq_iqs5xx
+	ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+		ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
+			POINTING_DEVICE_ENABLE := yes
+			POINTING_DEVICE_DRIVER := azoteq_iqs5xx
+		endif
+	else
+		POINTING_DEVICE_ENABLE := yes
+		POINTING_DEVICE_DRIVER := azoteq_iqs5xx
+	endif
 	VIK_POINTING_LEFT := yes
 	OPT_DEFS += -DVIK_AZOTEQ
 	OPT_DEFS += -DVIK_POINTING_LEFT
 endif
 
 ifeq ($(strip $(VIK_CIRQUE)), yes)
-	CIRQUE_ENABLE := yes
+	ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+		ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
+			CIRQUE_ENABLE := yes
+		endif
+	else
+		CIRQUE_ENABLE := yes
+	endif
 	VIK_POINTING_LEFT := yes
 	OPT_DEFS += -DVIK_CIRQUE
 	OPT_DEFS += -DVIK_POINTING_LEFT
 endif
 
 ifeq ($(strip $(VIK_PER56_CIRQUE_LEDS)), yes)
-	CIRQUE_ENABLE = yes
+	ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+		ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
+			CIRQUE_ENABLE = yes
+		endif
+	else
+		CIRQUE_ENABLE = yes
+	endif
 	VIK_POINTING_LEFT := yes
 	ENCODER_ENABLE = yes
 	OPT_DEFS += -DVIK_PER56_CIRQUE_LEDS
@@ -29,7 +42,13 @@ ifeq ($(strip $(VIK_PER56_CIRQUE_LEDS)), yes)
 endif
 
 ifeq ($(strip $(VIK_PER56_PMW3360_LEDS)), yes)
-	PMW3360_ENABLE = yes
+	ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+		ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
+			PMW3360_ENABLE = yes
+		endif
+	else
+		PMW3360_ENABLE = yes
+	endif
 	VIK_POINTING_LEFT := yes
 	ENCODER_ENABLE = yes
 	OPT_DEFS += -DVIK_PER56_PMW3360_LEDS
@@ -37,7 +56,13 @@ ifeq ($(strip $(VIK_PER56_PMW3360_LEDS)), yes)
 endif
 
 ifeq ($(strip $(VIK_PMW3360)), yes)
-	PMW3360_ENABLE = yes
+	ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+		ifeq ($(strip $(VIK_BUILD_LEFT)), yes)
+			PMW3360_ENABLE = yes
+		endif
+	else
+		PMW3360_ENABLE = yes
+	endif
 	VIK_POINTING_LEFT := yes
 	OPT_DEFS += -DVIK_PMW3360
 	OPT_DEFS += -DVIK_POINTING_LEFT
