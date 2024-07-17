@@ -17,6 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
+
 /* key matrix size */
 #define MATRIX_ROWS 9
 #define MATRIX_COLS 8
@@ -154,6 +157,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef VIK_PMW3360
   #define POINTING_DEVICE_INVERT_Y
+#endif
+
+#ifdef CIRQUE_ENABLE
+  #define POINTING_DEVICE_ROTATION_90
 #endif
 
 #include "keyboards/fingerpunch/src/config_post.h"
