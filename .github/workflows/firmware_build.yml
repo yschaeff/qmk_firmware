@@ -7,6 +7,7 @@ on:
       - master
       - 'develop**'
       - github-actions-build
+  workflow_dispatch:
 jobs:
   gather-keyboards:
     runs-on: ubuntu-latest
