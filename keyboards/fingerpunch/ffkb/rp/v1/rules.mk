@@ -32,4 +32,12 @@ ifeq ($(strip $(FP_EVQ)), yes)
    OPT_DEFS += -DFP_EVQ_UNDER_PALMS
 endif
 
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
+   POINTING_DEVICE_ENABLE := yes
+   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
+   #POINTING_DEVICE_DRIVER := cirque_pinnacle_spi
+   OPT_DEFS += -DCIRQUE_ENABLE
+endif
+
 include keyboards/fingerpunch/src/rules.mk
