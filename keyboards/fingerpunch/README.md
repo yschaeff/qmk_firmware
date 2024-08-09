@@ -107,7 +107,7 @@ If you don't want to use this functionality, you can override it by creating you
 
 For example:
 ```c
-bool encoder_update_kb(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     // Your encoder logic goes here
     
     // return false to avoid processing the encoder_update_kb() function that fingerpunch uses
