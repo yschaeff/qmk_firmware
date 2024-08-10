@@ -11,107 +11,10 @@ enum custom_keycodes {
     VIM_WQ,
 
 };
+
 #define W_MOD_X         OSM(MOD_LGUI)
 #define W_MOD_Y         OSM(MOD_LALT)
 #define W_MOD_Z         OSM(MOD_LCTL)
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names {
-    _QWERTY,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
-    _MOUSE = AUTO_MOUSE_DEFAULT_LAYER,
-
-    _WINGS0,
-    _WINGS1,
-    _WINGS2,
-};
-
-uint8_t gmods = 0;
-
-void
-oneshot_mods_changed_user(uint8_t mods)
-{
-    if (mods^gmods) {
-        audio_play_click(0, 460.0, 200);
-    }
-    gmods = mods;
-}
-bool
-rgb_matrix_indicators_user(void)
-{
-
-    if (layer_state_is(_WINGS0)) {
-        if (gmods) {
-            uint8_t r = 0;
-            uint8_t g = 0;
-            uint8_t b = 0;
-            if (gmods & MOD_MASK_CTRL) {
-                rgb_matrix_set_color(7,  0x00, 0x00, 0xFF); //Z
-                b |= 0xFF;
-            }
-            if (gmods & MOD_MASK_ALT) {
-                rgb_matrix_set_color(10, 0x00, 0xFF, 0x00); //Y
-                g |= 0xFF;
-            }
-            if (gmods & MOD_MASK_GUI) {
-                rgb_matrix_set_color(13, 0xFF, 0x00, 0x00); //X
-                r |= 0xFF;
-            }
-            if (gmods & MOD_MASK_SHIFT) {
-                rgb_matrix_set_color( 5,  0x00, 0x00, 0xFF); // flatten
-                rgb_matrix_set_color( 6,  0x00, 0x00, 0xFF); // scale
-                rgb_matrix_set_color(11,  0x00, 0x00, 0xFF); // rotate
-                rgb_matrix_set_color(12,  0x00, 0x00, 0xFF); // move
-                rgb_matrix_set_color(17,  0x00, 0x00, 0xFF); // extrude
-            }
-            /*rgb_matrix_set_color( 5,  r, g, b); // flatten*/
-            /*rgb_matrix_set_color( 6,  r, g, b); // scale*/
-            /*rgb_matrix_set_color(11,  r, g, b); // rotate*/
-            /*rgb_matrix_set_color(12,  r, g, b); // move*/
-            /*rgb_matrix_set_color(17,  r, g, b); // extrude*/
-        }
-
-        rgb_matrix_set_color(2,  0xFF, 0x00, 0x00); //PROG
-
-        /*rgb_matrix_set_color(18,  0x00, 0x00, 0x00);*/
-        rgb_matrix_set_color(19,  0x00, 0xFF, 0x00); //cancel/deselect
-        rgb_matrix_set_color(20,  0x00, 0x00, 0xFF); //cancel/deselect
-
-        for (int i = 21; i<42; i++) {
-            rgb_matrix_set_color(i,  0x00, 0x00, 0x00);
-        }
-        rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //NORMAL
-    }
-    return false;
-}
-
-
-bool
-process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-    switch (keycode) {
-        case VIM_W:
-            if (record->event.pressed) {
-                SEND_STRING(":w");
-                rgb_matrix_set_color(33, 0xFF, 0x00, 0x00);
-            } else {
-                SEND_STRING("\n");
-                audio_play_click(0, 440.0, 200);
-            }
-            break;
-        case VIM_WQ:
-            if (record->event.pressed) {
-                SEND_STRING(":wq");
-            } else {
-                SEND_STRING("\n");
-                audio_play_click(0, 460.0, 200);
-            }
-            break;
-    }
-    return true;
-};
 
 //  MO(layer): base + (layer)       until release
 //  TO(layer): base + layer         forever
@@ -132,8 +35,6 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
 
 #define OWINGS2         OSL(_WINGS2)
 #define NORMAL          TG(_WINGS0)
-
-
 
 #define W_PROG          LCTL(KC_8)
 
@@ -168,6 +69,20 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
 #define W_SCALE         KC_I
 #define W_FLTTN         KC_O
 #define W_EXTRD         KC_LBRC
+
+// Defines names for use in layer keycodes and the keymap
+enum layer_names {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
+    _MOUSE = AUTO_MOUSE_DEFAULT_LAYER,
+
+    _WINGS0,
+    _WINGS1,
+    _WINGS2,
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -291,3 +206,88 @@ layer_state_set_user(layer_state_t state)
 {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
+
+uint8_t gmods = 0;
+
+void
+oneshot_mods_changed_user(uint8_t mods)
+{
+    if (mods^gmods) {
+        audio_play_click(0, 460.0, 200);
+    }
+    gmods = mods;
+}
+bool
+rgb_matrix_indicators_user(void)
+{
+
+    if (layer_state_is(_WINGS0)) {
+        if (gmods) {
+            uint8_t r = 0;
+            uint8_t g = 0;
+            uint8_t b = 0;
+            if (gmods & MOD_MASK_CTRL) {
+                rgb_matrix_set_color(7,  0x00, 0x00, 0xFF); //Z
+                b |= 0xFF;
+            }
+            if (gmods & MOD_MASK_ALT) {
+                rgb_matrix_set_color(10, 0x00, 0xFF, 0x00); //Y
+                g |= 0xFF;
+            }
+            if (gmods & MOD_MASK_GUI) {
+                rgb_matrix_set_color(13, 0xFF, 0x00, 0x00); //X
+                r |= 0xFF;
+            }
+            if (gmods & MOD_MASK_SHIFT) {
+                rgb_matrix_set_color( 5,  0x00, 0x00, 0xFF); // flatten
+                rgb_matrix_set_color( 6,  0x00, 0x00, 0xFF); // scale
+                rgb_matrix_set_color(11,  0x00, 0x00, 0xFF); // rotate
+                rgb_matrix_set_color(12,  0x00, 0x00, 0xFF); // move
+                rgb_matrix_set_color(17,  0x00, 0x00, 0xFF); // extrude
+            }
+            /*rgb_matrix_set_color( 5,  r, g, b); // flatten*/
+            /*rgb_matrix_set_color( 6,  r, g, b); // scale*/
+            /*rgb_matrix_set_color(11,  r, g, b); // rotate*/
+            /*rgb_matrix_set_color(12,  r, g, b); // move*/
+            /*rgb_matrix_set_color(17,  r, g, b); // extrude*/
+        }
+
+        rgb_matrix_set_color(2,  0xFF, 0x00, 0x00); //PROG
+
+        /*rgb_matrix_set_color(18,  0x00, 0x00, 0x00);*/
+        rgb_matrix_set_color(19,  0x00, 0xFF, 0x00); //cancel/deselect
+        rgb_matrix_set_color(20,  0x00, 0x00, 0xFF); //cancel/deselect
+
+        for (int i = 21; i<42; i++) {
+            rgb_matrix_set_color(i,  0x00, 0x00, 0x00);
+        }
+        rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //NORMAL
+    }
+    return false;
+}
+
+
+bool
+process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    switch (keycode) {
+        case VIM_W:
+            if (record->event.pressed) {
+                SEND_STRING(":w");
+                rgb_matrix_set_color(33, 0xFF, 0x00, 0x00);
+            } else {
+                SEND_STRING("\n");
+                audio_play_click(0, 440.0, 200);
+            }
+            break;
+        case VIM_WQ:
+            if (record->event.pressed) {
+                SEND_STRING(":wq");
+            } else {
+                SEND_STRING("\n");
+                audio_play_click(0, 460.0, 200);
+            }
+            break;
+    }
+    return true;
+};
