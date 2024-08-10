@@ -42,7 +42,6 @@ enum custom_keycodes {
 #define MWINGS2         MO(_WINGS2)
 
 #define OWINGS2         OSL(_WINGS2)
-#define NORMAL          TG(_WINGS0)
 
 #define W_PROG          LCTL(KC_8)
 
@@ -71,6 +70,23 @@ enum custom_keycodes {
 #define W_FLTTN         KC_O
 #define W_EXTRD         KC_LBRC
 #define W_VIEW          KC_RBRC
+
+const key_override_t move_key_override = ko_make_basic(MOD_MASK_GUI, W_MOVE, LCTL(LALT(W_MOVE)));
+const key_override_t rotate_key_override = ko_make_basic(MOD_MASK_GUI, W_ROTAT, LCTL(LALT(W_ROTAT)));
+const key_override_t scale_key_override = ko_make_basic(MOD_MASK_GUI, W_SCALE, LCTL(LALT(W_SCALE)));
+const key_override_t flatten_key_override = ko_make_basic(MOD_MASK_GUI, W_FLTTN, LCTL(LALT(W_FLTTN)));
+const key_override_t extrude_key_override = ko_make_basic(MOD_MASK_GUI, W_EXTRD, LCTL(LALT(W_EXTRD)));
+const key_override_t view_key_override = ko_make_basic(MOD_MASK_GUI, W_VIEW, LCTL(LALT(W_VIEW)));
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &move_key_override,
+    &rotate_key_override,
+    &scale_key_override,
+    &flatten_key_override,
+    &extrude_key_override,
+    &view_key_override,
+    NULL
+};
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -182,23 +198,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*WINGS base layer*/
 [_WINGS0] =  LAYOUT_ffkb(
   W_PROG , W_DEL  , W_GROW  , W_LOOP , W_UNDO , W_RECAL,       _______, _______, _______, _______, _______, _______,
-  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_VIEW,       _______, _______, _______, _______, _______, _______,
+  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_VIEW,        _______, _______, _______, _______, _______, _______,
   KC_BTN2, W_FLTTN, W_SCALE , W_ROTAT, W_MOVE , W_EXTRD,       _______, _______, _______, _______, _______, _______,
-           _______,           _______, W_CANCL, MWINGS1,       NORMAL , _______, _______,          _______
+           _______,           _______, W_CANCL, MWINGS1,       TQWERTY, _______, _______,          _______
 ),
 
 [_WINGS1] =  LAYOUT_ffkb(
   _______, _______, W_SHRNK, W_EDGE , W_REDO , W_STORE,       _______, _______, _______, _______, _______, _______,
   _______, W_OBJ  , W_VERT , W_EDGE , W_FACE , W_CAM  ,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
-           _______,          _______, TWINGS2, _______,       NORMAL , _______, _______,          _______
+           _______,          _______, TWINGS2, _______,       TQWERTY, _______, _______,          _______
 ),
 
 [_WINGS2] =  LAYOUT_ffkb(
   _______, KC_DEL , KC_LEFT, KC_RGHT, KC_DOT , KC_BSPC,       _______, _______, _______, _______, _______, _______,
   _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,       _______, _______, _______, _______, _______, _______,
   _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,       _______, _______, _______, _______, _______, _______,
-           _______,          KC_TAB , TWINGS0, KC_ENT ,       NORMAL , _______, _______,          _______
+           _______,          KC_TAB , TWINGS0, KC_ENT ,       TQWERTY, _______, _______,          _______
 ),
 
 };
@@ -263,7 +279,7 @@ rgb_matrix_indicators_user(void)
         for (int i = 21; i<42; i++) {
             rgb_matrix_set_color(i,  0x00, 0x00, 0x00);
         }
-        rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //NORMAL
+        rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //TQWERTY
     }
     return false;
 }

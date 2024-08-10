@@ -1,3 +1,13 @@
+CIRQUE_ENABLE = yes
+FP_TRACKBALL_ENABLE = no
+RGB_MATRIX_ENABLE = yes
+FP_EVQ = yes
+AUDIO_ENABLE = yes
+HAPTIC_ENABLE = no
+
+# To replace GUI with CTRL+ALT
+KEY_OVERRIDE_ENABLE = yes
+
 AUDIO_ENABLE ?= no
 AUDIO_DRIVER = pwm_hardware
 
