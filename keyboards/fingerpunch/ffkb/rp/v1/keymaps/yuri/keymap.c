@@ -1,3 +1,11 @@
+/**
+ * BUILD INSTRUCTIONS
+ *
+ * cd /home/yuri/repo/keyboard/qmk_firmware
+ * make -j 8 fingerpunch/ffkb/rp/v1:yuri CIRQUE_ENABLE=yes FP_TRACKBALL_ENABLE=no RGB_MATRIX_ENABLE=yes FP_EVQ=yes AUDIO_ENABLE=yes HAPTIC_ENABLE=no
+ * cp fingerpunch_ffkb_rp_v1_yuri.uf2 /media/yuri/rp2040/
+ */
+
 #include QMK_KEYBOARD_H
 #include "quantum/rgb_matrix/rgb_matrix.h"
 
