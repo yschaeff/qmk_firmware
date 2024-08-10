@@ -55,13 +55,6 @@ enum custom_keycodes {
 #define W_CANCL         LSFT_T(KC_SPC)
 
 #define W_CAM           LCTL(KC_BTN3)
-#define W_FRAME         LSFT(KC_A)
-#define W_VW_X          KC_X
-#define W_VW_Xi         LSFT(KC_X)
-#define W_VW_Y          KC_Y
-#define W_VW_Yi         LSFT(KC_Y)
-#define W_VW_Z          KC_Z
-#define W_VW_Zi         LSFT(KC_Z)
 
 // Be careful not to conflict with sway
 #define W_MOVE          KC_Y
@@ -69,6 +62,7 @@ enum custom_keycodes {
 #define W_SCALE         KC_I
 #define W_FLTTN         KC_O
 #define W_EXTRD         KC_LBRC
+#define W_VIEW          KC_RBRC
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -180,14 +174,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*WINGS base layer*/
 [_WINGS0] =  LAYOUT_ffkb(
   W_PROG , W_DEL  , W_GROW  , W_LOOP , W_UNDO , W_RECAL,       _______, _______, _______, _______, _______, _______,
-  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_CAM  ,       _______, _______, _______, _______, _______, _______,
+  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_VIEW,       _______, _______, _______, _______, _______, _______,
   KC_BTN2, W_FLTTN, W_SCALE , W_ROTAT, W_MOVE , W_EXTRD,       _______, _______, _______, _______, _______, _______,
            _______,           _______, W_CANCL, MWINGS1,       NORMAL , _______, _______,          _______
 ),
 
 [_WINGS1] =  LAYOUT_ffkb(
   _______, _______, W_SHRNK, W_EDGE , W_REDO , W_STORE,       _______, _______, _______, _______, _______, _______,
-  _______, W_OBJ  , W_VERT , W_EDGE , W_FACE , W_FRAME,       _______, _______, _______, _______, _______, _______,
+  _______, W_OBJ  , W_VERT , W_EDGE , W_FACE , W_CAM  ,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
            _______,          _______, TWINGS2, _______,       NORMAL , _______, _______,          _______
 ),
