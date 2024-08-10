@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "quantum/rgb_matrix/rgb_matrix.h"
 
 // Some interesting keys
 // QK_AUDIO_CLICKY_TOGGLE
@@ -10,15 +11,81 @@ enum custom_keycodes {
     VIM_WQ,
 
 };
+#define W_MOD_X         OSM(MOD_LGUI)
+#define W_MOD_Y         OSM(MOD_LALT)
+#define W_MOD_Z         OSM(MOD_LCTL)
 
-#define W_0(kc)        (    (    (    (kc))))
-#define W_1(kc)        (    (    (LCTL(kc))))
-#define W_2(kc)        (    (LALT(    (kc))))
-#define W_3(kc)        (LSFT(    (    (kc))))
-#define W_4(kc)    LGUI(    (    (    (kc))))
-#define W_5(kc)    LGUI(    (    (LCTL(kc))))
-#define W_6(kc)    LGUI(    (LALT(    (kc))))
-#define W_7(kc)    LGUI(LSFT(    (    (kc))))
+// Defines names for use in layer keycodes and the keymap
+enum layer_names {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
+    _MOUSE = AUTO_MOUSE_DEFAULT_LAYER,
+
+    _WINGS0,
+    _WINGS1,
+    _WINGS2,
+};
+
+uint8_t gmods = 0;
+
+void
+oneshot_mods_changed_user(uint8_t mods)
+{
+    if (mods^gmods) {
+        audio_play_click(0, 460.0, 200);
+    }
+    gmods = mods;
+}
+bool
+rgb_matrix_indicators_user(void)
+{
+
+    if (layer_state_is(_WINGS0)) {
+        if (gmods) {
+            uint8_t r = 0;
+            uint8_t g = 0;
+            uint8_t b = 0;
+            if (gmods & MOD_MASK_CTRL) {
+                rgb_matrix_set_color(7,  0x00, 0x00, 0xFF); //Z
+                b |= 0xFF;
+            }
+            if (gmods & MOD_MASK_ALT) {
+                rgb_matrix_set_color(10, 0x00, 0xFF, 0x00); //Y
+                g |= 0xFF;
+            }
+            if (gmods & MOD_MASK_GUI) {
+                rgb_matrix_set_color(13, 0xFF, 0x00, 0x00); //X
+                r |= 0xFF;
+            }
+            if (gmods & MOD_MASK_SHIFT) {
+                rgb_matrix_set_color( 5,  0x00, 0x00, 0xFF); // flatten
+                rgb_matrix_set_color( 6,  0x00, 0x00, 0xFF); // scale
+                rgb_matrix_set_color(11,  0x00, 0x00, 0xFF); // rotate
+                rgb_matrix_set_color(12,  0x00, 0x00, 0xFF); // move
+                rgb_matrix_set_color(17,  0x00, 0x00, 0xFF); // extrude
+            }
+            /*rgb_matrix_set_color( 5,  r, g, b); // flatten*/
+            /*rgb_matrix_set_color( 6,  r, g, b); // scale*/
+            /*rgb_matrix_set_color(11,  r, g, b); // rotate*/
+            /*rgb_matrix_set_color(12,  r, g, b); // move*/
+            /*rgb_matrix_set_color(17,  r, g, b); // extrude*/
+        }
+
+        rgb_matrix_set_color(2,  0xFF, 0x00, 0x00); //PROG
+
+        /*rgb_matrix_set_color(18,  0x00, 0x00, 0x00);*/
+        rgb_matrix_set_color(19,  0x00, 0xFF, 0x00); //cancel/deselect
+        rgb_matrix_set_color(20,  0x00, 0x00, 0xFF); //cancel/deselect
+
+        for (int i = 21; i<42; i++) {
+            rgb_matrix_set_color(i,  0x00, 0x00, 0x00);
+        }
+        rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //NORMAL
+    }
+    return false;
+}
 
 
 bool
@@ -28,6 +95,7 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
         case VIM_W:
             if (record->event.pressed) {
                 SEND_STRING(":w");
+                rgb_matrix_set_color(33, 0xFF, 0x00, 0x00);
             } else {
                 SEND_STRING("\n");
                 audio_play_click(0, 440.0, 200);
@@ -45,19 +113,6 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
     return true;
 };
 
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names {
-    _QWERTY,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
-    _MOUSE = AUTO_MOUSE_DEFAULT_LAYER,
-
-    _WINGS0,
-    _WINGS2,
-};
-
 //  MO(layer): base + (layer)       until release
 //  TO(layer): base + layer         forever
 // OSL(layer): layers + (layer)     until key press
@@ -68,12 +123,16 @@ enum layer_names {
 #define TQWERTY         TO(_QWERTY)
 
 #define TWINGS0         TO(_WINGS0)
+#define TWINGS1         TO(_WINGS1)
+#define TWINGS2         TO(_WINGS2)
+
+#define MWINGS0         MO(_WINGS0)
+#define MWINGS1         MO(_WINGS1)
+#define MWINGS2         MO(_WINGS2)
+
 #define OWINGS2         OSL(_WINGS2)
 #define NORMAL          TG(_WINGS0)
 
-#define W_MOD_X     OSM(MOD_LCTL)
-#define W_MOD_Y     OSM(MOD_LSFT)
-#define W_MOD_Z     OSM(MOD_LALT)
 
 
 #define W_PROG          LCTL(KC_8)
@@ -85,19 +144,14 @@ enum layer_names {
 #define W_RING          KC_G
 #define W_UNDO          LCTL(LALT(KC_Z))
 #define W_REDO          LCTL(LSFT(KC_Z))
-#define W_RECAL         XXXXXXX
-#define W_STORE         XXXXXXX
-
-#define W_NUM           XXXXXXX
-#define W_AX_X          TO(_WINGSX)
-#define W_AX_Y          TO(_WINGSY)
-#define W_AX_Z          TO(_WINGSZ)
+#define W_RECAL         KC_T
+#define W_STORE         LSFT(KC_T)
 
 #define W_VERT          KC_V
 #define W_EDGE          KC_E
 #define W_FACE          KC_F
 #define W_OBJ           KC_B
-#define W_CANCL         KC_SPC
+#define W_CANCL         LSFT_T(KC_SPC)
 
 #define W_CAM           LCTL(KC_BTN3)
 #define W_FRAME         LSFT(KC_A)
@@ -108,11 +162,12 @@ enum layer_names {
 #define W_VW_Z          KC_Z
 #define W_VW_Zi         LSFT(KC_Z)
 
-#define W_MOVE          KC_1
-#define W_ROTAT         KC_2
-#define W_SCALE         KC_3
-#define W_FLTTN         KC_4
-#define W_EXTRD         KC_5
+// Be careful not to conflict with sway
+#define W_MOVE          KC_Y
+#define W_ROTAT         KC_U
+#define W_SCALE         KC_I
+#define W_FLTTN         KC_O
+#define W_EXTRD         KC_LBRC
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -210,20 +265,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*WINGS base layer*/
 [_WINGS0] =  LAYOUT_ffkb(
   W_PROG , W_DEL  , W_GROW  , W_LOOP , W_UNDO , W_RECAL,       _______, _______, _______, _______, _______, _______,
-  KC_BTN1, W_NUM  , W_MOD_Z , W_MOD_Y, W_MOD_X, W_CAM  ,       _______, _______, _______, _______, _______, _______,
+  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_CAM  ,       _______, _______, _______, _______, _______, _______,
   KC_BTN2, W_FLTTN, W_SCALE , W_ROTAT, W_MOVE , W_EXTRD,       _______, _______, _______, _______, _______, _______,
-           _______,           _______, W_CANCL, KC_LGUI,       NORMAL , _______, _______,          _______
+           _______,           _______, W_CANCL, MWINGS1,       NORMAL , _______, _______,          _______
+),
+
+[_WINGS1] =  LAYOUT_ffkb(
+  _______, _______, W_SHRNK, W_EDGE , W_REDO , W_STORE,       _______, _______, _______, _______, _______, _______,
+  _______, W_OBJ  , W_VERT , W_EDGE , W_FACE , W_FRAME,       _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
+           _______,          _______, TWINGS2, _______,       NORMAL , _______, _______,          _______
 ),
 
 [_WINGS2] =  LAYOUT_ffkb(
   _______, KC_DEL , KC_LEFT, KC_RGHT, KC_DOT , KC_BSPC,       _______, _______, _______, _______, _______, _______,
   _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,       _______, _______, _______, _______, _______, _______,
   _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,       _______, _______, _______, _______, _______, _______,
-           _______,          _______, TWINGS0, KC_ENT ,       NORMAL , _______, _______,          _______
+           _______,          KC_TAB , TWINGS0, KC_ENT ,       NORMAL , _______, _______,          _______
 ),
 
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
+layer_state_t
+layer_state_set_user(layer_state_t state)
+{
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
