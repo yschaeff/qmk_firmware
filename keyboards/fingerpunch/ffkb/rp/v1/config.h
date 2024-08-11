@@ -136,4 +136,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_HAPTIC_SAVE
 #endif
 
+//#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
 #include "keyboards/fingerpunch/src/config_post.h"
