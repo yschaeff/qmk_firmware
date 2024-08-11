@@ -6,6 +6,11 @@
  * cp fingerpunch_ffkb_rp_v1_yuri.uf2 /media/yuri/rp2040/
  */
 
+// ctags -R quantum
+
+// TODO Caps word
+// https://docs.qmk.fm/features/caps_word
+
 #include QMK_KEYBOARD_H
 #include "quantum/rgb_matrix/rgb_matrix.h"
 
@@ -71,6 +76,7 @@ enum custom_keycodes {
 #define W_EXTRD         KC_LBRC
 #define W_VIEW          KC_RBRC
 
+// OH WAIT, this is enabled on ALL layers!
 const key_override_t move_key_override = ko_make_basic(MOD_MASK_GUI, W_MOVE, LCTL(LALT(W_MOVE)));
 const key_override_t rotate_key_override = ko_make_basic(MOD_MASK_GUI, W_ROTAT, LCTL(LALT(W_ROTAT)));
 const key_override_t scale_key_override = ko_make_basic(MOD_MASK_GUI, W_SCALE, LCTL(LALT(W_SCALE)));
@@ -284,6 +290,9 @@ rgb_matrix_indicators_user(void)
     return false;
 }
 
+/*PLAN: everything is a custom key.*/
+/*For mods set a bitmap and return false*/
+/*for others add modifiers bases on bitmap!*/
 
 bool
 process_record_user(uint16_t keycode, keyrecord_t *record)
@@ -308,4 +317,4 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
             break;
     }
     return true;
-};
+}
