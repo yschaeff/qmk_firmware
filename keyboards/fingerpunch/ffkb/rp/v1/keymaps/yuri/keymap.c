@@ -13,6 +13,7 @@
 
 #include QMK_KEYBOARD_H
 #include "quantum/rgb_matrix/rgb_matrix.h"
+#include "override.h"
 
 // Some interesting keys
 // QK_AUDIO_CLICKY_TOGGLE
@@ -20,14 +21,13 @@
 #define KC_PRNT         KC_PRINT_SCREEN
 
 enum custom_keycodes {
-    VIM_W = SAFE_RANGE,
-    VIM_WQ,
-
+    //vim
+    VIM_W = SAFE_RANGE, VIM_WQ,
+    //home brew modifiers
+    W_MOD_S, W_MOD_X, W_MOD_Y, W_MOD_Z,
 };
 
-#define W_MOD_X         OSM(MOD_LGUI)
-#define W_MOD_Y         OSM(MOD_LALT)
-#define W_MOD_Z         OSM(MOD_LCTL)
+
 
 //  MO(layer): base + (layer)       until release
 //  TO(layer): base + layer         forever
@@ -39,60 +39,35 @@ enum custom_keycodes {
 #define TQWERTY         TO(_QWERTY)
 
 #define TWINGS0         TO(_WINGS0)
-#define TWINGS1         TO(_WINGS1)
+/*#define TWINGS1         TO(_WINGS1)*/
 #define TWINGS2         TO(_WINGS2)
 
 #define MWINGS0         MO(_WINGS0)
 #define MWINGS1         MO(_WINGS1)
-#define MWINGS2         MO(_WINGS2)
+/*#define MWINGS2         MO(_WINGS2)*/
 
-#define OWINGS2         OSL(_WINGS2)
+/*#define OWINGS2         OSL(_WINGS2)*/
 
 #define W_PROG          LCTL(KC_8)
-
-#define W_DEL           KC_DEL
-#define W_GROW          KC_PLUS
-#define W_SHRNK         KC_MINS
-#define W_LOOP          KC_L
-#define W_RING          KC_G
-#define W_UNDO          LCTL(LALT(KC_Z))
-#define W_REDO          LCTL(LSFT(KC_Z))
-#define W_RECAL         KC_T
-#define W_STORE         LSFT(KC_T)
-
-#define W_VERT          KC_V
-#define W_EDGE          KC_E
-#define W_FACE          KC_F
-#define W_OBJ           KC_B
 #define W_CANCL         LSFT_T(KC_SPC)
-
 #define W_CAM           LCTL(KC_BTN3)
 
-// Be careful not to conflict with sway
-#define W_MOVE          KC_Y
-#define W_ROTAT         KC_U
-#define W_SCALE         KC_I
-#define W_FLTTN         KC_O
-#define W_EXTRD         KC_LBRC
-#define W_VIEW          KC_RBRC
+#define W_OBJ           KC_B
+#define W_FACE          KC_F
+#define W_VERTX         KC_V
+#define W_EDGE          KC_E
 
-// OH WAIT, this is enabled on ALL layers!
-const key_override_t move_key_override = ko_make_basic(MOD_MASK_GUI, W_MOVE, LCTL(LALT(W_MOVE)));
-const key_override_t rotate_key_override = ko_make_basic(MOD_MASK_GUI, W_ROTAT, LCTL(LALT(W_ROTAT)));
-const key_override_t scale_key_override = ko_make_basic(MOD_MASK_GUI, W_SCALE, LCTL(LALT(W_SCALE)));
-const key_override_t flatten_key_override = ko_make_basic(MOD_MASK_GUI, W_FLTTN, LCTL(LALT(W_FLTTN)));
-const key_override_t extrude_key_override = ko_make_basic(MOD_MASK_GUI, W_EXTRD, LCTL(LALT(W_EXTRD)));
-const key_override_t view_key_override = ko_make_basic(MOD_MASK_GUI, W_VIEW, LCTL(LALT(W_VIEW)));
-
-const key_override_t **key_overrides = (const key_override_t *[]){
-    &move_key_override,
-    &rotate_key_override,
-    &scale_key_override,
-    &flatten_key_override,
-    &extrude_key_override,
-    &view_key_override,
-    NULL
-};
+#define W_F1            KC_LBRC
+#define W_F2            KC_RBRC
+#define W_F3            KC_SCLN
+#define W_F4            KC_QUOT
+#define W_F5            KC_BSLS
+#define W_AX_F1         KC_COMM
+#define W_AX_F2         KC_DOT
+#define W_AX_F3         KC_SLSH
+#define W_AX_F4         KC_GRV
+#define W_AX_F5         KC_MINS
+#define W_AX_F6         KC_EQL
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -203,24 +178,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*WINGS base layer*/
 [_WINGS0] =  LAYOUT_ffkb(
-  W_PROG , W_DEL  , W_GROW  , W_LOOP , W_UNDO , W_RECAL,       _______, _______, _______, _______, _______, _______,
-  KC_BTN1, _______, W_MOD_Z , W_MOD_Y, W_MOD_X, W_VIEW,        _______, _______, _______, _______, _______, _______,
-  KC_BTN2, W_FLTTN, W_SCALE , W_ROTAT, W_MOVE , W_EXTRD,       _______, _______, _______, _______, _______, _______,
-           _______,           _______, W_CANCL, MWINGS1,       TQWERTY, _______, _______,          _______
+  KC_TAB , W_F1   , W_F2   , W_F3   , W_F4   , W_F5   ,       _______, _______, _______, _______, _______, _______,
+  KC_ESC , W_MOD_S, W_MOD_Z, W_MOD_Y, W_MOD_X, W_AX_F1,       _______, _______, _______, _______, _______, _______,
+  _______, W_AX_F2, W_AX_F3, W_AX_F4, W_AX_F5, W_AX_F6,       _______, _______, _______, _______, _______, _______,
+           _______,          _______, W_CANCL, MWINGS1,       TQWERTY, _______, _______,          _______
 ),
 
 [_WINGS1] =  LAYOUT_ffkb(
-  _______, _______, W_SHRNK, W_RING , W_REDO , W_STORE,       _______, _______, _______, _______, _______, _______,
-  _______, W_OBJ  , W_VERT , W_EDGE , W_FACE , W_CAM  ,       _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
-           _______,          _______, TWINGS2, _______,       TQWERTY, _______, _______,          _______
+  W_PROG , _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
+  _______, W_OBJ  , W_VERTX, W_EDGE , W_FACE , W_CAM  ,       _______, _______, _______, _______, _______, _______,
+  _______, KC_DEL , _______, _______, _______, KC_BSPC,       _______, _______, _______, _______, _______, _______,
+           _______,          _______, _______, _______,       _______, _______, _______,          _______
 ),
 
 [_WINGS2] =  LAYOUT_ffkb(
   KC_TAB , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,       _______, _______, _______, _______, _______, _______,
   _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,       _______, _______, _______, _______, _______, _______,
   _______, KC_DEL , KC_PLUS, KC_MINS, KC_DOT , KC_BSPC,       _______, _______, _______, _______, _______, _______,
-           _______,          KC_TAB , TWINGS0, KC_ENT ,       TQWERTY, _______, _______,          _______
+           _______,                 , TWINGS0, KC_ENT ,       TQWERTY, _______, _______,          _______
 )
 
 };
@@ -231,49 +206,52 @@ layer_state_set_user(layer_state_t state)
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-uint8_t gmods = 0;
+uint8_t homebrew_mods = 0;
+
+/*PLAN: everything is a custom key.*/
+/*For mods set a bitmap and return false*/
+/*for others add modifiers bases on bitmap!*/
 
 void
-oneshot_mods_changed_user(uint8_t mods)
+mod_toggle(const uint8_t n)
 {
-    if (mods^gmods) {
-        audio_play_click(0, 460.0, 200);
-    }
-    gmods = mods;
+    const float notes[] = {440.0, 493.883, 523.251, 587.33};
+    audio_play_click(0, notes[n], 200);
+
+    homebrew_mods ^= 1<<n;
 }
+
+inline uint8_t
+mod_get(const uint8_t n)
+{
+    // By shifting the mask this can be optimized to 1 instruction
+    return homebrew_mods & (1<<n);
+}
+void
+mod_clear(void)
+{
+    if (homebrew_mods) // only play sound when actually clearing it.
+        audio_play_click(0, 391.995, 400);
+    homebrew_mods = 0;
+}
+bool
+mod_clear_cb(bool pressed, void *context)
+{
+    mod_clear();
+    return true;
+}
+
 bool
 rgb_matrix_indicators_user(void)
 {
 
     if (layer_state_is(_WINGS0)) {
-        if (gmods) {
-            uint8_t r = 0;
-            uint8_t g = 0;
-            uint8_t b = 0;
-            if (gmods & MOD_MASK_CTRL) {
-                rgb_matrix_set_color(7,  0x00, 0x00, 0xFF); //Z
-                b |= 0xFF;
-            }
-            if (gmods & MOD_MASK_ALT) {
-                rgb_matrix_set_color(10, 0x00, 0xFF, 0x00); //Y
-                g |= 0xFF;
-            }
-            if (gmods & MOD_MASK_GUI) {
-                rgb_matrix_set_color(13, 0xFF, 0x00, 0x00); //X
-                r |= 0xFF;
-            }
-            if (gmods & MOD_MASK_SHIFT) {
-                rgb_matrix_set_color( 5,  0x00, 0x00, 0xFF); // flatten
-                rgb_matrix_set_color( 6,  0x00, 0x00, 0xFF); // scale
-                rgb_matrix_set_color(11,  0x00, 0x00, 0xFF); // rotate
-                rgb_matrix_set_color(12,  0x00, 0x00, 0xFF); // move
-                rgb_matrix_set_color(17,  0x00, 0x00, 0xFF); // extrude
-            }
-            /*rgb_matrix_set_color( 5,  r, g, b); // flatten*/
-            /*rgb_matrix_set_color( 6,  r, g, b); // scale*/
-            /*rgb_matrix_set_color(11,  r, g, b); // rotate*/
-            /*rgb_matrix_set_color(12,  r, g, b); // move*/
-            /*rgb_matrix_set_color(17,  r, g, b); // extrude*/
+        if (homebrew_mods)
+        {
+            if (mod_get(0)) { rgb_matrix_set_color( 4,  0xFF, 0xFF, 0xFF); } // S
+            if (mod_get(1)) { rgb_matrix_set_color(13,  0xFF, 0x00, 0x00); } // X
+            if (mod_get(2)) { rgb_matrix_set_color(10,  0x00, 0xFF, 0x00); } // Y
+            if (mod_get(3)) { rgb_matrix_set_color( 7,  0x00, 0x00, 0xFF); } // Z
         }
 
         rgb_matrix_set_color(2,  0xFF, 0x00, 0x00); //PROG
@@ -287,16 +265,108 @@ rgb_matrix_indicators_user(void)
         }
         rgb_matrix_set_color(21,  0x00, 0xFF, 0xFF); //TQWERTY
     }
-    return false;
+    return false; // I think return is ignored
 }
 
-/*PLAN: everything is a custom key.*/
-/*For mods set a bitmap and return false*/
-/*for others add modifiers bases on bitmap!*/
+bool
+select_context_keys(uint16_t keycode)
+{
+    switch (keycode) {
+        case W_F1: case W_F2: case W_F3: case W_F4: case W_F5:
+            return true;
+        default:
+            return false;
+    }
+}
+bool
+axis_context_keys(uint16_t keycode)
+{
+    switch (keycode) {
+        case W_AX_F1: case W_AX_F2: case W_AX_F3: case W_AX_F4: case W_AX_F5: case W_AX_F6:
+            return true;
+        default:
+            return false;
+    }
+}
+
+bool mods[] = {0, 0, 0, 0, 0, 0, 0};
+
+OVERRIDE(override_select_f1, W_F1, _WINGS0, mod_clear_cb)
+OVERRIDE(override_select_f2, W_F2, _WINGS0, mod_clear_cb)
+OVERRIDE(override_select_f3, W_F3, _WINGS0, mod_clear_cb)
+OVERRIDE(override_select_f4, W_F4, _WINGS0, mod_clear_cb)
+OVERRIDE(override_select_f5, W_F5, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f1, W_AX_F1, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f2, W_AX_F2, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f3, W_AX_F3, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f4, W_AX_F4, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f5, W_AX_F5, _WINGS0, mod_clear_cb)
+OVERRIDE(override_axis_f6, W_AX_F6, _WINGS0, mod_clear_cb)
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    OVERRIDE_PTRS(override_select_f1),
+    OVERRIDE_PTRS(override_select_f2),
+    OVERRIDE_PTRS(override_select_f3),
+    OVERRIDE_PTRS(override_select_f4),
+    OVERRIDE_PTRS(override_select_f5),
+    OVERRIDE_PTRS(override_axis_f1),
+    OVERRIDE_PTRS(override_axis_f2),
+    OVERRIDE_PTRS(override_axis_f3),
+    OVERRIDE_PTRS(override_axis_f4),
+    OVERRIDE_PTRS(override_axis_f5),
+    OVERRIDE_PTRS(override_axis_f6),
+    NULL
+};
+
+void
+set_mod(int n) {
+    for (int i = 0; i < 7; i++) {
+        mods[i] = i==n;
+    }
+}
+
+void
+update_overrides(void)
+{
+    switch (homebrew_mods) {
+        case 1: set_mod(0); break;
+        case 2: set_mod(1); break;
+        case 4: set_mod(2); break;
+        case 8: set_mod(3); break;
+        case 3: set_mod(4); break;
+        case 5: set_mod(5); break;
+        case 9: set_mod(6); break;
+        default:
+            mod_clear();
+            set_mod(-1); // clears all
+    }
+}
 
 bool
 process_record_user(uint16_t keycode, keyrecord_t *record)
 {
+
+    if (layer_state_is(_WINGS0)) {
+        if (record->event.pressed) {
+            switch (keycode) {
+                case W_MOD_S: mod_toggle(0); return false;
+                case W_MOD_X: mod_toggle(1); return false;
+                case W_MOD_Y: mod_toggle(2); return false;
+                case W_MOD_Z: mod_toggle(3); return false;
+                case W_CANCL: // Surprisingly the key up event never gets emitted. GOOD.
+                    if (homebrew_mods) {
+                        mod_clear();
+                        return false;
+                    }
+                /*default: // any key should clear*/
+                    /*mod_clear();*/
+            }
+        }
+        update_overrides();
+    }
+
+    //ALL other layers
+
     switch (keycode) {
         case VIM_W:
             if (record->event.pressed) {
