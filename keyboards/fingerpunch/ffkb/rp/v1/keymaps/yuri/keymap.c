@@ -10,6 +10,7 @@
 
 // TODO Caps word
 // https://docs.qmk.fm/features/caps_word
+// TODO right scroll arrow keys
 
 #include QMK_KEYBOARD_H
 #include "quantum/rgb_matrix/rgb_matrix.h"
@@ -181,21 +182,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB , W_F1   , W_F2   , W_F3   , W_F4   , W_F5   ,       _______, _______, _______, _______, _______, _______,
   KC_ESC , W_MOD_S, W_MOD_Z, W_MOD_Y, W_MOD_X, W_AX_F1,       _______, _______, _______, _______, _______, _______,
   _______, W_AX_F2, W_AX_F3, W_AX_F4, W_AX_F5, W_AX_F6,       _______, _______, _______, _______, _______, _______,
-           _______,          _______, W_CANCL, MWINGS1,       TQWERTY, _______, _______,          _______
+           _______,          KC_ENT , W_CANCL, MWINGS1,       TQWERTY, _______, _______,          _______
 ),
 
 [_WINGS1] =  LAYOUT_ffkb(
-  W_PROG , _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______,
+  W_PROG , _______, _______, KC_G   , _______, _______,       _______, _______, _______, _______, _______, _______,
   _______, W_OBJ  , W_VERTX, W_EDGE , W_FACE , W_CAM  ,       _______, _______, _______, _______, _______, _______,
   _______, KC_DEL , _______, _______, _______, KC_BSPC,       _______, _______, _______, _______, _______, _______,
            _______,          _______, _______, _______,       _______, _______, _______,          _______
 ),
 
 [_WINGS2] =  LAYOUT_ffkb(
-  KC_TAB , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,       _______, _______, _______, _______, _______, _______,
-  _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,       _______, _______, _______, _______, _______, _______,
+  KC_TRNS, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,       _______, _______, _______, _______, _______, _______,
+  KC_TRNS, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,       _______, _______, _______, _______, _______, _______,
   _______, KC_DEL , KC_PLUS, KC_MINS, KC_DOT , KC_BSPC,       _______, _______, _______, _______, _______, _______,
-           _______,          _______, TWINGS0, KC_ENT ,       TQWERTY, _______, _______,          _______
+           _______,          KC_TRNS, _______, TWINGS0,       TQWERTY, _______, _______,          _______
 )
 
 };
@@ -383,6 +384,19 @@ process_record_user(uint16_t keycode, keyrecord_t *record)
             } else {
                 SEND_STRING("\n");
                 audio_play_click(0, 460.0, 200);
+            }
+            break;
+        case KC_TAB:
+            if (record->event.pressed && layer_state_is(_WINGS0)) {
+                layer_on(_WINGS2);
+                audio_play_click(0, 440.0, 200);
+            }
+            break;
+        case KC_ENT://problem with enter we switch layer, now enter is space -.-
+        case KC_ESC:
+            if (record->event.pressed && layer_state_is(_WINGS2)) {
+                layer_move(_WINGS0);
+                audio_play_click(0, 391.995, 400);
             }
             break;
     }
