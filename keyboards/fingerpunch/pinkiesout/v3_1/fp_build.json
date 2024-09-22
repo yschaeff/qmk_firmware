@@ -14,7 +14,7 @@
                     "VIK_WAVESHARE_22224",
                     "VIK_WEACT_ST7735"
                 ],
-        "user_input": "What VIK config would you like to use for the left half? (0) NONE, (1) VIK_AZOTEQ, (2) VIK_CIRQUE, (3) VIK_EC11_EVQWGD001, (4) VIK_GC9A01, (5) VIK_HAPTIC, (6) VIK_ILI9341, (7) VIK_PER56_CIRQUE_LEDS, (8) VIK_PER56_PMW3360_LEDS, (9) VIK_PMW3360, (10) VIK_WAVESHARE_22224, (11) VIK_WEACT_ST7735:"
+        "user_input": "What VIK config would you like to use? (0) NONE, (1) VIK_AZOTEQ, (2) VIK_CIRQUE, (3) VIK_EC11_EVQWGD001, (4) VIK_GC9A01, (5) VIK_HAPTIC, (6) VIK_ILI9341, (7) VIK_PER56_CIRQUE_LEDS, (8) VIK_PER56_PMW3360_LEDS, (9) VIK_PMW3360, (10) VIK_WAVESHARE_22224, (11) VIK_WEACT_ST7735:"
     },
     {
         "type" : "one-of",
