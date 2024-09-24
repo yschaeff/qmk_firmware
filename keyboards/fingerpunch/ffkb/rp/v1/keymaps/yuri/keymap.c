@@ -28,6 +28,10 @@ enum custom_keycodes {
     W_MOD_S, W_MOD_X, W_MOD_Y, W_MOD_Z,
 };
 
+const uint16_t PROGMEM test_combo1[] = {LGUI_T(KC_J), RALT_T(KC_K), COMBO_END};
+combo_t key_combos[] = {
+    COMBO(test_combo1, KC_ENT),
+};
 
 
 //  MO(layer): base + (layer)       until release
@@ -105,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,         KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,             KC_BSPC,
   KC_ESC,  LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LGUI_T(KC_F), KC_G,         KC_H,    LGUI_T(KC_J), RALT_T(KC_K), RCTL_T(KC_L), RSFT_T(KC_SCLN),  KC_QUOT,
   KC_LSFT, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,          VIM_W,
-           KC_MUTE,                    KC_BSLS,      KC_SPC,       LOWER,        RAISE,   KC_ENT,       KC_DEL,                     LCTL(KC_BSPC)
+           KC_MUTE,                    KC_BSLS,      KC_SPC,       LOWER,        RAISE,   KC_SPC,       KC_DEL,                     LCTL(KC_BSPC)
 ),
 
 /* Raise

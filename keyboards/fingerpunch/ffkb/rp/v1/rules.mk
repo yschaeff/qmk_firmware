@@ -18,6 +18,8 @@ HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = drv2605l
 
 VIK_ENABLE = yes
+COMBO_ENABLE = yes
+
 
 ifeq ($(strip $(FP_INDICATOR_LEDS)), yes)
    OPT_DEFS += -DFP_INDICATOR_LEDS
