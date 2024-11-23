@@ -28,20 +28,30 @@ enum custom_keycodes {
     W_MOD_S, W_MOD_X, W_MOD_Y, W_MOD_Z,
 };
 
-const uint16_t PROGMEM test_combo1[] = {LGUI_T(KC_J), RALT_T(KC_K), COMBO_END};
+const uint16_t PROGMEM enter_combo[] = {LGUI_T(KC_J), RALT_T(KC_K), COMBO_END};
+const uint16_t PROGMEM fullscreen_combo[] = {LALT_T(KC_D), LGUI_T(KC_F), COMBO_END};
+const uint16_t PROGMEM scratchpad_combo[] = {LGUI_T(KC_J), LGUI_T(KC_F), COMBO_END};
+const uint16_t PROGMEM r_indent_combo[] = {LGUI_T(KC_J), RALT_T(KC_K), RCTL_T(KC_L), COMBO_END};
+const uint16_t PROGMEM l_indent_combo[] = {LGUI_T(KC_F), LALT_T(KC_D), LCTL_T(KC_S), COMBO_END};
 combo_t key_combos[] = {
-    COMBO(test_combo1, KC_ENT),
+    COMBO(enter_combo, KC_ENT),
+    COMBO(fullscreen_combo, LGUI(KC_F)),
+    COMBO(scratchpad_combo, LGUI(KC_MINS)),
+    COMBO(l_indent_combo, KC_LABK),
+    COMBO(r_indent_combo, KC_RABK),
 };
 
 
 //  MO(layer): base + (layer)       until release
 //  TO(layer): base + layer         forever
 // OSL(layer): layers + (layer)     until key press
-//  TG(layer): layers -+ layer      forever
+//  TG(layer): layers -+ layer      forever (toggle)
 
 #define LOWER           MO(_LOWER)
+#define BRACKET         MO(_BRACKET)
 #define RAISE           MO(_RAISE)
 #define TQWERTY         TO(_QWERTY)
+#define TPLAIN          TO(_PLAIN )
 
 #define TWINGS0         TO(_WINGS0)
 /*#define TWINGS1         TO(_WINGS1)*/
@@ -77,9 +87,11 @@ combo_t key_combos[] = {
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
+    _PLAIN,
     _LOWER,
     _RAISE,
     _ADJUST,
+    _BRACKET,
     _MOUSE = AUTO_MOUSE_DEFAULT_LAYER,
 
     _WINGS0,
@@ -97,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
  * |  ESC |   A  |   S  |   D  |   F  |   G  |             |   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |  SFT |   Z  |   X  |   C  |   V  |   B  |             |   N  |   M  |   ,  |   .  |   /  | SFT  |
+ * |      |   Z  |   X  |   C  |   V  |   B  |             |   N  |   M  |   ,  |   .  |   /  | SFT  |
  * `-----------------------------------------'             `-----------------------------------------'
  *          ,------.        ,--------------------.    ,--------------------.        ,------.
- *          | MUTE |        |   \  | Enter| LOWER|    | RAISE| Space| Del  |        | DELW |
+ *          | MUTE |        |      |      | LOWER|    | RAISE| Space| bsl  |        | DELW |
  *          `------'        `--------------------'    `--------------------.        `------'
  */
 
@@ -108,18 +120,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_ffkb(
   KC_TAB,  KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,         KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,             KC_BSPC,
   KC_ESC,  LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LGUI_T(KC_F), KC_G,         KC_H,    LGUI_T(KC_J), RALT_T(KC_K), RCTL_T(KC_L), RSFT_T(KC_SCLN),  KC_QUOT,
-  KC_LSFT, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,          VIM_W,
-           KC_MUTE,                    KC_BSLS,      KC_SPC,       LOWER,        RAISE,   KC_SPC,       KC_DEL,                     LCTL(KC_BSPC)
+  _______, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,          LGUI(KC_ENT),
+           KC_MUTE,                    _______,      BRACKET,      LOWER,        RAISE,   KC_SPC,       KC_BSLS,                    LCTL(KC_BSPC)
 ),
+
+/* plain
+ *
+ * ,-----------------------------------------.             ,-----------------------------------------.
+ * |  TAB |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |BckSpc|
+ * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+ * |  ESC |   A  |   S  |   D  |   F  |   G  |             |   H  |   J  |   K  |   L  |   ;  |  '   |
+ * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+ * |      |   Z  |   X  |   C  |   V  |   B  |             |   N  |   M  |   ,  |   .  |   /  | SFT  |
+ * `-----------------------------------------'             `-----------------------------------------'
+ *          ,------.        ,--------------------.    ,--------------------.        ,------.
+ *          | MUTE |        |      |      | LOWER|    | RAISE| Space| bsl  |        | DELW |
+ *          `------'        `--------------------'    `--------------------.        `------'
+ */
+
+// Default config uses home row mods. So hold each of the keys on the home row to use ctrl, gui, alt, or shift
+[_PLAIN] = LAYOUT_ffkb(
+  KC_TAB,  KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,         KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,             KC_BSPC,
+  KC_ESC,  KC_A,         KC_S,         KC_D,         KC_F,         KC_G,         KC_H,    KC_J,         KC_K,         KC_L,         KC_SCLN,          KC_QUOT,
+  _______, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,          LGUI(KC_ENT),
+           KC_MUTE,                    _______,      BRACKET,      LOWER,        RAISE,   KC_SPC,       KC_BSLS,                    LCTL(KC_BSPC)
+),
+
 
 /* Raise
  *
  * ,-----------------------------------------.             ,-----------------------------------------.
- * |  `   |   1  |   2  |   3  |   4  |   5  |             |   6  |   7  |   8  |   9  |   0  |      |
+ * |  `   |   1  |   2  |   3  |   4  |   5  |             |   6  |   7  |   8  |   9  |   0  | del  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      | Tab  | Left | Up   | Down | Rght |             |      |   -  |   =  |   [  |   ]  |      |
+ * |      | Tab  | Left | Up   | Down | Rght |             |      | Left | Up   | Down | Rght |      |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      |      | Home | PgUp | PgDn | End  |             |      |      |      |      |      |      |
+ * |      |      | Home | PgUp | PgDn | End  |             |      |   -  |   =  |   [  |   ]  | prnt |
  * `-----------------------------------------'             `-----------------------------------------'
  *          ,------.        ,--------------------.    ,--------------------.        ,------.
  *          | MUTE |        |   \  | Enter| LOWER|    | RAISE| Space| Del  |        | DELW |
@@ -127,30 +162,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT_ffkb(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-  _______, KC_TAB,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT,      _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______,
-  _______, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,       _______, _______, _______, _______, _______, VIM_WQ,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL ,
+  _______, KC_TAB,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+  _______, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,       _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_PRNT,
            _______,          _______, _______, _______,      _______, _______, _______,          _______
 ),
 
 /* Lower
  *
  * ,-----------------------------------------.             ,-----------------------------------------.
- * |      |   !  |   @  |   #  |   $  |   %  |             |   ^  |   &  |   *  |   (  |   )  |      |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |             |   ^  |   &  |   *  |   (  |   )  |      |
+ * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+ * |      |   <  |   {  |   [  |   (  |      |             |      |   )  |   ]  |   }  |   >  |      |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
  * |      |      |      |      |      |      |             |      |   _  |   +  |   {  |   }  |      |
- * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      |  Caps|      |      |      |      |             |      |      |      |   |  |   "  |      |
  * `-----------------------------------------'             `-----------------------------------------'
  *          ,------.        ,--------------------.    ,--------------------.        ,------.
  *          | MUTE |        |   \  | Enter| LOWER|    | RAISE| Space| Del  |        | DELW |
  *          `------'        `--------------------'    `--------------------.        `------'
  */
 [_LOWER] = LAYOUT_ffkb(
-  _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
+  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
+  _______, KC_LABK, KC_LCBR, KC_LBRC, KC_LPRN, _______,      _______, KC_RPRN, KC_RBRC, KC_RCBR, KC_RABK, _______,
   _______, _______, _______, _______, _______, _______,      _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, _______,
-  _______, KC_CAPS, _______, _______, _______, _______,      _______, _______, _______, KC_PIPE, KC_DQT,  KC_PRNT,
            _______,          _______, _______, _______,      _______, _______, _______,          _______
+
 ),
 
 /* Adjust (Lower + Raise)
@@ -168,8 +204,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  LAYOUT_ffkb(
   _______, RGB_TOG, RGB_RMOD, RGB_MOD, _______, TQWERTY,      KC_F1,   KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, _______,      KC_F6,   KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, TPLAIN,       KC_F6,   KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
   _______, RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, TWINGS0,      KC_F10,  KC_F12 , _______, _______, QK_BOOT, _______,
+           _______,           _______, _______, _______,      _______, _______, _______,          _______
+),
+
+/* Bracket
+ *
+ * ,-----------------------------------------.             ,-----------------------------------------.
+ * |      |      |      |      |      |      |             |      |      |      |      |      | bksp |
+ * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |             |   '  |   (  |   [  |   {  |   <  |      |
+ * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |             |   "  |   )  |   ]  |   }  |   >  |      |
+ * `-----------------------------------------'             `-----------------------------------------'
+ *          ,------.        ,--------------------.    ,--------------------.        ,------.
+ *          |      |        |      |      |      |    |      |      |      |        |      |
+ *          `------'        `--------------------'    `--------------------.        `------'
+ */
+[_BRACKET] = LAYOUT_ffkb(
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_QUOT, KC_LPRN, KC_LBRC, KC_LCBR, KC_LABK, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_DQUO, KC_RPRN, KC_RBRC, KC_RCBR, KC_RABK, XXXXXXX,
+           /*XXXXXXX,          XXXXXXX, _______, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX*/
            _______,           _______, _______, _______,      _______, _______, _______,          _______
 ),
 
