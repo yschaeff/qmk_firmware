@@ -39,11 +39,13 @@ endif
 
 ifeq ($(strip $(FP_EC11)), yes)
    ENCODER_ENABLE := yes
+   ENCODER_MAP_ENABLE := yes
    OPT_DEFS += -DFP_EC11_UNDER_PALMS
 endif
 
 ifeq ($(strip $(FP_EVQ)), yes)
    ENCODER_ENABLE := yes
+   ENCODER_MAP_ENABLE := yes
    OPT_DEFS += -DFP_EVQ_UNDER_PALMS
 endif
 
